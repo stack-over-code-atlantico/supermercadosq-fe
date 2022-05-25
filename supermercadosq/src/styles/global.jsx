@@ -1,9 +1,8 @@
-import { createGlobalStyle } from "styled-components";
-
+import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
+
   :root {
     --background: #FCFCFC;
-
     --color-green: #9CDD6E;
     --color-green-light: #9CDD6E;
     --color-yellow-light: #FFF66B;
@@ -59,4 +58,4 @@ export const GlobalStyle = createGlobalStyle`
     cursor: not-allowed;
   }
 
-`;
+`
