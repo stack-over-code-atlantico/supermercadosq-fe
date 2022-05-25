@@ -11,16 +11,16 @@ export function Navbar() {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to='/login' activestyle={{ color: '#15cdfc'}}>
+          <NavLink to='/login' activestyle={{ color: '#3EBCD3'}}>
             Login
           </NavLink>
-          <NavLink to='/register' activestyle={{ color: '#15cdfc'}}>
+          <NavLink to='/register' activestyle={{ color: '#3EBCD3'}}>
             Registro
           </NavLink>
-          <NavLink to='/product' activestyle={{ color: '#15cdfc'}}>
+          <NavLink to='/product' activestyle={{ color: '#3EBCD3'}}>
             Produto
           </NavLink>
-          <NavLink to='/about' activestyle={{ color: '#15cdfc'}}>
+          <NavLink to='/about' activestyle={{ color: '#3EBCD3'}}>
             Sobre
           </NavLink>
         </NavMenu>

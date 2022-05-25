@@ -6,6 +6,9 @@ function App() {
   return (
     <Router>
       <Navbar />
+{/*       <Switch>
+        <Route path="/about" exact component={About} />
+      </Switch> */}
       <GlobalStyle />
     </Router>
   )
