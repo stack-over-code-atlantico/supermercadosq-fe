@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
   }
 
   //Tamanho de font 16px (para desktop) por padrão
