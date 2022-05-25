@@ -95,8 +95,8 @@ export const ErrorBlue404 = styled.div`
   position: absolute;
   height: 8rem;
   width: 8rem;
-  top: 37%;
-  left: 47%;
+  bottom: 75%;
+  right: 100%;
   border-radius: 50%;
   background: var(--color-blue-light);
   clip-path: circle(100%);
@@ -124,7 +124,7 @@ export const CircleSmallMustard = styled.div`
 
 export const CardText = styled.div`
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   right: 24%;
   display: inline;
   flex-direction: column;
@@ -136,7 +136,7 @@ export const CardText = styled.div`
   
   #error404 {
     text-align: left;
-    font-size: 9.3rem;
+    font-size: 11rem;
     -webkit-text-stroke-width: 0.6rem;
     -webkit-text-stroke-color: var(--color-blue-ciel);
     color: white;

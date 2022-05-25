@@ -25,10 +25,10 @@ const Page404 = () => {
           <a href="#">Home</a>
         </h1>
       </HomeGreen404>
-      <ErrorBlue404>
-        <h2>error</h2>
-      </ErrorBlue404>
       <CardText>
+        <ErrorBlue404>
+          <h2>error</h2>
+        </ErrorBlue404>
         <h1 id="error404">404</h1>
         <span>PAGE NOT FOUND</span>
       </CardText>
