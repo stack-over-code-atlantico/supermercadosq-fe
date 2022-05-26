@@ -25,7 +25,7 @@ export function Navbar() {
           </NavLink>
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/signin'>Visitante</NavBtnLink>
+          <NavBtnLink to='/verfy'>Visitante</NavBtnLink>
           <img src={lockLogo} />
         </NavBtn>
       </Nav>
