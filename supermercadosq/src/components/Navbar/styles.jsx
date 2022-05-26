@@ -51,7 +51,7 @@ export const NavMenu = styled.div`
 `;
 
 
-export const NavBtn = styled.nav`
+export const NavInf = styled.div`
   display: flex;
   align-items: center;
 
@@ -60,9 +60,6 @@ export const NavBtn = styled.nav`
   }
 `;
 
-export const NavBtnLink = styled(Link)`
+export const NavLabel = styled.div`
   padding: 10px 22px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
 `;

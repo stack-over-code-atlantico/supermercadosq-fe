@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from './styles';
+import { Nav, NavLink, Bars, NavMenu, NavInf, NavLabel } from './styles';
 import lockLogo from '../../assets/lock.svg'
 
 export function Navbar() {
@@ -24,10 +24,10 @@ export function Navbar() {
             Sobre
           </NavLink>
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to='/verfy'>Visitante</NavBtnLink>
+        <NavInf>
+          <NavLabel>Visitante</NavLabel>
           <img src={lockLogo} />
-        </NavBtn>
+        </NavInf>
       </Nav>
     </>
   );
