@@ -19,6 +19,9 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
+
+
+
 `;
 
 export const Bars = styled(FaBars)`
@@ -45,6 +48,10 @@ export const NavMenu = styled.div`
     color: var(--color-blue-ciel);
   }
 
+  & a:hover {
+    color: var(--color-red);
+  }
+
   @media screen and (max-width: 768px){
     display: none;
   }
@@ -61,5 +68,5 @@ export const NavInf = styled.div`
 `;
 
 export const NavLabel = styled.div`
-  padding: 10px 22px;
+  padding: 10px 5px 10px 22px;
 `;
