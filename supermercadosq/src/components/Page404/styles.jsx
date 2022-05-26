@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import BgError404 from '../../assets/errors/Background-erro404.png'
 
 export const Style404 = styled.div`
   position: relative;
   font-family: 'Poppins', sans-serif;
   height: 100vh;
   width: 100%;
+  background-color: #43434313;
   .circleBigBlue {
     position: absolute;
     height: 100%;
@@ -14,7 +14,6 @@ export const Style404 = styled.div`
     left: 0;
     background: var(--color-blue-ciel);
     clip-path: circle(43% at 70% -10%);
-    z-index: -1;
   }
 
   .circleDashedLeft {
@@ -83,12 +82,17 @@ export const HomeGreen404 = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media(max-width: 520px){
+    height: 8rem;
+    width: 8rem;
+}
   a {
     text-decoration: none;
     color: white;
     &:hover {
       color: #101010;
     }
+
   }
 `
 export const ErrorBlue404 = styled.div`
@@ -109,6 +113,14 @@ export const ErrorBlue404 = styled.div`
     font-weight: 400;
     color: white;
   }
+  @media(max-width: 500px){
+    height: 6rem;
+    width: 6rem;
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  
 `
 
 export const CircleSmallMustard = styled.div`
@@ -133,7 +145,13 @@ export const CardText = styled.div`
   text-align: right;
   color:var(--color-blue-ciel);
   line-height: 80px;
-  
+
+  @media(max-width: 670px){
+    flex-direction: row;
+    right: 0;
+    margin: auto;
+  };
+
   #error404 {
     text-align: left;
     font-size: 11rem;
@@ -147,5 +165,16 @@ export const CardText = styled.div`
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
   }
+  
+
+  @media(max-width: 500px){
+    #error404 {
+      font-size: 8rem;
+    }
+      span {
+      font-size: 1.6rem;
+      -webkit-text-stroke-width: 0.5px;
+    }
+  };
 
 `
