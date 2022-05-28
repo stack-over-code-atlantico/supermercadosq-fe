@@ -23,7 +23,7 @@ const Login = () => {
                     </span>
                     <input type="password" name="password" id="password" />  
                   </label>
-                  <label>
+                  <label id='keepConnected'>
                     <input type="checkbox" name="keepConnected" id="keepConnected" />
                     <span>
                       Manter conectado
@@ -35,6 +35,7 @@ const Login = () => {
                     </div>
                 </form>
             </LoginForm>
+            
             <LoginLogo>
                 <img src={LogoSQ} alt="Logo do Supermercado SQ, dentro do Q possui um carrinho de compras, com algumas bolinhas nas cores rosa, laranja, azul, marrom e verde." />
             </LoginLogo>

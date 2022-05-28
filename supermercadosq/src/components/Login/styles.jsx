@@ -22,7 +22,62 @@ export const LoginContainer = styled.div`
 `;
 
 export const LoginForm = styled.div`
+    padding: 7% 12.5%;
 
+    p {
+        font-size: 12px;
+        color: var(--color-gray);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            flex-direction: column;
+            display: flex;
+        }
+
+        #keepConnected, .actions {
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+        }
+        #keepConnected {
+            gap: 10px;
+            color: var(--color-gray);
+            font-size: 14px;
+            margin-top: 13px;
+
+            span {
+                margin-top: 13px;
+            }
+        }
+        .actions {
+            span {
+                font-size: 10px;
+                color: var(--color-gray);
+
+                a {
+                    text-decoration: none;
+                    color: var(--color-blue-light);
+                    font-weight: 700;
+                }
+
+            }
+            button {
+                color: var(--color-white);
+                background-color: var(--color-blue-light);
+                border: none;
+                font-weight: 700;
+                width: 152px;
+                height: 39px;
+            }
+        }
+
+
+    }
+    
 `;
 
 export const LoginLogo = styled.figure`
