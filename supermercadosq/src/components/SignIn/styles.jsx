@@ -40,12 +40,19 @@ export const Form = styled.div`
       margin-top: 5px;
       height: 30px;
     }
-
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button
+     {
+        -webkit-appearance: none;
+      }
+    
     label {
       flex-direction: column;
       display: flex;
       font-size: 12px;
       font-weight: 600;
+
+
     }
 
     #keepConnected,
