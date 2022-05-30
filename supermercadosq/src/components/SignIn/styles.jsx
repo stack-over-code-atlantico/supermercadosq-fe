@@ -20,6 +20,27 @@ export const LoginContainer = styled.div`
   height: 450px;
   background-color: white;
   border-radius: 5px;
+
+  #TypeUser{
+    font-weight: 600;
+    text-align: center;
+    margin: auto 0;
+  }
+
+  .CheckType{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    label{
+      gap: 5px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      input{
+        margin: 0px;
+      }
+    }
+  }
 `
 
 export const Form = styled.div`
@@ -51,8 +72,6 @@ export const Form = styled.div`
       display: flex;
       font-size: 12px;
       font-weight: 600;
-
-
     }
 
     #keepConnected,
@@ -60,6 +79,7 @@ export const Form = styled.div`
       flex-direction: row;
       display: flex;
       align-items: center;
+      
     }
     #keepConnected {
       gap: 10px;
@@ -83,7 +103,7 @@ export const Form = styled.div`
       padding-top: 44px;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
       span {
         font-size: 10px;
         color: var(--color-gray);

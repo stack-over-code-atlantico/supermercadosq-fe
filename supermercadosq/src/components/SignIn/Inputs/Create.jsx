@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from './styles.jsx'
+import { Form } from '../styles.jsx'
 
 
 const Create = () => {
