@@ -4,6 +4,8 @@ import { Header } from "./components/Header"
 
 import { Circle } from "./components/Circle"
 
+import { TextoBlog } from './components/TextoBlog'
+
 function App() {
 
   return (
@@ -11,6 +13,7 @@ function App() {
       <Header />
       <GlobalStyle />
       <Circle />
+      <TextoBlog />
     </>
   )
 }
