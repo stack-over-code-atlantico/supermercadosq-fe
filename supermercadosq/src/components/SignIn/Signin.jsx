@@ -3,7 +3,7 @@ import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
 import AdressCheck from './Inputs/AdressCheck'
 
-const Login = () => {
+const SignIn = () => {
   return (
     <StyleLogin>
       <LoginContainer>
@@ -19,4 +19,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignIn
