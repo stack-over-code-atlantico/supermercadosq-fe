@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from "react"; 
-import { Nav, NavLink, NavItem, NavMenu, NavInf, NavLabel, NavbarContainer, MobileIcon } from './styles';
+import { Nav, NavLink, NavItem, NavMenu, NavInf, NavLabel, NavbarContainer, MobileIcon, NavLogo } from './styles';
 import { FaBars, FaTimes } from "react-icons/fa";
 import lockLogo from '../../assets/lock.svg'
 import { IconContext } from "react-icons/lib";
@@ -15,9 +15,9 @@ export function Navbar() {
     <IconContext.Provider value={{ color: "var(--color-black)" }}>  
       <Nav>
         <NavbarContainer>
-          <NavLink to='/'>
+          <NavLogo to='/' onClick={closeMobileMenu}>
             <h1>Supermercado SQ</h1>
-          </NavLink>
+          </NavLogo>
 
 
 

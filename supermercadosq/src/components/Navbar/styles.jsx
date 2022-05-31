@@ -6,16 +6,31 @@ export const Nav = styled.nav`
   background: transparent; /* transparent */
   height: 90px; /* 6rem */
   display: flex;
-  justify-content: space-between;
   padding: 0.5rem calc((100vw - 1000px)/2);
   z-index: 10;
 `;
 
 export const NavbarContainer = styled.div`  
-  display: flex;  
-  justify-content: space-between;  
-  height: 80px;   
-`;  
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+`;
+
+export const NavLogo = styled(Link)`
+  color: var(--color-black);
+  display: flex;
+  margin-right: 3.5vw;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+
+  @media screen and (max-width: 850px){
+    margin-right: 1vw;
+  }
+
+`;
 
 export const NavLink = styled(Link)`
   color: var(--color-black);
@@ -25,6 +40,17 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {  
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+    &:hover {  
+      color: #4b59f7;
+      transition: all 0.3s ease;  
+    }
+  }
 `;
 
 export const MobileIcon = styled.div`
@@ -48,10 +74,13 @@ export const NavMenu = styled.ul`
   text-align: center;
   list-style: none;
 
-  margin-right: 32px;
+  margin-right: 8vw;
+
+  @media screen and (max-width: 850px){
+    margin-right: 5vw;
+  }
 
   @media screen and (max-width: 768px){
-    display: none;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -59,8 +88,8 @@ export const NavMenu = styled.ul`
     position: absolute;
     top: 80px;
     left: ${({ click }) => (click ? 0 : "-100%")};
-    opacity: 1;  
-    transition: all 0.5s ease;
+    opacity: 1;
+    transition: all 0.6s ease;
     background: var(--color-gray);
   }
 `;
@@ -71,7 +100,7 @@ export const NavItem = styled.li`
   &:hover {  
     border-bottom: 2px solid #4b59f7;  
   }  
-  @media screen and (max-width: 960px) {  
+  @media screen and (max-width: 768px) {  
     width: 100%;  
     &:hover {  
       border: none;  
