@@ -1,20 +1,28 @@
 import { GlobalStyle } from "./styles/global";
+import { Navbar } from "./components/Navbar"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages";
+import { About } from "./pages/about";
+import { Register } from "./pages/register";
+import { Login } from "./pages/login";
+import { Product } from "./pages/product";
 
-import { Header } from "./components/Header"
-
-import { Circle } from "./components/Circle"
-
-import { TextoBlog } from './components/TextoBlog'
 
 function App() {
-
   return (
-    <>
-      <Header />
-      <GlobalStyle />
-      <Circle />
-      <TextoBlog />
-    </>
+  <>
+    <Router>
+      <Navbar />
+        <Routes>
+            <Route path="/" exact element={<Home/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/product" element={<Product/>}/>
+            <Route path="/about" element={<About/>}/>
+        </Routes>
+      </Router>
+    <GlobalStyle />
+  </>
   )
 }
 
