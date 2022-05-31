@@ -24,12 +24,10 @@ export const NavLogo = styled(Link)`
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
-  cursor: pointer;
 
   @media screen and (max-width: 850px){
     margin-right: 1vw;
   }
-
 `;
 
 export const NavLink = styled(Link)`
@@ -73,7 +71,6 @@ export const NavMenu = styled.ul`
   align-items: center;
   text-align: center;
   list-style: none;
-
   margin-right: 8vw;
 
   @media screen and (max-width: 850px){
@@ -107,7 +104,6 @@ export const NavItem = styled.li`
     }  
   }  
 `;  
-
 
 export const NavInf = styled.div`
   display: flex;
