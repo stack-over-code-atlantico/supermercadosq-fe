@@ -1,16 +1,15 @@
-import { createGlobalStyle } from "styled-components";
-
+import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
+
   :root {
     --background: #FCFCFC;
-
     --color-green: #9CDD6E;
     --color-green-light: #9CDD6E;
     --color-yellow-light: #FFF66B;
     --color-red: #F66A69;
     --color-mustard: #F59E1D;
-    --color-blue-ciel: #3EBCD3;
-    --color-blue-light: #8CEAFC;
+    --color-blue-ciel: #9cdbe7;
+    --color-blue-light: #3EBCD3;
     --color-brown: #C87C53;
     --color-black: #020000;
     --color-gray: #858585;
@@ -60,4 +59,4 @@ export const GlobalStyle = createGlobalStyle`
     cursor: not-allowed;
   }
 
-`;
+`
