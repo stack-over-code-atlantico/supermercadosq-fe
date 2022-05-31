@@ -1,34 +1,72 @@
 import React from 'react';
-import { Nav, NavLink, Bars, NavMenu, NavInf, NavLabel } from './styles';
+import { useState, useEffect } from "react"; 
+import { Nav, NavLink, NavItem, NavMenu, NavInf, NavLabel, NavbarContainer, MobileIcon } from './styles';
+import { FaBars, FaTimes } from "react-icons/fa";
 import lockLogo from '../../assets/lock.svg'
+import { IconContext } from "react-icons/lib";
 
 export function Navbar() {
+  const [click, setClick] = useState(false); 
+  const handleClick = () => setClick(!click);  
+  const closeMobileMenu = () => setClick(false);
+
   return (
     <>
+    <IconContext.Provider value={{ color: "var(--color-black)" }}>  
       <Nav>
-        <NavLink to='/'>
-          <h1>Supermercado SQ</h1>
-        </NavLink>
-        <Bars />
-        <NavMenu>
-          <NavLink to='/login' activestyle={{ color: '#3EBCD3'}}>
-            Login
+        <NavbarContainer>
+          <NavLink to='/'>
+            <h1>Supermercado SQ</h1>
           </NavLink>
-          <NavLink to='/register' activestyle={{ color: '#3EBCD3'}}>
-            Registro
-          </NavLink>
-          <NavLink to='/product' activestyle={{ color: '#3EBCD3'}}>
-            Produto
-          </NavLink>
-          <NavLink to='/about' activestyle={{ color: '#3EBCD3'}}>
-            Sobre
-          </NavLink>
-        </NavMenu>
-        <NavInf>
-          <NavLabel>Visitante</NavLabel>
-          <img src={lockLogo} />
-        </NavInf>
+
+
+
+
+          <MobileIcon onClick={handleClick}>  
+                {click ? <FaTimes /> : <FaBars />}
+          </MobileIcon>
+
+
+
+
+          <NavMenu onClick={handleClick} click={click}>
+            <NavItem>
+              <NavLink to='/login' activestyle={{ color: '#3EBCD3'}} onClick={closeMobileMenu}>
+                Login
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink to='/register' activestyle={{ color: '#3EBCD3'}} onClick={closeMobileMenu}>
+                Registro
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink to='/product' activestyle={{ color: '#3EBCD3'}} onClick={closeMobileMenu}>
+                Produto
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink to='/about' activestyle={{ color: '#3EBCD3'}}
+              onClick={closeMobileMenu}>
+                Sobre
+              </NavLink>
+            </NavItem>
+          </NavMenu>
+
+
+
+
+
+          <NavInf>
+            <NavLabel>Visitante</NavLabel>
+            <img src={lockLogo} />
+          </NavInf>
+        </NavbarContainer>
       </Nav>
+      </IconContext.Provider>
     </>
   );
 }

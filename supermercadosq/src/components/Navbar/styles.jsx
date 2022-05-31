@@ -11,6 +11,12 @@ export const Nav = styled.nav`
   z-index: 10;
 `;
 
+export const NavbarContainer = styled.div`  
+  display: flex;  
+  justify-content: space-between;  
+  height: 80px;   
+`;  
+
 export const NavLink = styled(Link)`
   color: var(--color-black);
   display: flex;
@@ -19,12 +25,9 @@ export const NavLink = styled(Link)`
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-
-
-
 `;
 
-export const Bars = styled(FaBars)`
+export const MobileIcon = styled.div`
   display: none;
   color: var(--color-black);
 
@@ -39,23 +42,42 @@ export const Bars = styled(FaBars)`
   }
 `;
 
-export const NavMenu = styled.div`
+export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
+  text-align: center;
+  list-style: none;
+
   margin-right: 32px;
-
-  & a.active{
-    color: var(--color-blue-ciel);
-  }
-
-  & a:hover {
-    color: var(--color-red);
-  }
 
   @media screen and (max-width: 768px){
     display: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: ${({ click }) => (click ? 0 : "-100%")};
+    opacity: 1;  
+    transition: all 0.5s ease;
+    background: var(--color-gray);
   }
 `;
+
+export const NavItem = styled.li`  
+  height: 80px;  
+  border-bottom: 2px solid transparent;  
+  &:hover {  
+    border-bottom: 2px solid #4b59f7;  
+  }  
+  @media screen and (max-width: 960px) {  
+    width: 100%;  
+    &:hover {  
+      border: none;  
+    }  
+  }  
+`;  
 
 
 export const NavInf = styled.div`
