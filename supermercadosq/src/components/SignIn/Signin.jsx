@@ -1,7 +1,7 @@
 import React from 'react'
 import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
-import InfosCheck from './Inputs/InfosCheck'
+import AdressCheck from './Inputs/AdressCheck'
 
 const Login = () => {
   return (
@@ -13,7 +13,7 @@ const Login = () => {
             alt="Logo do Supermercado SQ, dentro do Q possui um carrinho de compras, com algumas bolinhas nas cores rosa, laranja, azul, marrom e verde."
           />
         </LoginLogo>
-        <InfosCheck />
+        <AdressCheck />
       </LoginContainer>
     </StyleLogin>
   )

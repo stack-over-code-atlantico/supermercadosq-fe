@@ -21,22 +21,22 @@ export const LoginContainer = styled.div`
   background-color: white;
   border-radius: 5px;
 
-  #TypeUser{
+  #TypeUser {
     font-weight: 600;
     text-align: center;
     margin: auto 0;
   }
 
-  .CheckType{
+  .CheckType {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    label{
+    label {
       gap: 5px;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      input{
+      input {
         margin: 0px;
       }
     }
@@ -61,12 +61,14 @@ export const Form = styled.div`
       margin-top: 5px;
       height: 30px;
     }
+    input:focus{
+      border: 2px solid var(--color-blue-light);
+    }
     input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button
-     {
-        -webkit-appearance: none;
-      }
-    
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
     label {
       flex-direction: column;
       display: flex;
@@ -79,7 +81,6 @@ export const Form = styled.div`
       flex-direction: row;
       display: flex;
       align-items: center;
-      
     }
     #keepConnected {
       gap: 10px;
@@ -113,7 +114,6 @@ export const Form = styled.div`
           color: var(--color-blue-light);
           font-weight: 700;
         }
-        
       }
       button {
         color: var(--color-white);
@@ -134,5 +134,21 @@ export const LoginLogo = styled.figure`
   border-right: 0.2px solid #10101024;
   img {
     height: 45%;
+  }
+`
+export const StreetInput = styled.div`
+  display: grid;
+  grid-template-columns: 0.8fr 0.2fr;
+  gap: 10px;
+  input{
+    width: 100%;
+  }
+`
+export const CityInput = styled.div`
+  display: grid;
+  grid-template-columns: 0.5fr 0.3fr 0.2fr;
+  gap: 10px;
+  input{
+    width: 100%;
   }
 `

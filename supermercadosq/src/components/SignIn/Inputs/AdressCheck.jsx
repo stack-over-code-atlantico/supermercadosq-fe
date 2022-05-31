@@ -1,36 +1,47 @@
 import React from 'react'
-import { Form } from '../styles.jsx'
+import { CityInput, Form, StreetInput } from '../styles.jsx'
 
 const AdressCheck = () => {
   return (
     <Form>
-          <h1>Crie sua conta</h1>
-          <p>
-            E conheça mais sobre vários produtos e seus respectivos
-            componentes.
-          </p>
-          <form>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" id="email" />
-            </label>
+      <h1>Só mais um passo</h1>
+      <p>Conclua seu cadastro com os dados que faltam</p>
+      <form>
+        <label>
+          <span>CEP</span>
+          <input type="number" name="Cep" id="Cep" placeholder="#####-###" />
+        </label>
+        <StreetInput>
+          <label>
+            <span>Rua</span>
+            <input type="text" name="Street" id="Street" />
+          </label>
+          <label>
+            <span>Número</span>
+            <input type="number" name="StreetNumber" id="StreetNumber" />
+          </label>
+        </StreetInput>
+        <CityInput>
+        <label>
+            <span>Bairro</span>
+            <input type="text" name="Neighborhood" id="Neighborhood" />
+          </label>
+          <label>
+            <span>Cidade</span>
+            <input type="text" name="City" id="City" />
+          </label>
+          <label>
+            <span>Estado</span>
+            <input type="text" name="CityState" id="CityState" />
+          </label>
+        </CityInput>
 
-            <label>
-              <span>Senha</span>
-              <input type="password" name="password" id="password" />
-            </label>
-            
-            <label id="requiredPassword">
-              <span>Deve conter o mínimo de 8 caracteres, maiúscula, minúscula, caracter especial e números.</span>
-            </label>
-            <div className="actions">
-              <span>
-                Já possui uma conta? <br/><a href="">Entrar</a>
-              </span>
-              <button>Criar</button>
-            </div>
-          </form>
-        </Form>
+        
+        <div className="actions">
+          <button>Finalizar</button>
+        </div>
+      </form>
+    </Form>
   )
 }
 
