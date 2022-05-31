@@ -22,7 +22,7 @@ const Page404 = () => {
       <CircleSmallBlue />
       <HomeGreen404>
         <h1>
-          <a href="#">Home</a>
+          <a href="/">Home</a>
         </h1>
       </HomeGreen404>
       <CardText>

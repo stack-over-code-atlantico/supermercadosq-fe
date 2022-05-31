@@ -29,7 +29,7 @@ const Login = () => {
             </label>
             <div className="actions">
               <span>
-                Ainda não possui uma conta? <a href="">Criar Conta</a>
+                Ainda não possui uma conta? <a href="/register">Criar Conta</a>
               </span>
               <button>Entrar</button>
             </div>

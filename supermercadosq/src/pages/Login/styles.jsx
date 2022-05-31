@@ -7,7 +7,7 @@ export const StyleLogin = styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: 100%;
-  height: 100vh;
+  height: 93vh;
   display: grid;
   align-items: center;
   justify-content: center;
