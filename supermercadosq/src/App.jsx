@@ -7,6 +7,7 @@ import { Register } from "./pages/register";
 import { Login } from "./pages/login";
 import { Product } from "./pages/product";
 
+
 function App() {
   return (
   <>
