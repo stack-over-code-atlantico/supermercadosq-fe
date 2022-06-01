@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react"; 
 import { Nav, NavLink, NavItem, NavMenu, NavInf, NavLabel, NavbarContainer, MobileIcon, NavLogo } from './styles';
 import { FaBars, FaTimes } from "react-icons/fa";
-import lockLogo from '../../assets/lock.svg'
+import lockLogo from '../../assets/icons/lock.svg'
 import { IconContext } from "react-icons/lib";
 
 export function Navbar() {

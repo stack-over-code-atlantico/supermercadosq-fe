@@ -1,14 +1,19 @@
-import React from 'react';
+import React from 'react'
+import { Navbar } from '../../components/Navbar'
 
-export function Login(){
+export function About(){
   return (
+    <>
+    <Navbar />
     <div style={{
       display: 'flex', 
       justifyContent: 'center', 
       alignItems: 'center', 
       height: '90vh'}}
     >
-      <h1>Login</h1>
+
+      <h1>About</h1>
     </div>
-  );
+    </>
+  )
 }
