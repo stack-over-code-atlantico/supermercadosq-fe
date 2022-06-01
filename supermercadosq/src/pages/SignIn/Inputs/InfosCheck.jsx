@@ -1,5 +1,5 @@
 import React from 'react'
-import { Actions, Form } from '../styles.jsx'
+import { Actions, Form } from '../../../styles/CommunsStyles'
 
 const InfosCheck = () => {
   return (

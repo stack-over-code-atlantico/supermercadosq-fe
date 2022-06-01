@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
 import AdressCheck from '../../components/Adress/AdressCheck'
-import EmailCheck from './Inputs/EmailCheck'
+import EmailCheck from '../../components/Email/EmailCheck'
 import InfosCheck from './Inputs/InfosCheck'
 import { IoIosArrowBack } from 'react-icons/io';
 

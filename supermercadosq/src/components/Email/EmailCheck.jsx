@@ -1,10 +1,9 @@
-import React from 'react'
-import { Form } from '../styles.jsx'
+import {Form, Actions} from '../../styles/CommunsStyles'
 
+const EmailCheck = ({nextStep}) => {  
 
-const Create = () => {
   return (
-        <Form>
+    <Form>
           <h1>Crie sua conta</h1>
           <p>
             E conheça mais sobre vários produtos e seus respectivos
@@ -24,15 +23,15 @@ const Create = () => {
             <label id="requiredPassword">
               <span>Deve conter o mínimo de 8 caracteres, maiúscula, minúscula, caracter especial e números.</span>
             </label>
-            <div className="actions">
+            <Actions>
               <span>
-                Já possui uma conta? <br/><a href="">Entrar</a>
+                Já possui uma conta? <br/><a href="/login">Entrar</a>
               </span>
-              <button>Criar</button>
-            </div>
+              <button onClick={nextStep}>Criar Conta</button>
+            </Actions>
           </form>
         </Form>
   )
 }
 
-export default Create
+export default EmailCheck
