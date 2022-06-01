@@ -48,8 +48,7 @@ export const LoginForm = styled.div`
       font-weight: 600;
     }
 
-    #keepConnected,
-    .actions {
+    #keepConnected {
       flex-direction: row;
       display: flex;
       align-items: center;
@@ -67,27 +66,6 @@ export const LoginForm = styled.div`
         margin-bottom: 0px;
       }
     }
-    .actions {
-      padding-top: 44px;
-      span {
-        font-size: 10px;
-        color: var(--color-gray);
-
-        a {
-          text-decoration: none;
-          color: var(--color-blue-light);
-          font-weight: 700;
-        }
-      }
-      button {
-        color: var(--color-white);
-        background-color: var(--color-blue-light);
-        border: none;
-        font-weight: 700;
-        width: 152px;
-        height: 39px;
-      }
-    }
   }
 `
 
@@ -98,5 +76,37 @@ export const LoginLogo = styled.figure`
   border-left: 0.2px solid #10101024;
   img {
     height: 45%;
+  }
+`
+
+export const LabelError = styled.label`
+  margin-top: 5px;
+  font-size: 14px;
+  color: red;
+`
+
+export const Actions = styled.div`
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+
+  padding-top: 44px;
+  span {
+    font-size: 10px;
+    color: var(--color-gray);
+
+    a {
+      text-decoration: none;
+      color: var(--color-blue-light);
+      font-weight: 700;
+    }
+  }
+  button {
+    color: var(--color-white);
+    background-color: var(--color-blue-light);
+    border: none;
+    font-weight: 700;
+    width: 152px;
+    height: 39px;
   }
 `

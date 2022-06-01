@@ -1,7 +1,7 @@
 import React from 'react'
-import { CityInput, Form, StreetInput } from '../styles.jsx'
+import { CityInput, Form, StreetInput, Actions } from '../styles.jsx'
 
-const AdressCheck = () => {
+const AdressCheck = ({nextStep}) => {
   return (
     <Form>
       <h1>Só mais um passo</h1>
@@ -37,9 +37,10 @@ const AdressCheck = () => {
         </CityInput>
 
         
-        <div className="actions">
-          <button>Finalizar</button>
-        </div>
+        <Actions>
+          <button onClick={nextStep}>Voltar</button>
+          <button onClick={nextStep}>Finalizar</button>
+        </Actions>
       </form>
     </Form>
   )

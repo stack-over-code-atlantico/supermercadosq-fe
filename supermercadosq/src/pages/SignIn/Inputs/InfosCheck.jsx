@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from '../styles.jsx'
+import { Actions, Form } from '../styles.jsx'
 
 const InfosCheck = () => {
   return (
@@ -47,9 +47,9 @@ const InfosCheck = () => {
           </label>
         </div>
 
-        <div className="actions">
+        <Actions>
           <button id="confirmCellphone">Continuar</button>
-        </div>
+        </Actions>
       </form>
     </Form>
   )
