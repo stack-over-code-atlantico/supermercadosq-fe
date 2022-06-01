@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
-import AdressCheck from './Inputs/AdressCheck'
+import AdressCheck from '../../components/Adress/AdressCheck'
 import EmailCheck from './Inputs/EmailCheck'
 import InfosCheck from './Inputs/InfosCheck'
 import { IoIosArrowBack } from 'react-icons/io';
@@ -23,6 +23,7 @@ const SignIn = () => {
   const handleScreens =()=>{
     if(address) return (<AdressCheck nextStep={handleAddress}/>)
     if(info) return (<InfosCheck />)
+    //default
     return <EmailCheck nextStep={handleEmail}/>
   }
 
