@@ -66,6 +66,43 @@ export const LoginForm = styled.div`
         margin-bottom: 0px;
       }
     }
+    .actions {
+      padding-top: 44px;
+      span {
+        font-size: 10px;
+        color: var(--color-gray);
+
+        a {
+          text-decoration: none;
+          color: var(--color-blue-light);
+          font-weight: 700;
+        }
+      }
+      button {
+        color: var(--color-white);
+        background-color: var(--color-blue-light);
+        border: none;
+        font-weight: 700;
+        width: 152px;
+        height: 39px;
+      }
+    }
+
+  }
+  #backHome {
+    display: flex;
+    padding-top: 30px;
+    color: var(--color-blue-light);
+    font-size: 10px;
+    #icon {
+      font-size: 15px;
+    }
+    
+    a { 
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--color-blue-light);
+    }
   }
 `
 

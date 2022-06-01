@@ -4,6 +4,7 @@ import LogoSQ from '../../assets/Images/LogoSQ.png'
 import AdressCheck from './Inputs/AdressCheck'
 import EmailCheck from './Inputs/EmailCheck'
 import InfosCheck from './Inputs/InfosCheck'
+import { IoIosArrowBack } from 'react-icons/io';
 
 const SignIn = () => {
   const [info, setInfo] = useState(false)
@@ -33,6 +34,7 @@ const SignIn = () => {
             src={LogoSQ}
             alt="Logo do Supermercado SQ, dentro do Q possui um carrinho de compras, com algumas bolinhas nas cores rosa, laranja, azul, marrom e verde."
           />
+        <span id='backHome'><IoIosArrowBack id='icon'/><a href="/">Página Inicial</a></span>
         </LoginLogo>
         {handleScreens()}
       </LoginContainer>

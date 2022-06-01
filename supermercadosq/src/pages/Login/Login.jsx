@@ -8,8 +8,7 @@ import {
   Actions
 } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
-import Page404 from '../Page404/Page404'
-
+import { IoIosArrowBack } from 'react-icons/io';
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -80,6 +79,7 @@ const Login = () => {
             <button >Entrar</button>
           </Actions>
           </form>
+          <span id='backHome'><IoIosArrowBack id='icon'/><a href="/">Página Inicial</a></span>
         </LoginForm>
 
         <LoginLogo>

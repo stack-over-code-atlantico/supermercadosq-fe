@@ -128,12 +128,33 @@ export const Actions = styled.div`
 `
 
 export const LoginLogo = styled.figure`
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-right: 0.2px solid #10101024;
   img {
     height: 45%;
+  }
+  #backHome {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    color: var(--color-blue-light);
+    font-size: 10px;
+    top: 95%;
+    left: 3%;
+
+    #icon {
+      font-size: 15px;
+    }
+    
+    a { 
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--color-blue-light);
+    }
   }
 `
 export const StreetInput = styled.div`
