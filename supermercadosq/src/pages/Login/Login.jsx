@@ -1,9 +1,42 @@
-import React from 'react'
-import { LoginContainer, LoginForm, LoginLogo, StyleLogin } from './styles.jsx'
+import React, { useState } from 'react'
+import {
+  LoginContainer,
+  LoginForm,
+  LoginLogo,
+  StyleLogin,
+  LabelError,
+  Actions
+} from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
 import { IoIosArrowBack } from 'react-icons/io';
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+
+    if (!email && !password) {
+      setError('Preencha seus dados')
+      return
+    }
+    if (!email) {
+      setError('Preencha seu email')
+      return
+    }
+    if (!password) {
+      setError('Preencha sua senha')
+      return
+    }
+    if(email && password){
+      
+      setError('')
+      return
+    }
+    
+  }
   return (
     <StyleLogin>
       <LoginContainer>
@@ -13,27 +46,38 @@ const Login = () => {
             E não perca mais nada sobre os vários produtos e seus respectivos
             componentes.
           </p>
-          <form>
+          <form onSubmit={handleLogin}>
             <label>
               <span>Email</span>
-              <input type="email" name="email" id="email" />
+              <input
+                type="email"
+                onChange={e => setEmail(e.target.value)}
+                name="email"
+                id="email"
+              />
             </label>
 
             <label>
               <span>Senha</span>
-              <input type="password" name="password" id="password" />
+              <input
+                type="password"
+                onChange={e => setPassword(e.target.value)}
+                name="password"
+                id="password"
+              />
             </label>
-            
+
             <label id="keepConnected">
               <input type="checkbox" name="keepConnected" id="keepConnected" />
               <span>Manter conectado</span>
             </label>
-            <div className="actions">
-              <span>
-                Ainda não possui uma conta? <a href="/register">Criar Conta</a>
-              </span>
-              <button>Entrar</button>
-            </div>
+            <LabelError>{error}</LabelError>
+          <Actions>
+            <span>
+              Ainda não possui uma conta? <a href="/register">Criar Conta</a>
+            </span>
+            <button >Entrar</button>
+          </Actions>
           </form>
           <span id='backHome'><IoIosArrowBack id='icon'/><a href="/">Página Inicial</a></span>
         </LoginForm>

@@ -61,7 +61,7 @@ export const Form = styled.div`
       margin-top: 5px;
       height: 30px;
     }
-    input:focus{
+    input:focus {
       border: 2px solid var(--color-blue-light);
     }
     input::-webkit-outer-spin-button,
@@ -100,30 +100,30 @@ export const Form = styled.div`
       font-weight: 400;
       color: var(--color-gray);
     }
-    .actions {
-      padding-top: 44px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      span {
-        font-size: 10px;
-        color: var(--color-gray);
+  }
+`
+export const Actions = styled.div`
+  padding-top: 44px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  span {
+    font-size: 10px;
+    color: var(--color-gray);
 
-        a {
-          text-decoration: none;
-          color: var(--color-blue-light);
-          font-weight: 700;
-        }
-      }
-      button {
-        color: var(--color-white);
-        background-color: var(--color-blue-light);
-        border: none;
-        font-weight: 700;
-        width: 152px;
-        height: 39px;
-      }
+    a {
+      text-decoration: none;
+      color: var(--color-blue-light);
+      font-weight: 700;
     }
+  }
+  button {
+    color: var(--color-white);
+    background-color: var(--color-blue-light);
+    border: none;
+    font-weight: 700;
+    width: 40%;
+    height: 39px;
   }
 `
 
@@ -161,7 +161,7 @@ export const StreetInput = styled.div`
   display: grid;
   grid-template-columns: 0.8fr 0.2fr;
   gap: 10px;
-  input{
+  input {
     width: 100%;
   }
 `
@@ -169,7 +169,7 @@ export const CityInput = styled.div`
   display: grid;
   grid-template-columns: 0.5fr 0.3fr 0.2fr;
   gap: 10px;
-  input{
+  input {
     width: 100%;
   }
 `

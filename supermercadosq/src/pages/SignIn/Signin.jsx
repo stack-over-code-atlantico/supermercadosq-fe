@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
 import AdressCheck from './Inputs/AdressCheck'
+import EmailCheck from './Inputs/EmailCheck'
+import InfosCheck from './Inputs/InfosCheck'
 import { IoIosArrowBack } from 'react-icons/io';
 
 const SignIn = () => {
-  return (
+  const [info, setInfo] = useState(false)
+  const [address, setAddress] = useState(false)
 
+  const handleEmail = e => {
+    e.preventDefault()
+    setAddress(true)
+  }
+  const handleAddress = e => {
+    e.preventDefault()
+    setInfo(true)
+    setAddress(false)
+  }
+
+  const handleScreens =()=>{
+    if(address) return (<AdressCheck nextStep={handleAddress}/>)
+    if(info) return (<InfosCheck />)
+    return <EmailCheck nextStep={handleEmail}/>
+  }
+
+  return (
     <StyleLogin>
       <LoginContainer>
         <LoginLogo>
@@ -16,10 +36,9 @@ const SignIn = () => {
           />
         <span id='backHome'><IoIosArrowBack id='icon'/><a href="/">Página Inicial</a></span>
         </LoginLogo>
-        <AdressCheck />
+        {handleScreens()}
       </LoginContainer>
     </StyleLogin>
-
   )
 }
 
