@@ -1,6 +1,7 @@
 import React from 'react'
 import { LoginContainer, LoginForm, LoginLogo, StyleLogin } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
+import { IoIosArrowBack } from 'react-icons/io';
 
 const Login = () => {
   return (
@@ -34,6 +35,7 @@ const Login = () => {
               <button>Entrar</button>
             </div>
           </form>
+          <span id='backHome'><IoIosArrowBack id='icon'/><a href="/">Página Inicial</a></span>
         </LoginForm>
 
         <LoginLogo>

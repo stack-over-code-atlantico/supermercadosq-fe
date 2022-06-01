@@ -47,7 +47,6 @@ export const LoginForm = styled.div`
       font-size: 12px;
       font-weight: 600;
     }
-
     #keepConnected,
     .actions {
       flex-direction: row;
@@ -87,6 +86,22 @@ export const LoginForm = styled.div`
         width: 152px;
         height: 39px;
       }
+    }
+
+  }
+  #backHome {
+    display: flex;
+    padding-top: 30px;
+    color: var(--color-blue-light);
+    font-size: 10px;
+    #icon {
+      font-size: 15px;
+    }
+    
+    a { 
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--color-blue-light);
     }
   }
 `
