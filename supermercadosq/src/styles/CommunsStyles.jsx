@@ -84,3 +84,24 @@ export const Actions = styled.div`
     height: 39px;
   }
 `
+
+export const BackHome = styled.div`
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  color: var(--color-blue-light);
+  font-size: 13px;
+  top: 92%;
+  left: 5%;
+
+  #icon {
+    font-size: 16px;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--color-blue-light);
+  }
+`

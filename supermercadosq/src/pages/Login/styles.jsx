@@ -24,6 +24,7 @@ export const LoginContainer = styled.div`
 
 export const LoginForm = styled.div`
   padding: 7% 12.5%;
+  position: relative;
 
   p {
     font-size: 12px;

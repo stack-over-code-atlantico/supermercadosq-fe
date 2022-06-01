@@ -21,12 +21,6 @@ export const LoginContainer = styled.div`
   background-color: white;
   border-radius: 5px;
 
-  #TypeUser {
-    font-weight: 600;
-    text-align: center;
-    margin: auto 0;
-  }
-
   .CheckType {
     display: flex;
     flex-direction: row;
@@ -57,35 +51,20 @@ export const LoginLogo = styled.figure`
     width: 100%;
     position: absolute;
     display: flex;
+    align-items: center;
     color: var(--color-blue-light);
-    font-size: 10px;
-    top: 95%;
-    left: 3%;
+    font-size: 13px;
+    top: 92%;
+    left: 5%;
 
     #icon {
-      font-size: 15px;
+      font-size: 16px;
     }
-    
-    a { 
+
+    a {
       text-decoration: none;
       font-weight: 700;
       color: var(--color-blue-light);
     }
-  }
-`
-export const StreetInput = styled.div`
-  display: grid;
-  grid-template-columns: 0.8fr 0.2fr;
-  gap: 10px;
-  input {
-    width: 100%;
-  }
-`
-export const CityInput = styled.div`
-  display: grid;
-  grid-template-columns: 0.5fr 0.3fr 0.2fr;
-  gap: 10px;
-  input {
-    width: 100%;
   }
 `

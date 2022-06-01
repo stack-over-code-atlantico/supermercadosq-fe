@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
-import AdressCheck from '../../components/Adress/AdressCheck'
-import EmailCheck from '../../components/Email/EmailCheck'
-import InfosCheck from './Inputs/InfosCheck'
-import { IoIosArrowBack } from 'react-icons/io';
+import AdressCheck from '../../components/SignupAdress/AdressCheck'
+import EmailCheck from '../../components/SignupEmail/EmailCheck'
+import InfosCheck from '../../components/SignupInfos/InfosCheck'
+import { IoIosArrowBack } from 'react-icons/io'
+import { BackHome } from '../../styles/CommunsStyles.jsx'
 
 const SignIn = () => {
   const [info, setInfo] = useState(false)
@@ -20,11 +21,11 @@ const SignIn = () => {
     setAddress(false)
   }
 
-  const handleScreens =()=>{
-    if(address) return (<AdressCheck nextStep={handleAddress}/>)
-    if(info) return (<InfosCheck />)
+  const handleScreens = () => {
+    if (address) return <AdressCheck nextStep={handleAddress} />
+    if (info) return <InfosCheck />
     //default
-    return <EmailCheck nextStep={handleEmail}/>
+    return <EmailCheck nextStep={handleEmail} />
   }
 
   return (
@@ -35,7 +36,10 @@ const SignIn = () => {
             src={LogoSQ}
             alt="Logo do Supermercado SQ, dentro do Q possui um carrinho de compras, com algumas bolinhas nas cores rosa, laranja, azul, marrom e verde."
           />
-        <span id='backHome'><IoIosArrowBack id='icon'/><a href="/">Página Inicial</a></span>
+          <BackHome>
+            <IoIosArrowBack id="icon" />
+            <a href="/">Página Inicial</a>
+          </BackHome>
         </LoginLogo>
         {handleScreens()}
       </LoginContainer>
