@@ -1,7 +1,10 @@
 import React from 'react';
+import { Navbar } from '../../components/Navbar';
 
 export function Home(){
   return (
+    <>
+    <Navbar />
     <div style={{
       display: 'flex', 
       justifyContent: 'center', 
@@ -10,5 +13,6 @@ export function Home(){
     >
       <h1>Home</h1>
     </div>
+    </>
   );
 }
