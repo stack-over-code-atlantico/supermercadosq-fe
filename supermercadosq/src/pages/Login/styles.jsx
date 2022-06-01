@@ -41,6 +41,9 @@ export const LoginForm = styled.div`
       margin-top: 5px;
       height: 30px;
     }
+    input:focus {
+      border: 2px solid var(--color-blue-light);
+    }
 
     label {
       flex-direction: column;
@@ -88,7 +91,6 @@ export const LoginForm = styled.div`
         height: 39px;
       }
     }
-
   }
   #backHome {
     display: flex;
@@ -98,8 +100,8 @@ export const LoginForm = styled.div`
     #icon {
       font-size: 15px;
     }
-    
-    a { 
+
+    a {
       text-decoration: none;
       font-weight: 700;
       color: var(--color-blue-light);
