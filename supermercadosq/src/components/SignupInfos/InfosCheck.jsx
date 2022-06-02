@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SignupContext } from '../../Provider/Signup.provider'
 import { Actions, Form } from '../../styles/CommunsStyles'
 import { CheckType } from './styles'
@@ -10,8 +10,20 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     docSignup,
     setDocSignup,
     cellNumberSignup,
-    setCellNumberSignup
+    setCellNumberSignup,
+    typeUserSignup,
+    setTypeUserSignup
   } = useContext(SignupContext)
+
+  const handleType = () => {
+    let typeUser = document.querySelector("input[type='radio']:checked").value
+  //  setTypeUserSignup(typeUser.value)
+  return typeUser.value
+  }
+
+  useEffect(() => {
+    console.log(handleType)
+  }, [nameSignup])
 
   return (
     <Form>
@@ -56,19 +68,21 @@ const InfosCheck = ({ nextStep, prevStep }) => {
           <span id="TypeUser">Sou: </span>
           <label className="checkBox">
             <input
-              type="checkbox"
-              name="cliente"
+              type="radio"
+              name="tipoUsuario"
               id="cliente"
               value="cliente"
+              onClick={handleType}
             />
             <span>Cliente</span>
           </label>
           <label className="checkBox">
             <input
-              type="checkbox"
-              name="fornecedor"
+              type="radio"
+              name="tipoUsuario"
               id="fornecedor"
               value="fornecedor"
+              onClick={handleType}
             />
             <span>Fornecedor</span>
           </label>
