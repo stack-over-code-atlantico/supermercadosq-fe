@@ -110,3 +110,8 @@ export const BackHome = styled.div`
     color: var(--color-blue-light);
   }
 `
+export const LabelError = styled.label`
+  margin-top: 5px;
+  font-size: 14px;
+  color: red;
+`
