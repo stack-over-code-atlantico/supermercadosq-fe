@@ -1,9 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { SignupContext } from '../../Provider/Signup.provider'
 import { CityInput, StreetInput } from './styles'
-import { Form, Actions } from '../../styles/CommunsStyles'
+import { Form, Actions, LabelError } from '../../styles/CommunsStyles'
 
 const AdressCheck = ({ nextStep, prevStep }) => {
+  const [error, setError] = useState('')
+
   const {
     cepSignup,
     setCepSignup,
@@ -19,6 +21,29 @@ const AdressCheck = ({ nextStep, prevStep }) => {
     setStateAddressSignup
   } = useContext(SignupContext)
 
+  const handleCheckCep = e => {
+    const cep = e.target.value.replace(/\D/g, '')
+    if (cep.length !== 8) {
+      setError('Digite os 8 números do CEP')
+      return
+    }
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.erro) {
+          setError('CEP não encontrado')
+          return
+        }
+        setStreetSignup(data.logradouro)
+        setNeighborhoodSignup(data.bairro)
+        setCitySignup(data.localidade)
+        setStateAddressSignup(data.uf)
+
+        setError('')
+      })
+  }
+
   return (
     <Form>
       <h1>Só mais um passo</h1>
@@ -27,11 +52,12 @@ const AdressCheck = ({ nextStep, prevStep }) => {
         <label>
           <span>CEP</span>
           <input
-            type="number"
+            type="text"
+            onBlur={handleCheckCep}
             onChange={e => setCepSignup(e.target.value)}
             value={cepSignup}
-            name="Cep"
-            id="Cep"
+            name="cepSignup"
+            id="cepSignup"
             placeholder="#####-###"
           />
         </label>
@@ -42,8 +68,9 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               type="text"
               onChange={e => setStreetSignup(e.target.value)}
               value={streetSignup}
-              name="Street"
-              id="Street"
+              name="streetSignup"
+              id="streetSignup"
+              disabled
             />
           </label>
           <label>
@@ -52,8 +79,7 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               type="number"
               onChange={e => setAddressNumberSignup(e.target.value)}
               value={addressNumberSignup}
-              name="StreetNumber"
-              id="StreetNumber"
+              id="addressNumberSignup"
             />
           </label>
         </StreetInput>
@@ -64,8 +90,9 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               type="text"
               onChange={e => setNeighborhoodSignup(e.target.value)}
               value={neighborhoodSignup}
-              name="Neighborhood"
-              id="Neighborhood"
+              name="neighborhoodSignup"
+              id="neighborhoodSignup"
+              disabled
             />
           </label>
           <label>
@@ -74,8 +101,9 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               type="text"
               onChange={e => setCitySignup(e.target.value)}
               value={citySignup}
-              name="City"
-              id="City"
+              name="citySignup"
+              id="citySignup"
+              disabled
             />
           </label>
           <label>
@@ -84,12 +112,13 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               type="text"
               onChange={e => setStateAddressSignup(e.target.value)}
               value={stateAddressSignup}
-              name="CityState"
-              id="CityState"
+              name="stateAddressSignup"
+              id="stateAddressSignup"
+              disabled
             />
           </label>
         </CityInput>
-
+        <LabelError>{error}</LabelError>
         <Actions>
           <button onClick={prevStep}>Voltar</button>
           <button onClick={nextStep}>Finalizar</button>
