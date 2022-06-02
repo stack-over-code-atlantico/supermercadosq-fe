@@ -10,22 +10,33 @@ import { BackHome } from '../../styles/CommunsStyles.jsx'
 const SignIn = () => {
   const [info, setInfo] = useState(false)
   const [address, setAddress] = useState(false)
+  const [email, setEmail] = useState(true)
 
   const handleEmail = e => {
     e.preventDefault()
-    setAddress(true)
+    setEmail(true)
+    setInfo(false)
   }
   const handleAddress = e => {
     e.preventDefault()
+    setAddress(true)
+    setInfo(false)
+  }
+  const handleInfos = e => {
+    e.preventDefault()
     setInfo(true)
+    setEmail(false)
     setAddress(false)
+  }
+  const handleFinish = e =>{
+    e.preventDefault()
+    alert('fim')
   }
 
   const handleScreens = () => {
-    if (address) return <AdressCheck nextStep={handleAddress} />
-    if (info) return <InfosCheck />
-    //default
-    return <EmailCheck nextStep={handleEmail} />
+    if (address) return <AdressCheck nextStep={handleFinish} prevStep={handleInfos}/>
+    if (info) return <InfosCheck nextStep={handleAddress} prevStep={handleEmail}/>
+    if(email) return <EmailCheck nextStep={handleInfos} />
   }
 
   return (

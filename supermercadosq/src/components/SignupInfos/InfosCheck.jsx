@@ -2,7 +2,7 @@ import React from 'react'
 import { Actions, Form } from '../../styles/CommunsStyles'
 import { CheckType } from './styles'
 
-const InfosCheck = () => {
+const InfosCheck = ({ nextStep, prevStep}) => {
   return (
     <Form>
       <h1>Estamos quase lá</h1>
@@ -37,19 +37,20 @@ const InfosCheck = () => {
           />
         </label>
         <CheckType>
-          <span id='TypeUser'>Sou: </span>
-          <label className='checkBox'>
+          <span id="TypeUser">Sou: </span>
+          <label className="checkBox">
             <input type="checkbox" name="cliente" id="cliente" />
             <span>Cliente</span>
           </label>
-          <label className='checkBox'>
+          <label className="checkBox">
             <input type="checkbox" name="fornecedor" id="fornecedor" />
             <span>Fornecedor</span>
           </label>
         </CheckType>
 
         <Actions>
-          <button id="confirmCellphone">Continuar</button>
+          <button onClick={prevStep}>Voltar</button>
+          <button onClick={nextStep}>Continuar</button>
         </Actions>
       </form>
     </Form>
