@@ -2,7 +2,7 @@ import React from 'react'
 import { CityInput, StreetInput } from './styles'
 import {Form, Actions} from '../../styles/CommunsStyles'
 
-const AdressCheck = ({nextStep}) => {
+const AdressCheck = ({nextStep, prevStep}) => {
   return (
     <Form>
       <h1>Só mais um passo</h1>
@@ -39,7 +39,7 @@ const AdressCheck = ({nextStep}) => {
 
         
         <Actions>
-          <button onClick={nextStep}>Voltar</button>
+          <button onClick={prevStep}>Voltar</button>
           <button onClick={nextStep}>Finalizar</button>
         </Actions>
       </form>

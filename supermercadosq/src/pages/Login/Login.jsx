@@ -4,12 +4,11 @@ import {
   LoginForm,
   LoginLogo,
   StyleLogin,
-  LabelError,
   Actions
 } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
 import { IoIosArrowBack } from 'react-icons/io'
-import { BackHome } from '../../styles/CommunsStyles.jsx'
+import { BackHome, LabelError } from '../../styles/CommunsStyles.jsx'
 
 const Login = () => {
   const [email, setEmail] = useState('')

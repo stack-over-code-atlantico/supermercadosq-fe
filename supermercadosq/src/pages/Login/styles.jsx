@@ -119,11 +119,6 @@ export const LoginLogo = styled.figure`
   }
 `
 
-export const LabelError = styled.label`
-  margin-top: 5px;
-  font-size: 14px;
-  color: red;
-`
 
 export const Actions = styled.div`
   flex-direction: row;

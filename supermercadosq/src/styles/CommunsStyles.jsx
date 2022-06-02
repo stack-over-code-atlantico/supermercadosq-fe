@@ -1,71 +1,76 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Form = styled.div`
-padding: 7% 12.5%;
+  padding: 7% 12.5%;
+  position: relative;
 
-p {
-  font-size: 12px;
-  color: var(--color-gray);
-  padding-bottom: 16px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-
-  input {
-    margin-bottom: 13px;
-    margin-top: 5px;
-    height: 30px;
-  }
-  input:focus {
-    border: 2px solid var(--color-blue-light);
-  }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  p {
+    font-size: 12px;
+    color: var(--color-gray);
+    padding-bottom: 16px;
   }
 
-  label {
+  form {
+    display: flex;
     flex-direction: column;
-    display: flex;
-    font-size: 12px;
-    font-weight: 600;
-  }
 
-  #keepConnected,
-  .actions {
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-  }
-  #keepConnected {
-    gap: 10px;
-    color: var(--color-gray);
-    font-size: 12px;
-    span {
-      font-weight: 400;
-    }
     input {
-      height: 13px;
-      margin-top: 0px;
-      margin-bottom: 0px;
+      margin-bottom: 13px;
+      margin-top: 5px;
+      height: 30px;
+    }
+    input:focus {
+      border: 2px solid var(--color-blue-light);
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    label {
+      flex-direction: column;
+      display: flex;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    #keepConnected,
+    .actions {
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+    }
+    #keepConnected {
+      gap: 10px;
+      color: var(--color-gray);
+      font-size: 12px;
+      span {
+        font-weight: 400;
+      }
+      input {
+        height: 13px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+    }
+    #requiredPassword {
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--color-gray);
     }
   }
-  #requiredPassword {
-    font-size: 10px;
-    font-weight: 400;
-    color: var(--color-gray);
-  }
-}
 `
 
 export const Actions = styled.div`
-  padding-top: 44px;
+  width: 80%;
+  position: absolute;
+  top: 89%;
+  left: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   span {
+    width: 50%;
     font-size: 10px;
     color: var(--color-gray);
 
@@ -104,4 +109,9 @@ export const BackHome = styled.div`
     font-weight: 700;
     color: var(--color-blue-light);
   }
+`
+export const LabelError = styled.label`
+  margin-top: 5px;
+  font-size: 14px;
+  color: red;
 `
