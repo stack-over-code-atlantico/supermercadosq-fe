@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Form, Actions } from '../../styles/CommunsStyles'
 
 
-const EmailCheck = (nextStep) => {
+const EmailCheck = ({nextStep}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
