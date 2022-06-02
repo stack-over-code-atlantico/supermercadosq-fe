@@ -19,6 +19,12 @@ const SignIn = () => {
   const [nameSignup, setNameSignup] = useState('')
   const [docSignup, setDocSignup] = useState('')
   const [cellNumberSignup, setCellNumberSignup] = useState('')
+  const [cepSignup, setCepSignup] = useState('')
+  const [streetSignup, setStreetSignup] = useState('')
+  const [addressNumberSignup, setAddressNumberSignup] = useState('')
+  const [neighborhoodSignup, setNeighborhoodSignup] = useState('')
+  const [citySignup, setCitySignup] = useState('')
+  const [stateAddressSignup, setStateAddressSignup] = useState('')
 
   const handleEmail = e => {
     e.preventDefault()
@@ -55,7 +61,13 @@ const SignIn = () => {
     passwordSignup,
     nameSignup,
     docSignup,
-    cellNumberSignup
+    cellNumberSignup,
+    cepSignup,
+    streetSignup,
+    addressNumberSignup,
+    neighborhoodSignup,
+    citySignup,
+    stateAddressSignup
   }
   return (
     <SignupContext.Provider
@@ -69,7 +81,19 @@ const SignIn = () => {
         docSignup,
         setDocSignup,
         cellNumberSignup,
-        setCellNumberSignup
+        setCellNumberSignup,
+        cepSignup,
+        setCepSignup,
+        streetSignup,
+        setStreetSignup,
+        addressNumberSignup,
+        setAddressNumberSignup,
+        neighborhoodSignup,
+        setNeighborhoodSignup,
+        citySignup,
+        setCitySignup,
+        stateAddressSignup,
+        setStateAddressSignup
       }}
     >
       <StyleLogin>
