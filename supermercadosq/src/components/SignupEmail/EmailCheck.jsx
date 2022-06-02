@@ -1,13 +1,10 @@
-import { useState } from 'react'
-import { Form, Actions } from '../../styles/CommunsStyles'
+import { useEffect, useState, useContext } from 'react'
+import { SignupContext } from '../../Provider/Signup.provider'
+import { Form, Actions, LabelError } from '../../styles/CommunsStyles'
 
-
-const EmailCheck = ({nextStep}) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-
-
+const EmailCheck = ({ nextStep }) => {
+  const { emailSignup, setEmailSignup, passwordSignup, setPasswordSignup } =
+    useContext(SignupContext)
 
   return (
     <Form>
@@ -20,7 +17,8 @@ const EmailCheck = ({nextStep}) => {
           <span>Email</span>
           <input
             type="email"
-            onChange={e => setEmail(e.target.value)}
+            value={emailSignup}
+            onChange={e => setEmailSignup(e.target.value)}
             name="email"
             id="email"
           />
@@ -30,7 +28,8 @@ const EmailCheck = ({nextStep}) => {
           <span>Senha</span>
           <input
             type="password"
-            onChange={e => setPassword(e.target.value)}
+            value={passwordSignup}
+            onChange={e => setPasswordSignup(e.target.value)}
             name="password"
             id="password"
           />
@@ -47,9 +46,7 @@ const EmailCheck = ({nextStep}) => {
             Já possui uma conta? <br />
             <a href="/login">Entrar</a>
           </span>
-          <button onClick={nextStep}>
-            Criar Conta
-          </button>
+          <button onClick={nextStep}>Criar Conta</button>
         </Actions>
       </form>
     </Form>
