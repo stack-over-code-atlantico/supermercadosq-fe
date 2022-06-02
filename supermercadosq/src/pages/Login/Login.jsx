@@ -8,14 +8,15 @@ import {
   Actions
 } from './styles.jsx'
 import LogoSQ from '../../assets/Images/LogoSQ.png'
-import { IoIosArrowBack } from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io'
+import { BackHome } from '../../styles/CommunsStyles.jsx'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  const handleLogin = (e) => {
+  const handleLogin = e => {
     e.preventDefault()
 
     if (!email && !password) {
@@ -30,12 +31,10 @@ const Login = () => {
       setError('Preencha sua senha')
       return
     }
-    if(email && password){
-      
+    if (email && password) {
       setError('')
       return
     }
-    
   }
   return (
     <StyleLogin>
@@ -72,14 +71,17 @@ const Login = () => {
               <span>Manter conectado</span>
             </label>
             <LabelError>{error}</LabelError>
-          <Actions>
-            <span>
-              Ainda não possui uma conta? <a href="/register">Criar Conta</a>
-            </span>
-            <button >Entrar</button>
-          </Actions>
+            <Actions>
+              <span>
+                Ainda não possui uma conta? <a href="/register">Criar Conta</a>
+              </span>
+              <button>Entrar</button>
+            </Actions>
           </form>
-          <span id='backHome'><IoIosArrowBack id='icon'/><a href="/">Página Inicial</a></span>
+          <BackHome>
+            <IoIosArrowBack id="icon" />
+            <a href="/">Página Inicial</a>
+          </BackHome>
         </LoginForm>
 
         <LoginLogo>

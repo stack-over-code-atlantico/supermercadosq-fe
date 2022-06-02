@@ -1,5 +1,6 @@
 import React from 'react'
-import { CityInput, Form, StreetInput, Actions } from '../styles.jsx'
+import { CityInput, StreetInput } from './styles'
+import {Form, Actions} from '../../styles/CommunsStyles'
 
 const AdressCheck = ({nextStep}) => {
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Actions, Form } from '../styles.jsx'
+import { Actions, Form } from '../../styles/CommunsStyles'
+import { CheckType } from './styles'
 
 const InfosCheck = () => {
   return (
@@ -35,17 +36,17 @@ const InfosCheck = () => {
             placeholder="(  ) 9####-####"
           />
         </label>
-        <div className="CheckType">
+        <CheckType>
           <span id='TypeUser'>Sou: </span>
-          <label>
+          <label className='checkBox'>
             <input type="checkbox" name="cliente" id="cliente" />
             <span>Cliente</span>
           </label>
-          <label>
+          <label className='checkBox'>
             <input type="checkbox" name="fornecedor" id="fornecedor" />
             <span>Fornecedor</span>
           </label>
-        </div>
+        </CheckType>
 
         <Actions>
           <button id="confirmCellphone">Continuar</button>

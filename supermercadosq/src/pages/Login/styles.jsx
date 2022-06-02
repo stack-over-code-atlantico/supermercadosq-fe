@@ -24,6 +24,7 @@ export const LoginContainer = styled.div`
 
 export const LoginForm = styled.div`
   padding: 7% 12.5%;
+  position: relative;
 
   p {
     font-size: 12px;
@@ -39,6 +40,9 @@ export const LoginForm = styled.div`
       margin-bottom: 13px;
       margin-top: 5px;
       height: 30px;
+    }
+    input:focus {
+      border: 2px solid var(--color-blue-light);
     }
 
     label {
@@ -87,7 +91,6 @@ export const LoginForm = styled.div`
         height: 39px;
       }
     }
-
   }
   #backHome {
     display: flex;
@@ -97,8 +100,8 @@ export const LoginForm = styled.div`
     #icon {
       font-size: 15px;
     }
-    
-    a { 
+
+    a {
       text-decoration: none;
       font-weight: 700;
       color: var(--color-blue-light);
