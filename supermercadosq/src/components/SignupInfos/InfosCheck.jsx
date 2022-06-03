@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { SignupContext } from '../../Provider/Signup.provider'
 import { Actions, Form } from '../../styles/CommunsStyles'
 import { CheckType } from './styles'
+import { cnpj, cpf } from 'cpf-cnpj-validator'
 
 const InfosCheck = ({ nextStep, prevStep }) => {
   const {
@@ -15,7 +16,47 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     setTypeUserSignup
   } = useContext(SignupContext)
 
-  
+  const [hasError, setHasError] = useState(true)
+  const [hasErrorDoc, setHasErrorDoc] = useState(true)
+
+
+  const validCpf = () => {
+    const checkCpf = cpf.isValid(docSignup)
+    if(checkCpf){
+      setHasErrorDoc(false)
+    }else{
+      setHasErrorDoc(true)
+    }
+
+  }
+  const validCnpj = () => {
+    const checkCnpj = cnpj.isValid(docSignup)
+    if(checkCnpj){
+      setHasErrorDoc(false)
+    }else{
+      setHasErrorDoc(true)
+    }
+  }
+
+  useEffect(()=>{
+    if(hasErrorDoc){
+      setHasError(true)
+    }else{
+      setHasError(false)
+    }
+  },[hasErrorDoc])
+
+  useEffect(() => {
+    if (typeUserSignup === 'cliente') {
+      validCpf()
+    }
+    if (typeUserSignup === 'fornecedor') {
+      validCnpj()
+    }
+    if (!typeUserSignup) {
+      return
+    }
+  }, [docSignup, typeUserSignup])
 
   return (
     <Form>
@@ -64,7 +105,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               id="cliente"
               value="cliente"
               readOnly={true}
-              checked={typeUserSignup==='cliente'}
+              checked={typeUserSignup === 'cliente'}
               onClick={e => setTypeUserSignup(e.target.value)}
             />
             <span>Cliente</span>
@@ -76,8 +117,8 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               id="fornecedor"
               value="fornecedor"
               readOnly={true}
-              checked={typeUserSignup==='fornecedor'}
-              onClick={e=> setTypeUserSignup(e.target.value)}
+              checked={typeUserSignup === 'fornecedor'}
+              onClick={e => setTypeUserSignup(e.target.value)}
             />
             <span>Fornecedor</span>
           </label>
@@ -85,7 +126,9 @@ const InfosCheck = ({ nextStep, prevStep }) => {
 
         <Actions>
           <button onClick={prevStep}>Voltar</button>
-          <button onClick={nextStep}>Continuar</button>
+          <button disabled={hasError} onClick={nextStep}>
+            Continuar
+          </button>
         </Actions>
       </form>
     </Form>
