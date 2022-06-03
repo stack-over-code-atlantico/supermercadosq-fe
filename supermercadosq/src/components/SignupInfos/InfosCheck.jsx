@@ -15,21 +15,12 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     setTypeUserSignup
   } = useContext(SignupContext)
 
-  const handleType = () => {
-    let typeUser = document.querySelector("input[type='radio']:checked").value
-  //  setTypeUserSignup(typeUser.value)
-  return typeUser.value
-  }
-
-  useEffect(() => {
-    console.log(handleType)
-  }, [nameSignup])
+  
 
   return (
     <Form>
       <h1>Estamos quase lá</h1>
       <p>Só mais alguns dados</p>
-
       <form>
         <label>
           <span>Nome</span>
@@ -72,7 +63,9 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               name="tipoUsuario"
               id="cliente"
               value="cliente"
-              onClick={handleType}
+              
+              checked={typeUserSignup==='cliente'?true:false}
+              onClick={e => setTypeUserSignup(e.target.value)}
             />
             <span>Cliente</span>
           </label>
@@ -82,7 +75,9 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               name="tipoUsuario"
               id="fornecedor"
               value="fornecedor"
-              onClick={handleType}
+              
+              checked={typeUserSignup==='fornecedor'?true:false}
+              onClick={e=> setTypeUserSignup(e.target.value)}
             />
             <span>Fornecedor</span>
           </label>
