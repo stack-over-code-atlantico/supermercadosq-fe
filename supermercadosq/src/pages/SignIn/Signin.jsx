@@ -19,6 +19,7 @@ const SignIn = () => {
   const [nameSignup, setNameSignup] = useState('')
   const [docSignup, setDocSignup] = useState('')
   const [cellNumberSignup, setCellNumberSignup] = useState('')
+  const [typeUserSignup, setTypeUserSignup] = useState('')
   const [cepSignup, setCepSignup] = useState('')
   const [streetSignup, setStreetSignup] = useState('')
   const [addressNumberSignup, setAddressNumberSignup] = useState('')
@@ -62,6 +63,7 @@ const SignIn = () => {
     nameSignup,
     docSignup,
     cellNumberSignup,
+    typeUserSignup,
     cepSignup,
     streetSignup,
     addressNumberSignup,
@@ -82,6 +84,8 @@ const SignIn = () => {
         setDocSignup,
         cellNumberSignup,
         setCellNumberSignup,
+        typeUserSignup,
+        setTypeUserSignup,
         cepSignup,
         setCepSignup,
         streetSignup,

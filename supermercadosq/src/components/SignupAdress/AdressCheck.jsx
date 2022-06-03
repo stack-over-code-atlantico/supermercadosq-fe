@@ -1,4 +1,4 @@
-import React, { useContext, useId, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SignupContext } from '../../Provider/Signup.provider'
 import { CityInput, StreetInput } from './styles'
 import { Form, Actions, LabelError } from '../../styles/CommunsStyles'
@@ -24,6 +24,10 @@ const AdressCheck = ({ nextStep, prevStep }) => {
   const handleCheckCep = e => {
     const cep = e.target.value.replace(/\D/g, '')
     if (cep.length !== 8) {
+      setStreetSignup('')
+      setNeighborhoodSignup('')
+      setCitySignup('')
+      setStateAddressSignup('')
       setError('Digite os 8 números do CEP')
       return
     }
@@ -32,6 +36,10 @@ const AdressCheck = ({ nextStep, prevStep }) => {
       .then(res => res.json())
       .then(data => {
         if (data.erro) {
+          setStreetSignup('')
+          setNeighborhoodSignup('')
+          setCitySignup('')
+          setStateAddressSignup('')
           setError('CEP não encontrado')
           return
         }
