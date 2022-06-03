@@ -72,17 +72,26 @@ const InfosCheck = ({ nextStep, prevStep }) => {
             placeholder="Nome Completo"
             value={nameSignup}
             onChange={e => setNameSignup(e.target.value)}
+            onKeyPress={(e) => { if (e.key === 'Enter') {
+              e.preventDefault()
+              return document.getElementById('userDocument').focus()
+            } }}
           />
         </label>
         <label>
           <span>CPF/CNPJ</span>
           <input
             type="number"
-            name="cellphone"
-            id="cellphone"
+            name="userDocument"
+            id="userDocument"
             placeholder="Número do Documento"
             value={docSignup}
             onChange={e => setDocSignup(e.target.value)}
+            onKeyPress={(e) => { if (e.key === 'Enter') {
+              e.preventDefault()
+              return document.getElementById('cellphone').focus()
+            } }}
+            
           />
         </label>
         <label>
@@ -94,6 +103,10 @@ const InfosCheck = ({ nextStep, prevStep }) => {
             placeholder="(  ) 9####-####"
             value={cellNumberSignup}
             onChange={e => setCellNumberSignup(e.target.value)}
+            onKeyPress={(e) => { if (e.key === 'Enter') {
+              e.preventDefault()
+              return document.getElementById('cellphone').focus()
+            } }}
           />
         </label>
         <CheckType>

@@ -91,6 +91,10 @@ const EmailCheck = ({ nextStep }) => {
             onChange={e => setEmailSignup(e.target.value)}
             name="email"
             id="email"
+            onKeyPress={(e) => { if (e.key === 'Enter') {
+              e.preventDefault()
+              return document.getElementById('password').focus()
+            } }}
           />
         </label>
 
@@ -102,6 +106,10 @@ const EmailCheck = ({ nextStep }) => {
             onChange={e => setPasswordSignup(e.target.value)}
             name="password"
             id="password"
+            onKeyPress={(e) => { if (e.key === 'Enter') {
+              e.preventDefault()
+              return document.getElementById('password').focus()
+            } }}
           />
         </label>
 

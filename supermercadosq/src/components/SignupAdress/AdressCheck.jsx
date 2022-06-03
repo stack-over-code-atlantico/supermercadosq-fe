@@ -67,6 +67,10 @@ const AdressCheck = ({ nextStep, prevStep }) => {
             name="cepSignup"
             id="cepSignup"
             placeholder="#####-###"
+            onKeyPress={(e) => { if (e.key === 'Enter') {
+              e.preventDefault()
+              return document.getElementById('addressNumberSignup').focus()
+            } }}
           />
         </label>
         <StreetInput>
@@ -88,6 +92,10 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               onChange={e => setAddressNumberSignup(e.target.value)}
               value={addressNumberSignup}
               id="addressNumberSignup"
+              onKeyPress={(e) => { if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('addressNumberSignup').focus()
+              } }}
             />
           </label>
         </StreetInput>
