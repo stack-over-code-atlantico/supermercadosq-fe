@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useId, useState } from 'react'
 import { SignupContext } from '../../Provider/Signup.provider'
 import { CityInput, StreetInput } from './styles'
 import { Form, Actions, LabelError } from '../../styles/CommunsStyles'
@@ -59,6 +59,10 @@ const AdressCheck = ({ nextStep, prevStep }) => {
             name="cepSignup"
             id="cepSignup"
             placeholder="#####-###"
+            onKeyPress={(e) => { if (e.key === 'Enter') {
+              e.preventDefault()
+              return document.getElementById('addressNumberSignup').focus()
+            } }}
           />
         </label>
         <StreetInput>
@@ -80,6 +84,10 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               onChange={e => setAddressNumberSignup(e.target.value)}
               value={addressNumberSignup}
               id="addressNumberSignup"
+              onKeyPress={(e) => { if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('addressNumberSignup').focus()
+              } }}
             />
           </label>
         </StreetInput>

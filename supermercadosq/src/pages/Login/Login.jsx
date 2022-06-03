@@ -52,6 +52,10 @@ const Login = () => {
                 onChange={e => setEmail(e.target.value)}
                 name="email"
                 id="email"
+                onKeyPress={(e) => { if (e.key === 'Enter') {
+                  e.preventDefault()
+                  return document.getElementById('password').focus()
+                } }}
               />
             </label>
 
@@ -62,6 +66,10 @@ const Login = () => {
                 onChange={e => setPassword(e.target.value)}
                 name="password"
                 id="password"
+                onKeyPress={(e) => { if (e.key === 'Enter') {
+                  e.preventDefault()
+                  return document.getElementById('password').focus()
+                } }}
               />
             </label>
 
