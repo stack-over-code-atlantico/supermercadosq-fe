@@ -63,7 +63,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               name="tipoUsuario"
               id="cliente"
               value="cliente"
-              
+              readOnly={true}
               checked={typeUserSignup==='cliente'?true:false}
               onClick={e => setTypeUserSignup(e.target.value)}
             />
@@ -75,7 +75,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               name="tipoUsuario"
               id="fornecedor"
               value="fornecedor"
-              
+              readOnly={true}
               checked={typeUserSignup==='fornecedor'?true:false}
               onClick={e=> setTypeUserSignup(e.target.value)}
             />
