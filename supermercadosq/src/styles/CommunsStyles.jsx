@@ -53,11 +53,6 @@ export const Form = styled.div`
         margin-bottom: 0px;
       }
     }
-    #requiredPassword {
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--color-gray);
-    }
   }
 `
 
