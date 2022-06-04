@@ -23,11 +23,14 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     handleCheckName(nameSignup)
   }, [nameSignup])
 
-const handleCheckName = value => {
-  setNameSignup(value.trim())
+  const handleCheckName = value => {
+    setNameSignup(value.trim())
   const regEx = /[a-zA-Z]{4,150}/g
-  if(regEx.test(nameSignup)) { setHasError(false) }
-  else { setHasError(true) }
+    if(regEx.test(nameSignup)) { 
+      setHasError(false) 
+    } else { 
+      setHasError(true) 
+    }
 }
   
   const validCpf = () => {
@@ -67,6 +70,20 @@ const handleCheckName = value => {
       return
     }
   }, [docSignup, typeUserSignup])
+
+  useEffect(() => {
+    handleCheckNumber(cellNumberSignup)
+  }, [cellNumberSignup])
+
+  const handleCheckNumber = value => {
+    setCellNumberSignup(value.trim())
+  const regEx = /[0-9]{11,11}/g
+    if(regEx.test(cellNumberSignup)) { 
+      setHasError(false) 
+    } else { 
+      setHasError(true) 
+    }
+}
 
   return (
     <Form>
