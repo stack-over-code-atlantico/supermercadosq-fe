@@ -18,20 +18,24 @@ const InfosCheck = ({ nextStep, prevStep }) => {
 
   const [hasError, setHasError] = useState(true)
   const [hasErrorDoc, setHasErrorDoc] = useState(true)
+  const [hasErrorName, setHasErrorName] = useState(true)
+  const [hasErrorCellphone, setHasErrorCellphone] = useState(true)
 
   useEffect(() => {
     handleCheckName(nameSignup)
   }, [nameSignup])
 
   const handleCheckName = value => {
-    setNameSignup(value.trim())
-  const regEx = /[a-zA-Z]{4,150}/g
+    setNameSignup(value.replace(/( )+/g, ' '))
+    const regEx = /[a-zA-Z]{4,150}/g
     if(regEx.test(nameSignup)) { 
-      setHasError(false) 
+      setHasErrorName(false) 
     } else { 
-      setHasError(true) 
+      setHasErrorName(true) 
     }
 }
+
+
   
   const validCpf = () => {
     const checkCpf = cpf.isValid(docSignup)
@@ -53,9 +57,9 @@ const InfosCheck = ({ nextStep, prevStep }) => {
 
   useEffect(()=>{
     if(hasErrorDoc){
-      setHasError(true)
+      setHasErrorDoc(true)
     }else{
-      setHasError(false)
+      setHasErrorDoc(false)
     }
   },[hasErrorDoc])
 
@@ -77,13 +81,27 @@ const InfosCheck = ({ nextStep, prevStep }) => {
 
   const handleCheckNumber = value => {
     setCellNumberSignup(value.trim())
-  const regEx = /[0-9]{11,11}/g
-    if(regEx.test(cellNumberSignup)) { 
-      setHasError(false) 
-    } else { 
-      setHasError(true) 
-    }
+  cellNumberSignup.length==11 ? 
+    setHasErrorCellphone(false)
+    :
+    setHasErrorCellphone(true)   
 }
+
+useEffect(() => {
+  if(hasErrorCellphone){
+    setHasErrorCellphone(true)
+  }else{
+    setHasErrorCellphone(false)
+  }
+}, [hasErrorCellphone])
+
+useEffect(() => {
+  if(hasErrorDoc||hasErrorName||hasErrorCellphone){
+    setHasError(true)
+  }else{
+    setHasError(false)
+  } console.log(hasError)
+}, [hasErrorDoc, hasErrorName, hasErrorCellphone])
 
   return (
     <Form>

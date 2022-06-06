@@ -36,6 +36,7 @@ const SignIn = () => {
     e.preventDefault()
     setAddress(true)
     setInfo(false)
+    setNameSignup(nameSignup.trim())
   }
   const handleInfos = e => {
     e.preventDefault()
