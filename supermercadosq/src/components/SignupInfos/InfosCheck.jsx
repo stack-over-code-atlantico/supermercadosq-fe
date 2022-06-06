@@ -88,7 +88,6 @@ useEffect(() => {
   } console.log(hasError)
 }, [hasErrorDoc, hasErrorName, hasErrorCellphone])
 
-
   return (
     <Form>
       <h1>Estamos quase lá</h1>
