@@ -18,7 +18,8 @@ const InfosCheck = ({ nextStep, prevStep }) => {
 
   const [hasError, setHasError] = useState(true)
   const [hasErrorDoc, setHasErrorDoc] = useState(true)
-
+  const [hasErrorName, setHasErrorName] = useState(true)
+  const [hasErrorCellphone, setHasErrorCellphone] = useState(true)
 
   const validCpf = () => {
     const checkCpf = cpf.isValid(docSignup)
@@ -40,9 +41,9 @@ const InfosCheck = ({ nextStep, prevStep }) => {
 
   useEffect(()=>{
     if(hasErrorDoc){
-      setHasError(true)
+      setHasErrorDoc(true)
     }else{
-      setHasError(false)
+      setHasErrorDoc(false)
     }
   },[hasErrorDoc])
 
@@ -57,6 +58,36 @@ const InfosCheck = ({ nextStep, prevStep }) => {
       return
     }
   }, [docSignup, typeUserSignup])
+
+
+  useEffect(() => {
+    handleCheckNumber(cellNumberSignup)
+  }, [cellNumberSignup])
+
+  const handleCheckNumber = value => {
+    setCellNumberSignup(value.trim())
+  cellNumberSignup.length==11 ? 
+    setHasErrorCellphone(false)
+    :
+    setHasErrorCellphone(true)   
+}
+
+useEffect(() => {
+  if(hasErrorCellphone){
+    setHasErrorCellphone(true)
+  }else{
+    setHasErrorCellphone(false)
+  }
+}, [hasErrorCellphone])
+
+useEffect(() => {
+  if(hasErrorDoc||hasErrorName||hasErrorCellphone){
+    setHasError(true)
+  }else{
+    setHasError(false)
+  } console.log(hasError)
+}, [hasErrorDoc, hasErrorName, hasErrorCellphone])
+
 
   return (
     <Form>
