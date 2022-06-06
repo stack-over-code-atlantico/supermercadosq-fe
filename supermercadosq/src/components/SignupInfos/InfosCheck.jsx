@@ -19,7 +19,20 @@ const InfosCheck = ({ nextStep, prevStep }) => {
   const [hasError, setHasError] = useState(true)
   const [hasErrorDoc, setHasErrorDoc] = useState(true)
 
+  useEffect(() => {
+    handleCheckName(nameSignup)
+  }, [nameSignup])
 
+  const handleCheckName = value => {
+    setNameSignup(value.trim())
+  const regEx = /[a-zA-Z]{4,150}/g
+    if(regEx.test(nameSignup)) { 
+      setHasError(false) 
+    } else { 
+      setHasError(true) 
+    }
+}
+  
   const validCpf = () => {
     const checkCpf = cpf.isValid(docSignup)
     if(checkCpf){
@@ -27,8 +40,8 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     }else{
       setHasErrorDoc(true)
     }
-
   }
+
   const validCnpj = () => {
     const checkCnpj = cnpj.isValid(docSignup)
     if(checkCnpj){
@@ -57,6 +70,20 @@ const InfosCheck = ({ nextStep, prevStep }) => {
       return
     }
   }, [docSignup, typeUserSignup])
+
+  useEffect(() => {
+    handleCheckNumber(cellNumberSignup)
+  }, [cellNumberSignup])
+
+  const handleCheckNumber = value => {
+    setCellNumberSignup(value.trim())
+  const regEx = /[0-9]{11,11}/g
+    if(regEx.test(cellNumberSignup)) { 
+      setHasError(false) 
+    } else { 
+      setHasError(true) 
+    }
+}
 
   return (
     <Form>
