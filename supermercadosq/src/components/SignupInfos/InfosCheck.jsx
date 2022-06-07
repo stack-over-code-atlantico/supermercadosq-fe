@@ -19,45 +19,29 @@ const InfosCheck = ({ nextStep, prevStep }) => {
   const [hasError, setHasError] = useState(true)
   const [hasErrorDoc, setHasErrorDoc] = useState(true)
   const [hasErrorName, setHasErrorName] = useState(true)
-  const [hasErrorCellphone, setHasErrorCellphone] = useState(false)
+  const [hasErrorCellphone, setHasErrorCellphone] = useState(true)
+
+  const handleCheckName = () => {
+    setNameSignup(nameSignup.replace(/( )+/g, ' '))
+    const regEx = /[a-zA-Z]{4,150}/g
+    regEx.test(nameSignup) ? setHasErrorName(false) : setHasErrorName(true)
+  }
+
+  const validCpf = () => {
+    const checkCpf = cpf.isValid(docSignup)
+    checkCpf ? setHasErrorDoc(false) : setHasErrorDoc(true)
+  }
+  const validCnpj = () => {
+    const checkCnpj = cnpj.isValid(docSignup)
+    checkCnpj ? setHasErrorDoc(false) : setHasErrorDoc(true)
+  }
 
   useEffect(() => {
     handleCheckName()
   }, [nameSignup])
 
-  const handleCheckName = () => {
-    setNameSignup(nameSignup.replace(/( )+/g, ' '))
-    const regEx = /[a-zA-Z]{4,150}/g
-    if (regEx.test(nameSignup)) {
-      setHasErrorName(false)
-    } else {
-      setHasErrorName(true)
-    }
-  }
-
-  const validCpf = () => {
-    const checkCpf = cpf.isValid(docSignup)
-    if (checkCpf) {
-      setHasErrorDoc(false)
-    } else {
-      setHasErrorDoc(true)
-    }
-  }
-  const validCnpj = () => {
-    const checkCnpj = cnpj.isValid(docSignup)
-    if (checkCnpj) {
-      setHasErrorDoc(false)
-    } else {
-      setHasErrorDoc(true)
-    }
-  }
-
   useEffect(() => {
-    if (hasErrorDoc) {
-      setHasErrorDoc(true)
-    } else {
-      setHasErrorDoc(false)
-    }
+    hasErrorDoc ? setHasErrorDoc(true) : setHasErrorDoc(false)
   }, [hasErrorDoc])
 
   useEffect(() => {
@@ -77,27 +61,15 @@ const InfosCheck = ({ nextStep, prevStep }) => {
   }, [cellNumberSignup])
 
   const handleCheckNumber = () => {
-    setCellNumberSignup(cellNumberSignup.trim())
     cellNumberSignup.length == 11
       ? setHasErrorCellphone(false)
       : setHasErrorCellphone(true)
   }
 
   useEffect(() => {
-    if (hasErrorCellphone) {
-      setHasErrorCellphone(true)
-    } else {
-      setHasErrorCellphone(false)
-    }
-  }, [hasErrorCellphone])
-
-  useEffect(() => {
-    if (hasErrorDoc || hasErrorName || hasErrorCellphone) {
-      setHasError(true)
-    } else {
-      setHasError(false)
-    }
-    console.log(hasError)
+    hasErrorDoc || hasErrorName || hasErrorCellphone
+      ? setHasError(true)
+      : setHasError(false)
   }, [hasErrorDoc, hasErrorName, hasErrorCellphone])
 
   return (

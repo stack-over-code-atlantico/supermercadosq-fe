@@ -36,6 +36,7 @@ const SignIn = () => {
     e.preventDefault()
     setAddress(true)
     setInfo(false)
+    setNameSignup(nameSignup.trim())
   }
   const handleInfos = e => {
     e.preventDefault()
@@ -45,7 +46,6 @@ const SignIn = () => {
   }
   const handleFinish = e => {
     e.preventDefault()
-
     console.log(dataSignup)
   }
   //change components
