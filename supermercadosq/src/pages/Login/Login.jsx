@@ -9,6 +9,7 @@ import {
 import LogoSQ from '../../assets/Images/LogoSQ.png'
 import { IoIosArrowBack } from 'react-icons/io'
 import { BackHome, LabelError } from '../../styles/CommunsStyles.jsx'
+import InputPassword from '../../components/InputPassword/InputPassword.jsx'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -52,25 +53,19 @@ const Login = () => {
                 onChange={e => setEmail(e.target.value)}
                 name="email"
                 id="email"
-                onKeyPress={(e) => { if (e.key === 'Enter') {
-                  e.preventDefault()
-                  return document.getElementById('password').focus()
-                } }}
+                onKeyPress={e => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault()
+                    return document.getElementById('password').focus()
+                  }
+                }}
               />
             </label>
 
             <label>
               <span>Senha</span>
-              <input
-                type="password"
-                onChange={e => setPassword(e.target.value)}
-                name="password"
-                id="password"
-                onKeyPress={(e) => { if (e.key === 'Enter') {
-                  e.preventDefault()
-                  return document.getElementById('password').focus()
-                } }}
-              />
+              <InputPassword setValue={setPassword} value={password} />
+
             </label>
 
             <label id="keepConnected">

@@ -4,6 +4,7 @@ import { Form, Actions, LabelError } from '../../styles/CommunsStyles'
 import { LabelCheck, RequiredPassword, Image } from './styles'
 import ImageCheck from '../../assets/icons/icon-check.png'
 import ImageClose from '../../assets/icons/icon-close.png'
+import InputPassword from '../InputPassword/InputPassword'
 
 const EmailCheck = ({ nextStep }) => {
   const { emailSignup, setEmailSignup, passwordSignup, setPasswordSignup } =
@@ -100,16 +101,9 @@ const EmailCheck = ({ nextStep }) => {
 
         <label>
           <span>Senha</span>
-          <input
-            type="password"
+          <InputPassword
+            setValue={setPasswordSignup}
             value={passwordSignup}
-            onChange={e => setPasswordSignup(e.target.value)}
-            name="password"
-            id="password"
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('password').focus()
-            } }}
           />
         </label>
 
