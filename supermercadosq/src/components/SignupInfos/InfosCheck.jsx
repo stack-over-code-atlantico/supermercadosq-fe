@@ -18,33 +18,47 @@ const InfosCheck = ({ nextStep, prevStep }) => {
 
   const [hasError, setHasError] = useState(true)
   const [hasErrorDoc, setHasErrorDoc] = useState(true)
+  const [hasErrorName, setHasErrorName] = useState(true)
+  const [hasErrorCellphone, setHasErrorCellphone] = useState(false)
 
+  useEffect(() => {
+    handleCheckName()
+  }, [nameSignup])
+
+  const handleCheckName = () => {
+    setNameSignup(nameSignup.replace(/( )+/g, ' '))
+    const regEx = /[a-zA-Z]{4,150}/g
+    if (regEx.test(nameSignup)) {
+      setHasErrorName(false)
+    } else {
+      setHasErrorName(true)
+    }
+  }
 
   const validCpf = () => {
     const checkCpf = cpf.isValid(docSignup)
-    if(checkCpf){
+    if (checkCpf) {
       setHasErrorDoc(false)
-    }else{
+    } else {
       setHasErrorDoc(true)
     }
-
   }
   const validCnpj = () => {
     const checkCnpj = cnpj.isValid(docSignup)
-    if(checkCnpj){
+    if (checkCnpj) {
       setHasErrorDoc(false)
-    }else{
+    } else {
       setHasErrorDoc(true)
     }
   }
 
-  useEffect(()=>{
-    if(hasErrorDoc){
-      setHasError(true)
-    }else{
-      setHasError(false)
+  useEffect(() => {
+    if (hasErrorDoc) {
+      setHasErrorDoc(true)
+    } else {
+      setHasErrorDoc(false)
     }
-  },[hasErrorDoc])
+  }, [hasErrorDoc])
 
   useEffect(() => {
     if (typeUserSignup === 'cliente') {
@@ -57,6 +71,34 @@ const InfosCheck = ({ nextStep, prevStep }) => {
       return
     }
   }, [docSignup, typeUserSignup])
+
+  useEffect(() => {
+    handleCheckNumber()
+  }, [cellNumberSignup])
+
+  const handleCheckNumber = () => {
+    setCellNumberSignup(cellNumberSignup.trim())
+    cellNumberSignup.length == 11
+      ? setHasErrorCellphone(false)
+      : setHasErrorCellphone(true)
+  }
+
+  useEffect(() => {
+    if (hasErrorCellphone) {
+      setHasErrorCellphone(true)
+    } else {
+      setHasErrorCellphone(false)
+    }
+  }, [hasErrorCellphone])
+
+  useEffect(() => {
+    if (hasErrorDoc || hasErrorName || hasErrorCellphone) {
+      setHasError(true)
+    } else {
+      setHasError(false)
+    }
+    console.log(hasError)
+  }, [hasErrorDoc, hasErrorName, hasErrorCellphone])
 
   return (
     <Form>
@@ -72,10 +114,12 @@ const InfosCheck = ({ nextStep, prevStep }) => {
             placeholder="Nome Completo"
             value={nameSignup}
             onChange={e => setNameSignup(e.target.value)}
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('userDocument').focus()
-            } }}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('userDocument').focus()
+              }
+            }}
           />
         </label>
         <label>
@@ -87,11 +131,12 @@ const InfosCheck = ({ nextStep, prevStep }) => {
             placeholder="Número do Documento"
             value={docSignup}
             onChange={e => setDocSignup(e.target.value)}
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('cellphone').focus()
-            } }}
-            
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('cellphone').focus()
+              }
+            }}
           />
         </label>
         <label>
@@ -103,10 +148,12 @@ const InfosCheck = ({ nextStep, prevStep }) => {
             placeholder="(  ) 9####-####"
             value={cellNumberSignup}
             onChange={e => setCellNumberSignup(e.target.value)}
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('cellphone').focus()
-            } }}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('cellphone').focus()
+              }
+            }}
           />
         </label>
         <CheckType>
