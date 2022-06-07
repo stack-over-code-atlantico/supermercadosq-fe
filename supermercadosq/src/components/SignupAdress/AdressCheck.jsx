@@ -1,10 +1,13 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SignupContext } from '../../Provider/Signup.provider'
 import { CityInput, StreetInput } from './styles'
 import { Form, Actions, LabelError } from '../../styles/CommunsStyles'
 
 const AdressCheck = ({ nextStep, prevStep }) => {
   const [error, setError] = useState('')
+  const [hasError, setHasError] = useState(true)
+  const [hasErrorNumber, setHasErrorNumber] = useState(true)
+  const [hasErrorCep, setHasErrorCep] = useState(true)
 
   const {
     cepSignup,
@@ -21,14 +24,15 @@ const AdressCheck = ({ nextStep, prevStep }) => {
     setStateAddressSignup
   } = useContext(SignupContext)
 
-  const handleCheckCep = e => {
-    const cep = e.target.value.replace(/\D/g, '')
+  const handleCheckCep = () => {
+    const cep = cepSignup.replace(/\D/g, '')
     if (cep.length !== 8) {
       setStreetSignup('')
       setNeighborhoodSignup('')
       setCitySignup('')
       setStateAddressSignup('')
       setError('Digite os 8 números do CEP')
+      setHasErrorCep(true)
       return
     }
 
@@ -41,16 +45,44 @@ const AdressCheck = ({ nextStep, prevStep }) => {
           setCitySignup('')
           setStateAddressSignup('')
           setError('CEP não encontrado')
+          setHasErrorCep(true)
           return
         }
         setStreetSignup(data.logradouro)
         setNeighborhoodSignup(data.bairro)
         setCitySignup(data.localidade)
         setStateAddressSignup(data.uf)
-
+        setHasErrorCep(false)
         setError('')
       })
   }
+
+  const handleCheckNumber = () => {
+    if (addressNumberSignup.length < 1 || addressNumberSignup.length > 6 || !addressNumberSignup) {
+      setError('Número inválido')
+      setHasErrorNumber(true)
+    } else {
+      setError('')
+      setHasErrorNumber(false)
+    }
+  }
+
+  useEffect(() => {
+    handleCheckCep()
+  }, [cepSignup])
+
+  useEffect(() => {
+    handleCheckNumber()
+  }, [addressNumberSignup])
+
+  useEffect(() => {
+    if(hasErrorNumber || hasErrorCep) {
+      setHasError(true)
+    } else {
+      setHasError(false)
+    }
+  }, [hasErrorNumber, hasErrorCep])
+
 
   return (
     <Form>
@@ -61,7 +93,6 @@ const AdressCheck = ({ nextStep, prevStep }) => {
           <span>CEP</span>
           <input
             type="text"
-            onBlur={handleCheckCep}
             onChange={e => setCepSignup(e.target.value)}
             value={cepSignup}
             name="cepSignup"
@@ -137,7 +168,7 @@ const AdressCheck = ({ nextStep, prevStep }) => {
         <LabelError>{error}</LabelError>
         <Actions>
           <button onClick={prevStep}>Voltar</button>
-          <button onClick={nextStep}>Finalizar</button>
+          <button disabled={hasError} onClick={nextStep}>Finalizar</button>
         </Actions>
       </form>
     </Form>
