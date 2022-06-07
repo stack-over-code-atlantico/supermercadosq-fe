@@ -19,20 +19,18 @@ const InfosCheck = ({ nextStep, prevStep }) => {
   const [hasError, setHasError] = useState(true)
   const [hasErrorDoc, setHasErrorDoc] = useState(true)
   const [hasErrorName, setHasErrorName] = useState(true)
-  const [hasErrorCellphone, setHasErrorCellphone] = useState(true)
+  const [hasErrorCellphone, setHasErrorCellphone] = useState(false)
 
   useEffect(() => {
-    handleCheckName(nameSignup)
+    handleCheckName()
   }, [nameSignup])
 
-  const handleCheckName = value => {
-    setNameSignup(value.replace(/( )+/g, ' '))
+  const handleCheckName = () => {
+    setNameSignup(nameSignup.replace(/( )+/g, ' '))
     const regEx = /[a-zA-Z]{4,150}/g
     if (regEx.test(nameSignup)) {
-      setHasError(false)
       setHasErrorName(false)
     } else {
-      setHasError(true)
       setHasErrorName(true)
     }
   }
@@ -75,11 +73,11 @@ const InfosCheck = ({ nextStep, prevStep }) => {
   }, [docSignup, typeUserSignup])
 
   useEffect(() => {
-    handleCheckNumber(cellNumberSignup)
+    handleCheckNumber()
   }, [cellNumberSignup])
 
-  const handleCheckNumber = value => {
-    setCellNumberSignup(value.trim())
+  const handleCheckNumber = () => {
+    setCellNumberSignup(cellNumberSignup.trim())
     cellNumberSignup.length == 11
       ? setHasErrorCellphone(false)
       : setHasErrorCellphone(true)
