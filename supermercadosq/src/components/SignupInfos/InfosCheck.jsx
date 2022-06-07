@@ -28,40 +28,39 @@ const InfosCheck = ({ nextStep, prevStep }) => {
   const handleCheckName = value => {
     setNameSignup(value.replace(/( )+/g, ' '))
     const regEx = /[a-zA-Z]{4,150}/g
-    if(regEx.test(nameSignup)) { 
-      setHasError(false) 
-      setHasErrorName(false) 
-    } else { 
-      setHasError(true) 
-      setHasErrorName(true) 
+    if (regEx.test(nameSignup)) {
+      setHasError(false)
+      setHasErrorName(false)
+    } else {
+      setHasError(true)
+      setHasErrorName(true)
     }
-}
+  }
 
   const validCpf = () => {
     const checkCpf = cpf.isValid(docSignup)
-    if(checkCpf){
+    if (checkCpf) {
       setHasErrorDoc(false)
-    }else{
+    } else {
       setHasErrorDoc(true)
     }
-
   }
   const validCnpj = () => {
     const checkCnpj = cnpj.isValid(docSignup)
-    if(checkCnpj){
+    if (checkCnpj) {
       setHasErrorDoc(false)
-    }else{
+    } else {
       setHasErrorDoc(true)
     }
   }
 
-  useEffect(()=>{
-    if(hasErrorDoc){
+  useEffect(() => {
+    if (hasErrorDoc) {
       setHasErrorDoc(true)
-    }else{
+    } else {
       setHasErrorDoc(false)
     }
-  },[hasErrorDoc])
+  }, [hasErrorDoc])
 
   useEffect(() => {
     if (typeUserSignup === 'cliente') {
@@ -75,34 +74,33 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     }
   }, [docSignup, typeUserSignup])
 
-
-useEffect(() => {
+  useEffect(() => {
     handleCheckNumber(cellNumberSignup)
   }, [cellNumberSignup])
 
-const handleCheckNumber = value => {
+  const handleCheckNumber = value => {
     setCellNumberSignup(value.trim())
-      cellNumberSignup.length==11 ? 
-    setHasErrorCellphone(false)
-    :
-    setHasErrorCellphone(true)   
-}
-
-useEffect(() => {
-  if(hasErrorCellphone){
-    setHasErrorCellphone(true)
-  }else{
-    setHasErrorCellphone(false)
+    cellNumberSignup.length == 11
+      ? setHasErrorCellphone(false)
+      : setHasErrorCellphone(true)
   }
-}, [hasErrorCellphone])
 
-useEffect(() => {
-  if(hasErrorDoc||hasErrorName||hasErrorCellphone){
-    setHasError(true)
-  }else{
-    setHasError(false)
-  } console.log(hasError)
-}, [hasErrorDoc, hasErrorName, hasErrorCellphone])
+  useEffect(() => {
+    if (hasErrorCellphone) {
+      setHasErrorCellphone(true)
+    } else {
+      setHasErrorCellphone(false)
+    }
+  }, [hasErrorCellphone])
+
+  useEffect(() => {
+    if (hasErrorDoc || hasErrorName || hasErrorCellphone) {
+      setHasError(true)
+    } else {
+      setHasError(false)
+    }
+    console.log(hasError)
+  }, [hasErrorDoc, hasErrorName, hasErrorCellphone])
 
   return (
     <Form>
@@ -118,10 +116,12 @@ useEffect(() => {
             placeholder="Nome Completo"
             value={nameSignup}
             onChange={e => setNameSignup(e.target.value)}
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('userDocument').focus()
-            } }}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('userDocument').focus()
+              }
+            }}
           />
         </label>
         <label>
@@ -133,11 +133,12 @@ useEffect(() => {
             placeholder="Número do Documento"
             value={docSignup}
             onChange={e => setDocSignup(e.target.value)}
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('cellphone').focus()
-            } }}
-            
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('cellphone').focus()
+              }
+            }}
           />
         </label>
         <label>
@@ -149,10 +150,12 @@ useEffect(() => {
             placeholder="(  ) 9####-####"
             value={cellNumberSignup}
             onChange={e => setCellNumberSignup(e.target.value)}
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('cellphone').focus()
-            } }}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                return document.getElementById('cellphone').focus()
+              }
+            }}
           />
         </label>
         <CheckType>
