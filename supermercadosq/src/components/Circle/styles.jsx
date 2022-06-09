@@ -8,6 +8,6 @@ export const ImgCircle = styled.section`
     top: 0;
     left: 0;
     background: var(--color-green-light);
-    clip-path: circle(80% at top -60% right 22%);
+    clip-path: circle(50% at top -25% right 30%);
     z-index: -1;
 `;
