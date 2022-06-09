@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-    padding: 10% 10% 0;
+    margin: 3% 10% 0;
 `
 
 export const Title = styled.h1`

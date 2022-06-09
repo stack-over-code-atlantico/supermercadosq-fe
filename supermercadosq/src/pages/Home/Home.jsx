@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar } from '../../components/Navbar';
+import { Circle } from '../../components/Circle/index'
+import { TextoBlog } from '../../components/TextoBlog/index'
 
 export function Home(){
   return (
@@ -11,7 +13,8 @@ export function Home(){
       alignItems: 'center', 
       height: '90vh'}}
     >
-      <h1>Home</h1>
+      <Circle />
+      <TextoBlog />
     </div>
     </>
   );
