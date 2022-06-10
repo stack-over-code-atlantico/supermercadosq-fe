@@ -23,6 +23,8 @@ Abra [http://localhost:3000](http://localhost:3000) para ver rodando no seu comp
 - [ok] : Criar rota
 - [ok] : Criar componentes
 - [ok] : Criar validação dos campos
+- [ok] : Acessividade através do teclado
+- [--] : Responsividade
 
 ### Registrar
 - **Somente para fornecedor e cliente**
@@ -33,9 +35,12 @@ Abra [http://localhost:3000](http://localhost:3000) para ver rodando no seu comp
 - [ok] : Não permitir mais de um espaço entre as palavras do input nome, assim como realizar .trim
 - [ok] : Verificar se o Cpf ou CNPJ é valido
 - [ok] : Verificar se o cep existe
+- [ok] : Acessividade através do teclado
 - [--] : Enviar objeto com todos os dados
-- 
+- [--] : Responsividade
+
 ### Page404
 - [ok] : Criar rota para todas as rotas não definidas
 - [ok] : Criar componente com volta ao home
+- [ok] : Responsividade
 
