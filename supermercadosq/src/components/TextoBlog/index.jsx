@@ -13,7 +13,5 @@ export function TextoBlog(){
             <Paragraph>Entre em nosso blog, venha conferir e contribuir na nossa comunidade, está rolando várias discussões sobre tabela nutricional e alergias!</Paragraph>
             <Button>Blog</Button>
         </Div>
-       
-     
     )
   }

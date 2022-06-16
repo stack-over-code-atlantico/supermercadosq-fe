@@ -1,18 +1,14 @@
 import React from 'react'
-import { Navbar } from '../../components/Navbar'
+// import { NavbarProducts } from '../../components/Navbar'
+// import { CardsProducts } from '../../components/CardsProducts'
+import { Footer } from '../../components/Footer'
 
 export function Product(){
   return (
     <>
-    <Navbar />
-    <div style={{
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      height: '90vh'}}
-    >
-      <h1>Product</h1>
-    </div>
+      {/* <NavbarProducts />
+      <CardsProducts /> */}
+      <Footer />
     </>
   )
 }
