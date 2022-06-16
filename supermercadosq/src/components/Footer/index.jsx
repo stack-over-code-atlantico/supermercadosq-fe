@@ -18,9 +18,15 @@ export function Footer(){
                 Todos os produtos, usuários e comentários são apenas para estudo. Não há nenhum direito reservado, porém o projeto foi feito com muita dedicação, aproveite.
             </CopyrightText>
             <MenuFooter>
-                <li>Política da Empresa</li>
-                <li>Instituto Atlântico</li>
-                <li>Termos &#38; Condições</li>
+                <li>
+                    <a>Política da Empresa</a>
+                </li>
+                <li>
+                    <a>Instituto Atlântico</a>
+                </li>
+                <li>
+                    <a>Termos &#38; Condições</a>
+                </li>
             </MenuFooter>
             <SocialMediaIcon>
                 <img src={Github} />
@@ -30,7 +36,7 @@ export function Footer(){
                 <img src={LinkedIn} />
                 <img src={Youtube} />
             </SocialMediaIcon>
-            <p>Powered by StackOverCode 2022</p>
+            <p className='powered'>Powered by StackOverCode 2022</p>
         </DivFooter>
     )
 }
