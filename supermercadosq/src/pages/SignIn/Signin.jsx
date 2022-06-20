@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
-import LogoSQ from '../../assets/Images/LogoSQ.png'
+import LogoSQ from '../../assets/images/LogoSQ.png'
 import AdressCheck from '../../components/SignupAdress/AdressCheck'
 import EmailCheck from '../../components/SignupEmail/EmailCheck'
 import InfosCheck from '../../components/SignupInfos/InfosCheck'
