@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import Cookie from 'js-cookie';
 import {
   LoginContainer,
   LoginForm,
@@ -10,15 +11,17 @@ import LogoSQ from '../../assets/images/LogoSQ.png'
 import { IoIosArrowBack } from 'react-icons/io'
 import { BackHome, LabelError } from '../../styles/CommunsStyles.jsx'
 import InputPassword from '../../components/InputPassword/InputPassword.jsx'
+import { auth } from '../../services/useAuth.jsx';
+import { isAfter } from 'date-fns';
+import { Loading } from '../../components/LoadingScreen/index.jsx';
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [isLogged, setIsLogged] = useState(false)
 
-  const handleLogin = e => {
-    e.preventDefault()
-
+  useEffect(() => {
     if (!email && !password) {
       setError('Preencha seus dados')
       return
@@ -35,64 +38,89 @@ const Login = () => {
       setError('')
       return
     }
+  }, [email, password]);
+
+  useEffect(() => {
+    if (Cookie.get('token') && Cookie.get('expires')) {
+      const expires = new Date(parseInt(Cookie.get('expires'), 10));
+      if (isAfter(new Date(), expires)) {
+        window.location.replace('/');
+      }
+    } else {
+      setIsLogged(true);
+    }
+  }, []);
+
+  const handleLogin = e => {
+    e.preventDefault();
+    const authenticate = auth({ email: email, senha: password });
+    return authenticate;
   }
+
   return (
     <StyleLogin>
-      <LoginContainer>
-        <LoginForm>
-          <h1>Entre</h1>
-          <p>
-            E não perca mais nada sobre os vários produtos e seus respectivos
-            componentes.
-          </p>
-          <form onSubmit={handleLogin}>
-            <label>
-              <span>Email</span>
-              <input
-                type="email"
-                onChange={e => setEmail(e.target.value)}
-                name="email"
-                id="email"
-                onKeyPress={e => {
-                  if (e.key === 'Enter') {
-                    e.preventDefault()
-                    return document.getElementById('password').focus()
-                  }
-                }}
-              />
-            </label>
+      {
+        !isLogged
+          ? (<Loading />)
+          : (
+            <LoginContainer>
+              <LoginForm>
+                <h1>Entre</h1>
+                <p>
+                  E não perca mais nada sobre os vários produtos e seus respectivos
+                  componentes.
+                </p>
+                <form onSubmit={handleLogin}>
+                  <label>
+                    <span>Email</span>
+                    <input
+                      type="email"
+                      onChange={e => setEmail(e.target.value)}
+                      name="email"
+                      id="email"
+                      value={email}
+                      onKeyPress={e => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault()
+                          return document.getElementById('password').focus()
+                        }
+                      }}
+                    />
+                  </label>
 
-            <label>
-              <span>Senha</span>
-              <InputPassword setValue={setPassword} value={password} />
+                  <label>
+                    <span>Senha</span>
+                    <InputPassword setValue={setPassword} value={password} />
 
-            </label>
+                  </label>
 
-            <label id="keepConnected">
-              <input type="checkbox" name="keepConnected" id="keepConnected" />
-              <span>Manter conectado</span>
-            </label>
-            <LabelError>{error}</LabelError>
-            <Actions>
-              <span>
-                Ainda não possui uma conta? <a href="/register">Criar Conta</a>
-              </span>
-              <button>Entrar</button>
-            </Actions>
-          </form>
-          <BackHome>
-            <IoIosArrowBack id="icon" />
-            <a href="/">Página Inicial</a>
-          </BackHome>
-        </LoginForm>
+                  <label id="keepConnected">
+                    <input type="checkbox" name="keepConnected" id="keepConnected" />
+                    <span>Manter conectado</span>
+                  </label>
+                  <LabelError>{error}</LabelError>
+                  <Actions>
+                    <span>
+                      Ainda não possui uma conta? <a href="/register">Criar Conta</a>
+                    </span>
+                    <button>Entrar</button>
+                  </Actions>
+                </form>
+                <BackHome>
+                  <IoIosArrowBack id="icon" />
+                  <a href="/">Página Inicial</a>
+                </BackHome>
+              </LoginForm>
 
-        <LoginLogo>
-          <img
-            src={LogoSQ}
-            alt="Logo do Supermercado SQ, dentro do Q possui um carrinho de compras, com algumas bolinhas nas cores rosa, laranja, azul, marrom e verde."
-          />
-        </LoginLogo>
-      </LoginContainer>
+              <LoginLogo>
+                <img
+                  src={LogoSQ}
+                  alt="Logo do Supermercado SQ, dentro do Q possui um carrinho de compras, com algumas bolinhas nas cores rosa, laranja, azul, marrom e verde."
+                />
+              </LoginLogo>
+            </LoginContainer>
+          )
+      }
     </StyleLogin>
   )
 }

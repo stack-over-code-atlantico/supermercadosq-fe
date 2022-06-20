@@ -10,7 +10,7 @@ export const Nav = styled.nav`
   z-index: 10;
 `;
 
-export const NavbarContainer = styled.div`  
+export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100%;
@@ -39,14 +39,14 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
-  @media screen and (max-width: 768px) {  
+  @media screen and (max-width: 768px) {
     text-align: center;
     padding: 2rem;
     width: 100%;
     display: table;
-    &:hover {  
+    &:hover {
       color: #4b59f7;
-      transition: all 0.3s ease;  
+      transition: all 0.3s ease;
     }
   }
 `;
@@ -91,19 +91,19 @@ export const NavMenu = styled.ul`
   }
 `;
 
-export const NavItem = styled.li`  
-  height: 80px;  
-  border-bottom: 2px solid transparent;  
-  &:hover {  
-    border-bottom: 2px solid #4b59f7;  
-  }  
-  @media screen and (max-width: 768px) {  
-    width: 100%;  
-    &:hover {  
-      border: none;  
-    }  
-  }  
-`;  
+export const NavItem = styled.li`
+  height: 80px;
+  border-bottom: 2px solid transparent;
+  &:hover {
+    border-bottom: 2px solid #4b59f7;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    &:hover {
+      border: none;
+    }
+  }
+`;
 
 export const NavInf = styled.div`
   display: flex;

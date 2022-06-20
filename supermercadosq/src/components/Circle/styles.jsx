@@ -7,7 +7,8 @@ export const ImgCircle = styled.section`
     width: 100%;
     top: 0;
     left: 0;
-    background: var(--color-green-light);
-    clip-path: circle(50% at top -25% right 30%);
+    background: ${props => props.color };
+    clip-path: circle(52% at top -25% right 23%);
     z-index: -1;
+    transition: 500ms ease;
 `;
