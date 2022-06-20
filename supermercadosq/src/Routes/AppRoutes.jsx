@@ -3,7 +3,7 @@ import Home from '../pages/Home/Home'
 import Login from '../pages/Login/Login';
 import SignIn from '../pages/SignIn/Signin';
 import Product from '../pages/Product/Product';
-import About from '../pages/About/About';
+import About from '../pages/About/about';
 import Page404 from '../pages/Page404/Page404';
 
 

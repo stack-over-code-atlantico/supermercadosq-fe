@@ -6,7 +6,7 @@ import {
   StyleLogin,
   Actions
 } from './styles.jsx'
-import LogoSQ from '../../assets/Images/LogoSQ.png'
+import LogoSQ from '../../assets/images/LogoSQ.png'
 import { IoIosArrowBack } from 'react-icons/io'
 import { BackHome, LabelError } from '../../styles/CommunsStyles.jsx'
 import InputPassword from '../../components/InputPassword/InputPassword.jsx'
