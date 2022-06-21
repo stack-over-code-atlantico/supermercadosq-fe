@@ -12,11 +12,14 @@ import {
   NavbarContainer,
   MobileIcon,
   NavLogo,
+  NavLogout,
+  NavIcon,
 } from './styles';
 import { FaBars, FaTimes } from "react-icons/fa";
-import lockLogo from '../../assets/icons/lock.svg'
+import lockLogo from '../../assets/icons/lock.svg';
+import logoutIcon from '../../assets/icons/logout-icon.png';
 import { IconContext } from "react-icons/lib";
-import { logOut } from '../../services/useAuth';
+import { logout } from '../../services/useAuth';
 
 export function Navbar() {
   const [click, setClick] = useState(false);
@@ -26,7 +29,7 @@ export function Navbar() {
   const closeMobileMenu = () => setClick(false);
 
   const handleLogout = () => {
-    logOut();
+    logout();
   }
 
   useEffect(() => {
@@ -82,11 +85,18 @@ export function Navbar() {
             </NavMenu>
             {
               isLogged
-                ? (<button onClick={handleLogout}>Sair</button>)
+                ? (
+                  <NavLogout onClick={handleLogout}>
+                    Sair
+                    <NavIcon src={logoutIcon} />
+                  </NavLogout>
+                )
                 : (
                   <NavInf>
-                    <NavLabel>Visitante</NavLabel>
-                    <img src={lockLogo} />
+                    <NavLabel>
+                      Visitante
+                      <NavIcon src={lockLogo} />
+                    </NavLabel>
                   </NavInf>
                 )
             }

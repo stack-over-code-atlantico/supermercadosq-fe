@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
 
 export const Nav = styled.nav`
   background: transparent; /* transparent */
@@ -116,4 +115,21 @@ export const NavInf = styled.div`
 
 export const NavLabel = styled.div`
   padding: 10px 5px 10px 22px;
+  position: relative;
+  right: -50%;
+`;
+
+export const NavLogout = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  position: relative;
+  right: -45%;
+`;
+
+export const NavIcon = styled.img`
+  width: 20px;
+  position: relative;
+  top: 5px;
+  left: 5px;
 `;
