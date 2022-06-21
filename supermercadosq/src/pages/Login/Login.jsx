@@ -11,7 +11,7 @@ import LogoSQ from '../../assets/images/LogoSQ.png'
 import { IoIosArrowBack } from 'react-icons/io'
 import { BackHome, LabelError } from '../../styles/CommunsStyles.jsx'
 import InputPassword from '../../components/InputPassword/InputPassword.jsx'
-import { auth } from '../../services/useAuth.jsx';
+import { login } from '../../services/useAuth.jsx';
 import { isAfter } from 'date-fns';
 import { Loading } from '../../components/LoadingScreen/index.jsx';
 
@@ -53,7 +53,7 @@ const Login = () => {
 
   const handleLogin = e => {
     e.preventDefault();
-    const authenticate = auth({ email: email, senha: password });
+    const authenticate = login({ email: email, senha: password });
     return authenticate;
   }
 
