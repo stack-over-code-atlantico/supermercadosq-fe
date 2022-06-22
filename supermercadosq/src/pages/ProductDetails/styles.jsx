@@ -24,9 +24,15 @@ export const DetailsComments = styled.div`
 `;
 
 export const PostComment = styled.div`
-  height: 200px;
+  height: 250px;
   border-radius: 0 20px 0 0;
   background-color: gray;
+
+  h3 {
+    font-size: 11px;
+    padding: 10px;
+    text-align: justify;
+  }
 `;
 
 export const ListComments = styled.div`

@@ -17,7 +17,8 @@ const ProductDetails = () => {
       <DetailsComments>
         <PostComment>
           <UserComment/>
-          <h1>Postagem</h1>
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem alias aliquam illum quasi at ab odio obcaecati aut ullam nemo maxime, ratione provident. Fuga est, animi sequi sapiente blanditiis porro. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h3>
         </PostComment>
         <ListComments>
           <h1>Comentarios</h1>
