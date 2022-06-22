@@ -13,6 +13,7 @@ export const DetailsContainer = styled.div`
 `;
 
 export const DetailsImage = styled.figure`
+  position: relative;
   background-color: red;
   width: 500px;
   height: 550px;
@@ -22,10 +23,23 @@ export const DetailsImage = styled.figure`
     height: 100%;
     border-radius: 20px 0 0 20px;
   }
+  .BackProduct {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: white;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
 `;
 
 export const DetailsComments = styled.div`
-background-color: white;
+  background-color: white;
   width: 650px;
   height: 550px;
   display: grid;
@@ -55,15 +69,15 @@ export const NutritionalContainer = styled.div`
   }
 `;
 export const NutritionalTable = styled.div`
-padding: 10px 0px 10px 10px;
+  padding: 10px 0px 10px 10px;
   font-size: 12px;
   color: white;
 `;
 export const IconType = styled.div`
-display: flex;
-align-items: center;
-justify-content: end;
-padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-right: 10px;
   #IconType {
     display: flex;
     align-items: center;
@@ -87,6 +101,4 @@ export const PostComment = styled.div`
   }
 `;
 
-export const ListComments = styled.div`
-
-`;
+export const ListComments = styled.div``;

@@ -2,6 +2,8 @@ import React from "react";
 import sushiImage from "../../assets/images/sushiPhoto.png";
 import fishIcon from "../../assets/icons/fish.png";
 import UserComment from "../../components/UserComment/UserComment";
+import { IoReturnDownBackOutline } from "react-icons/io5";
+
 import {
   DetailsComments,
   DetailsContainer,
@@ -17,6 +19,9 @@ const ProductDetails = () => {
   return (
     <DetailsContainer>
       <DetailsImage>
+        <div className="BackProduct">
+          <IoReturnDownBackOutline />
+        </div>
         <img src={sushiImage} alt="mesa com sushi" />
       </DetailsImage>
       <DetailsComments>
@@ -37,15 +42,16 @@ const ProductDetails = () => {
               <p>Gorduras saturadas 0.00 g 0.00%</p>
               <p>Fibra alimentar 0.00 g 0.00% </p>
               <p>Sódio 0.00 mg 0.00% </p>
-              
             </NutritionalTable>
             <IconType>
-              <div id="IconType"><img src={fishIcon} alt="peixe" /></div>
+              <div id="IconType">
+                <img src={fishIcon} alt="peixe" />
+              </div>
             </IconType>
           </NutritionalContainer>
-          <hr/>
+          <hr />
           <ListComments>
-            <UserComment id='FirstComment'/>
+            <UserComment id="FirstComment" />
             <UserComment />
             <UserComment />
           </ListComments>
