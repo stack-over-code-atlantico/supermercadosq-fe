@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 40px auto;
-  width: 1150px;
-  height: 550px;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
   background-color: white;
-  border-radius: 20px;
-  box-shadow: 1px 2px 2px #1010107b;
   color: var(--color-gray);
+  background-color: #000000a6;
 `;
 
 export const DetailsImage = styled.figure`
@@ -25,9 +25,11 @@ export const DetailsImage = styled.figure`
 `;
 
 export const DetailsComments = styled.div`
+background-color: white;
   width: 650px;
   height: 550px;
   display: grid;
+  border-radius: 0 20px 20px 0;
   grid-template-columns: 10%;
   grid-template-rows: 10% 90%;
   grid-template-areas:
