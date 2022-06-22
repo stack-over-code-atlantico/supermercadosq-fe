@@ -4,6 +4,7 @@ import { Circle } from '../../components/Circle/index'
 import { TextoBlog } from '../../components/TextoBlog/index'
 import CircleMenu from '../../components/CircleMenu/index';
 import { MenuContext } from '../../Provider/Menu.provider';
+import { userLevel } from '../../services/useAuth';
 
 export function Home(){
 
@@ -17,6 +18,8 @@ export function Home(){
     seafood: false,
     milk: false,
   });
+
+  userLevel();
 
   return (
     <MenuContext.Provider value={{allergyMenu, setAllergyMenu}}>
