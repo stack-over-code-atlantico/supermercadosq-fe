@@ -3,13 +3,16 @@ import sushiImage from "../../assets/images/sushiPhoto.png";
 import fishIcon from "../../assets/icons/fish.png";
 import UserComment from "../../components/UserComment/UserComment";
 import { IoReturnDownBackOutline } from "react-icons/io5";
+import { AiOutlineSend } from "react-icons/ai";
 
 import {
+  Comment,
   DetailsComments,
   DetailsContainer,
   DetailsImage,
   IconType,
   ListComments,
+  NewComment,
   NutritionalContainer,
   NutritionalTable,
   PostComment,
@@ -49,11 +52,31 @@ const ProductDetails = () => {
               </div>
             </IconType>
           </NutritionalContainer>
-          <hr />
+          <NewComment>
+            <input type="text" placeholder="Adicionar Comentário" />
+            <button>
+              <AiOutlineSend />
+            </button>
+          </NewComment>
           <ListComments>
-            <UserComment id="FirstComment" />
-            <UserComment />
-            <UserComment />
+            <Comment>
+              <UserComment />
+              <p>
+                ComentarioComentarioComentaioComenta
+                ComentarioComentarioComentarioComentarioComentarioComentario
+              </p>
+            </Comment>
+            <Comment>
+              <UserComment />
+              <p>
+                ComentarioComentarioComentaioComenta
+                ComentarioComentarioComentarioComentarioComentarioComentario
+              </p>
+            </Comment>
+            <Comment>
+              <UserComment />
+              <p>Comentario</p>
+            </Comment>
           </ListComments>
         </PostComment>
       </DetailsComments>
