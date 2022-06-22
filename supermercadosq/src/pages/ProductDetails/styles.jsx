@@ -44,6 +44,14 @@ export const DetailsImage = styled.figure`
     justify-content: center;
     border-radius: 50%;
   }
+
+  @media (max-width: 1185px) {
+    width: 400px;
+  }
+
+  @media (max-width: 998px) {
+    width: 300px;
+  }
 `;
 
 export const DetailsComments = styled.div`
@@ -63,31 +71,49 @@ export const DetailsComments = styled.div`
       border-radius: 0 20px 0 0;
     }
   }
+
+  @media (max-width: 1185px) {
+    width: 550px;
+  }
+
+  @media (max-width: 998px) {
+    width: 400px;
+  }
 `;
 export const NutritionalContainer = styled.div`
   display: flex;
   flex-direction: row;
   background-color: var(--color-blue-light);
-  width: 100%;
-  height: 70%;
+  width: 550px;
+  height: 180px;
+
   div {
     width: 50%;
     :first-child {
       border-radius: 0 0 0 0;
     }
   }
+  @media (max-width: 1185px) {
+    width: 460px;
+  }
+
+  @media (max-width: 998px) {
+    width: 330px;
+    height: auto;
+  }
 `;
 export const NutritionalTable = styled.div`
   padding: 10px 0px 10px 10px;
   font-size: 12px;
   color: white;
-  overflow: auto;
 `;
+
 export const IconType = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
   padding-right: 25px;
+
   #IconType {
     display: flex;
     align-items: center;
@@ -104,6 +130,7 @@ export const NewComment = styled.div`
   justify-content: space-between;
   margin: 10px 0px;
   width: 100%;
+
   input {
     width: 93%;
     color: var(--color-gray);
@@ -134,6 +161,24 @@ export const PostComment = styled.div`
     font-size: 11px;
     padding: 10px 10px 10px 0px;
     text-align: justify;
+  }
+`;
+
+export const PostContainer = styled.div`
+  height: 220px;
+  overflow-y: scroll;
+  border-bottom: 2px solid #0000002b;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #0000002b;
+    border-radius: 20px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-blue-light);
+    border-radius: 20px;
   }
 `;
 

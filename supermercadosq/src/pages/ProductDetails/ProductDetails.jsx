@@ -16,6 +16,7 @@ import {
   NutritionalContainer,
   NutritionalTable,
   PostComment,
+  PostContainer,
 } from "./styles";
 
 const ProductDetails = () => {
@@ -30,28 +31,31 @@ const ProductDetails = () => {
       <DetailsComments>
         <UserComment />
         <PostComment>
-          <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-            alias aliquam illum quasi at ab odio obcaecati aut ullam nemo
-            maxime, ratione provident. Fuga est, animi sequi sapiente blanditiis
-            porro. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </h3>
-          <NutritionalContainer>
-            <NutritionalTable>
-              <p>Calorias (valor energético) 26.70 kcal 1.34%</p>{" "}
-              <p>Carboidratos líquidos 5.01 g -</p>
-              <p>Carboidratos 5.01 g 1.67%</p> <p>Proteínas 1.44 g 0.48%</p>
-              <p> Gorduras totais 0.12 g 0.22%</p>
-              <p>Gorduras saturadas 0.00 g 0.00%</p>
-              <p>Fibra alimentar 0.00 g 0.00% </p>
-              <p>Sódio 0.00 mg 0.00% </p>
-            </NutritionalTable>
-            <IconType>
-              <div id="IconType">
-                <img src={fishIcon} alt="peixe" />
-              </div>
-            </IconType>
-          </NutritionalContainer>
+          <PostContainer>
+            <h3>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
+              alias aliquam illum quasi at ab odio obcaecati aut ullam nemo
+              maxime, ratione provident. Fuga est, animi sequi sapiente
+              blanditiis porro. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit.
+            </h3>
+            <NutritionalContainer>
+              <NutritionalTable>
+                <p>Calorias (valor energético) 26.70 kcal 1.34%</p>{" "}
+                <p>Carboidratos líquidos 5.01 g -</p>
+                <p>Carboidratos 5.01 g 1.67%</p> <p>Proteínas 1.44 g 0.48%</p>
+                <p> Gorduras totais 0.12 g 0.22%</p>
+                <p>Gorduras saturadas 0.00 g 0.00%</p>
+                <p>Fibra alimentar 0.00 g 0.00% </p>
+                <p>Sódio 0.00 mg 0.00% </p>
+              </NutritionalTable>
+              <IconType>
+                <div id="IconType">
+                  <img src={fishIcon} alt="peixe" />
+                </div>
+              </IconType>
+            </NutritionalContainer>
+          </PostContainer>
           <NewComment>
             <input type="text" placeholder="Adicionar Comentário" />
             <button>
@@ -63,14 +67,14 @@ const ProductDetails = () => {
               <UserComment />
               <p>
                 ComentarioComentarioComentaioComenta
-                ComentarioComentarioComentarioComentarioComentarioComentario
+                ComentarioComentarioComentario ComentarioComentarioComentario
               </p>
             </Comment>
             <Comment>
               <UserComment />
               <p>
                 ComentarioComentarioComentaioComenta
-                ComentarioComentarioComentarioComentarioComentarioComentario
+                ComentarioComentarioComentario ComentarioComentarioComentario
               </p>
             </Comment>
             <Comment>
