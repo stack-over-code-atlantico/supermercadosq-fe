@@ -4,7 +4,7 @@ export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin: 40px auto;
-  width: 1000px;
+  width: 1100px;
   height: 550px;
   background-color: white;
   border-radius: 20px;
@@ -25,14 +25,14 @@ export const DetailsImage = styled.figure`
 `;
 
 export const DetailsComments = styled.div`
+  width: 600px;
+  height: 550px;
   display: grid;
   grid-template-columns: 10%;
   grid-template-rows: 10% 90%;
   grid-template-areas:
     "base base"
     "x body";
-  width: 500px;
-  height: 550px;
   div {
     :first-child {
       grid-area: base;
