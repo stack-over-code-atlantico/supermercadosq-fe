@@ -4,7 +4,7 @@ export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin: 40px auto;
-  width: 1100px;
+  width: 1150px;
   height: 550px;
   background-color: white;
   border-radius: 20px;
@@ -25,7 +25,7 @@ export const DetailsImage = styled.figure`
 `;
 
 export const DetailsComments = styled.div`
-  width: 600px;
+  width: 650px;
   height: 550px;
   display: grid;
   grid-template-columns: 10%;
