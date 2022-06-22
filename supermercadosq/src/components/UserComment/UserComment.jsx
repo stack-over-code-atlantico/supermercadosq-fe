@@ -11,7 +11,7 @@ const UserComment = () => {
         </UserAvatar>
         <UserName>
           <h1>Cris</h1>
-          <h2>Publicado em 20.02.2022</h2>
+          <h2>Publicado em 20/02/2022</h2>
         </UserName>
       </UserDetails>
       <UserIcons>

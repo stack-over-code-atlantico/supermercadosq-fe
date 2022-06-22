@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const User = styled.div`
   display: flex;
@@ -6,8 +6,8 @@ export const User = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 5px;
-  background-color: wheat;
-  border-radius: 0 20px 0 0;
+  background-color: white;
+  //border-radius: 0px 20px 0px 0px;
 `;
 
 export const UserDetails = styled.div`
@@ -17,18 +17,23 @@ export const UserDetails = styled.div`
 `;
 
 export const UserAvatar = styled.figure`
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   background-color: crimson;
 `;
 
 export const UserName = styled.div`
+  font-weight: 600;
   h1 {
+    font-style: normal;
     font-size: 16px;
+    line-height: 24px;
   }
   h2 {
-    font-size: 10px;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 18px;
   }
 `;
 
