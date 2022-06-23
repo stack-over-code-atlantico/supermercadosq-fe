@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
-import { AboutSection, AboutText, AboutParagraph } from './styles';
+import React, { useContext, useState } from 'react';
+import { AboutSection, AboutText, AboutParagraph, ContainerBody, CardBody } from './styles';
 import { LoadingScreen } from '../LoadingScreen/styles';
 
 
 export function AboutComponent() {
+  const [isSubscribed, setIsSubscribed] = useState(true);
+  const handleChange = event => {
+    setIsSubscribed(event.target.checked);
+  }
 
   return (
     <>
@@ -21,6 +25,54 @@ export function AboutComponent() {
         <LoadingScreen size='140px' background='#f66a69' left='65%' top='80%' text='Valores'/>
         <LoadingScreen size='140px' background='#9cdbe7' left='85%' top='80%' text='Foco'/>
       </AboutSection>
+
+      <ContainerBody>
+        <input type="radio"
+          id="subscribe"
+          name="subscribe"
+          onChange={handleChange}
+          checked={isSubscribed}
+          className="position"
+        />
+        <input type="radio"
+          id="subscribe"
+          name="subscribe"
+          onChange={handleChange}
+          checked={isSubscribed}
+          className="position"
+        />
+        <input type="radio"
+          id="subscribe"
+          name="subscribe"
+          onChange={handleChange}
+
+          checked={isSubscribed}
+          className="position"
+        />
+        <input type="radio"
+          id="subscribe"
+          name="subscribe"
+          onChange={handleChange}
+          checked={isSubscribed}
+          className="position"
+        />
+        <input type="radio"
+          id="subscribe"
+          name="subscribe"
+          onChange={handleChange}
+          checked={isSubscribed}
+          className="position"
+        />
+
+        <CardBody id="carousel">
+          <div className="item" />
+          <div className="item" />
+          <div className="item" />
+          <div className="item" />
+          <div className="item" />
+        </CardBody>
+      </ContainerBody>
+
     </>
   );
 };
