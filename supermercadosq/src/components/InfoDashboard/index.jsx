@@ -1,11 +1,7 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSize, marginLeft, marginTop}) => {
-  const styles = {
-    marginLeft: marginLeft ? marginLeft : '0',
-    marginTop: marginTop ? marginTop : '0',
-  }
+const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSize}) => {
 
   const data = {
     series: [100],
@@ -13,6 +9,18 @@ const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSi
     chart: {
       fontFamily: 'Poppins, sans-serif',
     },
+    // responsive: [{
+    //   breakpoint: 1400,
+    //   options: {
+    //     chart: {
+    //       width: "100px",
+    //       height: '100px'
+    //     },
+    //     legend: {
+    //       show: false,
+    //     }
+    //   }
+    // }],
     legend: {
       show: false
     },
@@ -62,7 +70,7 @@ const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSi
         series={data.series}
         type="donut"
         width={size}
-        style={styles}
+        style={{ margin: -20}}
       />
     </>
   );
