@@ -1,15 +1,20 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const ChartDashboard = ({size}) => {
+const ChartDashboard = () => {
 
   const data = {
     series: [75, 13, 12],
-    numero: 1,
     labels: ['Comentários', 'Postagens', 'Usuários'],
     colors: ['#FFB3B2', '#60DFF6', '#7EF42A'],
     chart: {
       fontFamily: 'Poppins, sans-serif',
+    },
+    dataLabels: {
+      style: {
+        fontSize: '10px', colors: ['#000'],
+      },
+      dropShadow: { enabled: false}
     },
     stroke: {
       width: 3,
@@ -56,7 +61,7 @@ const ChartDashboard = ({size}) => {
 
   return (
     <>
-      <Chart options={data} series={data.series} type="donut" width={410}/>
+      <Chart options={data} series={data.series} type="donut" width={380} />
     </>
   );
 };
