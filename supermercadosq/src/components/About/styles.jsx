@@ -15,7 +15,7 @@ export const AboutText = styled.h2`
 `;
 
 export const AboutParagraph = styled.p`
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: #000;
   margin-top: 20px;
   text-align: justify;
@@ -106,25 +106,53 @@ export const CardBody = styled.div`
 
     .item:nth-of-type(1){
       --offset: 1;
-      background-color: #90f1ef;
+      background-color: #F59E1D;
     }
     .item:nth-of-type(2){
       --offset: 2;
-      background-color: #ff70a6;
+      background-color: #76BC44;
     }
     .item:nth-of-type(3){
       --offset: 3;
-      background-color: #ff9770;
+      background-color: #3EBCD3;
     }
     .item:nth-of-type(4){
       --offset: 4;
-      background-color: #ffd670;
+      background-color: #f66a69;
     }
     .item:nth-of-type(5){
       --offset: 5;
-      background-color: #e9ff70;
+      background-color: #9cdbe7;
     }
 
 `;
 
 
+export const AboutContainer = styled.div`
+  display: grid;
+  grid-template-columns: 35% 50%;
+  gap: 10%;
+  margin-top: 10%;
+`
+export const AboutDiv = styled.div`
+  display: block;
+`
+
+export const Img = styled.img`
+  width: 90%;
+  margin-left: 100px;
+`;
+
+
+export const Button = styled.button`
+  background-color: #3EBCD3;
+  padding: 15px 227px;
+  border: none;
+  border-radius: 4px;
+
+  color: #FFF;
+  font-size: 35px;
+
+  cursor: pointer;
+  margin: 5% 0 20% 5%;
+`

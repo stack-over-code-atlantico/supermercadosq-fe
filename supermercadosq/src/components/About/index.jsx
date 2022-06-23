@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { AboutSection, AboutText, AboutParagraph, ContainerBody, CardBody } from './styles';
 import { LoadingScreen } from '../LoadingScreen/styles';
+import { BsGithub } from 'react-icons/bs';
+import { Img, AboutDiv, AboutContainer, Button } from './styles';
+import  AboutImg  from "../../assets/images/imagemsobre.png";
 
 
 export function AboutComponent() {
@@ -72,6 +75,23 @@ export function AboutComponent() {
           <div className="item" />
         </CardBody>
       </ContainerBody>
+
+      <AboutContainer>
+          <Img src={AboutImg} alt="about image"/>
+        <AboutDiv>
+          <AboutParagraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ipsa fugit mollitia doloribus? Rerum optio molestiae
+              itaque eveniet tempore provident ullam,
+              reprehenderit aut qui, voluptatum vero eaque obcaecati ipsum mollitia eius.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ipsa fugit mollitia doloribus? Rerum optio molestiae
+              itaque eveniet tempore provident ullam,
+              reprehenderit aut qui, voluptatum vero eaque obcaecati ipsum mollitia eius.
+          </AboutParagraph>
+          <Button>Github <BsGithub/></Button>
+        </AboutDiv>
+      </AboutContainer>
 
     </>
   );
