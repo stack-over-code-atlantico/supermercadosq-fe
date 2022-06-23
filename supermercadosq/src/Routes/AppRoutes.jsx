@@ -9,6 +9,7 @@ import Page404 from '../pages/Page404/Page404';
 import Dashboard from '../pages/Dashboard/dashboard';
 import { userLevel } from '../services/useAuth';
 import Cookies from 'js-cookie';
+import ProductRegister from '../components/ProductRegister';
 
 
 const AppRoutes = () => {
@@ -27,6 +28,7 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={ level.nivel === 'ADMINISTRADOR' ? <Dashboard/> : <Page404 /> }/>
         <Route path="/about" element={<About/>}/>
         <Route path="/*" element={<Page404/>} />
+        <Route path="/ProductRegister" element={<ProductRegister/>} />
     </Routes>
   )
 }
