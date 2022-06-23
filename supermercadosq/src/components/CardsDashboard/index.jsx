@@ -1,10 +1,10 @@
 import {CardDashboard, CardTitle} from './styles';
 
-export function CardsDashboard({height, width, children}) {
+export function CardsDashboard({height, width, children, title}) {
 
   return (
     <CardDashboard height={height} width={width}>
-      <CardTitle> Denuncias </CardTitle>
+      <CardTitle> {title} </CardTitle>
       {children}
     </CardDashboard>
   );
