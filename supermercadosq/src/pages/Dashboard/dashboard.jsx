@@ -10,9 +10,13 @@ import { getAllProducts } from '../../services/useProducts';
 function Dashboard() {
   const [posts, setPosts] = useState(null);
   const [comments, setComments] = useState(null);
+  const [hasPosts, setHasPosts] = useState(false);
 
   const flex = { display: 'flex' };
 
+  const handlePosts = () => {
+    setHasPosts(!hasPosts);
+  }
 
   useEffect(() => {
     getAllProducts().then((response) => {
@@ -49,10 +53,10 @@ function Dashboard() {
 
   return (
     <div style={flex}>
-      <SidebarDashboard />
+      <SidebarDashboard onClick={handlePosts} />
       <CardSection>
         <CardsDashboard width='200px' title='Total de Posts' >
-          {renderInfoCharts(posts, posts, 'Postagens', '#60dff6', '#3ebcd3', 200)}
+          {renderInfoCharts(hasPosts, posts, 'Postagens', '#60dff6', '#3ebcd3', 200)}
         </CardsDashboard>
 
         <CardsDashboard width='200px' title='Total de Coments' >
