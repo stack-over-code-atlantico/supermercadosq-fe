@@ -6,8 +6,40 @@ import {
   RegisterContainer,
   RegisterForm,
 } from "./styles";
+import Select from "react-select";
 
 const ProductRegister = () => {
+  const alergicOptions = [
+    { value: "peixe", label: "Peixe" },
+    { value: "ovo", label: "Ovo" },
+    { value: "soja", label: "Soja" },
+  ];
+
+
+  const customStyles = {
+    // menu: (provided, state) => ({
+    //   ...provided,
+    //   padding: 10,
+    // }),
+    input: (provided, state) => ({
+      ...provided,
+      height: 120,
+
+    }),
+    // placeholder: (provided, state) => ({
+    //   ...provided,
+    //   width: 30,
+    // }),
+    // valueContainer: (provided, state) => ({
+    //   ...provided,
+    //   textOverflow: "ellipsis",
+    //   maxWidth: "90%",
+    //   whiteSpace: "nowrap",
+    //   overflow: "hidden",
+    //   display: "initial",
+    // }),
+  };
+
   return (
     <RegisterContainer>
       <ImageUpload>
@@ -22,12 +54,16 @@ const ProductRegister = () => {
           </label>
           <label>
             <span>Tipos de alergia</span>
-            <select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
+            <Select
+              closeMenuOnSelect={false}
+              //defaultValue={[colourOptions[0], colourOptions[1]]}
+              isMulti
+              options={alergicOptions}
+              styles={customStyles}
+              hideSelectedOptions={false}
+              isSearchable={false}
+
+            />
           </label>
         </div>
         <div className="ProductMiddle">

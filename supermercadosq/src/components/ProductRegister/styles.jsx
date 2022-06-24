@@ -46,6 +46,7 @@ export const RegisterForm = styled.form`
   line-height: 21px;
   gap: 25px;
 
+
   label {
     gap: 5px;
     width: 100%;
@@ -83,3 +84,10 @@ justify-content: space-between;
     font-weight: 700;
   }
 `;
+
+export const customStyles = styled.div`
+    height: 40px;
+    border: 1.5px solid var(--color-blue-light);
+    padding: 0px 5px;
+    overflow-y: auto;
+`
