@@ -10,7 +10,7 @@ export const RegisterContainer = styled.div`
   justify-content: center;
   color: var(--color-gray);
   background-color: #000000a6;
-  h2{
+  h2 {
     color: var(--color-blue-light);
   }
 `;
@@ -29,6 +29,14 @@ export const ImageUpload = styled.figure`
   svg {
     cursor: pointer;
   }
+  @media (max-width: 1185px) {
+    width: 400px;
+  }
+
+  @media (max-width: 998px) {
+    height: 500px;
+    width: 300px;
+  }
 `;
 export const RegisterForm = styled.form`
   background-color: white;
@@ -45,7 +53,6 @@ export const RegisterForm = styled.form`
   font-size: 14px;
   line-height: 21px;
   gap: 25px;
-
 
   label {
     gap: 5px;
@@ -70,11 +77,26 @@ export const RegisterForm = styled.form`
     height: 180px;
     border: 1.5px solid var(--color-blue-light);
   }
+  @media (max-width: 1185px) {
+    width: 550px;
+  }
+
+  @media (max-width: 998px) {
+    height: 500px;
+    width: 400px;
+    .ProductInitial{
+      flex-direction: column;
+    }
+    textarea{
+      height: 100px;
+    }
+    gap: 5px;
+  }
 `;
 
 export const Buttons = styled.div`
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
   button {
     padding: 15px;
     width: 40%;
@@ -86,8 +108,8 @@ justify-content: space-between;
 `;
 
 export const customStyles = styled.div`
-    height: 40px;
-    border: 1.5px solid var(--color-blue-light);
-    padding: 0px 5px;
-    overflow-y: auto;
-`
+  height: 40px;
+  border: 1.5px solid var(--color-blue-light);
+  padding: 0px 5px;
+  overflow-y: auto;
+`;

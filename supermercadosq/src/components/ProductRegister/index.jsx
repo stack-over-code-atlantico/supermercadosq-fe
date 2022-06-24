@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Select from "react-select";
 import { BsPlusCircle } from "react-icons/bs";
 import {
@@ -9,6 +9,7 @@ import {
 } from "./styles";
 
 const ProductRegister = () => {
+
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
     { value: "crustáceos", label: "Crustáceos" },
