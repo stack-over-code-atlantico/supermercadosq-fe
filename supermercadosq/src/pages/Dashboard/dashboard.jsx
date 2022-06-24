@@ -10,13 +10,8 @@ import { getAllProducts } from '../../services/useProducts';
 function Dashboard() {
   const [posts, setPosts] = useState(null);
   const [comments, setComments] = useState(null);
-  const [hasPosts, setHasPosts] = useState(false);
 
   const flex = { display: 'flex' };
-
-  const handlePosts = () => {
-    setHasPosts(!hasPosts);
-  }
 
   useEffect(() => {
     getAllProducts().then((response) => {
@@ -43,7 +38,7 @@ function Dashboard() {
           primaryColor={primaryColor}
           secondaryColor={secondaryColor}
           value={value}
-          fontSize={size/16.67}
+          fontSize={size / 16.67}
           marginTop={10}
         />
       );
@@ -53,14 +48,14 @@ function Dashboard() {
 
   return (
     <div style={flex}>
-      <SidebarDashboard onClick={handlePosts} />
+      <SidebarDashboard />
       <CardSection>
         <CardsDashboard width='200px' title='Total de Posts' >
-          {renderInfoCharts(hasPosts, posts, 'Postagens', '#60dff6', '#3ebcd3', 200)}
+          {renderInfoCharts(posts, posts, 'Postagens', '#8E5BD0', '#692ABA', 200)}
         </CardsDashboard>
 
         <CardsDashboard width='200px' title='Total de Coments' >
-          {renderInfoCharts(comments, posts, 'Comentários', '#ffb3b2', '#f66a69', 200)}
+          {renderInfoCharts(comments, comments, 'Comentários', '#692ABA', '#3C166D', 200)}
         </CardsDashboard>
 
         <CardsDashboard width='25%' title='Denúncias' minWidth="420px">
@@ -69,9 +64,9 @@ function Dashboard() {
 
         <CardsDashboard width='25%' title='Denúncias por tipo' minWidth="420px">
           <div style={{ display: 'flex', flexFlow: 'row' }}>
-            {renderInfoCharts(true, 26, 'Postagens', '#60dff6', '#3ebcd3', 160)}
-            {renderInfoCharts(true, 150, 'Comentários', '#ffb3b2', '#f66a69', 160)}
-            {renderInfoCharts(true, 80, 'Usuários', '#7ef42a', '#76bc44', 160)}
+            {renderInfoCharts(true, 26, 'Postagens', '#8E5BD0', '#692ABA', 160)}
+            {renderInfoCharts(true, 150, 'Comentários', '#692ABA', '#3C166D', 160)}
+            {renderInfoCharts(true, 80, 'Usuários', '#B996E8', '#8E5BD0', 160)}
           </div>
         </CardsDashboard>
       </CardSection>

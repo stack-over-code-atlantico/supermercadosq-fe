@@ -6,13 +6,13 @@ const ChartDashboard = () => {
   const data = {
     series: [75, 13, 12],
     labels: ['Comentários', 'Postagens', 'Usuários'],
-    colors: ['#FFB3B2', '#60DFF6', '#7EF42A'],
+    colors: [ '#692ABA', '#8E5BD0', '#B996E8'],
     chart: {
       fontFamily: 'Poppins, sans-serif',
     },
     dataLabels: {
       style: {
-        fontSize: '10px', colors: ['#000'],
+        fontSize: '8px', colors: ['#fff'],
       },
       dropShadow: { enabled: false}
     },

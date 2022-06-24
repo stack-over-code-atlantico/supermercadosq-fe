@@ -25,5 +25,6 @@ export const CardSection= styled.section`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  width: calc(100% - 200px);
+  width: 100%;
+  transition: 500ms all;
 `;

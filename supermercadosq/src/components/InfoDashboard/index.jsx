@@ -9,18 +9,6 @@ const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSi
     chart: {
       fontFamily: 'Poppins, sans-serif',
     },
-    // responsive: [{
-    //   breakpoint: 1400,
-    //   options: {
-    //     chart: {
-    //       width: "100px",
-    //       height: '100px'
-    //     },
-    //     legend: {
-    //       show: false,
-    //     }
-    //   }
-    // }],
     legend: {
       show: false
     },

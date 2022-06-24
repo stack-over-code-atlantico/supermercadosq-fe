@@ -58,11 +58,12 @@ const Login = () => {
   }
 
   return (
-    <StyleLogin>
+    <>
       {
         !isLogged
           ? (<Loading />)
           : (
+            <StyleLogin>
             <LoginContainer>
               <LoginForm>
                 <h1>Entre</h1>
@@ -119,9 +120,10 @@ const Login = () => {
                 />
               </LoginLogo>
             </LoginContainer>
+            </StyleLogin>
           )
       }
-    </StyleLogin>
+    </>
   )
 }
 
