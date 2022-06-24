@@ -133,6 +133,11 @@ export const AboutContainer = styled.div`
   grid-template-columns: 35% 50%;
   gap: 10%;
   margin-top: 10%;
+
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 export const AboutDiv = styled.div`
   display: block;
@@ -140,19 +145,31 @@ export const AboutDiv = styled.div`
 
 export const Img = styled.img`
   width: 90%;
-  margin-left: 100px;
+  margin-left: 20%;
+
+  @media (max-width: 800px) {
+    width: 70%;
+    width: 70%;
+  }
 `;
 
 
 export const Button = styled.button`
   background-color: #3EBCD3;
-  padding: 15px 227px;
+  padding: 2% 31.5%;
   border: none;
   border-radius: 4px;
 
   color: #FFF;
-  font-size: 35px;
+  font-size: 2.5rem;
 
   cursor: pointer;
   margin: 5% 0 20% 5%;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+    font-size: 2rem;
+    margin: 5% 0 20% 10%;
+
+  }
 `
