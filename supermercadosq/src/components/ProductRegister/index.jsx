@@ -1,4 +1,5 @@
 import React from "react";
+import Select from "react-select";
 import { BsPlusCircle } from "react-icons/bs";
 import {
   Buttons,
@@ -6,39 +7,68 @@ import {
   RegisterContainer,
   RegisterForm,
 } from "./styles";
-import Select from "react-select";
 
 const ProductRegister = () => {
   const alergicOptions = [
-    { value: "peixe", label: "Peixe" },
+    { value: "amendoim", label: "Amendoim" },
+    { value: "crustáceos", label: "Crustáceos" },
+    { value: "lactose", label: "Lactose" },
+    { value: "mostarda", label: "Mostarda" },
     { value: "ovo", label: "Ovo" },
+    { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
   ];
 
-
   const customStyles = {
-    // menu: (provided, state) => ({
-    //   ...provided,
-    //   padding: 10,
-    // }),
-    input: (provided, state) => ({
+    menu: (provided) => ({
       ...provided,
-      height: 120,
-
+      padding: 10,
     }),
-    // placeholder: (provided, state) => ({
-    //   ...provided,
-    //   width: 30,
-    // }),
-    // valueContainer: (provided, state) => ({
-    //   ...provided,
-    //   textOverflow: "ellipsis",
-    //   maxWidth: "90%",
-    //   whiteSpace: "nowrap",
-    //   overflow: "hidden",
-    //   display: "initial",
-    // }),
+    control: (provided) => ({
+      ...provided,
+      width: 280,
+      height: 40,
+      border: "1.5px solid var(--color-blue-light)",
+      borderRadius: 0,
+      cursor: "pointer",
+    }),
+    indicatorsContainer: (provided) => ({
+      ...provided,
+      height: 35,
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      fontWeight: 200,
+      fontSize: "13px",
+      paddingTop: 6,
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      maxWidth: "90%",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      display: "initial",
+      fontWeight: 400,
+      fontSize: "13px",
+    }),
   };
+
+  const multiValueContainer = ({ selectProps, data }) => {
+    const label = data.label;
+    const allSelected = selectProps.value;
+    const index = allSelected.findIndex((selected) => selected.label === label);
+    const isLastSelected = index === allSelected.length - 1;
+    const labelSuffix = isLastSelected ? ` (${allSelected.length})` : ", ";
+    const val = `${label}${labelSuffix}`;
+    return val;
+  };
+
+  const formatGroupLabel = (data) => (
+    <div>
+      <span>{data.label}</span>
+      <span>{data.options.length}</span>
+    </div>
+  );
 
   return (
     <RegisterContainer>
@@ -55,14 +85,18 @@ const ProductRegister = () => {
           <label>
             <span>Tipos de alergia</span>
             <Select
-              closeMenuOnSelect={false}
-              //defaultValue={[colourOptions[0], colourOptions[1]]}
-              isMulti
               options={alergicOptions}
-              styles={customStyles}
+              isMulti
+              components={{
+                MultiValueContainer: multiValueContainer,
+              }}
+              formatGroupLabel={formatGroupLabel}
+              closeMenuOnSelect={false}
               hideSelectedOptions={false}
+              styles={customStyles}
               isSearchable={false}
-
+              maxMenuWidth={100}
+              placeholder="Listar alergias"
             />
           </label>
         </div>
