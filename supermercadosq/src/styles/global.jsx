@@ -59,4 +59,23 @@ export const GlobalStyle = createGlobalStyle`
     cursor: not-allowed;
   }
 
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #d1d1d1;
+    border-radius: 13px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #692aba;
+    border-radius: 13px;
+    border: 3px solid #d1d1d1;
+  }
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #692aba #d1d1d1;
+  }
+
 `

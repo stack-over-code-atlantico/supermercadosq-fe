@@ -24,7 +24,7 @@ export const CardTitle = styled.h3`
 export const CardSection= styled.section`
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   transition: 500ms all;
 `;

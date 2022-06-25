@@ -4,6 +4,7 @@ import { CardSection } from '../../components/CardsDashboard/styles';
 import ChartDashboard from '../../components/ChartDashboard';
 import InfoDashboard from '../../components/InfoDashboard';
 import SidebarDashboard from '../../components/SidebarDashboard';
+import { TableDashboard } from '../../components/TableDashboard';
 import { getAllComments } from '../../services/useComments';
 import { getAllProducts } from '../../services/useProducts';
 
@@ -58,18 +59,24 @@ function Dashboard() {
           {renderInfoCharts(comments, comments, 'Comentários', '#692ABA', '#3C166D', 200)}
         </CardsDashboard>
 
-        <CardsDashboard width='25%' title='Denúncias' minWidth="420px">
+        <CardsDashboard width='25%' title='Denúncias' minWidth="400px">
           <ChartDashboard />
         </CardsDashboard>
 
-        <CardsDashboard width='25%' title='Denúncias por tipo' minWidth="420px">
+        <CardsDashboard width='25%' title='Denúncias por tipo' minWidth="400px">
           <div style={{ display: 'flex', flexFlow: 'row' }}>
             {renderInfoCharts(true, 26, 'Postagens', '#8E5BD0', '#692ABA', 160)}
             {renderInfoCharts(true, 150, 'Comentários', '#692ABA', '#3C166D', 160)}
             {renderInfoCharts(true, 80, 'Usuários', '#B996E8', '#8E5BD0', 160)}
           </div>
         </CardsDashboard>
+
+        <CardsDashboard width='95%' min-width='450px' height='300px' title=''>
+          <TableDashboard />
+        </CardsDashboard>
+
       </CardSection>
+
     </div>
   )
 }
