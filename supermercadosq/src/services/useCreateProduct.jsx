@@ -8,7 +8,7 @@ export const createProduct = async (data) => {
   const bodyParams = {
     nome: data.nome,
     ingredientes: data.ingredientes,
-    imagem: data.imagem,
+    imagem: null,
   };
   const productPost = await api
     .post("/products", bodyParams, config)

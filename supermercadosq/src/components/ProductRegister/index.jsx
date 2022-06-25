@@ -17,15 +17,19 @@ const ProductRegister = () => {
   const[description, setDescription] = useState('');
   const[nutTable, setNutTable] = useState('');
 
-  // useEffect(() => {
-  //   console.log(listAlergic)
-  // }, [listAlergic])
-
-  const handleRegisterProd = (e) => {
+  const handleRegisterProd = (e, formData) => {
     e.preventDefault()
     const createNewProduct = createProduct({nome: prodName, ingredientes: nutTable, imagem: prodImg})
+    console.log("formData: ", formData)
+    console.log("listAlergic: ", listAlergic)
     return createNewProduct
   }
+
+  const handleGetAlergic = (alergicOptions) => {
+    setListAlergic(alergicOptions)
+    console.log(listAlergic)
+  }
+
 
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
@@ -115,8 +119,8 @@ const ProductRegister = () => {
               isSearchable={false}
               maxMenuWidth={100}
               placeholder="Listar alergias"
-
-            />
+              onChange={handleGetAlergic}
+              />
           </label>
         </div>
         <div className="ProductMiddle">
