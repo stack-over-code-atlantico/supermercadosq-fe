@@ -3,9 +3,14 @@ import styled from "styled-components";
 export const AboutSection = styled.section`
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   margin-top: 5%;
   flex-flow: column wrap;
+
+  @media (max-width: 1300px){
+    height: 100vh;
+  }
+
 `;
 
 export const AboutText = styled.h2`
@@ -44,9 +49,18 @@ export const LoadingScreen = styled.div`
 export const LoadingContainer = styled.div `
   display: flex;
   align-items: center;
-  margin: 15% 2% 0 2%;
+  margin: 10vh 5vw 2vh 5vw;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 1300px){
+    margin: 10vh 5vw 2vh 5vw;
+  }
+
+  @media (max-width: 800px) {
+    margin: 15% 2% 0 2%;
+  }
+
 `
 
 
@@ -182,7 +196,8 @@ export const Img = styled.img`
 
 export const Button = styled.button`
   background-color: #3EBCD3;
-  padding: 2% 31.5%;
+  padding: 2vh 18vw;
+  margin: 8vh 0 8vh 2vw;
   border: none;
   border-radius: 4px;
 
@@ -190,13 +205,27 @@ export const Button = styled.button`
   font-size: 2.5rem;
 
   cursor: pointer;
-  margin: 5% 0 20% 5%;
 
 
-  @media (max-width: 1156px) {
+  @media (max-width: 1500px) {
+    padding: 2vh 16.5vw;
+  }
+
+  @media (max-width: 1260px) {
     justify-content: center;
     font-size: 2rem;
-    margin: 5% 0 20% 6%;
-    padding: 10px 30%;
+    margin: 4vh 0 4vh 2vw;
+    padding: 4vh 17vw;
   }
+
+  @media (max-width: 1060px){
+    padding: 4vh 15vw;
+  }
+
+  @media (max-width: 800px){
+    padding: 4vh 36vw;
+    margin-left: 4vw;
+  }
+
+
 `
