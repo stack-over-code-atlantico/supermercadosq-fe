@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AboutSection, AboutText, AboutParagraph, ContainerBody, CardBody } from './styles';
 import { BsGithub } from 'react-icons/bs';
-import { Img, AboutDiv, AboutContainer, Button,LoadingScreen, LoadingContainer } from './styles';
+import { Img, AboutDiv, AboutContainer, Button, LoadingScreen, LoadingContainer } from './styles';
 import  AboutImg  from "../../assets/images/imagemsobre.png";
 
 
