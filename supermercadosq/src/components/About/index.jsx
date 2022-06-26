@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AboutSection, AboutText, AboutParagraph, ContainerBody, CardBody } from './styles';
-import { LoadingScreen } from '../LoadingScreen/styles';
 import { BsGithub } from 'react-icons/bs';
-import { Img, AboutDiv, AboutContainer, Button } from './styles';
+import { Img, AboutDiv, AboutContainer, Button,LoadingScreen, LoadingContainer } from './styles';
 import  AboutImg  from "../../assets/images/imagemsobre.png";
 
 
@@ -22,11 +21,14 @@ export function AboutComponent() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa fugit mollitia doloribus? Rerum optio molestiae
           itaque eveniet tempore provident ullam, reprehenderit aut qui, voluptatum vero eaque obcaecati ipsum mollitia eius.
         </AboutParagraph>
-        <LoadingScreen size='140px' background='#F59E1D' left='5%' top='80%' text='União' />
-        <LoadingScreen size='140px' background='#76BC44' left='25%' top='80%' text='Missão' />
-        <LoadingScreen size='140px' background='#3EBCD3' left='45%' top='80%' text='Visão'/>
-        <LoadingScreen size='140px' background='#f66a69' left='65%' top='80%' text='Valores'/>
-        <LoadingScreen size='140px' background='#9cdbe7' left='85%' top='80%' text='Foco'/>
+        <LoadingContainer>
+          <LoadingScreen className="loading-screen" size='140px' background='#F59E1D' text='União' />
+          <LoadingScreen className="loading-screen" size='140px' background='#76BC44' text='Missão' />
+          <LoadingScreen className="loading-screen" size='140px' background='#3EBCD3' text='Visão'/>
+          <LoadingScreen className="loading-screen" size='140px' background='#f66a69' text='Valores'/>
+          <LoadingScreen className="loading-screen" size='140px' background='#9cdbe7' text='Foco'/>
+        </LoadingContainer>
+
       </AboutSection>
 
       <ContainerBody>

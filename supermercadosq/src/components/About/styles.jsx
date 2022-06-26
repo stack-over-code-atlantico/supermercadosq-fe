@@ -23,6 +23,33 @@ export const AboutParagraph = styled.p`
   margin-left: 5%;
 `;
 
+export const LoadingScreen = styled.div`
+  height: ${props => props.size ? props.size : '100px' };
+  width: ${props => props.size ? props.size : '100px' };
+  background: ${props => props.background ? props.background : '#9cdd6e' };
+  border-radius: 50%;
+  left: ${props => props.left ? props.left : '100px' };
+  top: ${props => props.top ? props.top : '100px' };
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::before{
+    content:  '${props => props.text ? props.text : '' }';
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+  }
+`;
+
+export const LoadingContainer = styled.div `
+  display: flex;
+  align-items: center;
+  margin: 15% 2% 0 2%;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+
 export const ContainerBody = styled.div`
   height: 600px;
   display: grid;
@@ -149,7 +176,6 @@ export const Img = styled.img`
 
   @media (max-width: 800px) {
     width: 70%;
-    width: 70%;
   }
 `;
 
@@ -166,10 +192,11 @@ export const Button = styled.button`
   cursor: pointer;
   margin: 5% 0 20% 5%;
 
-  @media (max-width: 800px) {
+
+  @media (max-width: 1156px) {
     justify-content: center;
     font-size: 2rem;
-    margin: 5% 0 20% 10%;
-
+    margin: 5% 0 20% 6%;
+    padding: 10px 30%;
   }
 `
