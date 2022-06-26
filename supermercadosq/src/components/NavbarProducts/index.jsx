@@ -12,7 +12,7 @@ export function NavbarProducts(){
                     <a href='#'>Perfil</a>
                 </ProductListItem>
                 <ProductListItem>
-                    <a href='#'>Histórico</a>
+                    <a href='#'>Postagens</a>
                 </ProductListItem>
                 <ProductListItem>
                     <a href='#'>Comentários</a>
