@@ -67,7 +67,7 @@ export const LoadingContainer = styled.div `
 export const ContainerBody = styled.div`
   height: 600px;
   display: grid;
-  grid-template-rows: 500px 100px;
+  grid-template-rows: 400px 40px;
   grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
   align-items: center;
   justify-items: center;
@@ -122,7 +122,7 @@ export const ContainerBody = styled.div`
 export const CardBody = styled.div`
   grid-row: 1 / 2;
   grid-column: 1 / 8;
-  width: 100vw;
+  width: 98vw;
   height: 500px;
   display: flex;
   align-items: center;
