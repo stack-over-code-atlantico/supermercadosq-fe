@@ -6,9 +6,9 @@ import  AboutImg  from "../../assets/images/imagemsobre.png";
 
 
 export function AboutComponent() {
-  const [isSubscribed, setIsSubscribed] = useState(true);
+  const [isSubscribed, setIsSubscribed] = useState('option3');
   const handleChange = event => {
-    setIsSubscribed(event.target.checked);
+    setIsSubscribed(event.target.value);
   }
 
   return (
@@ -35,37 +35,42 @@ export function AboutComponent() {
         <input type="radio"
           id="subscribe"
           name="subscribe"
+          value="option1"
           onChange={handleChange}
-          checked={isSubscribed}
+          checked={isSubscribed == 'option1'}
           className="position"
         />
         <input type="radio"
           id="subscribe"
           name="subscribe"
+          value="option2"
           onChange={handleChange}
-          checked={isSubscribed}
+          checked={isSubscribed == 'option2'}
           className="position"
         />
         <input type="radio"
           id="subscribe"
           name="subscribe"
+          value="option3"
           onChange={handleChange}
+          checked={isSubscribed == 'option3'}
 
-          checked={isSubscribed}
           className="position"
         />
         <input type="radio"
           id="subscribe"
           name="subscribe"
+          value="option4"
           onChange={handleChange}
-          checked={isSubscribed}
+          checked={isSubscribed == 'option4'}
           className="position"
         />
         <input type="radio"
           id="subscribe"
           name="subscribe"
+          value="option5"
           onChange={handleChange}
-          checked={isSubscribed}
+          checked={isSubscribed == 'option5'}
           className="position"
         />
 
