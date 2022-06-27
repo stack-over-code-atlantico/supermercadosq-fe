@@ -173,7 +173,6 @@ export const AboutContainer = styled.div`
   display: grid;
   grid-template-columns: 35% 50%;
   gap: 10%;
-  margin-top: 10%;
 
   @media (max-width: 800px) {
     display: flex;
