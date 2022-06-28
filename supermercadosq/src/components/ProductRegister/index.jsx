@@ -16,6 +16,16 @@ const ProductRegister = () => {
   const [description, setDescription] = useState("");
   const [nutTable, setNutTable] = useState("");
   const [prodImg, setProdImg] = useState("");
+  const [button, setButton] = useState(true);
+
+  useEffect(() => {
+    if (prodName && description && nutTable) {
+      setButton(false);
+    } else {
+      setButton(true)
+    }
+  }, [prodName, listAlergic, description, nutTable]);
+
 
   const handleRegisterProd = (e, formData) => {
     e.preventDefault();
@@ -30,9 +40,12 @@ const ProductRegister = () => {
   };
 
   const handleGetAlergic = (alergicOptions) => {
-    setListAlergic(alergicOptions.map((alergia) => {return alergia.value}));
-    const alergias = listAlergic.toString()
-
+    setListAlergic(
+      alergicOptions.map((alergia) => {
+        return alergia.value;
+      })
+    );
+    const alergias = listAlergic.toString();
   };
 
   const alergicOptions = [
@@ -149,7 +162,9 @@ const ProductRegister = () => {
         </div>
         <Buttons>
           <button>Voltar</button>
-          <button type="submit">Finalizar</button>
+          <button type="submit" disabled={button}>
+            Finalizar
+          </button>
         </Buttons>
       </RegisterForm>
     </RegisterContainer>
