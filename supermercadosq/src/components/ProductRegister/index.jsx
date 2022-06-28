@@ -7,8 +7,33 @@ import {
   RegisterContainer,
   RegisterForm,
 } from "./styles";
+import { useState } from "react";
+import { createProduct } from "../../services/useCreateProduct";
 
 const ProductRegister = () => {
+  const [prodName, setProdName] = useState("");
+  const [listAlergic, setListAlergic] = useState("");
+  const [description, setDescription] = useState("");
+  const [nutTable, setNutTable] = useState("");
+  const [prodImg, setProdImg] = useState("");
+
+  const handleRegisterProd = (e, formData) => {
+    e.preventDefault();
+    const createNewProduct = createProduct({
+      nome: prodName,
+      alergia: String(listAlergic),
+      descricao: description,
+      ingredientes: nutTable,
+      imagem: prodImg,
+    });
+    return createNewProduct;
+  };
+
+  const handleGetAlergic = (alergicOptions) => {
+    setListAlergic(alergicOptions.map((alergia) => {return alergia.value}));
+    const alergias = listAlergic.toString()
+
+  };
 
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
@@ -76,12 +101,16 @@ const ProductRegister = () => {
       <ImageUpload>
         <BsPlusCircle />
       </ImageUpload>
-      <RegisterForm>
+      <RegisterForm onSubmit={handleRegisterProd}>
         <h2>Crie sua postagem sobre algum produto</h2>
         <div className="ProductInitial">
           <label>
             <span>Nome</span>
-            <input type="text" placeholder="Nome" />
+            <input
+              type="text"
+              placeholder="Nome"
+              onChange={(e) => setProdName(e.target.value)}
+            />
           </label>
           <label>
             <span>Tipos de alergia</span>
@@ -98,19 +127,24 @@ const ProductRegister = () => {
               isSearchable={false}
               maxMenuWidth={100}
               placeholder="Listar alergias"
+              onChange={handleGetAlergic}
             />
           </label>
         </div>
         <div className="ProductMiddle">
           <label>
             <span>Descrição</span>
-            <input type="text" placeholder="Descrição" />
+            <input
+              type="text"
+              placeholder="Descrição"
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </label>
         </div>
         <div className="ProductFinal">
           <label>
             <span>Ingredientes</span>
-            <textarea />
+            <textarea onChange={(e) => setNutTable(e.target.value)} />
           </label>
         </div>
         <Buttons>
