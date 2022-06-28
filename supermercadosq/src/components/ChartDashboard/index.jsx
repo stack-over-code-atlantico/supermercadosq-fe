@@ -1,12 +1,12 @@
 import React from 'react';
 import Chart from "react-apexcharts";
 
-const ChartDashboard = () => {
+const ChartDashboard = ({value}) => {
 
   const data = {
-    series: [75, 13, 12],
-    labels: ['Comentários', 'Postagens', 'Usuários'],
-    colors: [ '#692ABA', '#8E5BD0', '#B996E8'],
+    series: [value[0], value[1]],
+    labels: ['Comentários', 'Postagens'],
+    colors: [ '#692ABA', '#8E5BD0'],
     chart: {
       fontFamily: 'Poppins, sans-serif',
     },

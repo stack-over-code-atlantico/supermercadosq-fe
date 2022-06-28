@@ -29,18 +29,18 @@ const SidebarDashboard = () => {
       <Sidebar opened={open}>
         <CloseButton onClick={handleOpen}>
           {
-            open
+            !open
               ? (
                 <CloseIcon
-                  width="8px"
+                  width="7px"
                   src={backIcon}
+                  style={{ transform: 'rotate(180deg)' }}
                 />
               )
               : (
                 <CloseIcon
-                  width="8px"
+                  width="7px"
                   src={backIcon}
-                  style={{ transform: 'rotate(180deg)' }}
                 />
               )
           }

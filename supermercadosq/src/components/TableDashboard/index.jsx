@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react';
+import React  from 'react';
 import { StyledTable, TBody, TH, THead, TR, TD, Div, Action, Complaint, Icon } from './style';
 import postIcon from '../../assets/icons/post-icon.png';
 import userIcon from '../../assets/icons/user-icon.png';
@@ -37,14 +37,72 @@ export function TableDashboard({ data }) {
       nome: "Emanuel",
       conteudo: "lorem ipsuim lorem ipsum"
     },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
+    {
+      tipoDenuncia: "postagem",
+      nome: "Emanuel",
+      conteudo: "lorem ipsuim lorem ipsum"
+    },
   ];
 
   const compareComplaint = (type) => {
-    console.log(type)
-    if(type === 'comentario') return commentIcon;
-    if(type === 'postagem') return postIcon;
-    if(type === 'usuario') return userIcon;
-  }
+    if (type['id_comentario'] !== null && type['id_comentario'] !== undefined) return commentIcon;
+    return postIcon;
+  };
 
   return (
     <Div>
@@ -59,23 +117,24 @@ export function TableDashboard({ data }) {
         </THead>
         <TBody>
           {
-            arrayTeste.map((item, index) => (
+            data
+              ? data.map((item, index) => (
               <TR key={index}>
                 <TD>
                   <Complaint>
-                    <Icon src={compareComplaint(item.tipoDenuncia)} />
+                    <Icon src={compareComplaint(item)} />
                   </Complaint>
                 </TD>
-                <TD>{item.nome}</TD>
-                <TD>{item.conteudo}</TD>
+                <TD>{item.nome ?? 'COMENTÁRIO'}</TD>
+                <TD>{item.descricao ?? `"${item.mensagem}"`}</TD>
                 <TD>
                   <Action />
                 </TD>
               </TR>
-            ))
+            )) : null
           }
         </TBody>
       </StyledTable>
     </Div>
-  )
-}
+  );
+};
