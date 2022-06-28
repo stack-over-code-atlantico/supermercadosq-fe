@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const DivAddProductCard = styled.div`
-    border: 0.5px;
-    border-radius: 5px;
-    width: 150px;
-    height: 200px;
+    
+    box-shadow: 0px 5px 10px gray;
+    border-radius: 10px;
+    border:none;
+    width: 165px;
+    height: 225px;
     background-color: var(--color-gray-light);
     display: flex;
     justify-content: center;
@@ -16,7 +18,7 @@ export const DivButtonAddProductCard = styled.button`
     height: 30px;
     width: 30px;
     border-radius: 100%;
-    border: 0.5px;
+    border:none;
     display: flex;
     justify-content: center;
     align-items: center;

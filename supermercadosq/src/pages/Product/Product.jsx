@@ -1,18 +1,16 @@
 import React from 'react'
 import { NavbarProducts } from '../../components/NavbarProducts'
-//import { CardsProducts } from '../../components/CardsProducts'
 import { Footer } from '../../components/Footer'
 import { NavbarAdm } from '../../components/NavbarProductsAdm'
-import { AddProductCard } from '../../components/AddProductCard'
+import { CardsContainer } from '../../components/CardsContainer'
 
 export function Product(){
   return (
     <>
       <NavbarAdm/>
-      <NavbarProducts />
-      <AddProductCard/>
-      {/* <CardsProducts /> */}
-      <Footer />
+      <NavbarProducts/>
+      <CardsContainer/>
+      <Footer/>
     </>
   )
 }
