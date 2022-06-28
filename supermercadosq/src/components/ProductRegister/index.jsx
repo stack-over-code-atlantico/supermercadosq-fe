@@ -11,25 +11,29 @@ import { useState } from "react";
 import { createProduct } from "../../services/useCreateProduct";
 
 const ProductRegister = () => {
-  const[prodName, setProdName] = useState('');
-  const[prodImg, setProdImg] = useState('');
-  const[listAlergic, setListAlergic] = useState([]);
-  const[description, setDescription] = useState('');
-  const[nutTable, setNutTable] = useState('');
+  const [prodName, setProdName] = useState("");
+  const [listAlergic, setListAlergic] = useState("");
+  const [description, setDescription] = useState("");
+  const [nutTable, setNutTable] = useState("");
+  const [prodImg, setProdImg] = useState("");
 
   const handleRegisterProd = (e, formData) => {
-    e.preventDefault()
-    const createNewProduct = createProduct({nome: prodName, ingredientes: nutTable, imagem: prodImg})
-    console.log("formData: ", formData)
-    console.log("listAlergic: ", listAlergic)
-    return createNewProduct
-  }
+    e.preventDefault();
+    const createNewProduct = createProduct({
+      nome: prodName,
+      alergia: String(listAlergic),
+      descricao: description,
+      ingredientes: nutTable,
+      imagem: prodImg,
+    });
+    return createNewProduct;
+  };
 
   const handleGetAlergic = (alergicOptions) => {
-    setListAlergic(alergicOptions)
-    console.log(listAlergic)
-  }
+    setListAlergic(alergicOptions.map((alergia) => {return alergia.value}));
+    const alergias = listAlergic.toString()
 
+  };
 
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
@@ -102,7 +106,11 @@ const ProductRegister = () => {
         <div className="ProductInitial">
           <label>
             <span>Nome</span>
-            <input type="text" placeholder="Nome" onChange={e => setProdName(e.target.value)}/>
+            <input
+              type="text"
+              placeholder="Nome"
+              onChange={(e) => setProdName(e.target.value)}
+            />
           </label>
           <label>
             <span>Tipos de alergia</span>
@@ -120,19 +128,23 @@ const ProductRegister = () => {
               maxMenuWidth={100}
               placeholder="Listar alergias"
               onChange={handleGetAlergic}
-              />
+            />
           </label>
         </div>
         <div className="ProductMiddle">
           <label>
             <span>Descrição</span>
-            <input type="text" placeholder="Descrição" onChange={e => setDescription(e.target.value)}/>
+            <input
+              type="text"
+              placeholder="Descrição"
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </label>
         </div>
         <div className="ProductFinal">
           <label>
             <span>Ingredientes</span>
-            <textarea onChange={e => setNutTable(e.target.value)}/>
+            <textarea onChange={(e) => setNutTable(e.target.value)} />
           </label>
         </div>
         <Buttons>

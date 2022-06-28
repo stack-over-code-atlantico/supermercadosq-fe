@@ -7,6 +7,8 @@ const config = { headers: { authorization: `Bearer ${tokenJWT}` } };
 export const createProduct = async (data) => {
   const bodyParams = {
     nome: data.nome,
+    alergia: data.alergia,
+    descricao: data.descricao,
     ingredientes: data.ingredientes,
     imagem: null,
   };
@@ -20,3 +22,5 @@ export const createProduct = async (data) => {
       console.log(err.message);
     });
 };
+
+
