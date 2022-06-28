@@ -1,13 +1,6 @@
 import styled from "styled-components";
 
 export const CircleDiv = styled.div`
-    * {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
 
   margin: 0 auto;
   position: absolute;
@@ -21,7 +14,7 @@ export const CircleDiv = styled.div`
   align-items: center;
 
   input#toggle:checked ~ #show-menu .btn .menuBtn {
-    transform: translateY(-50px);
+    transform: translateY(-30px);
     opacity: 0;
   }
 
@@ -31,61 +24,69 @@ export const CircleDiv = styled.div`
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(2) {
-    top:-280px;
+    top:-200px;
     opacity:1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #9CDD6E;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(3) {
-    top:-200px;
-    left:200px;
+    top:-140px;
+    left:140px;
     opacity:1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #DAC50A;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(4) {
-    left:280px;
+    left:200px;
     opacity:1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #D3B273;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(5) {
-    top: 200px;
-    left: 200px;
+    top: 140px;
+    left: 140px;
     opacity: 1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #C87C53;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(6) {
-    top: 280px;
+    top: 200px;
     opacity: 1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #F59E1D;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(7) {
-    top: 200px;
-    left: -200px;
+    top: 140px;
+    left: -140px;
     opacity: 1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #8CEAFC;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(8) {
-    left:-280px;
+    left:-200px;
     opacity:1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #F66A69;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(9) {
-    top: -200px;
-    left: -200px;
+    top: -140px;
+    left: -140px;
     opacity: 1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     background-color: #3EBCD3;
   }
@@ -96,48 +97,65 @@ export const CircleDiv = styled.div`
   }
 
   .main-btn {
-    background-color: #fff;
     border-radius: 50%;
     box-shadow: 0 7px 5px #999;
-    width: 250px;
-    height: 250px;
     position: absolute;
-    left: -80px;
-    bottom: -170px;
     transition: 500ms ease;
 
+
     &:hover {
-      bottom: -180px;
+      bottom: -155px;
       box-shadow: 0 2px 5px #999;
       cursor: pointer;
     }
   }
 
-  .first-btn {
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
-    position: absolute;
-    left: 0px;
-    bottom: -250px;
-  }
-
   .closeBtn {
     position: absolute;
-    left: 100px;
-    bottom: 90px;
+    left: 50px;
+    bottom: 45px;
   }
 `;
 
-export const MainButton = styled.div``;
+export const ImageButton = styled.img`
+  position: relative;
+  left: 30px;
+  top: 30px;
+  width: 150px;
+  transform: scale(3.6);
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+export const MainButton = styled.div`
+  position: relative;
+  left: -35px;
+  top: -30px;
+  width: 150px;
+  height: 150px;
+  background-color: #FFF;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
 
 export const MenuButton = styled.a`
-  position: absolute;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 export const CloseButton = styled.a`
-  position: absolute;
   transition: all 0.3s ease;
   transform: translateY(50px);
   opacity: 0;
@@ -164,10 +182,17 @@ export const CircleButton = styled.button`
           -ms-flex-align: center;
           align-items: center;
 
+  @media (max-width: 900px) {
+    position: static;
+    width: 50px;
+    height: 50px;
+  }
+
   -webkit-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
   transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 
   opacity: 0;
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   z-index: -2;
   -webkit-transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
@@ -175,20 +200,31 @@ export const CircleButton = styled.button`
 
   &:nth-child(2) {top:0px;-webkit-transition-delay: 0s;transition-delay: 0s}
   &:nth-child(3) {top:0px;left:0px;-webkit-transition-delay: 0.1s;transition-delay: 0.1s}
-  &:nth-child(4) {left:0px;;-webkit-transition-delay: 0.2s;;transition-delay: 0.2s}
+  &:nth-child(4) {left:0px;-webkit-transition-delay: 0.2s;;transition-delay: 0.2s}
   &:nth-child(5) {top:0px;left:0px;-webkit-transition-delay: 0.3s;transition-delay: 0.3s}
   &:nth-child(6) {top:0px;-webkit-transition-delay: 0.4s;transition-delay: 0.4s}
   &:nth-child(7) {top:0px;left:0px;-webkit-transition-delay: 0.5s;transition-delay: 0.5s}
   &:nth-child(8) {left:0px;-webkit-transition-delay: 0.6s;transition-delay: 0.6s}
   &:nth-child(9) {top:0px;left:0px;-webkit-transition-delay: 0.7s;transition-delay: 0.7s}
 
-  &:hover {
-    margin-bottom: 15px;
-    }
-  }
 `;
 
-export const LabelMenu = styled.label``;
+export const IconsMenu = styled.img`
+  width: 50px;
+  height: 50px;
+
+  @media (max-width: 900px) {
+      transform: scale(0.6);
+    }
+`;
+
+export const LabelMenu = styled.label`
+  @media (max-width: 900px) {
+      position: absolute;
+      top: -140px;
+      right: -180px;
+    }
+`;
 
 export const CircleLink = styled.a``;
 

@@ -27,7 +27,7 @@ export function TextoBlog(){
     if (allergyMenu.egg) return <SubTitle color={handleColor}>Ovo</SubTitle>;
     if (allergyMenu.wheat) return <SubTitle color={handleColor}>Glúten</SubTitle>;
     if (allergyMenu.peanut) return <SubTitle color={handleColor}>Amendoim</SubTitle>;
-    if (allergyMenu.mustard) return <SubTitle color={handleColor}>Mustarda</SubTitle>;
+    if (allergyMenu.mustard) return <SubTitle color={handleColor}>Mostarda</SubTitle>;
     if (allergyMenu.fish) return <SubTitle color={handleColor}>Peixe</SubTitle>;
     if (allergyMenu.seafood) return <SubTitle color={handleColor}>Frutos do mar</SubTitle>;
     if (allergyMenu.milk) return <SubTitle color={handleColor}>Leite</SubTitle>;

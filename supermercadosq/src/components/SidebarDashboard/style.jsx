@@ -8,6 +8,12 @@ export const Sidebar = styled.aside`
   box-shadow: 4px 0 10px #d2d2d2;
   border-radius: 0 15px 15px 0;
   transition: 500ms all;
+
+  .open-btn {
+    left: 0px;
+    transition: 500ms all;
+    position: absolute;
+  }
 `;
 
 export const CloseIcon = styled.img`
@@ -20,9 +26,10 @@ export const CloseButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  position: relative;
-  left: 210px;
+  position: absolute;
+  left: 200px;
   top: 10px;
+  transition: 500ms all;
 
   &:hover {
     background: #1F073F;
@@ -64,11 +71,12 @@ export const SpanButton = styled.span`
   font-weight: 400;
 `;
 
-export const ButtonIcon = styled.img`
-  width: 20px;
+export const ButtonIcon = styled.span`
+  font-size: 20px;
   position: absolute;
   left: -40px;
-  top: -2px;
+  top: -7px;
+  color: #280851;
   opacity: 0;
   transition: all 200ms ease;
 `;

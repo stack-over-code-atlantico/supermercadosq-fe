@@ -13,6 +13,7 @@ const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSi
       show: false
     },
     tooltip: {
+      enabled: false,
       fillSeriesColor: false,
       followCursor: false,
       style: {

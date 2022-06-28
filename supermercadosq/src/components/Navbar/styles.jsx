@@ -57,7 +57,7 @@ export const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: -20px;
     right: 0;
     transform: translate(-100%, 75%);
     font-size: 1.8rem;

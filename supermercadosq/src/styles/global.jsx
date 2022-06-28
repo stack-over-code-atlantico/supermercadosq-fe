@@ -26,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
 
   //Tamanho de font 16px (para desktop) por padrão
   html{
+    scroll-behavior: smooth;
     @media(max-width: 1080px){
       font-sizing: 93.75%; //15px
     }
