@@ -16,7 +16,6 @@ export const GlobalStyle = createGlobalStyle`
     --color-white: #FFF;
   }
 
-
   * {
     margin: 0;
     padding: 0;
@@ -77,5 +76,7 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: auto;
     scrollbar-color: #692aba #d1d1d1;
   }
+
+
 
 `

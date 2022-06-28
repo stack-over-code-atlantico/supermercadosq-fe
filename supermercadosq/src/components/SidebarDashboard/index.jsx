@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { logout } from '../../services/useAuth';
 import {
   Sidebar,
   SidebarName,
@@ -13,7 +14,7 @@ import {
 import admIcon from '../../assets/icons/adm-icon.png';
 import postIcon from '../../assets/icons/post-icon.png';
 import commentIcon from '../../assets/icons/comment-icon.png';
-import userIcon from '../../assets/icons/user-icon.png';
+import logoutIcon from '../../assets/icons/logout-icon.png';
 import backIcon from '../../assets/icons/back-icon.png';
 
 const SidebarDashboard = () => {
@@ -24,28 +25,33 @@ const SidebarDashboard = () => {
     setOpen(!open);
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <>
       <Sidebar opened={open}>
-        <CloseButton onClick={handleOpen}>
           {
-            open
+            !open
               ? (
-                <CloseIcon
-                  width="8px"
-                  src={backIcon}
-                />
+                <CloseButton className={"open-btn"} onClick={handleOpen}>
+                  <CloseIcon
+                    width="7px"
+                    src={backIcon}
+                    style={{ transform: 'rotate(180deg)' }}
+                  />
+                </CloseButton>
               )
               : (
-                <CloseIcon
-                  width="8px"
-                  src={backIcon}
-                  style={{ transform: 'rotate(180deg)' }}
-                />
+                <CloseButton onClick={handleOpen}>
+                  <CloseIcon
+                    width="7px"
+                    src={backIcon}
+                  />
+                </CloseButton>
               )
           }
-        </CloseButton>
-
         <SidebarName>
           Emanuel
           <SidebarIcon src={admIcon} />
@@ -66,10 +72,10 @@ const SidebarDashboard = () => {
           </SpanButton>
         </SidebarButton>
 
-        <SidebarButton>
-          <SpanButton left="-51px">
-            <ButtonIcon src={userIcon} />
-            Usuários
+        <SidebarButton onClick={handleLogout}>
+          <SpanButton left="-68px">
+            <ButtonIcon src={logoutIcon}/>
+            Sair
           </SpanButton>
         </SidebarButton>
       </Sidebar>

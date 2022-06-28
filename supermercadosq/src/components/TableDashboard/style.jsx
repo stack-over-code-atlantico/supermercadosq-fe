@@ -6,14 +6,20 @@ export const Div = styled.div`
   overflow-y: auto;
 `;
 
+
+export const TableDiv = styled.div`
+  height: 100vh;
+  width: 100%;
+`;
+
 export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   text-align: center;
-  max-height: 280px;
+  max-height: 480px;
 
   tbody tr {
-    height: 60px;
+    height: 80px;
   }
 `;
 
@@ -25,15 +31,15 @@ export const TBody = styled.tbody``;
 
 export const TR = styled.tr`
   color: #000;
-  width: 25%;
   border-bottom: 2px solid #f6f6f6;
 `;
 
 export const TH = styled.th`
-  width: 25%;
+  height: 50px;
   position: sticky;
-  top:0;
+  top: 0;
   background: #fff;
+  border: transparent;
   z-index: 2;
 `;
 

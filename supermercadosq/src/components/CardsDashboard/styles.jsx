@@ -8,9 +8,11 @@ export const CardDashboard = styled.div`
   box-shadow: 1px 4px 4px #d2d2d2;
   border-radius: 20px;
   margin: 20px 0 0 20px;
+  position: relative;
   padding: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-flow: row wrap;
 `;
 
@@ -24,7 +26,10 @@ export const CardTitle = styled.h3`
 export const CardSection= styled.section`
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  padding: 0 8.5%;
+  justify-content: center;
   width: 100%;
+  height: 100vh;
   transition: 500ms all;
+  overflow-x: hidden;
 `;

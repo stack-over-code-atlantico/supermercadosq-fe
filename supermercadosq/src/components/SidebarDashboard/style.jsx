@@ -8,6 +8,12 @@ export const Sidebar = styled.aside`
   box-shadow: 4px 0 10px #d2d2d2;
   border-radius: 0 15px 15px 0;
   transition: 500ms all;
+
+  .open-btn {
+    left: 0px;
+    transition: 500ms all;
+    position: absolute;
+  }
 `;
 
 export const CloseIcon = styled.img`
@@ -21,8 +27,9 @@ export const CloseButton = styled.button`
   height: 40px;
   border-radius: 50%;
   position: absolute;
-  left: 215px;
+  left: 210px;
   top: 10px;
+  transition: 500ms all;
 
   &:hover {
     background: #1F073F;
