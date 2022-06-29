@@ -1,61 +1,79 @@
-import React, { useState } from 'react'
-import { LoginContainer, LoginLogo, StyleLogin } from './styles.jsx'
-import LogoSQ from '../../assets/images/LogoSQ.png'
-import AdressCheck from '../../components/SignupAdress/AdressCheck'
-import EmailCheck from '../../components/SignupEmail/EmailCheck'
-import InfosCheck from '../../components/SignupInfos/InfosCheck'
-import { IoIosArrowBack } from 'react-icons/io'
-import { BackHome } from '../../styles/CommunsStyles.jsx'
-import { SignupContext } from '../../Provider/Signup.provider.jsx'
+import React, { useState } from "react";
+import { LoginContainer, LoginLogo, StyleLogin } from "./styles.jsx";
+import LogoSQ from "../../assets/images/LogoSQ.png";
+import AdressCheck from "../../components/SignupAdress/AdressCheck";
+import EmailCheck from "../../components/SignupEmail/EmailCheck";
+import InfosCheck from "../../components/SignupInfos/InfosCheck";
+import { IoIosArrowBack } from "react-icons/io";
+import { BackHome } from "../../styles/CommunsStyles.jsx";
+import { SignupContext } from "../../Provider/Signup.provider.jsx";
+import { useCreateUser } from "../../services/useCreateUser.jsx";
 
 const SignIn = () => {
   //states to hange components
-  const [info, setInfo] = useState(false)
-  const [address, setAddress] = useState(false)
-  const [email, setEmail] = useState(true)
+  const [info, setInfo] = useState(false);
+  const [address, setAddress] = useState(false);
+  const [email, setEmail] = useState(true);
 
-  const [emailSignup, setEmailSignup] = useState('')
-  const [passwordSignup, setPasswordSignup] = useState('')
-  const [nameSignup, setNameSignup] = useState('')
-  const [docSignup, setDocSignup] = useState('')
-  const [cellNumberSignup, setCellNumberSignup] = useState('')
-  const [typeUserSignup, setTypeUserSignup] = useState('')
-  const [cepSignup, setCepSignup] = useState('')
-  const [streetSignup, setStreetSignup] = useState('')
-  const [addressNumberSignup, setAddressNumberSignup] = useState('')
-  const [neighborhoodSignup, setNeighborhoodSignup] = useState('')
-  const [citySignup, setCitySignup] = useState('')
-  const [stateAddressSignup, setStateAddressSignup] = useState('')
+  const [emailSignup, setEmailSignup] = useState("");
+  const [passwordSignup, setPasswordSignup] = useState("");
+  const [nameSignup, setNameSignup] = useState("");
+  const [docSignup, setDocSignup] = useState("");
+  const [cellNumberSignup, setCellNumberSignup] = useState("");
+  const [typeUserSignup, setTypeUserSignup] = useState("");
+  const [cepSignup, setCepSignup] = useState("");
+  const [streetSignup, setStreetSignup] = useState("");
+  const [addressNumberSignup, setAddressNumberSignup] = useState("");
+  const [neighborhoodSignup, setNeighborhoodSignup] = useState("");
+  const [citySignup, setCitySignup] = useState("");
+  const [stateAddressSignup, setStateAddressSignup] = useState("");
 
-  const handleEmail = e => {
-    e.preventDefault()
-    setEmail(true)
-    setInfo(false)
-  }
-  const handleAddress = e => {
-    e.preventDefault()
-    setAddress(true)
-    setInfo(false)
-    setNameSignup(nameSignup.trim())
-  }
-  const handleInfos = e => {
-    e.preventDefault()
-    setInfo(true)
-    setEmail(false)
-    setAddress(false)
-  }
-  const handleFinish = e => {
-    e.preventDefault()
-    console.log(dataSignup)
-  }
+  const handleEmail = (e) => {
+    e.preventDefault();
+    setEmail(true);
+    setInfo(false);
+  };
+  const handleAddress = (e) => {
+    e.preventDefault();
+    setAddress(true);
+    setInfo(false);
+    setNameSignup(nameSignup.trim());
+  };
+  const handleInfos = (e) => {
+    e.preventDefault();
+    setInfo(true);
+    setEmail(false);
+    setAddress(false);
+  };
+  const handleFinish = (e) => {
+    e.preventDefault();
+    const createNewUser = useCreateUser({
+      nome: nameSignup,
+      cpf_cnpj: docSignup,
+      email: emailSignup,
+      senha: passwordSignup,
+      nivel: typeUserSignup,
+      nome_social: null,
+      telefone: cellNumberSignup,
+      restricao_alimenticia: null,
+      cep: cepSignup,
+      logradouro: streetSignup,
+      numero: addressNumberSignup,
+      bairro: neighborhoodSignup,
+      cidade: citySignup,
+      estado: stateAddressSignup
+    });
+    return createNewUser;
+  };
+
   //change components
   const handleScreens = () => {
     if (address)
-      return <AdressCheck nextStep={handleFinish} prevStep={handleInfos} />
+      return <AdressCheck nextStep={handleFinish} prevStep={handleInfos} />;
     if (info)
-      return <InfosCheck nextStep={handleAddress} prevStep={handleEmail} />
-    if (email) return <EmailCheck nextStep={handleInfos} />
-  }
+      return <InfosCheck nextStep={handleAddress} prevStep={handleEmail} />;
+    if (email) return <EmailCheck nextStep={handleInfos} />;
+  };
 
   const dataSignup = {
     emailSignup,
@@ -69,8 +87,8 @@ const SignIn = () => {
     addressNumberSignup,
     neighborhoodSignup,
     citySignup,
-    stateAddressSignup
-  }
+    stateAddressSignup,
+  };
   return (
     <SignupContext.Provider
       value={{
@@ -97,7 +115,7 @@ const SignIn = () => {
         citySignup,
         setCitySignup,
         stateAddressSignup,
-        setStateAddressSignup
+        setStateAddressSignup,
       }}
     >
       <StyleLogin>
@@ -116,7 +134,7 @@ const SignIn = () => {
         </LoginContainer>
       </StyleLogin>
     </SignupContext.Provider>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
