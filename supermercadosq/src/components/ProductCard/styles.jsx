@@ -4,7 +4,9 @@ export const DivProductCardFace = styled.div`
     width: 240px;
     height: 380px;
 
-    perspective: 700px;
+    margin-top: 35px;
+
+    perspective: 800px;
 
     &:hover .front {
         transform: rotateY(180deg);
@@ -102,6 +104,11 @@ export const DivRestrictionAndName = styled.div`
 export const DivProductCardBackContent = styled.div`
     background-color: var(--color-blue-light);
 
+    width: 100%;
+    height: 100%;
+
+    border-radius: 0px 0px 10px 10px;
+
     position: relative;
 
     display: flex;
@@ -140,6 +147,13 @@ export const DivProductCardBackContent = styled.div`
 
 export const DivBackContentInfos = styled.div`
     background-color: var(--color-blue-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
 `;
 
 export const DivProductDescription = styled.div`
@@ -181,7 +195,7 @@ export const DivPersonDetails = styled.div`
         height: 22px;
 
         border-radius: 50%;
-        margin: 0px 10px 0px -15px;
+        margin: 0px 10px -10px -10px;
         padding: 0;
     }
 `;

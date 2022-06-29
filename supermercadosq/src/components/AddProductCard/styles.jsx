@@ -8,6 +8,8 @@ export const DivAddProductCard = styled.div`
     width: 240px;
     height: 380px;
 
+    margin-top: 35px;
+
     background-color: var(--color-gray-light);
 
     box-shadow: 0px 5px 10px gray;
