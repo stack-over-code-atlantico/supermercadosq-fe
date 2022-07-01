@@ -53,6 +53,17 @@ export function Navbar() {
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
+            <NavItem>
+                <NavLink to='/product' activestyle={{ color: '#3EBCD3' }} onClick={closeMobileMenu}>
+                  Produto
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to='/about' activestyle={{ color: '#3EBCD3' }}
+                  onClick={closeMobileMenu}>
+                  Sobre
+                </NavLink>
+              </NavItem>
               {
                 isLogged
                   ? (<></>)
@@ -71,17 +82,6 @@ export function Navbar() {
                     </>
                   )
               }
-              <NavItem>
-                <NavLink to='/product' activestyle={{ color: '#3EBCD3' }} onClick={closeMobileMenu}>
-                  Produto
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to='/about' activestyle={{ color: '#3EBCD3' }}
-                  onClick={closeMobileMenu}>
-                  Sobre
-                </NavLink>
-              </NavItem>
             </NavMenu>
             {
               isLogged

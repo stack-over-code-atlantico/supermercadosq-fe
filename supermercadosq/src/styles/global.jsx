@@ -20,7 +20,6 @@ export const GlobalStyle = createGlobalStyle`
     --position: 1;
   }
 
-
   * {
     margin: 0;
     padding: 0;
@@ -31,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
 
   //Tamanho de font 16px (para desktop) por padrão
   html{
+    scroll-behavior: smooth;
     @media(max-width: 1080px){
       font-sizing: 93.75%; //15px
     }
@@ -62,5 +62,26 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #d1d1d1;
+    border-radius: 13px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #692aba;
+    border-radius: 13px;
+    border: 3px solid #d1d1d1;
+  }
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #692aba #d1d1d1;
+  }
+
+
 
 `

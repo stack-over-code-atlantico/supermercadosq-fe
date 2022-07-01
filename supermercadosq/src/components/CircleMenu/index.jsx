@@ -19,6 +19,8 @@ import {
   MainButton,
   LabelMenu,
   CircleLink,
+  ImageButton,
+  IconsMenu,
 } from './styles';
 
 const CircleMenu = () => {
@@ -137,13 +139,13 @@ const CircleMenu = () => {
     <>
       <CircleDiv>
         <ToggleMenu id="toggle" checked={open} onChange={handleChange} />
-        <LabelMenu id="show-menu" for="toggle">
+        <LabelMenu id="show-menu" htmlFor="toggle">
           <MainButton
             onClick={() => handleHome()}
             className="btn main-btn"
           >
             <MenuButton className="toggleBtn menuBtn">
-              <img color="#9CDD6E" className="first-btn" src={menuIcon} />
+              <ImageButton src={menuIcon} />
             </MenuButton>
             <CloseButton className="toggleBtn closeBtn">
               <img src={closeIcon} />
@@ -154,14 +156,14 @@ const CircleMenu = () => {
             className="btn"
           >
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={homeIcon} />
+              <IconsMenu src={homeIcon} />
             </CircleLink>
           </CircleButton>
           <CircleButton
             onClick={() => handleEgg()}
             className="btn">
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={eggIcon} />
+              <IconsMenu src={eggIcon} />
             </CircleLink>
           </CircleButton>
           <CircleButton
@@ -169,7 +171,7 @@ const CircleMenu = () => {
             className="btn"
           >
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={wheatIcon} />
+              <IconsMenu src={wheatIcon} />
             </CircleLink>
           </CircleButton>
           <CircleButton
@@ -177,7 +179,7 @@ const CircleMenu = () => {
             className="btn"
           >
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={peanutIcon} />
+              <IconsMenu src={peanutIcon} />
             </CircleLink>
           </CircleButton>
           <CircleButton
@@ -185,7 +187,7 @@ const CircleMenu = () => {
             className="btn"
           >
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={mustardIcon} />
+              <IconsMenu src={mustardIcon} />
             </CircleLink>
           </CircleButton>
           <CircleButton
@@ -193,7 +195,7 @@ const CircleMenu = () => {
             className="btn"
           >
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={fishIcon} />
+              <IconsMenu src={fishIcon} />
             </CircleLink>
           </CircleButton>
           <CircleButton
@@ -201,7 +203,7 @@ const CircleMenu = () => {
             className="btn"
           >
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={seafoodIcon} />
+              <IconsMenu src={seafoodIcon} />
             </CircleLink>
           </CircleButton>
           <CircleButton
@@ -209,7 +211,7 @@ const CircleMenu = () => {
             className="btn"
           >
             <CircleLink className="btn-icon">
-              <img className="img-circle" src={milkIcon} />
+              <IconsMenu src={milkIcon} />
             </CircleLink>
           </CircleButton>
         </LabelMenu>

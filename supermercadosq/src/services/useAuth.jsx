@@ -16,8 +16,7 @@ export const userLevel = () => {
   } catch (error) {
     console.log(error);
   }
-
-}
+};
 
 export const login = async (login) => {
 

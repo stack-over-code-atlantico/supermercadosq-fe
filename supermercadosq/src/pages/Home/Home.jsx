@@ -30,8 +30,10 @@ export function Home(){
         alignItems: 'center',
         height: '90vh'}}
       >
-        <Circle />
-        <TextoBlog />
+        <div>
+          <Circle />
+          <TextoBlog />
+        </div>
         <CircleMenu />
       </div>
     </MenuContext.Provider>
