@@ -13,8 +13,10 @@ export const GlobalStyle = createGlobalStyle`
     --color-brown: #C87C53;
     --color-black: #020000;
     --color-gray: #858585;
+    --color-gray-light: #e9ebed;
     --color-white: #FFF;
-
+    --color-purple: #9F6EDD;
+  }
     --items: 5;
     --middle: 3;
     --position: 1;
@@ -81,7 +83,4 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: auto;
     scrollbar-color: #692aba #d1d1d1;
   }
-
-
-
 `

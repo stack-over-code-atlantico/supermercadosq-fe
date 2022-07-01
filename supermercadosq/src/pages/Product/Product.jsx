@@ -1,7 +1,10 @@
 import React from 'react'
-import { Navbar } from '../../components/Navbar';
-import { UserLevel } from '../../Provider/UserLevel.provider';
-import { userLevel } from '../../services/useAuth';
+
+import { NavbarProducts } from '../../components/NavbarProducts'
+import { Footer } from '../../components/Footer'
+import { NavbarAdm } from '../../components/NavbarProductsAdm'
+import { CardsContainer } from '../../components/CardsContainer'
+import { FilterButton } from '../../components/FilterButton'
 
 export function Product(){
 
@@ -9,15 +12,11 @@ export function Product(){
 
   return (
     <>
-    <Navbar />
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '90vh'}}
-    >
-      <h1>Product</h1>
-    </div>
+      <NavbarAdm/>
+      <NavbarProducts/>
+      <FilterButton/>
+      <CardsContainer/>
+      <Footer/>
     </>
   )
 }

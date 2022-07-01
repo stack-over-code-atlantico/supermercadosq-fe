@@ -7,7 +7,6 @@ import { Div } from './styles'
 import { MenuContext } from '../../Provider/Menu.provider';
 
 export function TextoBlog(){
-
   const { allergyMenu } = useContext(MenuContext);
 
   const handleColor = () => {
