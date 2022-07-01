@@ -117,3 +117,4 @@ export const SpanText = styled.span`
   background-repeat: no-repeat;
   background-size: 90%;
 `;
+

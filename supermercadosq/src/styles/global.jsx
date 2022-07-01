@@ -14,6 +14,10 @@ export const GlobalStyle = createGlobalStyle`
     --color-black: #020000;
     --color-gray: #858585;
     --color-white: #FFF;
+
+    --items: 5;
+    --middle: 3;
+    --position: 1;
   }
 
   * {
