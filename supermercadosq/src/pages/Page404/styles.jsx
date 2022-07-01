@@ -120,7 +120,7 @@ export const ErrorBlue404 = styled.div`
       font-size: 2rem;
     }
   }
-  
+
 `
 
 export const CircleSmallMustard = styled.div`
@@ -136,7 +136,7 @@ export const CircleSmallMustard = styled.div`
 
 export const CardText = styled.div`
   position: absolute;
-  bottom: 20%;
+  bottom: 23%;
   right: 24%;
   display: inline;
   flex-direction: column;
@@ -165,7 +165,7 @@ export const CardText = styled.div`
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
   }
-  
+
 
   @media(max-width: 500px){
     #error404 {

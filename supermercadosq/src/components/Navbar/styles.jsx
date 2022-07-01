@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
 
 export const Nav = styled.nav`
   background: transparent; /* transparent */
@@ -10,7 +9,7 @@ export const Nav = styled.nav`
   z-index: 10;
 `;
 
-export const NavbarContainer = styled.div`  
+export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100%;
@@ -39,14 +38,14 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
-  @media screen and (max-width: 768px) {  
+  @media screen and (max-width: 768px) {
     text-align: center;
     padding: 2rem;
     width: 100%;
     display: table;
-    &:hover {  
+    &:hover {
       color: #4b59f7;
-      transition: all 0.3s ease;  
+      transition: all 0.3s ease;
     }
   }
 `;
@@ -58,7 +57,7 @@ export const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: -20px;
     right: 0;
     transform: translate(-100%, 75%);
     font-size: 1.8rem;
@@ -91,19 +90,19 @@ export const NavMenu = styled.ul`
   }
 `;
 
-export const NavItem = styled.li`  
-  height: 80px;  
-  border-bottom: 2px solid transparent;  
-  &:hover {  
-    border-bottom: 2px solid #4b59f7;  
-  }  
-  @media screen and (max-width: 768px) {  
-    width: 100%;  
-    &:hover {  
-      border: none;  
-    }  
-  }  
-`;  
+export const NavItem = styled.li`
+  height: 80px;
+  border-bottom: 2px solid transparent;
+  &:hover {
+    border-bottom: 2px solid #4b59f7;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    &:hover {
+      border: none;
+    }
+  }
+`;
 
 export const NavInf = styled.div`
   display: flex;
@@ -116,4 +115,21 @@ export const NavInf = styled.div`
 
 export const NavLabel = styled.div`
   padding: 10px 5px 10px 22px;
+  position: relative;
+  right: -50%;
+`;
+
+export const NavLogout = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  position: relative;
+  right: -45%;
+`;
+
+export const NavIcon = styled.img`
+  width: 20px;
+  position: relative;
+  top: 5px;
+  left: 5px;
 `;

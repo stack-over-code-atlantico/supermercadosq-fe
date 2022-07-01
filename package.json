@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "nookies": "^2.5.2",
+    "react-select": "^5.3.2"
+  }
+}
