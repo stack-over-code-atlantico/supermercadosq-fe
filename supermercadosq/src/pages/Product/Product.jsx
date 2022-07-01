@@ -7,9 +7,6 @@ import { CardsContainer } from '../../components/CardsContainer'
 import { FilterButton } from '../../components/FilterButton'
 
 export function Product(){
-
-  console.log(userLevel());
-
   return (
     <>
       <NavbarAdm/>
