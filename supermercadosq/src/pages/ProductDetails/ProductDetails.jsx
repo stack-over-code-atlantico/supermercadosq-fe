@@ -4,7 +4,8 @@ import fishIcon from "../../assets/icons/fish.png";
 import UserComment from "../../components/UserComment/UserComment";
 import { IoReturnDownBackOutline } from "react-icons/io5";
 import { AiOutlineSend } from "react-icons/ai";
-
+import { getOneProduct } from "../../services/useProductOne";
+import { useEffect,useState } from "react";
 import {
   Comment,
   DetailsComments,
@@ -20,6 +21,14 @@ import {
 } from "./styles";
 
 const ProductDetails = () => {
+const [data, setData]= useState()
+
+  useEffect(() => {
+     getOneProduct(11).then(resp=>{
+      setData(resp.data)
+     })
+     console.log(data)
+  }, []);
   return (
     <DetailsContainer>
       <DetailsImage>
@@ -29,25 +38,14 @@ const ProductDetails = () => {
         <img src={sushiImage} alt="mesa com sushi" />
       </DetailsImage>
       <DetailsComments>
-        <UserComment />
+        <UserComment user={data?.usuario_produto_id_usuarioTousuario.nome} dataPublicacao={data?.data_postagem}/>
         <PostComment>
           <PostContainer>
-            <h3>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-              alias aliquam illum quasi at ab odio obcaecati aut ullam nemo
-              maxime, ratione provident. Fuga est, animi sequi sapiente
-              blanditiis porro. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit.
-            </h3>
+            <span>{data?.nome}</span>
+            <h3>{data?.descricao}</h3>
             <NutritionalContainer>
               <NutritionalTable>
-                <p>Calorias (valor energético) 26.70 kcal 1.34%</p>{" "}
-                <p>Carboidratos líquidos 5.01 g -</p>
-                <p>Carboidratos 5.01 g 1.67%</p> <p>Proteínas 1.44 g 0.48%</p>
-                <p> Gorduras totais 0.12 g 0.22%</p>
-                <p>Gorduras saturadas 0.00 g 0.00%</p>
-                <p>Fibra alimentar 0.00 g 0.00% </p>
-                <p>Sódio 0.00 mg 0.00% </p>
+                <p>{data?.ingredientes}</p>
               </NutritionalTable>
               <IconType>
                 <div id="IconType">

@@ -2,7 +2,10 @@ import React from 'react'
 import { UserAvatar, User, UserDetails, UserName, UserIcons } from './styles'
 import { FiAlertTriangle, FiEdit2, FiTrash } from 'react-icons/fi'
 
-const UserComment = () => {
+const UserComment = ({user, dataPublicacao}) => {
+  if(dataPublicacao){
+    dataPublicacao = dataPublicacao.slice(0,10).split('-').reverse().join('/')
+  }
   return (
     <User>
       <UserDetails>
@@ -10,8 +13,8 @@ const UserComment = () => {
 
         </UserAvatar>
         <UserName>
-          <h1>Cris</h1>
-          <h2>Publicado em 20/02/2022</h2>
+          <h1>{user}</h1>
+          <h2>{dataPublicacao}</h2>
         </UserName>
       </UserDetails>
       <UserIcons>

@@ -166,7 +166,7 @@ export const PostComment = styled.div`
 
 export const PostContainer = styled.div`
   height: 220px;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-bottom: 2px solid #0000002b;
 
   ::-webkit-scrollbar {
