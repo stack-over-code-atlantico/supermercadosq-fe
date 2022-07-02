@@ -5,7 +5,7 @@ import UserComment from "../../components/UserComment/UserComment";
 import { IoReturnDownBackOutline } from "react-icons/io5";
 import { AiOutlineSend } from "react-icons/ai";
 import { getOneProduct } from "../../services/useProductOne";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Comment,
   DetailsComments,
@@ -19,15 +19,20 @@ import {
   PostComment,
   PostContainer,
 } from "./styles";
+import { getCommentsByProduct } from "../../services/useCommentByProduct";
 
 const ProductDetails = () => {
-const [data, setData]= useState()
+  const [dataProduct, setDataProduct] = useState();
+  const [dataComment, setDataComment] = useState();
 
   useEffect(() => {
-     getOneProduct(11).then(resp=>{
-      setData(resp.data)
-     })
-     console.log(data)
+    getOneProduct(1).then((resp) => {
+      setDataProduct(resp.data);
+    });
+    getCommentsByProduct(1).then((resp) => {
+      setDataComment(resp.data);
+    });
+    console.log(dataComment);
   }, []);
   return (
     <DetailsContainer>
@@ -38,14 +43,17 @@ const [data, setData]= useState()
         <img src={sushiImage} alt="mesa com sushi" />
       </DetailsImage>
       <DetailsComments>
-        <UserComment user={data?.usuario_produto_id_usuarioTousuario.nome} dataPublicacao={data?.data_postagem}/>
+        <UserComment
+          user={dataProduct?.usuario_produto_id_usuarioTousuario.nome}
+          dataPublicacao={dataProduct?.data_postagem}
+        />
         <PostComment>
           <PostContainer>
-            <span>{data?.nome}</span>
-            <h3>{data?.descricao}</h3>
+            <span>{dataProduct?.nome}</span>
+            <h3>{dataProduct?.descricao}</h3>
             <NutritionalContainer>
               <NutritionalTable>
-                <p>{data?.ingredientes}</p>
+                <p>{dataProduct?.ingredientes}</p>
               </NutritionalTable>
               <IconType>
                 <div id="IconType">
@@ -61,24 +69,15 @@ const [data, setData]= useState()
             </button>
           </NewComment>
           <ListComments>
-            <Comment>
-              <UserComment />
-              <p>
-                ComentarioComentarioComentaioComenta
-                ComentarioComentarioComentario ComentarioComentarioComentario
-              </p>
-            </Comment>
-            <Comment>
-              <UserComment />
-              <p>
-                ComentarioComentarioComentaioComenta
-                ComentarioComentarioComentario ComentarioComentarioComentario
-              </p>
-            </Comment>
-            <Comment>
-              <UserComment />
-              <p>Comentario</p>
-            </Comment>
+            {dataComment?.map((comment) => {
+              return (
+                <Comment key={comment.id_comentario}>
+                  <UserComment user={comment?.usuario_comentario_id_usuarioTousuario.nome}
+          dataPublicacao={comment?.data_comentario}/>
+                  <p>{comment.mensagem}</p>
+                </Comment>
+              );
+            })}
           </ListComments>
         </PostComment>
       </DetailsComments>
