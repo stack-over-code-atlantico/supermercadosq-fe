@@ -32,7 +32,6 @@ const ProductDetails = () => {
     getCommentsByProduct(1).then((resp) => {
       setDataComment(resp.data);
     });
-    console.log(dataComment);
   }, []);
   return (
     <DetailsContainer>
@@ -44,7 +43,8 @@ const ProductDetails = () => {
       </DetailsImage>
       <DetailsComments>
         <UserComment
-          user={dataProduct?.usuario_produto_id_usuarioTousuario.nome}
+          userOwner={dataProduct?.usuario_produto_id_usuarioTousuario.nome}
+          userIdOwner={dataProduct?.id_usuario}
           dataPublicacao={dataProduct?.data_postagem}
         />
         <PostComment>
@@ -72,8 +72,11 @@ const ProductDetails = () => {
             {dataComment?.map((comment) => {
               return (
                 <Comment key={comment.id_comentario}>
-                  <UserComment user={comment?.usuario_comentario_id_usuarioTousuario.nome}
-          dataPublicacao={comment?.data_comentario}/>
+                  <UserComment
+                    userOwner={comment?.usuario_comentario_id_usuarioTousuario.nome}
+                    userIdOwner={comment?.id_usuario}
+                    dataPublicacao={comment?.data_comentario}
+                  />
                   <p>{comment.mensagem}</p>
                 </Comment>
               );

@@ -45,8 +45,25 @@ export const UserIcons = styled.div`
     cursor: pointer;
     margin: 3px;
 
-    &:hover {
-      color: crimson;
+    #denounce {
+      color: var(--color-red)
     }
+
+    #trash {
+      color: var(--color-gray)
+    }
+
+    #edit {
+      color: var(--color-blue-light)
+    }
+
+    /* &:hover {
+      color: ;
+    } */
   }
+
+`;
+
+export const IconNotVisible = styled.a`
+  display: none;
 `;
