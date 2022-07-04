@@ -10,7 +10,7 @@ import Dashboard from '../pages/Dashboard/dashboard';
 import { userLevel } from '../services/useAuth';
 import Cookies from 'js-cookie';
 import ProductRegister from '../components/ProductRegister';
-
+import Profile from '../pages/Profile/Profile';
 
 const AppRoutes = () => {
   let level = 'CLIENTE';
@@ -29,6 +29,7 @@ const AppRoutes = () => {
         <Route path="/about" element={<About/>}/>
         <Route path="/*" element={<Page404/>} />
         <Route path="/ProductRegister" element={<ProductRegister/>} />
+        <Route path="/login/profile" element={<Profile />} />
     </Routes>
   )
 }
