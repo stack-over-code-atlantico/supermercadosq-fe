@@ -15,6 +15,7 @@ export const useNewReport = async (data) => {
       })
       .catch((err) => {
         alert('Ocorreu um Erro')
+        console.log(err)
       });
 
     return products;
@@ -27,6 +28,7 @@ export const useNewReport = async (data) => {
     })
     .catch((err) => {
       alert('Ocorreu um Erro')
+      console.log(err)
     });
 
   return comments;

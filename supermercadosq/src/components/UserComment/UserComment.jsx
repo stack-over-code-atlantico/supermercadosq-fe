@@ -5,6 +5,7 @@ import { userLevel } from "../../services/useAuth";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNewReport } from "../../services/useNewReport";
+import { useDeleteItem } from "../../services/useDeleteItem";
 
 const UserComment = ({ id_item, userOwner, dataPublicacao, userIdOwner, typeItem }) => {
   if (dataPublicacao) {
@@ -37,7 +38,11 @@ const UserComment = ({ id_item, userOwner, dataPublicacao, userIdOwner, typeItem
   };
 
   function handleDelete(){
-
+    const deleteComment= useDeleteItem({
+      id_item,
+      typeItem
+    })
+    return deleteComment
   }
 
   function handleNewReport(){
