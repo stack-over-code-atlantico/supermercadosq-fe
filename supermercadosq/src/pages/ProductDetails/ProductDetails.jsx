@@ -20,19 +20,40 @@ import {
   PostContainer,
 } from "./styles";
 import { getCommentsByProduct } from "../../services/useCommentByProduct";
+import { useDeleteItem } from "../../services/useDeleteItem";
 
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
 
   useEffect(() => {
-    getOneProduct(1).then((resp) => {
+    getProduct(1)
+    getComments(1)
+  }, []);
+
+  function getProduct(id_produto){
+    getOneProduct(id_produto).then(resp=>{
       setDataProduct(resp.data);
-    });
-    getCommentsByProduct(1).then((resp) => {
+    })
+  }
+  function getComments(id_produto){
+    getCommentsByProduct(id_produto).then((resp) => {
       setDataComment(resp.data);
     });
-  }, []);
+  }
+
+  function handleDeleteTeste(id_item, typeItem){
+    const deleteCommentAxios= useDeleteItem({
+      id_item,
+      typeItem
+    })
+    const deleteComment = dataComment.filter(comment=>{
+      return comment.id_comentario != id_item
+    })
+    setDataComment(deleteComment)
+    return deleteCommentAxios
+  }
+
   return (
     <DetailsContainer>
       <DetailsImage>
@@ -80,6 +101,7 @@ const ProductDetails = () => {
                     userIdOwner={comment?.id_usuario}
                     dataPublicacao={comment?.data_comentario}
                     typeItem='comentario'
+                    onDeleteComment={handleDeleteTeste}
                   />
                   <p>{comment.mensagem}</p>
                 </Comment>

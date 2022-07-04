@@ -7,7 +7,14 @@ import { useEffect } from "react";
 import { useNewReport } from "../../services/useNewReport";
 import { useDeleteItem } from "../../services/useDeleteItem";
 
-const UserComment = ({ id_item, userOwner, dataPublicacao, userIdOwner, typeItem }) => {
+const UserComment = ({
+  id_item,
+  userOwner,
+  dataPublicacao,
+  userIdOwner,
+  typeItem,
+  onDeleteComment,
+}) => {
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
   }
@@ -37,21 +44,17 @@ const UserComment = ({ id_item, userOwner, dataPublicacao, userIdOwner, typeItem
     }
   };
 
-  function handleDelete(){
-    const deleteComment= useDeleteItem({
-      id_item,
-      typeItem
-    })
-    return deleteComment
+  function handleDelete() {
+    onDeleteComment(id_item, typeItem)
   }
 
-  function handleNewReport(){
+  function handleNewReport() {
     const newReport = useNewReport({
-      id_item, 
-      typeItem
-    })
-    console.log(id_item, typeItem)
-    return newReport
+      id_item,
+      typeItem,
+    });
+    console.log(id_item, typeItem);
+    return newReport;
   }
 
   return (
@@ -65,13 +68,21 @@ const UserComment = ({ id_item, userOwner, dataPublicacao, userIdOwner, typeItem
       </UserDetails>
       <UserIcons>
         <a>
-          <FiAlertTriangle onClick={handleNewReport} id="denounce" display={displayIconDenounce} />
+          <FiAlertTriangle
+            onClick={handleNewReport}
+            id="denounce"
+            display={displayIconDenounce}
+          />
         </a>
         <a>
           <FiEdit2 id="edit" display={displayIconEdit} />
         </a>
         <a>
-          <FiTrash onClick={handleDelete} id="trash" display={displayIconDelete} />
+          <FiTrash
+            onClick={handleDelete}
+            id="trash"
+            display={displayIconDelete}
+          />
         </a>
       </UserIcons>
     </User>
