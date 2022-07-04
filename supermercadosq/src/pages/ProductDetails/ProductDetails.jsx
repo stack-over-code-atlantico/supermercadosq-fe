@@ -27,31 +27,34 @@ const ProductDetails = () => {
   const [dataComment, setDataComment] = useState();
 
   useEffect(() => {
-    getProduct(1)
-    getComments(1)
+    getProduct(1);
+    getComments(1);
   }, []);
 
-  function getProduct(id_produto){
-    getOneProduct(id_produto).then(resp=>{
+  function getProduct(id_produto) {
+    getOneProduct(id_produto).then((resp) => {
       setDataProduct(resp.data);
-    })
+    });
   }
-  function getComments(id_produto){
+  function getComments(id_produto) {
     getCommentsByProduct(id_produto).then((resp) => {
       setDataComment(resp.data);
     });
   }
 
-  function handleDeleteTeste(id_item, typeItem){
-    const deleteCommentAxios= useDeleteItem({
+  async function handleDeleteTeste(id_item, typeItem) {
+    const deleteCommentAxios = useDeleteItem({
       id_item,
-      typeItem
-    })
-    const deleteComment = dataComment.filter(comment=>{
-      return comment.id_comentario != id_item
-    })
-    setDataComment(deleteComment)
-    return deleteCommentAxios
+      typeItem,
+    });
+    if ((await deleteCommentAxios) instanceof Error) {
+      return Error;
+    }
+    const deleteComment = dataComment.filter((comment) => {
+      return comment.id_comentario != id_item;
+    });
+    setDataComment(deleteComment);
+    return deleteCommentAxios;
   }
 
   return (
@@ -64,11 +67,11 @@ const ProductDetails = () => {
       </DetailsImage>
       <DetailsComments>
         <UserComment
-          id_item = {dataProduct?.id_produto}
+          id_item={dataProduct?.id_produto}
           userOwner={dataProduct?.usuario_produto_id_usuarioTousuario.nome}
           userIdOwner={dataProduct?.id_usuario}
           dataPublicacao={dataProduct?.data_postagem}
-          typeItem='produto'
+          typeItem="produto"
         />
         <PostComment>
           <PostContainer>
@@ -96,11 +99,13 @@ const ProductDetails = () => {
               return (
                 <Comment key={comment.id_comentario}>
                   <UserComment
-                    id_item = {comment?.id_comentario}
-                    userOwner={comment?.usuario_comentario_id_usuarioTousuario.nome}
+                    id_item={comment?.id_comentario}
+                    userOwner={
+                      comment?.usuario_comentario_id_usuarioTousuario.nome
+                    }
                     userIdOwner={comment?.id_usuario}
                     dataPublicacao={comment?.data_comentario}
-                    typeItem='comentario'
+                    typeItem="comentario"
                     onDeleteComment={handleDeleteTeste}
                   />
                   <p>{comment.mensagem}</p>

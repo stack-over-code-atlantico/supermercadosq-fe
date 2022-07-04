@@ -15,6 +15,7 @@ export const useDeleteItem = async (data) => {
     .catch((err) => {
       alert('Ocorreu um Erro')
       console.log(err)
+      
     });
 
   return produto;
@@ -28,6 +29,7 @@ export const useDeleteItem = async (data) => {
     .catch((err) => {
       alert('Ocorreu um Erro')
       console.log(err)
+      return new Error('Falha ao Deletar')
     });
 
   return comments;
