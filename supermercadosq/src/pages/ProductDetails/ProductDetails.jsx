@@ -42,19 +42,21 @@ const ProductDetails = () => {
     });
   }
 
-  async function handleDeleteTeste(id_item, typeItem) {
-    const deleteCommentAxios = useDeleteItem({
+  async function handleDeleteItem(id_item, typeItem) {
+    const deleteItemAxios = useDeleteItem({
       id_item,
       typeItem,
     });
-    if ((await deleteCommentAxios) instanceof Error) {
+    if ((await deleteItemAxios) instanceof Error) {
       return Error;
     }
-    const deleteComment = dataComment.filter((comment) => {
-      return comment.id_comentario != id_item;
-    });
-    setDataComment(deleteComment);
-    return deleteCommentAxios;
+    if(typeItem=='comentario'){
+      const deleteItem = dataComment.filter((comment) => {
+        return comment.id_comentario != id_item;
+      });
+      setDataComment(deleteItem);
+    } 
+    return deleteItemAxios;
   }
 
   return (
@@ -72,6 +74,7 @@ const ProductDetails = () => {
           userIdOwner={dataProduct?.id_usuario}
           dataPublicacao={dataProduct?.data_postagem}
           typeItem="produto"
+          onDeleteItem={handleDeleteItem}
         />
         <PostComment>
           <PostContainer>
@@ -106,7 +109,7 @@ const ProductDetails = () => {
                     userIdOwner={comment?.id_usuario}
                     dataPublicacao={comment?.data_comentario}
                     typeItem="comentario"
-                    onDeleteComment={handleDeleteTeste}
+                    onDeleteItem={handleDeleteItem}
                   />
                   <p>{comment.mensagem}</p>
                 </Comment>
