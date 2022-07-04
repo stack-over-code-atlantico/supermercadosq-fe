@@ -4,8 +4,9 @@ import { FiAlertTriangle, FiEdit2, FiTrash } from "react-icons/fi";
 import { userLevel } from "../../services/useAuth";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNewReport } from "../../services/useNewReport";
 
-const UserComment = ({ userOwner, dataPublicacao, userIdOwner }) => {
+const UserComment = ({ id_item, userOwner, dataPublicacao, userIdOwner, typeItem }) => {
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
   }
@@ -23,20 +24,30 @@ const UserComment = ({ userOwner, dataPublicacao, userIdOwner }) => {
       setDisplayIconDenounce("none");
       setDisplayIconEdit("inline");
       setDisplayIconDelete("inline");
-      console.log("ok");
       return;
     } else if (userLevel().nivel === "ADMINISTRADOR") {
-      console.log("ok2");
       setDisplayIconEdit("none");
       setDisplayIconDenounce("none");
       setDisplayIconDelete("inline");
     } else {
-      console.log("ok3");
       setDisplayIconDenounce("inline");
       setDisplayIconEdit("none");
       setDisplayIconDelete("none");
     }
   };
+
+  function handleDelete(){
+
+  }
+
+  function handleNewReport(){
+    const newReport = useNewReport({
+      id_item, 
+      typeItem
+    })
+    console.log(id_item, typeItem)
+    return newReport
+  }
 
   return (
     <User>
@@ -49,13 +60,13 @@ const UserComment = ({ userOwner, dataPublicacao, userIdOwner }) => {
       </UserDetails>
       <UserIcons>
         <a>
-          <FiAlertTriangle id="denounce" display={displayIconDenounce} />
+          <FiAlertTriangle onClick={handleNewReport} id="denounce" display={displayIconDenounce} />
         </a>
         <a>
           <FiEdit2 id="edit" display={displayIconEdit} />
         </a>
         <a>
-          <FiTrash id="trash" display={displayIconDelete} />
+          <FiTrash onClick={handleDelete} id="trash" display={displayIconDelete} />
         </a>
       </UserIcons>
     </User>

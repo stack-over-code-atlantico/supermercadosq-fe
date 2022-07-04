@@ -43,9 +43,11 @@ const ProductDetails = () => {
       </DetailsImage>
       <DetailsComments>
         <UserComment
+          id_item = {dataProduct?.id_produto}
           userOwner={dataProduct?.usuario_produto_id_usuarioTousuario.nome}
           userIdOwner={dataProduct?.id_usuario}
           dataPublicacao={dataProduct?.data_postagem}
+          typeItem='produto'
         />
         <PostComment>
           <PostContainer>
@@ -73,9 +75,11 @@ const ProductDetails = () => {
               return (
                 <Comment key={comment.id_comentario}>
                   <UserComment
+                    id_item = {comment?.id_comentario}
                     userOwner={comment?.usuario_comentario_id_usuarioTousuario.nome}
                     userIdOwner={comment?.id_usuario}
                     dataPublicacao={comment?.data_comentario}
+                    typeItem='comentario'
                   />
                   <p>{comment.mensagem}</p>
                 </Comment>
