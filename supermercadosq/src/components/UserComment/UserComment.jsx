@@ -13,6 +13,7 @@ const UserComment = ({
   userIdOwner,
   typeItem,
   onDeleteItem,
+  onReportItem
 }) => {
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
@@ -49,12 +50,7 @@ const UserComment = ({
   }
 
   function handleNewReport() {
-    const newReport = useNewReport({
-      id_item,
-      typeItem,
-    });
-    console.log(id_item, typeItem);
-    return newReport;
+    onReportItem(id_item,typeItem)
   }
 
   return (

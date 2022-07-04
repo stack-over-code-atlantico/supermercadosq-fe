@@ -21,6 +21,7 @@ import {
 } from "./styles";
 import { getCommentsByProduct } from "../../services/useCommentByProduct";
 import { useDeleteItem } from "../../services/useDeleteItem";
+import { useNewReport } from "../../services/useNewReport";
 
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
@@ -58,6 +59,22 @@ const ProductDetails = () => {
     } 
     return deleteItemAxios;
   }
+  async function handleReportItem(id_item, typeItem) {
+    const reportItemAxios = useNewReport({
+      id_item,
+      typeItem,
+    });
+    if ((await reportItemAxios) instanceof Error) {
+      return Error;
+    }
+    if(typeItem=='comentario'){
+      const deleteItem = dataComment.filter((comment) => {
+        return comment.id_comentario != id_item;
+      });
+      setDataComment(deleteItem);
+    } 
+    return reportItemAxios;
+  }
 
   return (
     <DetailsContainer>
@@ -75,6 +92,7 @@ const ProductDetails = () => {
           dataPublicacao={dataProduct?.data_postagem}
           typeItem="produto"
           onDeleteItem={handleDeleteItem}
+          onReportItem={handleReportItem}
         />
         <PostComment>
           <PostContainer>
@@ -110,6 +128,7 @@ const ProductDetails = () => {
                     dataPublicacao={comment?.data_comentario}
                     typeItem="comentario"
                     onDeleteItem={handleDeleteItem}
+                    onReportItem={handleReportItem}
                   />
                   <p>{comment.mensagem}</p>
                 </Comment>
