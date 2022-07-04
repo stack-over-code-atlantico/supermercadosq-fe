@@ -9,42 +9,34 @@ const UserComment = ({ userOwner, dataPublicacao, userIdOwner }) => {
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
   }
-  const [usuario, setUsuario] = useState({});
-  const [usuarioId, setUsuarioId] = useState("");
-  const [usuarioNivel, setUsuarioNivel] = useState("");
+
   const [displayIconDenounce, setDisplayIconDenounce] = useState("inline");
   const [displayIconDelete, setDisplayIconDelete] = useState("inline");
   const [displayIconEdit, setDisplayIconEdit] = useState("inline");
 
   useEffect(() => {
-    setUsuario(userLevel);
-    setUsuarioId(usuario.id_usuario);
-    setUsuarioNivel(usuario.nivel);
-  }, []);
+    validIcon();
+  }, [userIdOwner]);
 
   const validIcon = () => {
-    if (usuario.id_usuario == userIdOwner || usuarioId == userIdOwner) {
+    if (userLevel().id_usuario == userIdOwner) {
       setDisplayIconDenounce("none");
-      console.log("ok 1");
-    } else if (
-      usuario.nivel === "ADMINISTRADOR" ||
-      usuarioNivel == "ADMINISTRADOR"
-    ) {
+      setDisplayIconEdit("inline");
+      setDisplayIconDelete("inline");
+      console.log("ok");
+      return;
+    } else if (userLevel().nivel === "ADMINISTRADOR") {
+      console.log("ok2");
       setDisplayIconEdit("none");
       setDisplayIconDenounce("none");
-      console.log("ok 2");
-    } else if (
-      usuario.nivel === "CLIENTE" ||
-      (usuario.nivel === "FORNECEDOR" && usuario.id_usuario != userIdOwner)
-    ) {
+      setDisplayIconDelete("inline");
+    } else {
+      console.log("ok3");
+      setDisplayIconDenounce("inline");
       setDisplayIconEdit("none");
       setDisplayIconDelete("none");
-      console.log("ok 3");
     }
   };
-  useEffect(() => {
-    validIcon();
-  }, [usuarioId, usuarioNivel]);
 
   return (
     <User>
