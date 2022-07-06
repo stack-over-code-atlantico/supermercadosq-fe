@@ -46,7 +46,7 @@ const UserComment = ({
 
   function handleDelete() {
     onDeleteItem(id_item, typeItem)
-    
+
   }
 
   function handleNewReport() {

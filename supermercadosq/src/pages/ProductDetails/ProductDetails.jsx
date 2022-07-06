@@ -22,10 +22,14 @@ import {
 import { getCommentsByProduct } from "../../services/useCommentByProduct";
 import { useDeleteItem } from "../../services/useDeleteItem";
 import { useNewReport } from "../../services/useNewReport";
+import { useCreateComment} from '../../services/useCreateComment'
 
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
+  const [messageComment, setMessageComment] = useState('')
+  const [idProdComment, setIdProdComment] = useState('1')
+  const [idUserComment, setIdUserComment] = useState('')
 
   useEffect(() => {
     getProduct(1);
@@ -43,6 +47,16 @@ const ProductDetails = () => {
     });
   }
 
+
+  const handleCreateComment = () => {
+    const createNewComment = useCreateComment({
+      mensagem: messageComment,
+      id_produto: idProdComment,
+      id_usuario: idUserComment });
+      setMessageComment('')
+    return createNewComment;
+  };
+
   async function handleDeleteItem(id_item, typeItem) {
     const deleteItemAxios = useDeleteItem({
       id_item,
@@ -56,7 +70,7 @@ const ProductDetails = () => {
         return comment.id_comentario != id_item;
       });
       setDataComment(deleteItem);
-    } 
+    }
     return deleteItemAxios;
   }
   async function handleReportItem(id_item, typeItem) {
@@ -72,7 +86,7 @@ const ProductDetails = () => {
         return comment.id_comentario != id_item;
       });
       setDataComment(deleteItem);
-    } 
+    }
     return reportItemAxios;
   }
 
@@ -110,8 +124,14 @@ const ProductDetails = () => {
             </NutritionalContainer>
           </PostContainer>
           <NewComment>
-            <input type="text" placeholder="Adicionar Comentário" />
-            <button>
+            <input type="text" placeholder="Adicionar Comentário"
+            value={messageComment}
+            onChange={(e) =>
+              setMessageComment(e.target.value)
+            }
+
+            />
+            <button onClick={handleCreateComment} >
               <AiOutlineSend />
             </button>
           </NewComment>
