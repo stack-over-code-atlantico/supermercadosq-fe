@@ -13,7 +13,6 @@ import {
   DetailsImage,
   IconType,
   ListComments,
-  NewComment,
   NutritionalContainer,
   NutritionalTable,
   PostComment,
@@ -30,16 +29,12 @@ const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
 
-  const [messageComment, setMessageComment] = useState("");
   const [idProdComment, setIdProdComment] = useState("1");
-  const [idUserComment, setIdUserComment] = useState("");
 
-  const [editMessage, setEditMessage] = useState("");
-  const [idComment, setIdComment] = useState("");
 
   useEffect(() => {
-    getProduct(1);
-    getComments(1);
+    getProduct(idProdComment);
+    getComments(idProdComment);
   }, []);
 
   function getProduct(id_produto) {
@@ -53,11 +48,12 @@ const ProductDetails = () => {
     });
   }
 
-  function handleCreateComment(mensagem, id_produto, id_usuario) {
+  function handleCreateComment(mensagem, id_produto) {
+    console.log(id_produto)
     const createNewComment = useCreateComment({
       mensagem,
       id_produto,
-      id_usuario,
+      
     });
     return createNewComment;
   };
@@ -68,9 +64,6 @@ const ProductDetails = () => {
       id_usuario,
       id_comentario,
     });
-    // dataComment.push((comment) => {
-    //   return comment.mensagem
-    // })
     return createEditItem;
   }
 
@@ -141,18 +134,7 @@ const ProductDetails = () => {
               </IconType>
             </NutritionalContainer>
           </PostContainer>
-          {/* <NewComment>
-            <input
-              type="text"
-              placeholder="Adicionar Comentário"
-              value={messageComment}
-              onChange={(e) => setMessageComment(e.target.value)}
-            />
-            <button onClick={handleCreateComment}>
-              <AiOutlineSend />
-            </button>
-          </NewComment> */}
-          <LabelMessage executeFunction={handleCreateComment} mensagem={messageComment} id_item={idProdComment} id_usuario={idUserComment} typeHandleCreate={true}/>
+          <LabelMessage executeFunction={handleCreateComment} mensagem id_item={idProdComment} typeHandleCreate={true}/>
           <ListComments>
             {dataComment?.map((comment) => {
               return (

@@ -3,11 +3,11 @@ import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { LabelComment } from "./style";
 
-const LabelMessage = ({executeFunction, mensagem, id_item,id_usuario, typeHandleCreate}) => {
+const LabelMessage = ({executeFunction, mensagem, id_item, typeHandleCreate}) => {
   const[messageComment, setMessageComment] = useState('')
 
   function handleCreateComment(){
-    executeFunction(mensagem=messageComment,id_item,id_usuario)
+    executeFunction(mensagem=messageComment,id_item)
     setMessageComment("");
     console.log(mensagem)
   }
