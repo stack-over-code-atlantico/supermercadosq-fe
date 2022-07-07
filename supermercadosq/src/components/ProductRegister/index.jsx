@@ -9,14 +9,25 @@ import {
 } from "./styles";
 import { useState } from "react";
 import { createProduct } from "../../services/useCreateProduct";
+import { createOneProduct } from "../../services/useProducts";
 
 const ProductRegister = () => {
   const [prodName, setProdName] = useState("");
   const [listAlergic, setListAlergic] = useState("");
   const [description, setDescription] = useState("");
   const [nutTable, setNutTable] = useState("");
-  const [prodImg, setProdImg] = useState("");
   const [button, setButton] = useState(true);
+  const [file, setFile] = useState(null);
+  // const [data, setData] = useState({
+  //   nome: '',
+  //   alergia: '',
+  //   descricao: '',
+  //   ingredientes: ''
+  // });
+
+  const handleSelectFile = (event) => {
+    setFile(event.target.files[0]);
+  }
 
   useEffect(() => {
     if (prodName && description && nutTable) {
@@ -27,16 +38,25 @@ const ProductRegister = () => {
   }, [prodName, listAlergic, description, nutTable]);
 
 
-  const handleRegisterProd = (e, formData) => {
+  const handleRegisterProd = (e) => {
     e.preventDefault();
-    const createNewProduct = createProduct({
-      nome: prodName,
-      alergia: String(listAlergic),
-      descricao: description,
-      ingredientes: nutTable,
-      imagem: prodImg,
-    });
-    return createNewProduct;
+    // const createNewProduct = createProduct({
+    //   nome: prodName,
+    //   alergia: String(listAlergic),
+    //   descricao: description,
+    //   ingredientes: nutTable,
+    //   imagem: prodImg,
+    // });
+
+    const formData = new FormData();
+    formData.append('nome', prodName);
+    formData.append('alergia', listAlergic);
+    formData.append('descricao', description);
+    formData.append('ingredientes', nutTable);
+    formData.append('file', file);
+
+    const submit = createOneProduct(formData);
+    return submit;
   };
 
   const handleGetAlergic = (alergicOptions) => {
@@ -113,6 +133,7 @@ const ProductRegister = () => {
     <RegisterContainer>
       <ImageUpload>
         <BsPlusCircle />
+        <input type="file" onChange={handleSelectFile} />
       </ImageUpload>
       <RegisterForm onSubmit={handleRegisterProd}>
         <h2>Crie sua postagem sobre algum produto</h2>
