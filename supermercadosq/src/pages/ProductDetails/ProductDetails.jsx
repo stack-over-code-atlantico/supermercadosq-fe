@@ -31,7 +31,6 @@ const ProductDetails = () => {
 
   const [idProdComment, setIdProdComment] = useState("1");
 
-
   useEffect(() => {
     getProduct(idProdComment);
     getComments(idProdComment);
@@ -49,14 +48,18 @@ const ProductDetails = () => {
   }
 
   function handleCreateComment(mensagem, id_produto) {
-    console.log(id_produto)
+    console.log(id_produto);
     const createNewComment = useCreateComment({
       mensagem,
       id_produto,
-      
+    }).then(resp=>{
+      getCommentsByProduct(id_produto).then((resp) => {
+        return resp.data;
+      }).then(resp=>setDataComment(resp));
     });
+    
     return createNewComment;
-  };
+  }
 
   async function handleEditItem(mensagem, id_usuario, id_comentario) {
     const createEditItem = useEditItem({
@@ -134,7 +137,12 @@ const ProductDetails = () => {
               </IconType>
             </NutritionalContainer>
           </PostContainer>
-          <LabelMessage executeFunction={handleCreateComment} mensagem id_item={idProdComment} typeHandleCreate={true}/>
+          <LabelMessage
+            executeFunction={handleCreateComment}
+            mensagem
+            id_item={idProdComment}
+            typeHandleCreate={true}
+          />
           <ListComments>
             {dataComment?.map((comment) => {
               return (
