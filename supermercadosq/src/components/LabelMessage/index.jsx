@@ -3,11 +3,17 @@ import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { LabelComment } from "./style";
 
-const LabelMessage = (executeFunction) => {
+const LabelMessage = ({executeFunction, mensagem, id_item,id_usuario, typeHandleCreate}) => {
   const[messageComment, setMessageComment] = useState('')
 
-  function handleFunction(){
-    executeFunction()
+  function handleCreateComment(){
+    executeFunction(mensagem=messageComment,id_item,id_usuario)
+    setMessageComment("");
+    console.log(mensagem)
+  }
+  function handleEditComment(){
+    
+    console.log('mensagem')
   }
 
   return (
@@ -18,11 +24,10 @@ const LabelMessage = (executeFunction) => {
         value={messageComment}
         onChange={(e) => setMessageComment(e.target.value)}
       />
-      <button onClick={handleFunction}>
+      <button onClick={typeHandleCreate?handleCreateComment:handleEditComment}>
         <AiOutlineSend />
       </button>
     </LabelComment>
   );
 };
-
 export default LabelMessage;

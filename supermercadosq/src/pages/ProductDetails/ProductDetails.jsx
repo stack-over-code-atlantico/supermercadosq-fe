@@ -53,13 +53,12 @@ const ProductDetails = () => {
     });
   }
 
-  function handleCreateComment(messageComment, idProdComment, idUserComment) {
+  function handleCreateComment(mensagem, id_produto, id_usuario) {
     const createNewComment = useCreateComment({
-      mensagem: messageComment,
-      id_produto: idProdComment,
-      id_usuario: idUserComment,
+      mensagem,
+      id_produto,
+      id_usuario,
     });
-    setMessageComment("");
     return createNewComment;
   };
 
@@ -153,7 +152,7 @@ const ProductDetails = () => {
               <AiOutlineSend />
             </button>
           </NewComment> */}
-          <LabelMessage executeFunction={handleCreateComment}/>
+          <LabelMessage executeFunction={handleCreateComment} mensagem={messageComment} id_item={idProdComment} id_usuario={idUserComment} typeHandleCreate={true}/>
           <ListComments>
             {dataComment?.map((comment) => {
               return (

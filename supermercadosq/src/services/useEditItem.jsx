@@ -5,22 +5,6 @@ const { token: tokenJWT } = parseCookies();
 const config = { headers: { authorization: `Bearer ${tokenJWT}` } };
 
 export const useEditItem = async (data) => {
-<<<<<<< HEAD
-  const bodyParams = {
-    mensagem: data.mensagem,
-    id_usuario:  data.id_usuario,
-    id_comentario:  data.id_comentario,
-  };
-  const editComment = await api
-    .put(`/comments/${data.id_comentario}`, bodyParams, config)
-    .then((response) => {
-      alert("Editado");
-    })
-    .catch((err) => {
-      alert("Não editado");
-      console.log(err.message);
-    });
-=======
   const bodyParams = {};
   if (data.typeItem === "produto") {
     const produto = await api
@@ -48,5 +32,4 @@ export const useEditItem = async (data) => {
     });
 
   return comments;
->>>>>>> b2b23ba2d3f2b9a4c6951d470191b758333c10d0
 };
