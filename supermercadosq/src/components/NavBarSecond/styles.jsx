@@ -66,7 +66,6 @@ export const NavMenu = styled.ul`
 
 export const NavItem = styled.li`
   height: 30px;
-  border-bottom: 2px solid transparent;
   &:hover {
     border-bottom: 2px solid var(--color-white);
   }
