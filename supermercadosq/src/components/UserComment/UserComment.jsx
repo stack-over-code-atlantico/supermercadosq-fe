@@ -4,7 +4,6 @@ import { FiAlertTriangle, FiEdit2, FiTrash } from "react-icons/fi";
 import { userLevel } from "../../services/useAuth";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNewReport } from "../../services/useNewReport";
 
 const UserComment = ({
   id_item,
@@ -13,7 +12,8 @@ const UserComment = ({
   userIdOwner,
   typeItem,
   onDeleteItem,
-  onReportItem
+  onReportItem,
+  onEditItem,
 }) => {
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
@@ -45,12 +45,15 @@ const UserComment = ({
   };
 
   function handleDelete() {
-    onDeleteItem(id_item, typeItem)
-    
+    onDeleteItem(id_item, typeItem);
   }
 
   function handleNewReport() {
-    onReportItem(id_item,typeItem)
+    onReportItem(id_item, typeItem);
+  }
+
+  function handleEdit() {
+    onEditItem(mensagem, userIdOwner, id_item);
   }
 
   return (
@@ -71,7 +74,11 @@ const UserComment = ({
           />
         </a>
         <a>
-          <FiEdit2 id="edit" display={displayIconEdit} />
+          <FiEdit2
+            onClick={handleEdit}
+            id="edit"
+            display={displayIconEdit}
+          />
         </a>
         <a>
           <FiTrash

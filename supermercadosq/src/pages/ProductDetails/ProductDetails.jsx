@@ -22,10 +22,20 @@ import {
 import { getCommentsByProduct } from "../../services/useCommentByProduct";
 import { useDeleteItem } from "../../services/useDeleteItem";
 import { useNewReport } from "../../services/useNewReport";
+import { useCreateComment } from "../../services/useCreateComment";
+import { useEditItem } from "../../services/useEditItem";
+import LabelMessage from "../../components/LabelMessage";
 
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
+
+  const [messageComment, setMessageComment] = useState("");
+  const [idProdComment, setIdProdComment] = useState("1");
+  const [idUserComment, setIdUserComment] = useState("");
+
+  const [editMessage, setEditMessage] = useState("");
+  const [idComment, setIdComment] = useState("");
 
   useEffect(() => {
     getProduct(1);
@@ -43,6 +53,28 @@ const ProductDetails = () => {
     });
   }
 
+  function handleCreateComment(messageComment, idProdComment, idUserComment) {
+    const createNewComment = useCreateComment({
+      mensagem: messageComment,
+      id_produto: idProdComment,
+      id_usuario: idUserComment,
+    });
+    setMessageComment("");
+    return createNewComment;
+  };
+
+  async function handleEditItem(mensagem, id_usuario, id_comentario) {
+    const createEditItem = useEditItem({
+      mensagem,
+      id_usuario,
+      id_comentario,
+    });
+    // dataComment.push((comment) => {
+    //   return comment.mensagem
+    // })
+    return createEditItem;
+  }
+
   async function handleDeleteItem(id_item, typeItem) {
     const deleteItemAxios = useDeleteItem({
       id_item,
@@ -51,12 +83,12 @@ const ProductDetails = () => {
     if ((await deleteItemAxios) instanceof Error) {
       return Error;
     }
-    if(typeItem=='comentario'){
+    if (typeItem == "comentario") {
       const deleteItem = dataComment.filter((comment) => {
         return comment.id_comentario != id_item;
       });
       setDataComment(deleteItem);
-    } 
+    }
     return deleteItemAxios;
   }
   async function handleReportItem(id_item, typeItem) {
@@ -67,12 +99,12 @@ const ProductDetails = () => {
     if ((await reportItemAxios) instanceof Error) {
       return Error;
     }
-    if(typeItem=='comentario'){
+    if (typeItem == "comentario") {
       const deleteItem = dataComment.filter((comment) => {
         return comment.id_comentario != id_item;
       });
       setDataComment(deleteItem);
-    } 
+    }
     return reportItemAxios;
   }
 
@@ -93,6 +125,7 @@ const ProductDetails = () => {
           typeItem="produto"
           onDeleteItem={handleDeleteItem}
           onReportItem={handleReportItem}
+          onEditItem={handleEditItem}
         />
         <PostComment>
           <PostContainer>
@@ -109,12 +142,18 @@ const ProductDetails = () => {
               </IconType>
             </NutritionalContainer>
           </PostContainer>
-          <NewComment>
-            <input type="text" placeholder="Adicionar Comentário" />
-            <button>
+          {/* <NewComment>
+            <input
+              type="text"
+              placeholder="Adicionar Comentário"
+              value={messageComment}
+              onChange={(e) => setMessageComment(e.target.value)}
+            />
+            <button onClick={handleCreateComment}>
               <AiOutlineSend />
             </button>
-          </NewComment>
+          </NewComment> */}
+          <LabelMessage executeFunction={handleCreateComment}/>
           <ListComments>
             {dataComment?.map((comment) => {
               return (
@@ -129,6 +168,7 @@ const ProductDetails = () => {
                     typeItem="comentario"
                     onDeleteItem={handleDeleteItem}
                     onReportItem={handleReportItem}
+                    onEditItem={handleEditItem}
                   />
                   <p>{comment.mensagem}</p>
                 </Comment>
