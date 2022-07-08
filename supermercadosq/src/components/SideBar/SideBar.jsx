@@ -8,24 +8,24 @@ import { BiChevronRight } from 'react-icons/bi';
 export default function SideBar() {
 
   return (
-    <SideBarContainer> 
+    <SideBarContainer>
         <SideItem>
           <SideLink to='/profile/profileinformation' activestyle={{fontWeight: 'bold'}} >
-            Informações do perfil           
+            Informações do perfil
           </SideLink>
         </SideItem>
 
         <SideLink to='/profile/passwordsecurity' activestyle={{fontWeight: 'bold'}}>
           <div style={{ display: 'flex', alignItems: 'center', margin: '1rem 0'}}>
-            Senhas e segurança 
-          </div>  
+            Senhas e segurança
+          </div>
         </SideLink>
 
         <SideLink to='/profile/postcomments' activestyle={{fontWeight: 'bold'}}>
           <div style={{ display: 'flex', alignItems: 'center'}}>
             Postagens e comentários
-          </div>  
+          </div>
         </SideLink>
     </SideBarContainer>
   );
-}   
+}

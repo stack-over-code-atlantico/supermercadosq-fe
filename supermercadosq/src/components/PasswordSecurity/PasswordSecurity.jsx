@@ -26,7 +26,7 @@ export default class PasswordSecurityForm extends React.Component {
        <>
         <ProfileBar />
         <ProfileInformationContainer>
-            <h3>Editar senha</h3>  
+            <h3>Editar senha</h3>
             <h4>Edite sua senha</h4>
             <form onSubmit={this.handleSubmit}>
               <label>

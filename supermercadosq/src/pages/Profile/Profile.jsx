@@ -6,10 +6,10 @@ import SideBar from '../../components/SideBar/SideBar';
 
 export default function Profile() {
    return (
-      <>   
+      <div style={{ display: 'flex', flexFlow: 'row wrap' }}>
         <NavBar />
         <SideBar />
-        
-      </>
+
+      </div>
    );
 }
