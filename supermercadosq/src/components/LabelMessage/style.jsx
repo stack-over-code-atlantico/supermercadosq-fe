@@ -17,13 +17,13 @@ export const LabelComment = styled.div`
     align-items: center;
     width: 30px;
     height: 30px;
-    background-color: var(--color-blue-light);
+    background-color: ${props=>props.color};
     color: white;
     border: none;
     &:hover {
-      color: var(--color-blue-light);
+      color: ${props=>props.color};
       background-color: white;
-      border: 1px solid var(--color-blue-light);
+      border: 1px solid ${props=>props.color};
     }
   }
 `;

@@ -109,19 +109,23 @@ export const NutritionalTable = styled.div`
 `;
 
 export const IconType = styled.div`
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: end;
-  padding-right: 25px;
+  padding: 10px 10px 10px 0px;
 
   #IconType {
+    margin: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--color-blue-ciel);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    img{
+      width:65%
+    }
   }
 `;
 

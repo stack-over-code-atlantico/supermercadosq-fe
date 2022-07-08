@@ -1,6 +1,12 @@
 import React from "react";
 import sushiImage from "../../assets/images/sushiPhoto.png";
-import fishIcon from "../../assets/icons/fish.png";
+import seafoodIcon from '../../assets/icons/seafood.png';
+import milkIcon from '../../assets/icons/milk.png';
+import fishIcon from '../../assets/icons/fish.png';
+import mustardIcon from '../../assets/icons/mustard.png';
+import peanutIcon from '../../assets/icons/peanut.png';
+import eggIcon from '../../assets/icons/egg.png';
+import wheatIcon from '../../assets/icons/wheat.png';
 import UserComment from "../../components/UserComment/UserComment";
 import { IoReturnDownBackOutline } from "react-icons/io5";
 import { AiOutlineSend } from "react-icons/ai";
@@ -31,6 +37,7 @@ const ProductDetails = () => {
   const [idProdComment, setIdProdComment] = useState("1");
   const [isEdit, setIsEdit] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("");
+  const [alergia,setAlergia]=useState()
 
   const handleColor = () => {
     if (backgroundColor == 'ovo') return "#DAC50A";
@@ -39,7 +46,7 @@ const ProductDetails = () => {
     if (backgroundColor =='mostarda') return "#F59E1D";
     if (backgroundColor =='peixe') return "#9CDBE7";
     if (backgroundColor =='crustaceos') return "#F66A69";
-    if (backgroundColor =='lactose') return "#3EBCD3";
+    if (backgroundColor =='Lactose') return "#3EBCD3";
     return "#9CDD6E";
   };
 
@@ -56,6 +63,7 @@ const ProductDetails = () => {
       })
       .then((res) => {
       setBackgroundColor(res.data.alergia.split(",")[0])
+      console.log(res.data.alergia.split(','))
     })
   }
   function getComments(id_produto) {
@@ -153,10 +161,29 @@ const ProductDetails = () => {
                 <div id="IconType">
                   <img src={fishIcon} alt="peixe" />
                 </div>
+                <div id="IconType">
+                  <img src={fishIcon} alt="peixe" />
+                </div>
+                <div id="IconType">
+                  <img src={fishIcon} alt="peixe" />
+                </div>
+                <div id="IconType">
+                  <img src={fishIcon} alt="peixe" />
+                </div>
+                <div id="IconType">
+                  <img src={fishIcon} alt="peixe" />
+                </div>
+                <div id="IconType">
+                  <img src={fishIcon} alt="peixe" />
+                </div>
+                <div id="IconType">
+                  <img src={fishIcon} alt="peixe" />
+                </div>
               </IconType>
             </NutritionalContainer>
           </PostContainer>
           <LabelMessage
+            color={handleColor}
             executeFunction={handleCreateComment}
             mensagem
             id_item={idProdComment}
