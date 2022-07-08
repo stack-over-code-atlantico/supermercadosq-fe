@@ -1,10 +1,19 @@
 import React from 'react';
-import { SideLink } from './styles'
+import ProfileBar from '../../pages/Profile/Profile'
+import { PostCommentsContainer } from './styles';
 
-export default function PostComments() {
-  return (
-     <>
-      
-     </>
-  );
+
+export default class PostCommentsForm extends React.Component {
+
+  render() {
+    return (
+       <>
+        <ProfileBar />
+        <PostCommentsContainer>
+          </PostCommentsContainer>
+       </>
+    );
+  }
 }
+
+

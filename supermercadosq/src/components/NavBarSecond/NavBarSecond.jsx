@@ -43,8 +43,12 @@ export default function Navbar() {
                 <NavLink to='/login/postagens' onClick={closeMobileMenu}>
                   Postagens
                 </NavLink>
-              </NavItem>  
-              
+              </NavItem>
+              <NavItem>
+                <NavLink to='/login/comentarios' onClick={closeMobileMenu}>
+                  Comentários
+                </NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink to='/login/sair' onClick={closeMobileMenu}>
                   Sair

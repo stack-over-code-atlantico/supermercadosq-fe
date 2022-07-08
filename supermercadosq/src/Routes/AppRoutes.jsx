@@ -11,6 +11,9 @@ import { userLevel } from '../services/useAuth';
 import Cookies from 'js-cookie';
 import ProductRegister from '../components/ProductRegister';
 import Profile from '../pages/Profile/Profile';
+import ProfileInformation from '../components/ProfileInformation/ProfileInformation';
+import PostComments from '../components/PostComments/PostComments'
+import PasswordSecurity from '../components/PasswordSecurity/PasswordSecurity'
 
 const AppRoutes = () => {
   let level = 'CLIENTE';
@@ -29,7 +32,11 @@ const AppRoutes = () => {
         <Route path="/about" element={<About/>}/>
         <Route path="/*" element={<Page404/>} />
         <Route path="/ProductRegister" element={<ProductRegister/>} />
-        <Route path="/login/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/profileinformation" element={<ProfileInformation/>} />
+        <Route path="/profile/postcomments" element={<PostComments/>} />
+        <Route path="/profile/passwordsecurity" element={<PasswordSecurity/>} />
+
     </Routes>
   )
 }
