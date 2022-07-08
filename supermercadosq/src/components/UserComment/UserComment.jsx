@@ -14,6 +14,7 @@ const UserComment = ({
   onDeleteItem,
   onReportItem,
   onEditItem,
+  messageComment
 }) => {
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
@@ -53,7 +54,7 @@ const UserComment = ({
   }
 
   function handleEdit() {
-    onEditItem(mensagem, userIdOwner, id_item);
+    onEditItem(messageComment, id_item);
   }
 
   return (

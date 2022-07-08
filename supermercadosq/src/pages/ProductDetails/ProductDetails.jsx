@@ -31,6 +31,8 @@ const ProductDetails = () => {
 
   const [idProdComment, setIdProdComment] = useState("1");
 
+  const [isEdit, setIsEdit] = useState(false);
+
   useEffect(() => {
     getProduct(idProdComment);
     getComments(idProdComment);
@@ -52,21 +54,23 @@ const ProductDetails = () => {
     const createNewComment = useCreateComment({
       mensagem,
       id_produto,
-    }).then(resp=>{
-      getCommentsByProduct(id_produto).then((resp) => {
-        return resp.data;
-      }).then(resp=>setDataComment(resp));
+    }).then((resp) => {
+      getCommentsByProduct(id_produto)
+        .then((resp) => {
+          return resp.data;
+        })
+        .then((resp) => setDataComment(resp));
     });
-    
+
     return createNewComment;
   }
 
-  async function handleEditItem(mensagem, id_usuario, id_comentario) {
+  async function handleEditItem(messageComment, id_comentario) {
     const createEditItem = useEditItem({
-      mensagem,
-      id_usuario,
+      messageComment,
       id_comentario,
     });
+    setIsEdit(true);
     return createEditItem;
   }
 
@@ -157,9 +161,26 @@ const ProductDetails = () => {
                     typeItem="comentario"
                     onDeleteItem={handleDeleteItem}
                     onReportItem={handleReportItem}
-                    onEditItem={handleEditItem}
+                    onEditItem={() => {
+                      handleEditItem;
+                      setIsEdit(true);
+                    }}
                   />
-                  <p>{comment.mensagem}</p>
+                  <p>
+                    {isEdit === true ? (
+                      <LabelMessage
+                        executeFunction={() => {
+                          handleEditItem;
+                          setIsEdit(false);
+                        }}
+                        mensagem
+                        id_item={idProdComment}
+                        typeHandleCreate={true}
+                      />
+                    ) : (
+                      comment.mensagem
+                    )}
+                  </p>
                 </Comment>
               );
             })}
