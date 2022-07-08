@@ -83,7 +83,7 @@ export const DetailsComments = styled.div`
 export const NutritionalContainer = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: var(--color-blue-light);
+  background-color: ${props=>props.color};
   width: 550px;
   height: auto;
 
@@ -177,7 +177,7 @@ export const PostContainer = styled.div`
     border-radius: 20px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-blue-light);
+    background-color: ${props=>props.color};
     border-radius: 20px;
   }
 `;
@@ -194,7 +194,7 @@ export const ListComments = styled.div`
     border-radius: 20px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-blue-light);
+    background-color: ${props=>props.color};
     border-radius: 20px;
   }
 `;

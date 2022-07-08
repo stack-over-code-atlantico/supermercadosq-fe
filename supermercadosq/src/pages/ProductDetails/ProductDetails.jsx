@@ -28,10 +28,20 @@ import LabelMessage from "../../components/LabelMessage";
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
-
   const [idProdComment, setIdProdComment] = useState("1");
-
   const [isEdit, setIsEdit] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState("");
+
+  const handleColor = () => {
+    if (backgroundColor == 'ovo') return "#DAC50A";
+    if (backgroundColor == 'soja') return "#D3B273";
+    if (backgroundColor =='amendoim') return "#C87C53";
+    if (backgroundColor =='mostarda') return "#F59E1D";
+    if (backgroundColor =='peixe') return "#9CDBE7";
+    if (backgroundColor =='crustaceos') return "#F66A69";
+    if (backgroundColor =='lactose') return "#3EBCD3";
+    return "#9CDD6E";
+  };
 
   useEffect(() => {
     getProduct(idProdComment);
@@ -39,9 +49,14 @@ const ProductDetails = () => {
   }, []);
 
   function getProduct(id_produto) {
-    getOneProduct(id_produto).then((resp) => {
-      setDataProduct(resp.data);
-    });
+    getOneProduct(id_produto)
+      .then((resp) => {
+        setDataProduct(resp.data);
+        return resp
+      })
+      .then((res) => {
+      setBackgroundColor(res.data.alergia.split(",")[0])
+    })
   }
   function getComments(id_produto) {
     getCommentsByProduct(id_produto).then((resp) => {
@@ -127,10 +142,10 @@ const ProductDetails = () => {
           // onEditItem={handleEditItem}
         />
         <PostComment>
-          <PostContainer>
+          <PostContainer color={handleColor}>
             <span>{dataProduct?.nome}</span>
             <h3>{dataProduct?.descricao}</h3>
-            <NutritionalContainer>
+            <NutritionalContainer color={handleColor}>
               <NutritionalTable>
                 <p>{dataProduct?.ingredientes}</p>
               </NutritionalTable>
@@ -147,7 +162,7 @@ const ProductDetails = () => {
             id_item={idProdComment}
             typeHandleCreate={true}
           />
-          <ListComments>
+          <ListComments color={handleColor}>
             {dataComment?.map((comment) => {
               return (
                 <Comment key={comment.id_comentario}>
