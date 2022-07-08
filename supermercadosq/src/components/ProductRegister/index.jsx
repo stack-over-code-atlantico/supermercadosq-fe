@@ -26,7 +26,7 @@ const ProductRegister = () => {
     setSrcUrl(URL.createObjectURL(event.target.files[0]));
   };
 
-  const handleRegisterProd = (e) => {
+  const handleRegisterProd = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("nome", data.nome);
@@ -35,7 +35,9 @@ const ProductRegister = () => {
     formData.append("ingredientes", data.ingredientes);
     formData.append("file", file);
 
-    const submit = createOneProduct(formData);
+    const submit = await createOneProduct(formData)
+      .then((res) => alert("Produto Cadastrado com Sucesso"))
+      .catch((err) => alert("Ocorreu um Erro"));
     return submit;
   };
 
@@ -111,8 +113,8 @@ const ProductRegister = () => {
     <RegisterContainer>
       <ImageUpload>
         <label>
-        <img width="50%" height="50%" src={srcUrl}></img>
-        <input type="file" onChange={handleSelectFile} />
+          <img width="50%" src={srcUrl}></img>
+          <input type="file" onChange={handleSelectFile} accept="image/*" />
         </label>
       </ImageUpload>
       <RegisterForm onSubmit={handleRegisterProd}>
