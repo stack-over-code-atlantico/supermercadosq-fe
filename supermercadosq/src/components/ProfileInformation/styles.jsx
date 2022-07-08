@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const ProfileInformationContainer = styled.div`
-  width: 500px;
-  background-color: #e43891;
+
 `
+
+export const ProfileInformationDiv = styled.div`
+  width: 500px;
+  background-color: pink;
+  height: 500px;
+  margin-top: 7vh;
+`;

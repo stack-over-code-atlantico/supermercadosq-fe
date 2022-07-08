@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileBar from '../../pages/Profile/Profile';
-import { ProfileInformationContainer } from './styles';
+import { ProfileInformationContainer, ProfileInformationDiv } from './styles';
 import { BsFillPersonFill } from 'react-icons/bs'
 
 
@@ -24,11 +24,10 @@ export default class ProfileInformationForm extends React.Component {
 
   render() {
     return (
-      <>
-        <ProfileBar />
+      <ProfileInformationDiv>
         <ProfileInformationContainer>
-          <h3>Editar perfil</h3> 
-          <BsFillPersonFill size="5%"/> 
+          <h3>Editar perfil</h3>
+          <BsFillPersonFill size="5%"/>
           <h4>Cliente</h4>
 
           <h4>dados pessoais</h4>
@@ -79,7 +78,7 @@ export default class ProfileInformationForm extends React.Component {
               Numero:
               <input type="text" value={this.state.value} onChange={this.handleChange} />
             </label>
-            
+
             <label>
               Bairro:
               <input type="text" value={this.state.value} onChange={this.handleChange} />
@@ -98,8 +97,8 @@ export default class ProfileInformationForm extends React.Component {
             <input type="submit" value="Salvar" />
           </form>
         </ProfileInformationContainer>
-        
-      </>
+
+      </ProfileInformationDiv>
     );
   }
 }

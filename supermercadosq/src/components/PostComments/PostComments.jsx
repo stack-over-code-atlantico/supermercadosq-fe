@@ -8,7 +8,6 @@ export default class PostCommentsForm extends React.Component {
   render() {
     return (
        <>
-        <ProfileBar />
         <PostCommentsContainer>
           </PostCommentsContainer>
        </>

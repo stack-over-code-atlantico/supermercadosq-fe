@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export const SideBarContainer = styled.div`
   padding:  1rem 0 0 1rem;
   display: flex;
-  position: relative;
   flex-direction: column;
   width: 350px;
   height: 100vh;
+  margin-top: 7vh;
   background-color: red;
 `;
 
@@ -15,7 +15,7 @@ export const SideItem = styled.div`
 
 `
 
-export const SideLink = styled(Link)`
+export const SideLink = styled.button`
   text-decoration: none;
   color: rgba(144, 144, 144, 1);
   align-items: center;

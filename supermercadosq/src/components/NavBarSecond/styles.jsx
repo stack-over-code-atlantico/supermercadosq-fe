@@ -8,6 +8,7 @@ export const Nav = styled.nav`
   justify-content: center;
   padding: 0.5rem calc((100vw - 1000px)/2);
   z-index: 10;
+  position: fixed;
 `;
 
 export const NavbarContainer = styled.div`
@@ -72,7 +73,7 @@ export const NavItem = styled.li`
   .borderbottom {
     border-bottom: 2px solid var(--color-white);
   }
-  
+
   @media screen and (max-width: 768px) {
     width: 100%;
     &:hover {

@@ -24,7 +24,6 @@ export default class PasswordSecurityForm extends React.Component {
   render() {
     return (
        <>
-        <ProfileBar />
         <ProfileInformationContainer>
             <h3>Editar senha</h3>
             <h4>Edite sua senha</h4>
