@@ -8,64 +8,39 @@ import {
   RegisterForm,
 } from "./styles";
 import { useState } from "react";
-import { createProduct } from "../../services/useCreateProduct";
 import { createOneProduct } from "../../services/useProducts";
 
 const ProductRegister = () => {
-  const [prodName, setProdName] = useState("");
-  const [listAlergic, setListAlergic] = useState("");
-  const [description, setDescription] = useState("");
-  const [nutTable, setNutTable] = useState("");
-  const [button, setButton] = useState(true);
   const [file, setFile] = useState(null);
-  // const [data, setData] = useState({
-  //   nome: '',
-  //   alergia: '',
-  //   descricao: '',
-  //   ingredientes: ''
-  // });
+  const [data, setData] = useState({
+    nome: "",
+    alergia: "",
+    descricao: "",
+    ingredientes: "",
+  });
 
   const handleSelectFile = (event) => {
     setFile(event.target.files[0]);
-  }
-
-  useEffect(() => {
-    if (prodName && description && nutTable) {
-      setButton(false);
-    } else {
-      setButton(true)
-    }
-  }, [prodName, listAlergic, description, nutTable]);
-
+  };
 
   const handleRegisterProd = (e) => {
     e.preventDefault();
-    // const createNewProduct = createProduct({
-    //   nome: prodName,
-    //   alergia: String(listAlergic),
-    //   descricao: description,
-    //   ingredientes: nutTable,
-    //   imagem: prodImg,
-    // });
-
     const formData = new FormData();
-    formData.append('nome', prodName);
-    formData.append('alergia', listAlergic);
-    formData.append('descricao', description);
-    formData.append('ingredientes', nutTable);
-    formData.append('file', file);
+    formData.append("nome", data.nome);
+    formData.append("alergia", data.alergia);
+    formData.append("descricao", data.descricao);
+    formData.append("ingredientes", data.ingredientes);
+    formData.append("file", file);
 
     const submit = createOneProduct(formData);
     return submit;
   };
 
   const handleGetAlergic = (alergicOptions) => {
-    setListAlergic(
-      alergicOptions.map((alergia) => {
-        return alergia.value;
-      })
-    );
-    const alergias = listAlergic.toString();
+    setData((prev) => ({
+      ...prev,
+      alergia: alergicOptions.map((alergia) => alergia.value).join(","),
+    }));
   };
 
   const alergicOptions = [
@@ -132,8 +107,10 @@ const ProductRegister = () => {
   return (
     <RegisterContainer>
       <ImageUpload>
-        <BsPlusCircle />
-        <input type="file" onChange={handleSelectFile} />
+        <label>
+          <BsPlusCircle />
+          <input type="file" onChange={handleSelectFile} />
+        </label>
       </ImageUpload>
       <RegisterForm onSubmit={handleRegisterProd}>
         <h2>Crie sua postagem sobre algum produto</h2>
@@ -143,7 +120,9 @@ const ProductRegister = () => {
             <input
               type="text"
               placeholder="Nome"
-              onChange={(e) => setProdName(e.target.value)}
+              onChange={(e) =>
+                setData((prev) => ({ ...prev, nome: e.target.value }))
+              }
             />
           </label>
           <label>
@@ -171,19 +150,25 @@ const ProductRegister = () => {
             <input
               type="text"
               placeholder="Descrição"
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) =>
+                setData((prev) => ({ ...prev, descricao: e.target.value }))
+              }
             />
           </label>
         </div>
         <div className="ProductFinal">
           <label>
             <span>Ingredientes</span>
-            <textarea onChange={(e) => setNutTable(e.target.value)} />
+            <textarea
+              onChange={(e) =>
+                setData((prev) => ({ ...prev, ingredientes: e.target.value }))
+              }
+            />
           </label>
         </div>
         <Buttons>
           <button>Voltar</button>
-          <button type="submit" disabled={button}>
+          <button type="submit" disabled={data.nome && data.descricao && data.ingredientes?false:true}>
             Finalizar
           </button>
         </Buttons>
