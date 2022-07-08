@@ -12,6 +12,7 @@ import { createOneProduct } from "../../services/useProducts";
 
 const ProductRegister = () => {
   const [file, setFile] = useState(null);
+  const [srcUrl, setSrcUrl]=useState('')
   const [data, setData] = useState({
     nome: "",
     alergia: "",
@@ -21,6 +22,7 @@ const ProductRegister = () => {
 
   const handleSelectFile = (event) => {
     setFile(event.target.files[0]);
+    setSrcUrl(URL.createObjectURL(event.target.files[0]))
   };
 
   const handleRegisterProd = (e) => {
@@ -107,10 +109,14 @@ const ProductRegister = () => {
   return (
     <RegisterContainer>
       <ImageUpload>
-        <label>
+        {!file?(
+          <label>
           <BsPlusCircle />
           <input type="file" onChange={handleSelectFile} />
         </label>
+        ):(
+          <iframe src={srcUrl} ></iframe>
+        )}
       </ImageUpload>
       <RegisterForm onSubmit={handleRegisterProd}>
         <h2>Crie sua postagem sobre algum produto</h2>
