@@ -85,7 +85,7 @@ export const NutritionalContainer = styled.div`
   flex-direction: row;
   background-color: var(--color-blue-light);
   width: 550px;
-  height: 180px;
+  height: auto;
 
   div {
     width: 50%;
@@ -166,7 +166,7 @@ export const PostComment = styled.div`
 
 export const PostContainer = styled.div`
   height: 220px;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-bottom: 2px solid #0000002b;
 
   ::-webkit-scrollbar {
@@ -185,7 +185,7 @@ export const PostContainer = styled.div`
 export const ListComments = styled.div`
   border-bottom: 2px solid #0000002b;
   height: 180px;
-  overflow-y: scroll;
+  overflow-y: auto;
   ::-webkit-scrollbar {
     width: 10px;
   }

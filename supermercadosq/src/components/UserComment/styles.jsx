@@ -7,20 +7,20 @@ export const User = styled.div`
   justify-content: space-between;
   padding: 5px;
   background-color: white;
-  `;
+`;
 
 export const UserDetails = styled.div`
   display: flex;
   flex-direction: row;
   gap: 8px;
-  `;
+`;
 
 export const UserAvatar = styled.figure`
   height: 40px;
   width: 40px;
   border-radius: 50%;
   background-color: crimson;
-  `;
+`;
 
 export const UserName = styled.div`
   font-weight: 600;
@@ -34,7 +34,7 @@ export const UserName = styled.div`
     font-size: 12px;
     line-height: 18px;
   }
-  `;
+`;
 
 export const UserIcons = styled.div`
   display: flex;
@@ -46,7 +46,24 @@ export const UserIcons = styled.div`
     margin: 3px;
 
     &:hover {
-      color: crimson;
+      #denounce {
+        transition: all 0.6s ease-out;
+        color: var(--color-red);
+      }
+
+      #trash {
+        transition: all 0.6s ease-out;
+        color: var(--color-black);
+      }
+
+      #edit {
+        transition: all 0.6s ease-out;
+        color: var(--color-blue-light);
+      }
     }
   }
+`;
+
+export const IconNotVisible = styled.a`
+  display: none;
 `;

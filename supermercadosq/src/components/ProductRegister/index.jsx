@@ -47,7 +47,8 @@ const ProductRegister = () => {
 
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
-    { value: "crustáceos", label: "Crustáceos" },
+    { value: "crustaceos", label: "Crustáceos" },
+    { value: "gluten", label: "Glúten" },
     { value: "lactose", label: "Lactose" },
     { value: "mostarda", label: "Mostarda" },
     { value: "ovo", label: "Ovo" },
