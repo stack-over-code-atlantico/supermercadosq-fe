@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const SideBarContainer = styled.div`
-  padding:  1rem 0 0 1rem;
+  padding:  1rem 0 0 1.4rem;
+  margin-right: 1rem;
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 280px;
   height: 100vh;
   margin-top: 7vh;
-  background-color: red;
+  border-right: 1px solid #959695;
 `;
 
 export const SideItem = styled.div`
@@ -17,15 +18,12 @@ export const SideItem = styled.div`
 
 export const SideLink = styled.button`
   text-decoration: none;
-  color: rgba(144, 144, 144, 1);
   align-items: center;
+  border: none;
+  background-color: transparent;
 
   &:hover {
-    font-size: 1.115rem;
-  }
-
-  .icone {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   .sidelink-margin{
