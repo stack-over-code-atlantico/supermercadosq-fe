@@ -65,14 +65,14 @@ const ProductDetails = () => {
     return createNewComment;
   }
 
-  async function handleEditItem(messageComment, id_comentario) {
-    const createEditItem = useEditItem({
-      messageComment,
-      id_comentario,
-    });
-    setIsEdit(true);
-    return createEditItem;
-  }
+  // async function handleEditItem(messageComment, id_comentario) {
+  //   const createEditItem = useEditItem({
+  //     messageComment,
+  //     id_comentario,
+  //   });
+  //   setIsEdit(true);
+  //   return createEditItem;
+  // }
 
   async function handleDeleteItem(id_item, typeItem) {
     const deleteItemAxios = useDeleteItem({
@@ -124,7 +124,7 @@ const ProductDetails = () => {
           typeItem="produto"
           onDeleteItem={handleDeleteItem}
           onReportItem={handleReportItem}
-          onEditItem={handleEditItem}
+          // onEditItem={handleEditItem}
         />
         <PostComment>
           <PostContainer>

@@ -17,8 +17,8 @@ const LabelMessage = ({
     console.log(mensagem);
   }
   function handleEditComment() {
-    executeFunction((mensagem = messageComment), id_item);
-    setMessageComment(mensagem);
+    // executeFunction((mensagem = messageComment), id_item);
+    // setMessageComment(mensagem);
     console.log(mensagem);
   }
 
