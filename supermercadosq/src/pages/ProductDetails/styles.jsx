@@ -190,6 +190,7 @@ export const ListComments = styled.div`
   border-bottom: 2px solid #0000002b;
   height: 180px;
   overflow-y: auto;
+  
   ::-webkit-scrollbar {
     width: 10px;
   }

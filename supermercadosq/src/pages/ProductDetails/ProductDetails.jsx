@@ -1,12 +1,12 @@
 import React from "react";
 import sushiImage from "../../assets/images/sushiPhoto.png";
-import seafoodIcon from '../../assets/icons/seafood.png';
-import milkIcon from '../../assets/icons/milk.png';
-import fishIcon from '../../assets/icons/fish.png';
-import mustardIcon from '../../assets/icons/mustard.png';
-import peanutIcon from '../../assets/icons/peanut.png';
-import eggIcon from '../../assets/icons/egg.png';
-import wheatIcon from '../../assets/icons/wheat.png';
+import seafoodIcon from "../../assets/icons/seafood.png";
+import milkIcon from "../../assets/icons/milk.png";
+import fishIcon from "../../assets/icons/fish.png";
+import mustardIcon from "../../assets/icons/mustard.png";
+import peanutIcon from "../../assets/icons/peanut.png";
+import ovo from "../../assets/icons/egg.png";
+import wheatIcon from "../../assets/icons/wheat.png";
 import UserComment from "../../components/UserComment/UserComment";
 import { IoReturnDownBackOutline } from "react-icons/io5";
 import { AiOutlineSend } from "react-icons/ai";
@@ -36,17 +36,20 @@ const ProductDetails = () => {
   const [dataComment, setDataComment] = useState();
   const [idProdComment, setIdProdComment] = useState("1");
   const [isEdit, setIsEdit] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState("");
-  const [alergia,setAlergia]=useState()
+  const [alergia, setAlergia] = useState("");
+  const [configAlergia, setConfigAlergia] = useState([]);
 
-  const handleColor = () => {
-    if (backgroundColor == 'ovo') return "#DAC50A";
-    if (backgroundColor == 'soja') return "#D3B273";
-    if (backgroundColor =='amendoim') return "#C87C53";
-    if (backgroundColor =='mostarda') return "#F59E1D";
-    if (backgroundColor =='peixe') return "#9CDBE7";
-    if (backgroundColor =='crustaceos') return "#F66A69";
-    if (backgroundColor =='Lactose') return "#3EBCD3";
+  const handleColor = (alergiaAtual) => {
+    if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: ovo };
+    if (alergiaAtual == "soja") return { color: "#D3B273", icon: wheatIcon };
+    if (alergiaAtual == "amendoim")
+      return { color: "#C87C53", icon: peanutIcon };
+    if (alergiaAtual == "mostarda")
+      return { color: "#F59E1D", icon: mustardIcon };
+    if (alergiaAtual == "peixe") return { color: "#9CDBE7", icon: fishIcon };
+    if (alergiaAtual == "crustaceos")
+      return { color: "#F66A69", icon: seafoodIcon };
+    if (alergiaAtual == "lactose") return { color: "#3EBCD3", icon: milkIcon };
     return "#9CDD6E";
   };
 
@@ -54,17 +57,25 @@ const ProductDetails = () => {
     getProduct(idProdComment);
     getComments(idProdComment);
   }, []);
+  useEffect(()=>{
+    for (let values of alergia) {
+      setConfigAlergia((prev)=>([
+        ...prev,
+        handleColor(values) 
+      ]))
+    }
+    console.log('oi')
+  },[alergia])
 
   function getProduct(id_produto) {
     getOneProduct(id_produto)
       .then((resp) => {
         setDataProduct(resp.data);
-        return resp
+        return resp;
       })
       .then((res) => {
-      setBackgroundColor(res.data.alergia.split(",")[0])
-      console.log(res.data.alergia.split(','))
-    })
+        setAlergia(res.data.alergia.split(","));
+      });
   }
   function getComments(id_produto) {
     getCommentsByProduct(id_produto).then((resp) => {
@@ -73,7 +84,6 @@ const ProductDetails = () => {
   }
 
   function handleCreateComment(mensagem, id_produto) {
-    console.log(id_produto);
     const createNewComment = useCreateComment({
       mensagem,
       id_produto,
@@ -150,10 +160,10 @@ const ProductDetails = () => {
           // onEditItem={handleEditItem}
         />
         <PostComment>
-          <PostContainer color={handleColor}>
+          <PostContainer color={configAlergia.length<1?'':configAlergia[0].color}>
             <span>{dataProduct?.nome}</span>
             <h3>{dataProduct?.descricao}</h3>
-            <NutritionalContainer color={handleColor}>
+            <NutritionalContainer color={configAlergia.length<1?'':configAlergia[0].color}>
               <NutritionalTable>
                 <p>{dataProduct?.ingredientes}</p>
               </NutritionalTable>
@@ -183,13 +193,13 @@ const ProductDetails = () => {
             </NutritionalContainer>
           </PostContainer>
           <LabelMessage
-            color={handleColor}
+            color={configAlergia.length<1?'':configAlergia[0].color}
             executeFunction={handleCreateComment}
             mensagem
             id_item={idProdComment}
             typeHandleCreate={true}
           />
-          <ListComments color={handleColor}>
+          <ListComments color={configAlergia.length<1?'':configAlergia[0].color}>
             {dataComment?.map((comment) => {
               return (
                 <Comment key={comment.id_comentario}>
