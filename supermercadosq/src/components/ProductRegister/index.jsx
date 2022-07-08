@@ -172,7 +172,7 @@ const ProductRegister = () => {
           </label>
         </div>
         <Buttons>
-          <button>Voltar</button>
+          <button type="button">Voltar</button>
           <button
             type="submit"
             disabled={
