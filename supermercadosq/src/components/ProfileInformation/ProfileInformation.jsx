@@ -16,21 +16,19 @@ const ProfileInformationForm = () => {
     <>
       <ProfileInformationContainer>
         <h2 className="title">Editar perfil</h2>
-
-        <BsFillPersonFill 
-          size="15%" 
-          style={{
-            background: "var(--color-blue-light)",
-            color: "var(--color-white)",
-            borderRadius:"50%",
-            marginLeft: '40%',
-            }}/>
-        <h3 className="title-icon">Cliente</h3>
-        
-        <h3 className="subtitle">Dados pessoais</h3>
-        <hr/>
-
+       
         <form >
+          
+          <label for="file" > 
+            <BsFillPersonFill className="icon" size="15%" />
+          </label>
+          <input type="file" id="file" style={{display: 'none'}}/>
+
+          <h3 className="title-icon">Cliente</h3>
+        
+          <h3 className="subtitle">Dados pessoais</h3>
+          <hr/>
+
           <div className="align">
             <label>
               Nome Completo:

@@ -53,6 +53,20 @@ export const ProfileInformationContainer = styled.div`
       margin-top: 2vh;
       text-align: justify;
 
+      .icon {
+        background: var(--color-blue-light);
+        color: var(--color-white);
+        border-radius: 50%;
+        margin-left: 40%;
+        cursor: pointer;
+        transition: filter 0.3s;
+
+        &:hover {
+          filter: brightness(0.7);
+          
+        }
+      }
+
 
       input {
         border: 1px solid var(--color-blue-light);
