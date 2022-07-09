@@ -7,36 +7,13 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: center;
   padding: 0.5rem calc((100vw - 1000px)/2);
-  z-index: 10;
   position: fixed;
 `;
 
+
 export const NavbarContainer = styled.div`
-  display: flex;
   justify-content: space-between;
   height: 100%;
-`;
-
-
-export const NavLink = styled(Link)`
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0 4rem;
-  height: 100%;
-  cursor: pointer;
-
-  @media screen and (max-width: 768px) {
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-    display: table;
-    &:hover {
-      transition: all 0.3s ease;
-    }
-  }
 `;
 
 
@@ -46,6 +23,7 @@ export const NavMenu = styled.ul`
   text-align: center;
   list-style: none;
   margin-right: 8vw;
+
 
   @media screen and (max-width: 850px){
     margin-right: 5vw;
@@ -65,19 +43,47 @@ export const NavMenu = styled.ul`
   }
 `;
 
+
 export const NavItem = styled.li`
-  height: 30px;
-  &:hover {
+  height: 26px;
+  border-bottom: 2px solid transparent;
+
+  &:hover{
     border-bottom: 2px solid var(--color-white);
   }
-  .borderbottom {
+
+  #borderbottom {
     border-bottom: 2px solid var(--color-white);
   }
+
+  
 
   @media screen and (max-width: 768px) {
     width: 100%;
     &:hover {
       border: none;
+    }
+  }
+`;
+
+
+export const NavLink = styled(Link)`
+  color: var(--color-white);
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 4rem;
+  height: 100%;
+  cursor: pointer;
+
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+    &:hover {
+      transition: all 0.3s ease;
     }
   }
 `;

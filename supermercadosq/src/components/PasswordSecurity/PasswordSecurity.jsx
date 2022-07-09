@@ -25,24 +25,25 @@ export default class PasswordSecurityForm extends React.Component {
     return (
        <>
         <ProfileInformationContainer>
-            <h3>Editar senha</h3>
-            <h4>Edite sua senha</h4>
+            <h2 className="title">Editar senha</h2>
+            <h3 className="subtitle">Edite sua senha</h3>
+            <hr/>
             <form onSubmit={this.handleSubmit}>
               <label>
-                senha antiga:
+                Senha antiga:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
               </label>
 
               <label>
-                nova senha:
+                Nova senha:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
               </label>
 
               <label>
-                digite novamente a nova senha:
+                Digite novamente a nova senha:
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
               </label>
-              <input type="submit" value="Salvar" />
+              <input id="button" type="submit" value="Salvar" />
             </form>
           </ProfileInformationContainer>
        </>
