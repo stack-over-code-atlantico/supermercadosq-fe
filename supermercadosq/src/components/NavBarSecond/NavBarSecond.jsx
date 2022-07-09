@@ -8,20 +8,23 @@ import {
   NavItem,
   NavMenu,
   NavbarContainer,
+  NavLogout,
 } from '../../components/NavBarSecond/styles.jsx';
 import { FaBars, FaTimes } from "react-icons/fa";
 import lockLogo from '../../assets/icons/lock.svg';
-import logoutIcon from '../../assets/icons/logout-icon.png';
 import { IconContext } from "react-icons/lib";
 import { logout } from '../../services/useAuth';
 
 export default function Navbar() {
   const [click, setClick] = useState(false);
-  const [isLogged, setIsLogged] = useState(false)
+  const [isLogged, setIsLogged] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
+  const handleLogout = () => {
+    logout();
+  }
 
   return (
     <>
@@ -30,35 +33,31 @@ export default function Navbar() {
           <NavbarContainer>
             <NavMenu onClick={handleClick} click={click}>
               <NavItem>
-                <NavLink to='/login/home' onClick={closeMobileMenu}>
+                <NavLink to='/' activestyle={{ borderBottom: '2px solid var(--color-white)' }} onClick={closeMobileMenu}>
                   Home
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/login/profile' onClick={closeMobileMenu} className='borderbottom'>
+                <NavLink to='/profile' onClick={closeMobileMenu} >
                   Perfil
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/login/postagens' onClick={closeMobileMenu}>
+                <NavLink to='/postagens' activestyle={{ borderBottom: '2px solid var(--color-white)' }} onClick={closeMobileMenu}>
                   Postagens
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink to='/login/comentarios' onClick={closeMobileMenu}>
-                  Comentários
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to='/login/sair' onClick={closeMobileMenu}>
+              
+              <NavItem >
+                <NavLogout onClick={handleLogout} >
                   Sair
-                </NavLink>
+                </NavLogout>
               </NavItem>
             </NavMenu>
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>
-    </>
+    </> 
   );
 }
 
