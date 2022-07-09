@@ -1,34 +1,69 @@
 import React, { useState } from 'react';
-import { SideBarContainer } from './styles'
-import { SideLink, SideItem } from './styles';
-
+import { SideBarContainer, SideItem, SideLink  } from './styles'
 import { BiChevronRight } from 'react-icons/bi';
-
+// import { NavLink } from 'react-router-dom';
+ 
 
 export default function SideBar({handleProfile, handlePassword, handlePosts}) {
 
   return (
     <SideBarContainer>
         <SideItem>
-          <SideLink
-            activestyle={{fontWeight: 'bold'}}
-            onClick={handleProfile}
-          >
+          <SideLink onClick={handleProfile}>
             Informações do perfil
           </SideLink>
         </SideItem>
 
-        <SideLink activestyle={{fontWeight: 'bold'}} onClick={handlePassword}>
-          <div style={{ display: 'flex', alignItems: 'center', margin: '1rem 0'}}>
-            Senhas e segurança
-          </div>
-        </SideLink>
+        <SideItem>
+          <SideLink onClick={handlePassword}>
+              Senhas e segurança
+          </SideLink>
+        </SideItem>
 
-        <SideLink activestyle={{fontWeight: 'bold'}} onClick={handlePosts}>
-          <div style={{ display: 'flex', alignItems: 'center'}}>
-            Postagens e comentários
-          </div>
-        </SideLink>
+        <SideItem>
+          <SideLink onClick={handlePosts}>
+              Postagens e comentários
+          </SideLink>
+        </SideItem>
+        
     </SideBarContainer>
   );
 }
+
+// export default function SideBar({handleProfile, handlePassword, handlePosts}) {
+
+//   return (
+//     <SideBarContainer>
+//         <SideItem>
+//           <NavLink
+//             activestyle={{fontWeight: 'bold'}}
+//             to={handleProfile}
+//           >
+//             Informações do perfil
+//           </NavLink>
+//         </SideItem>
+//         <SideItem>
+//           <NavLink activeStyle={ {
+//       textDecoration: 'none',
+//       color: 'red'
+//     }} to={handlePassword}>
+//             {/* <div style={{ display: 'flex', alignItems: 'center', margin: '1rem 0'}}> */}
+//               Senhas e segurança
+//             {/* </div> */}
+//           </NavLink>
+//         </SideItem>
+        
+//         <SideItem>
+//           <NavLink activestyle={{fontWeight: 'bold'}} to={handlePosts}>
+//             {/* <div style={{ display: 'flex', alignItems: 'center'}}> */}
+//               Postagens e comentários
+//             {/* </div> */}
+//           </NavLink>
+//         </SideItem>
+
+        
+//     </SideBarContainer>
+//   );
+// }
+
+

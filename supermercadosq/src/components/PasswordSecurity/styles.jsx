@@ -28,7 +28,7 @@ export const ProfileInformationContainer = styled.div`
       margin-top: 2vh;
       input {
         border: 1px solid var(--color-blue-light);
-        height: 25px;
+        height: 30px;
         width: 450px;
        
       }

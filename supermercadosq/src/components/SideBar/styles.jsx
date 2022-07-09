@@ -13,7 +13,7 @@ export const SideBarContainer = styled.div`
 `;
 
 export const SideItem = styled.div`
-
+  margin-top: 10px;
 `
 
 export const SideLink = styled.button`
@@ -21,10 +21,19 @@ export const SideLink = styled.button`
   align-items: center;
   border: none;
   background-color: transparent;
+  color: rgba(144, 144, 144, 1);
+  font-size: 16px;
 
   &:hover {
     font-size: 1rem;
+    font-weight: bold;
   }
+
+  &:focus {
+    font-weight: bold;
+    color: rgba(144, 144, 144, 1);
+  }
+
 
   .sidelink-margin{
     margin: '1rem 0';
