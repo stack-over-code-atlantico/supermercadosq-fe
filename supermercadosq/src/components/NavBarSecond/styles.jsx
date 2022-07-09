@@ -47,6 +47,11 @@ export const NavItem = styled.li`
   padding: 0 4rem;
   border-bottom: 2px solid transparent;
 
+  .border-bottom {
+    height: 30px;
+    border-bottom: 2px solid var(--color-white);
+  }
+
   &:hover {
     border-bottom: 2px solid var(--color-white);
   }
@@ -68,6 +73,7 @@ export const NavLink = styled(Link)`
   font-weight: bold;
   height: 100%;
   cursor: pointer;
+
  
   @media screen and (max-width: 768px) {
     text-align: center;

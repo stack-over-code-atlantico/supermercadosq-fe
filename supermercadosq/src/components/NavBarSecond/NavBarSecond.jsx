@@ -38,7 +38,7 @@ export default function Navbar() {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/profile' onClick={closeMobileMenu} >
+                <NavLink to='/profile' onClick={closeMobileMenu} className="border-bottom">
                   Perfil
                 </NavLink>
               </NavItem>
