@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Select from "react-select";
 import { BsPlusCircle } from "react-icons/bs";
+import PostIcon from "../../assets/icons/post-icon.png";
 import {
   Buttons,
   ImageUpload,
@@ -8,49 +9,49 @@ import {
   RegisterForm,
 } from "./styles";
 import { useState } from "react";
-import { createProduct } from "../../services/useCreateProduct";
+import { createOneProduct } from "../../services/useProducts";
 
 const ProductRegister = () => {
-  const [prodName, setProdName] = useState("");
-  const [listAlergic, setListAlergic] = useState("");
-  const [description, setDescription] = useState("");
-  const [nutTable, setNutTable] = useState("");
-  const [prodImg, setProdImg] = useState("");
-  const [button, setButton] = useState(true);
+  const [file, setFile] = useState(null);
+  const [srcUrl, setSrcUrl] = useState(PostIcon);
+  const [data, setData] = useState({
+    nome: "",
+    alergia: "",
+    descricao: "",
+    ingredientes: "",
+  });
 
-  useEffect(() => {
-    if (prodName && description && nutTable) {
-      setButton(false);
-    } else {
-      setButton(true)
-    }
-  }, [prodName, listAlergic, description, nutTable]);
+  const handleSelectFile = (event) => {
+    setFile(event.target.files[0]);
+    setSrcUrl(URL.createObjectURL(event.target.files[0]));
+  };
 
-
-  const handleRegisterProd = (e, formData) => {
+  const handleRegisterProd = async (e) => {
     e.preventDefault();
-    const createNewProduct = createProduct({
-      nome: prodName,
-      alergia: String(listAlergic),
-      descricao: description,
-      ingredientes: nutTable,
-      imagem: prodImg,
-    });
-    return createNewProduct;
+    const formData = new FormData();
+    formData.append("nome", data.nome);
+    formData.append("alergia", data.alergia);
+    formData.append("descricao", data.descricao);
+    formData.append("ingredientes", data.ingredientes);
+    formData.append("file", file);
+
+    const submit = await createOneProduct(formData)
+      .then((res) => alert("Produto Cadastrado com Sucesso"))
+      .catch((err) => alert("Ocorreu um Erro"));
+    return submit;
   };
 
   const handleGetAlergic = (alergicOptions) => {
-    setListAlergic(
-      alergicOptions.map((alergia) => {
-        return alergia.value;
-      })
-    );
-    const alergias = listAlergic.toString();
+    setData((prev) => ({
+      ...prev,
+      alergia: alergicOptions.map((alergia) => alergia.value).join(","),
+    }));
   };
 
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
-    { value: "crustáceos", label: "Crustáceos" },
+    { value: "crustaceos", label: "Crustáceos" },
+    { value: "gluten", label: "Glúten" },
     { value: "lactose", label: "Lactose" },
     { value: "mostarda", label: "Mostarda" },
     { value: "ovo", label: "Ovo" },
@@ -112,7 +113,10 @@ const ProductRegister = () => {
   return (
     <RegisterContainer>
       <ImageUpload>
-        <BsPlusCircle />
+        <label>
+          <img width="50%" src={srcUrl}></img>
+          <input type="file" onChange={handleSelectFile} accept="image/*" />
+        </label>
       </ImageUpload>
       <RegisterForm onSubmit={handleRegisterProd}>
         <h2>Crie sua postagem sobre algum produto</h2>
@@ -122,7 +126,9 @@ const ProductRegister = () => {
             <input
               type="text"
               placeholder="Nome"
-              onChange={(e) => setProdName(e.target.value)}
+              onChange={(e) =>
+                setData((prev) => ({ ...prev, nome: e.target.value }))
+              }
             />
           </label>
           <label>
@@ -150,19 +156,30 @@ const ProductRegister = () => {
             <input
               type="text"
               placeholder="Descrição"
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) =>
+                setData((prev) => ({ ...prev, descricao: e.target.value }))
+              }
             />
           </label>
         </div>
         <div className="ProductFinal">
           <label>
             <span>Ingredientes</span>
-            <textarea onChange={(e) => setNutTable(e.target.value)} />
+            <textarea
+              onChange={(e) =>
+                setData((prev) => ({ ...prev, ingredientes: e.target.value }))
+              }
+            />
           </label>
         </div>
         <Buttons>
-          <button>Voltar</button>
-          <button type="submit" disabled={button}>
+          <button type="button">Voltar</button>
+          <button
+            type="submit"
+            disabled={
+              data.nome && data.descricao && data.ingredientes ? false : true
+            }
+          >
             Finalizar
           </button>
         </Buttons>
