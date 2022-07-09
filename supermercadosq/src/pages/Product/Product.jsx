@@ -9,24 +9,25 @@ import { getAllProducts } from '../../services/useProducts'
 import { ListProducts } from './styles' 
 
 export function Product () {
-  const [posts, setPosts] = useState([]);
+//   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    AllProducts(0)
-  }, []);
+//   useEffect(() => {
+//     AllProducts(0)
+//   }, []);
 
 
-async function AllProducts(page) {
-  await getAllProducts(page).then((resp)=>{
-    setPosts(resp.data)
-  })
+// async function AllProducts(page) {
+//   await getAllProducts(page).then((resp)=>{
+//     setPosts(resp.data)
+//   })
 
     return (
       <>
         <NavbarAdm/>
         <NavbarProducts/>
         <FilterButton/>
-        <ListProducts>
+        <CardsContainer/>
+        {/* <ListProducts>
           {posts?.map((product)=>{
             return (
               <Product key={product.id_product}>
@@ -37,10 +38,10 @@ async function AllProducts(page) {
               </Product>
             )
           })}
-        </ListProducts>
+        </ListProducts> */}
         <Footer/>
       </>
     )
   }
-}
+// }
 export default Product;
