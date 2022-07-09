@@ -4,14 +4,17 @@ import { DivRestrictionAndName, DivProductCardFace, DivProductCardFront, DivProd
 import LeiteCondensado from '../../assets/images/leite-condensado-italac.jpg'
 import Bola from '../../assets/images/bola.jpg'
 
-export function ProductCard (){
+export function ProductCard ({
+    id_product,
+    nome_product
+}){
     return(
         <DivProductCardFace>
             <DivProductCardFront className="front">
                 <img src={LeiteCondensado} className="restrictionImg"/>
                 <DivRestrictionAndName>
                     <img src={Bola}/>
-                    <p className="productName">Leite Condensado Italac</p>
+                    <p className="productName">{nome_product}</p>
                 </DivRestrictionAndName>
             </DivProductCardFront>
             <DivProductCardBack className="back">

@@ -2,12 +2,13 @@ import React from "react";
 import Vector from '../../assets/icons/vector.svg';
 import { DivNavbarAdm, NavbarListAdm, ProductListItemAdm } from "../NavbarProductsAdm/styles";
 
-export function NavbarAdm(){
+export function NavbarAdm({productName}){
     return(
         <DivNavbarAdm>
             <NavbarListAdm>
                 <ProductListItemAdm>
                     <a href="#">Home</a>
+                    {productName}
                 </ProductListItemAdm>
                 <ProductListItemAdm>
                     <a href="#">Perfil</a>
