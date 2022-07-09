@@ -1,8 +1,8 @@
-import React from 'react';
-import { ProfileInformationContainer } from './styles';
-import { useState } from "react";
+import React, { useState } from 'react';
+import { PasswordSecurityContainer } from './styles';
 
-export default PasswordSecurityForm = () => {
+
+const PasswordSecurityForm = () => {
 
   const [senhaAntiga, setSenhaAntiga] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
@@ -10,7 +10,7 @@ export default PasswordSecurityForm = () => {
 
   return (
     <>
-      <ProfileInformationContainer>
+      <PasswordSecurityContainer>
         <h2 className="title">Editar senha</h2>
         <h3 className="subtitle">Edite sua senha</h3>
         <hr/>
@@ -31,7 +31,10 @@ export default PasswordSecurityForm = () => {
           </label>
           <input id="button" type="submit" value="Salvar" />
         </form>
-      </ProfileInformationContainer>
+      </PasswordSecurityContainer>
     </>
   );
 }
+
+
+export default PasswordSecurityForm;

@@ -1,5 +1,4 @@
 import React from 'react';
-import ProfileBar from '../../pages/Profile/Profile'
 import { PostCommentsContainer } from './styles';
 
 

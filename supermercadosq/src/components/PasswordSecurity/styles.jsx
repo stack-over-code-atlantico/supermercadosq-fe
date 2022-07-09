@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProfileInformationContainer = styled.div`
+export const PasswordSecurityContainer = styled.div`
   margin: 15vh 20vh;
   display: flex;
   flex-direction: column;
