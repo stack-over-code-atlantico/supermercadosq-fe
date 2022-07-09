@@ -1,11 +1,12 @@
 import React from "react";
 import sushiImage from "../../assets/images/sushiPhoto.png";
+import home from "../../assets/icons/home.png";
 import seafoodIcon from "../../assets/icons/seafood.png";
 import milkIcon from "../../assets/icons/milk.png";
 import fishIcon from "../../assets/icons/fish.png";
 import mustardIcon from "../../assets/icons/mustard.png";
 import peanutIcon from "../../assets/icons/peanut.png";
-import ovo from "../../assets/icons/egg.png";
+import eggIcon from "../../assets/icons/egg.png";
 import wheatIcon from "../../assets/icons/wheat.png";
 import UserComment from "../../components/UserComment/UserComment";
 import { IoReturnDownBackOutline } from "react-icons/io5";
@@ -34,13 +35,14 @@ import LabelMessage from "../../components/LabelMessage";
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
-  const [idProdComment, setIdProdComment] = useState("1");
+  const [idProdComment, setIdProdComment] = useState("4");
   const [isEdit, setIsEdit] = useState(false);
-  const [alergia, setAlergia] = useState("");
-  const [configAlergia, setConfigAlergia] = useState([]);
+  const [alergia, setAlergia] = useState("I");
+  const [configAlergia, setConfigAlergia] = useState([]); 
 
   const handleColor = (alergiaAtual) => {
-    if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: ovo };
+    if (alergiaAtual == "") return {color:"#9CDD6E", icon:home};
+    if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: eggIcon };
     if (alergiaAtual == "soja") return { color: "#D3B273", icon: wheatIcon };
     if (alergiaAtual == "amendoim")
       return { color: "#C87C53", icon: peanutIcon };
@@ -50,7 +52,7 @@ const ProductDetails = () => {
     if (alergiaAtual == "crustaceos")
       return { color: "#F66A69", icon: seafoodIcon };
     if (alergiaAtual == "lactose") return { color: "#3EBCD3", icon: milkIcon };
-    return "#9CDD6E";
+    return {color:"#9CDD6E", icon:home};
   };
 
   useEffect(() => {
@@ -61,9 +63,9 @@ const ProductDetails = () => {
   useEffect(() => {
     setConfigAlergia([]);
     for (let values of alergia) {
+      console.log(values)
       setConfigAlergia((prev) => [...prev, handleColor(values)]);
     }
-    console.log(configAlergia);
   }, [alergia]);
 
   function getProduct(id_produto) {
@@ -73,7 +75,8 @@ const ProductDetails = () => {
         return resp;
       })
       .then((res) => {
-        setAlergia(res.data.alergia.split(","));
+        // console.log(res.data.alergia)
+        if(res.data.alergia) setAlergia(res.data.alergia.split(","));
       });
   }
   function getComments(id_produto) {
@@ -172,16 +175,13 @@ const ProductDetails = () => {
               </NutritionalTable>
               <IconType>
                 {configAlergia.map((item) => {
-                  console.log(item.color);
                   return (
-                    <>
-                    <div className='IconType' style={{backgroundColor:item.color}}>
+                    <div
+                      className="IconType"
+                      style={{ backgroundColor: item.color }}
+                    >
                       <img src={item.icon} alt="peixe" />
                     </div>
-                    <div className='IconType' style={{backgroundColor:item.color}}>
-                      <img src={item.icon} alt="peixe" />
-                    </div>
-                    </>
                   );
                 })}
               </IconType>
