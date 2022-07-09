@@ -1,7 +1,20 @@
 import styled from "styled-components";
 
+export const ContainerAvatar = styled.div`
+
+  justify-content: center;
+  align-items: center;
+  margin-right: 45%;
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
 export const ProfileInformationContainer = styled.div`
-  margin: 15vh 20vh;
+  margin: 10vh 10vh;
   display: flex;
   flex-direction: column;
 
@@ -27,12 +40,15 @@ export const ProfileInformationContainer = styled.div`
   }
 
   form {
+    width: 100%;
+
     .align {
       display: flex;
       width: 100%;
-      gap: 10%;
+      gap: 4%;
+
       label {
-        width: 45%;
+        width: 48%;
       }
     }
     /* .align {
@@ -64,7 +80,7 @@ export const ProfileInformationContainer = styled.div`
         background: var(--color-blue-light);
         color: var(--color-white);
         border-radius: 50%;
-        margin-left: 40%;
+
         cursor: pointer;
         transition: filter 0.3s;
 
@@ -88,9 +104,12 @@ export const ProfileInformationContainer = styled.div`
     }
     div {
       display: flex;
-      justify-content: end;
       width: 100%;
-      margin-top: 10px;
+
+      :last-child{
+        justify-content: end;
+      }
+
       #button {
         padding: 2% 10%;
         background-color: var(--color-blue-light);
@@ -98,10 +117,8 @@ export const ProfileInformationContainer = styled.div`
         border: none;
         border-radius: 5px;
         font-size: 100%;
-
-        &:hover {
-          cursor: pointer;
-        }
+        margin-top: 25px;
+        cursor: pointer;
       }
     }
   }

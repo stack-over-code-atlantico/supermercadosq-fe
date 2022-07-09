@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ProfileInformationContainer } from "./styles";
+import { ProfileInformationContainer, ContainerAvatar } from "./styles";
 import { BsFillPersonFill } from "react-icons/bs";
 
 const ProfileInformationForm = () => {
@@ -16,12 +16,12 @@ const ProfileInformationForm = () => {
         <h2 className="title">Editar perfil</h2>
 
         <form>
-          <label for="file">
-            <BsFillPersonFill className="icon" size="15%" />
-          </label>
-          <input type="file" id="file" style={{ display: "none" }} />
-
-          <h3 className="title-icon">Cliente</h3>
+          <ContainerAvatar>
+            <label for="file">
+              <BsFillPersonFill className="icon" size="5rem" />
+              <input type="file" id="file" style={{ display: "none" }} />
+            </label>
+          </ContainerAvatar>
 
           <h3 className="subtitle">Dados pessoais</h3>
           <hr />

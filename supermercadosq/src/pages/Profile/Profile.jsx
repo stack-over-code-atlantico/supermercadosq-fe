@@ -30,7 +30,7 @@ export default function Profile() {
   };
 
    return (
-      <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
+      <div style={{ width: '100%', display: 'grid', gridTemplateColumns: '20% 80%' }}>
         <NavBar />
         <SideBar
           handleProfile={handleProfileScreen}
