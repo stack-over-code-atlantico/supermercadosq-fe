@@ -35,8 +35,11 @@ import LabelMessage from "../../components/LabelMessage";
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
-  const [idProdComment, setIdProdComment] = useState("4");
-  const [isEdit, setIsEdit] = useState(false);
+
+
+  const [idProdComment, setIdProdComment] = useState("1");
+
+  const [isEdit, setIsEdit] = useState("");
   const [alergia, setAlergia] = useState("I");
   const [configAlergia, setConfigAlergia] = useState([]); 
 
@@ -61,9 +64,13 @@ const ProductDetails = () => {
   }, []);
 
   useEffect(() => {
+    getComments(idProdComment);
+  }, [dataComment]);
+
+  useEffect(() => {
     setConfigAlergia([]);
     for (let values of alergia) {
-      console.log(values)
+      console.log(values);
       setConfigAlergia((prev) => [...prev, handleColor(values)]);
     }
   }, [alergia]);
@@ -79,6 +86,7 @@ const ProductDetails = () => {
         if(res.data.alergia) setAlergia(res.data.alergia.split(","));
       });
   }
+
   function getComments(id_produto) {
     getCommentsByProduct(id_produto).then((resp) => {
       setDataComment(resp.data);
@@ -100,14 +108,15 @@ const ProductDetails = () => {
     return createNewComment;
   }
 
-  // async function handleEditItem(messageComment, id_comentario) {
-  //   const createEditItem = useEditItem({
-  //     messageComment,
-  //     id_comentario,
-  //   });
-  //   setIsEdit(true);
-  //   return createEditItem;
-  // }
+  async function handleEditItem(mensagem, id_item) {
+    const createEditItem = useEditItem({
+      mensagem,
+      id_item,
+    });
+    setDataComment(dataComment);
+    setIsEdit("");
+    return createEditItem;
+  }
 
   async function handleDeleteItem(id_item, typeItem) {
     const deleteItemAxios = useDeleteItem({
@@ -159,7 +168,7 @@ const ProductDetails = () => {
           typeItem="produto"
           onDeleteItem={handleDeleteItem}
           onReportItem={handleReportItem}
-          // onEditItem={handleEditItem}
+          onEditItem={handleEditItem}
         />
         <PostComment>
           <PostContainer
@@ -212,24 +221,21 @@ const ProductDetails = () => {
                     onReportItem={handleReportItem}
                     onEditItem={() => {
                       handleEditItem;
-                      setIsEdit(true);
+                      setIsEdit(comment?.id_comentario);
                     }}
                   />
-                  <p>
-                    {isEdit === true ? (
+                  {isEdit === comment?.id_comentario ? (
+                    <p>
                       <LabelMessage
-                        executeFunction={() => {
-                          handleEditItem;
-                          setIsEdit(false);
-                        }}
+                        executeFunction={handleEditItem}
                         mensagem
-                        id_item={idProdComment}
-                        typeHandleCreate={true}
+                        id_item={comment.id_comentario}
+                        typeHandleCreate={false}
                       />
-                    ) : (
-                      comment.mensagem
-                    )}
-                  </p>
+                    </p>
+                  ) : (
+                    <p>{comment.mensagem}</p>
+                  )}
                 </Comment>
               );
             })}

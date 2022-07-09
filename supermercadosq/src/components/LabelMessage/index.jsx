@@ -15,12 +15,11 @@ const LabelMessage = ({
   function handleCreateComment() {
     executeFunction((mensagem = messageComment), id_item);
     setMessageComment("");
-    console.log(mensagem);
   }
+
   function handleEditComment() {
-    // executeFunction((mensagem = messageComment), id_item);
-    // setMessageComment(mensagem);
-    console.log(mensagem);
+    executeFunction((mensagem = messageComment), id_item);
+    setMessageComment(mensagem);
   }
 
   return (
