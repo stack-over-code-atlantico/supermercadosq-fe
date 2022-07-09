@@ -8,6 +8,7 @@ const LabelMessage = ({
   mensagem,
   id_item,
   typeHandleCreate,
+  color
 }) => {
   const [messageComment, setMessageComment] = useState("");
 
@@ -22,7 +23,7 @@ const LabelMessage = ({
   }
 
   return (
-    <LabelComment>
+    <LabelComment color={color}>
       <input
         type="text"
         placeholder="Adicionar Comentário"
