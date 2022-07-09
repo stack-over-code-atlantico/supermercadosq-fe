@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { ProfileInformationContainer } from './styles';
-import { BsFillPersonFill } from 'react-icons/bs'
-
+import React, { useState } from "react";
+import { ProfileInformationContainer } from "./styles";
+import { BsFillPersonFill } from "react-icons/bs";
 
 const ProfileInformationForm = () => {
-
   const [nomeCompleto, setNomeCompleto] = useState("");
   const [nomeSocial, setNomeSocial] = useState("");
   const [email, setEmail] = useState("");
@@ -16,49 +14,44 @@ const ProfileInformationForm = () => {
     <>
       <ProfileInformationContainer>
         <h2 className="title">Editar perfil</h2>
-       
-        <form >
-          
-          <label for="file" > 
+
+        <form>
+          <label for="file">
             <BsFillPersonFill className="icon" size="15%" />
           </label>
-          <input type="file" id="file" style={{display: 'none'}}/>
+          <input type="file" id="file" style={{ display: "none" }} />
 
           <h3 className="title-icon">Cliente</h3>
-        
+
           <h3 className="subtitle">Dados pessoais</h3>
-          <hr/>
+          <hr />
 
           <div className="align">
             <label>
               Nome Completo:
-              <input 
-                type="text" 
-                className="less-width"
-                value={nomeCompleto} 
-                onChange={e => setNomeCompleto(e.target.value) }
+              <input
+                type="text"
+                value={nomeCompleto}
+                onChange={(e) => setNomeCompleto(e.target.value)}
               />
             </label>
-          
             <label>
               Nome social:
-              <input 
-                type="text" 
-                className="less-width"
-                value={nomeSocial} 
-                onChange={e => setNomeSocial(e.target.value) } 
+              <input
+                type="text"
+                value={nomeSocial}
+                onChange={(e) => setNomeSocial(e.target.value)}
               />
             </label>
           </div>
-          
-        
+
           <label>
             E-mail:
-            <input 
-              type="email" 
+            <input
+              type="email"
               className="width"
-              value={email} 
-              onChange={e => setEmail(e.target.value) } 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="digite seu email"
             />
           </label>
@@ -66,106 +59,82 @@ const ProfileInformationForm = () => {
           <div className="align">
             <label>
               Telefone:
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 className="less-width"
-                value={telefone} 
-                onChange={e => setTelefone(e.target.value) }
-                placeholder="digite seu telefone" 
+                value={telefone}
+                onChange={(e) => setTelefone(e.target.value)}
+                placeholder="digite seu telefone"
               />
             </label>
-          
+
             <label>
               CPF/CNPJ:
-              <input 
-                type="number" 
+              <input
+                type="number"
                 className="less-width"
-                value={cpfCnpj} 
-                onChange={e => setCpfCnpj(e.target.value) } 
+                value={cpfCnpj}
+                onChange={(e) => setCpfCnpj(e.target.value)}
                 disabled
               />
             </label>
           </div>
-         
-        
+
           <label>
             Restrição Alimentar
-            <input 
-              type="select" 
+            <input
+              type="select"
               className="width"
-              value={retricaoAlimentar} 
-              onChange={e => setRestricaoAlimentar(e.target.value) } 
+              value={retricaoAlimentar}
+              onChange={(e) => setRestricaoAlimentar(e.target.value)}
             />
           </label>
-        
-        
+
           <h3 className="subtitle">Endereço</h3>
-          <hr/>
-            
+          <hr />
+
           <div className="align">
             <label>
               CEP:
-              <input 
-                type="number" 
-                className="less-width" 
-                min="0"
-              />
+              <input type="number" className="less-width" min="0" />
             </label>
-                              
+
             <label>
               Logradouro:
-              <input 
-                type="text" 
-                className="less-width" 
-                min="0"
-              />
+              <input type="text" className="less-width" min="0" />
             </label>
           </div>
 
-          <div id="adressNumber" className="align">              
+          <div id="adressNumber">
             <label>
               Número:
-              <input 
-                type="text" 
-                className="less-width"
-                min="0"
-              />
+              <input type="text" className="less-width" min="0" />
             </label>
 
             <label>
               Bairro:
-              <input 
-                type="text" 
-                className="less-width"
-                min="0" 
-              />
-            </label>     
+              <input type="text" className="less-width" min="0" />
+            </label>
           </div>
 
-          <div id="cityState" className="align">
+          <div id="cityState">
             <label>
               Cidade:
-              <input 
-                type="text"
-                className="less-width" 
-              />
+              <input type="text" className="less-width" />
             </label>
-                      
+
             <label>
               Estado:
-              <input 
-                type="text" 
-                className="less-width"
-              />
+              <input type="text" className="less-width" />
             </label>
           </div>
-         
-          <input id="button"type="submit" value="Salvar" />
+          <div>
+            <input id="button" type="submit" value="Salvar" />
+          </div>
         </form>
-        
       </ProfileInformationContainer>
     </>
   );
-}
+};
 
 export default ProfileInformationForm;

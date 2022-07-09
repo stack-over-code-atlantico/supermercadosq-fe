@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const ProfileInformationContainer = styled.div`
-  margin: 15vh  20vh;
+  margin: 15vh 20vh;
   display: flex;
   flex-direction: column;
 
@@ -23,16 +22,24 @@ export const ProfileInformationContainer = styled.div`
     margin-left: 41%;
   }
 
-
-  hr{
+  hr {
     width: 100%;
-  } 
+  }
 
   form {
     .align {
       display: flex;
-      gap: 20px;
+      width: 100%;
+      gap: 10%;
+      label {
+        width: 45%;
+      }
     }
+    /* .align {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    } */
 
     #adressNumber {
       display: grid;
@@ -63,10 +70,8 @@ export const ProfileInformationContainer = styled.div`
 
         &:hover {
           filter: brightness(0.7);
-          
         }
       }
-
 
       input {
         border: 1px solid var(--color-blue-light);
@@ -79,29 +84,25 @@ export const ProfileInformationContainer = styled.div`
         .less-width {
           width: 250px;
         }
-    }
-   
-  }
-
-  #button {
-      margin-top: 4vh;
-      margin-left: 60vh;
-      padding: 2% 10%;
-      background-color: var(--color-blue-light);
-      color: var(--color-white);
-      border: none;
-      border-radius: 5px;
-      font-size: 100%;
-
-      &:hover {
-        cursor: pointer;
       }
     }
+    div {
+      display: flex;
+      justify-content: end;
+      width: 100%;
+      margin-top: 10px;
+      #button {
+        padding: 2% 10%;
+        background-color: var(--color-blue-light);
+        color: var(--color-white);
+        border: none;
+        border-radius: 5px;
+        font-size: 100%;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
-
-`
-
-
-
-
-
+  }
+`;
