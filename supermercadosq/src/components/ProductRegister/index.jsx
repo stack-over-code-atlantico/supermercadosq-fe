@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Select from "react-select";
 import { BsPlusCircle } from "react-icons/bs";
+import PostIcon from "../../assets/icons/post-icon.png";
 import {
   Buttons,
   ImageUpload,
@@ -12,7 +13,7 @@ import { createOneProduct } from "../../services/useProducts";
 
 const ProductRegister = () => {
   const [file, setFile] = useState(null);
-  const [srcUrl, setSrcUrl]=useState('')
+  const [srcUrl, setSrcUrl] = useState(PostIcon);
   const [data, setData] = useState({
     nome: "",
     alergia: "",
@@ -22,10 +23,10 @@ const ProductRegister = () => {
 
   const handleSelectFile = (event) => {
     setFile(event.target.files[0]);
-    setSrcUrl(URL.createObjectURL(event.target.files[0]))
+    setSrcUrl(URL.createObjectURL(event.target.files[0]));
   };
 
-  const handleRegisterProd = (e) => {
+  const handleRegisterProd = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("nome", data.nome);
@@ -34,7 +35,9 @@ const ProductRegister = () => {
     formData.append("ingredientes", data.ingredientes);
     formData.append("file", file);
 
-    const submit = createOneProduct(formData);
+    const submit = await createOneProduct(formData)
+      .then((res) => alert("Produto Cadastrado com Sucesso"))
+      .catch((err) => alert("Ocorreu um Erro"));
     return submit;
   };
 
@@ -110,14 +113,10 @@ const ProductRegister = () => {
   return (
     <RegisterContainer>
       <ImageUpload>
-        {!file?(
-          <label>
-          <BsPlusCircle />
-          <input type="file" onChange={handleSelectFile} />
+        <label>
+          <img width="50%" src={srcUrl}></img>
+          <input type="file" onChange={handleSelectFile} accept="image/*" />
         </label>
-        ):(
-          <iframe src={srcUrl} ></iframe>
-        )}
       </ImageUpload>
       <RegisterForm onSubmit={handleRegisterProd}>
         <h2>Crie sua postagem sobre algum produto</h2>
@@ -174,8 +173,13 @@ const ProductRegister = () => {
           </label>
         </div>
         <Buttons>
-          <button>Voltar</button>
-          <button type="submit" disabled={data.nome && data.descricao && data.ingredientes?false:true}>
+          <button type="button">Voltar</button>
+          <button
+            type="submit"
+            disabled={
+              data.nome && data.descricao && data.ingredientes ? false : true
+            }
+          >
             Finalizar
           </button>
         </Buttons>

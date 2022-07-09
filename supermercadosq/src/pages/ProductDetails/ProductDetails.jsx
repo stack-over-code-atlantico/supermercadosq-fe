@@ -1,6 +1,13 @@
 import React from "react";
 import sushiImage from "../../assets/images/sushiPhoto.png";
+import home from "../../assets/icons/home.png";
+import seafoodIcon from "../../assets/icons/seafood.png";
+import milkIcon from "../../assets/icons/milk.png";
 import fishIcon from "../../assets/icons/fish.png";
+import mustardIcon from "../../assets/icons/mustard.png";
+import peanutIcon from "../../assets/icons/peanut.png";
+import eggIcon from "../../assets/icons/egg.png";
+import wheatIcon from "../../assets/icons/wheat.png";
 import UserComment from "../../components/UserComment/UserComment";
 import { IoReturnDownBackOutline } from "react-icons/io5";
 import { AiOutlineSend } from "react-icons/ai";
@@ -28,20 +35,49 @@ import LabelMessage from "../../components/LabelMessage";
 const ProductDetails = () => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
-
-  const [idProdComment, setIdProdComment] = useState("1");
-
+  const [idProdComment, setIdProdComment] = useState("4");
   const [isEdit, setIsEdit] = useState(false);
+  const [alergia, setAlergia] = useState("I");
+  const [configAlergia, setConfigAlergia] = useState([]); 
+
+  const handleColor = (alergiaAtual) => {
+    if (alergiaAtual == "") return {color:"#9CDD6E", icon:home};
+    if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: eggIcon };
+    if (alergiaAtual == "soja") return { color: "#D3B273", icon: wheatIcon };
+    if (alergiaAtual == "amendoim")
+      return { color: "#C87C53", icon: peanutIcon };
+    if (alergiaAtual == "mostarda")
+      return { color: "#F59E1D", icon: mustardIcon };
+    if (alergiaAtual == "peixe") return { color: "#9CDBE7", icon: fishIcon };
+    if (alergiaAtual == "crustaceos")
+      return { color: "#F66A69", icon: seafoodIcon };
+    if (alergiaAtual == "lactose") return { color: "#3EBCD3", icon: milkIcon };
+    return {color:"#9CDD6E", icon:home};
+  };
 
   useEffect(() => {
     getProduct(idProdComment);
     getComments(idProdComment);
   }, []);
 
+  useEffect(() => {
+    setConfigAlergia([]);
+    for (let values of alergia) {
+      console.log(values)
+      setConfigAlergia((prev) => [...prev, handleColor(values)]);
+    }
+  }, [alergia]);
+
   function getProduct(id_produto) {
-    getOneProduct(id_produto).then((resp) => {
-      setDataProduct(resp.data);
-    });
+    getOneProduct(id_produto)
+      .then((resp) => {
+        setDataProduct(resp.data);
+        return resp;
+      })
+      .then((res) => {
+        // console.log(res.data.alergia)
+        if(res.data.alergia) setAlergia(res.data.alergia.split(","));
+      });
   }
   function getComments(id_produto) {
     getCommentsByProduct(id_produto).then((resp) => {
@@ -50,7 +86,6 @@ const ProductDetails = () => {
   }
 
   function handleCreateComment(mensagem, id_produto) {
-    console.log(id_produto);
     const createNewComment = useCreateComment({
       mensagem,
       id_produto,
@@ -127,27 +162,41 @@ const ProductDetails = () => {
           // onEditItem={handleEditItem}
         />
         <PostComment>
-          <PostContainer>
+          <PostContainer
+            color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+          >
             <span>{dataProduct?.nome}</span>
             <h3>{dataProduct?.descricao}</h3>
-            <NutritionalContainer>
+            <NutritionalContainer
+              color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+            >
               <NutritionalTable>
                 <p>{dataProduct?.ingredientes}</p>
               </NutritionalTable>
               <IconType>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
+                {configAlergia.map((item) => {
+                  return (
+                    <div
+                      className="IconType"
+                      style={{ backgroundColor: item.color }}
+                    >
+                      <img src={item.icon} alt="peixe" />
+                    </div>
+                  );
+                })}
               </IconType>
             </NutritionalContainer>
           </PostContainer>
           <LabelMessage
+            color={configAlergia.length < 1 ? "" : configAlergia[0].color}
             executeFunction={handleCreateComment}
             mensagem
             id_item={idProdComment}
             typeHandleCreate={true}
           />
-          <ListComments>
+          <ListComments
+            color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+          >
             {dataComment?.map((comment) => {
               return (
                 <Comment key={comment.id_comentario}>
