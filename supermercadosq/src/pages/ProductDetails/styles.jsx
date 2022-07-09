@@ -83,7 +83,7 @@ export const DetailsComments = styled.div`
 export const NutritionalContainer = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: ${props=>props.color};
+  background-color: ${(props) => props.color};
   width: 550px;
   height: auto;
 
@@ -110,21 +110,27 @@ export const NutritionalTable = styled.div`
 
 export const IconType = styled.div`
   display: grid;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: end;
   padding: 10px 10px 10px 0px;
-
-  #IconType {
+  div {
+    :first-child {
+      border-radius: 50%;
+    }
+  }
+  .IconType {
     margin: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-blue-ciel);
+    border: 1px solid white;
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    img{
-      width:65%
+    img {
+      width: 65%;
     }
   }
 `;
@@ -181,7 +187,7 @@ export const PostContainer = styled.div`
     border-radius: 20px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: ${props=>props.color};
+    background-color: ${(props) => props.color};
     border-radius: 20px;
   }
 `;
@@ -190,7 +196,6 @@ export const ListComments = styled.div`
   border-bottom: 2px solid #0000002b;
   height: 180px;
   overflow-y: auto;
-  
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -199,7 +204,7 @@ export const ListComments = styled.div`
     border-radius: 20px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: ${props=>props.color};
+    background-color: ${(props) => props.color};
     border-radius: 20px;
   }
 `;

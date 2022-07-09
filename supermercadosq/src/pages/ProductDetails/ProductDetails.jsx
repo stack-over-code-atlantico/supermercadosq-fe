@@ -57,15 +57,14 @@ const ProductDetails = () => {
     getProduct(idProdComment);
     getComments(idProdComment);
   }, []);
-  useEffect(()=>{
+
+  useEffect(() => {
+    setConfigAlergia([]);
     for (let values of alergia) {
-      setConfigAlergia((prev)=>([
-        ...prev,
-        handleColor(values) 
-      ]))
+      setConfigAlergia((prev) => [...prev, handleColor(values)]);
     }
-    console.log('oi')
-  },[alergia])
+    console.log(configAlergia);
+  }, [alergia]);
 
   function getProduct(id_produto) {
     getOneProduct(id_produto)
@@ -160,46 +159,44 @@ const ProductDetails = () => {
           // onEditItem={handleEditItem}
         />
         <PostComment>
-          <PostContainer color={configAlergia.length<1?'':configAlergia[0].color}>
+          <PostContainer
+            color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+          >
             <span>{dataProduct?.nome}</span>
             <h3>{dataProduct?.descricao}</h3>
-            <NutritionalContainer color={configAlergia.length<1?'':configAlergia[0].color}>
+            <NutritionalContainer
+              color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+            >
               <NutritionalTable>
                 <p>{dataProduct?.ingredientes}</p>
               </NutritionalTable>
               <IconType>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
-                <div id="IconType">
-                  <img src={fishIcon} alt="peixe" />
-                </div>
+                {configAlergia.map((item) => {
+                  console.log(item.color);
+                  return (
+                    <>
+                    <div className='IconType' style={{backgroundColor:item.color}}>
+                      <img src={item.icon} alt="peixe" />
+                    </div>
+                    <div className='IconType' style={{backgroundColor:item.color}}>
+                      <img src={item.icon} alt="peixe" />
+                    </div>
+                    </>
+                  );
+                })}
               </IconType>
             </NutritionalContainer>
           </PostContainer>
           <LabelMessage
-            color={configAlergia.length<1?'':configAlergia[0].color}
+            color={configAlergia.length < 1 ? "" : configAlergia[0].color}
             executeFunction={handleCreateComment}
             mensagem
             id_item={idProdComment}
             typeHandleCreate={true}
           />
-          <ListComments color={configAlergia.length<1?'':configAlergia[0].color}>
+          <ListComments
+            color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+          >
             {dataComment?.map((comment) => {
               return (
                 <Comment key={comment.id_comentario}>
