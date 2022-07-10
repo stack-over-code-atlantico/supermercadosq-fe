@@ -18,6 +18,7 @@ export const PasswordSecurityContainer = styled.div`
 
   hr{
     width: 450px;
+    background: #E9E6E6;
   }
 
   form {
