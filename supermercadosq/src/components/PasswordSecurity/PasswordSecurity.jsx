@@ -29,7 +29,9 @@ const PasswordSecurityForm = () => {
             Digite novamente a nova senha:
             <input type="password" value={repeteNovaSenha} onChange={e => setRepeteNovaSenha(e.target.value) } />
           </label>
-          <input id="button" type="submit" value="Salvar" />
+          <div style={{ display: 'flex', marginLeft: '355px'}}>
+           <input id="button" type="submit" value="Salvar" />
+          </div>
         </form>
       </PasswordSecurityContainer>
     </>

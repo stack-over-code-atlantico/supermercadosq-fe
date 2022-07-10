@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PasswordSecurityContainer = styled.div`
-  margin: 15vh 20vh;
+  margin: 10vh 10vh;
   display: flex;
   flex-direction: column;
 
@@ -17,10 +17,12 @@ export const PasswordSecurityContainer = styled.div`
   }
 
   hr{
-    width: 100%;
-  } 
+    width: 450px;
+  }
 
   form {
+    width: 100%;
+
     label {
       display: flex;
       flex-direction: column;
@@ -30,15 +32,13 @@ export const PasswordSecurityContainer = styled.div`
         border: 1px solid var(--color-blue-light);
         height: 30px;
         width: 450px;
-       
       }
- 
     }
+
 
     #button {
         margin-top: 4vh;
-        margin-left: 35vh;
-        padding: 3% 20%;
+        padding: 1rem 1.5rem;
         background-color: var(--color-blue-light);
         color: var(--color-white);
         border: none;
