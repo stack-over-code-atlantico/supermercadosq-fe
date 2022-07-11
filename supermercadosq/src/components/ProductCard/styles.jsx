@@ -12,7 +12,7 @@ export const DivProductCardFace = styled.div`
         transform: rotateY(180deg);
         z-index: 0;
     }
-  
+
     &:hover .back {
         transform: rotateY(0);
         z-index: 1;
@@ -36,16 +36,16 @@ export const DivProductCardFront = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    
+
     z-index: 1;
 
     img{
         display: block;
         border-radius: 10px 10px 0px 0px;
-        width: 240px;
-        height: 315px;        
+        width: 100%;
+        height: 300px;
     }
-    
+
 `;
 
 export const DivProductCardBack = styled.div`
@@ -72,7 +72,7 @@ export const DivProductCardBack = styled.div`
     img {
         width: 28px;
         height: 28px;
-        
+
         border-radius: 50%;
 
         margin: 10px 0px 10px 0px;
@@ -80,29 +80,51 @@ export const DivProductCardBack = styled.div`
 
 `;
 
+export const DivIconCircle = styled.div`
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 8px;
+  margin: 0 auto;
+  background-color: ${props => props.color ? props.color : 'var(--color-blue-light)' };
+
+  .icon {
+    position: absolute;
+    left: 6px;
+    top: 5.5px;
+    height: 28px;
+    width: 28px;
+    color: #fff;
+  }
+`;
+
 export const DivRestrictionAndName = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 0.5rem;
-    flex-wrap: wrap;   
+    gap: 1rem;
+    flex-wrap: wrap;
     margin: 20px 0px 0px 0px;
 
     p{
-        font-size: 1rem;
+        position: relative;
+        bottom: 10px;
+        font-size: .7rem;
         text-align: justify;
+        text-transform: uppercase;
     }
 
     img{
         width: 22px;
         height: 22px;
-        border-radius: 50%;
-        display: flex;
+        position: absolute;
+        z-index: 2;
     }
 `;
 
 export const DivProductCardBackContent = styled.div`
-    background-color: var(--color-blue-light);
+    background-color: ${props => props.color ? props.color : 'var(--color-blue-light)' };
 
     width: 100%;
     height: 100%;
@@ -117,10 +139,13 @@ export const DivProductCardBackContent = styled.div`
     flex-direction: column;
 
     h2 {
-        font-size: 1rem;
+        font-size: .6rem;
         text-transform: uppercase;
         font-weight: bold;
         text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         margin-top: 10px;
         margin-bottom: 10px;
 
@@ -146,7 +171,7 @@ export const DivProductCardBackContent = styled.div`
 `;
 
 export const DivBackContentInfos = styled.div`
-    background-color: var(--color-blue-light);
+    background-color: ${props => props.color ? props.color : 'var(--color-blue-light)' };
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -160,7 +185,8 @@ export const DivProductDescription = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    height: 200px;
+    width: 200px;
     border-radius: 10px;
     margin: 0px 15px;
 
@@ -190,12 +216,12 @@ export const DivPersonDetails = styled.div`
 
     padding: 10px 0px 0px 15px;
 
-    img {
+    .user-image {
         width: 22px;
         height: 22px;
-
+        color: #fff;
         border-radius: 50%;
-        margin: 0px 10px -10px -10px;
+        margin: 0px 10px 0px -28px;
         padding: 0;
     }
 `;
@@ -226,11 +252,25 @@ export const DivComment = styled.div`
     justify-content: center;
     align-items: center;
 
-    img {
+    .comment-btn {
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      height: 30px;
+      width: 30px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      transition: 500ms all ease;
+    }
+
+    .comment-btn:hover {
+      background-color: #fff;
+    }
+
+    .comment-icon {
         width: 22px;
         height: 22px;
+        color: #494949;
+        margin-top: 6px;
 
-        border-radius: 50%;
-        margin: 10px 0px;
     }
 `;

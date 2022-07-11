@@ -1,19 +1,11 @@
 import React from "react";
 import { DivCards } from "./styles";
-import { AddProductCard } from "../../components/AddProductCard";
-import { ProductCard } from "../../components/ProductCard";
 
-export function CardsContainer ({
-    // id_product,
-    // nome_product
-}){
+
+export function CardsContainer ({children}){
     return(
         <DivCards>
-            <AddProductCard/>
-            <ProductCard
-                // id_product={id_product}
-                // nome_product={nome_product}
-            />
+          {children}
         </DivCards>
     );
 };

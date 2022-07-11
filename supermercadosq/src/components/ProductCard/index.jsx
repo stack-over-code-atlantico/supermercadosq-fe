@@ -1,45 +1,73 @@
 import React from "react";
 
-import { DivRestrictionAndName, DivProductCardFace, DivProductCardFront, DivProductCardBack, DivProductCardBackContent, DivBackContentInfos, DivProductDescription, DivPersonDetails, DivNameAndPubDate, DivComment } from './styles';
-import LeiteCondensado from '../../assets/images/leite-condensado-italac.jpg'
-import Bola from '../../assets/images/bola.jpg'
+import {
+  DivRestrictionAndName,
+  DivProductCardFace,
+  DivProductCardFront,
+  DivProductCardBack,
+  DivProductCardBackContent,
+  DivBackContentInfos,
+  DivProductDescription,
+  DivPersonDetails,
+  DivNameAndPubDate,
+  DivComment,
+  DivIconCircle
+} from './styles';
+import { FaUserCircle } from "react-icons/fa";
+import { GoComment } from "react-icons/go";
+
+
 
 export function ProductCard ({
-    // id_product,
-    // nome_product
+  nome,
+  alergia = '',
+  descricao = '',
+  ingredientes = '',
+  imagem,
+  usuario,
+  dataPostagem,
+  color,
+  icon
 }){
     return(
         <DivProductCardFace>
             <DivProductCardFront className="front">
-                <img src={LeiteCondensado} className="restrictionImg"/>
+                <img src={imagem} className="restrictionImg"/>
                 <DivRestrictionAndName>
-                    <img src={Bola}/>
-                    {/* <p className="productName">{nome_product}</p> */}
+                    <DivIconCircle color={color} >
+                      <img className="icon" src={icon} />
+                    </DivIconCircle>
+                    <p className="productName">{nome}</p>
                 </DivRestrictionAndName>
             </DivProductCardFront>
             <DivProductCardBack className="back">
-                <img src={Bola}/>
-                <DivProductCardBackContent>
-                    <h2>Leite Condensado</h2>
+                {/* <img src={Bola}/> */}
+                <DivProductCardBackContent color={color}>
+                    <h2>{nome}</h2>
                     <div className="divLittleBall"></div>
-                    <DivBackContentInfos>
+                    <DivBackContentInfos color={color}>
                         <DivProductDescription>
-                            <p><span>Lorem ipsum</span> dolor sit amet consectetur adipisicing elit. Dignissimos cupiditate ab aperiam reprehenderit quaerat tempore aut, facilis eaque laudantium recusandae odio voluptatum incidunt sint voluptas doloremque ullam laborum consectetur modi?Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis commodi facilis a labore, tenetur exercitationem repellat </p>
+                            <p>
+                               {descricao}
+                            </p>
                         </DivProductDescription>
                         <DivPersonDetails>
-                            <img src={Bola}/>
+                            <FaUserCircle className="user-image"/>
                             <DivNameAndPubDate>
-                                <p className="pPersonName">Emanuel Victor</p>
-                                <p className="pPubDate">Publicação feita em 28/06/2022</p>
+                                <p className="pPersonName">{usuario}</p>
+                                <p className="pPubDate">Publicação feita em {
+                                dataPostagem.split('T')[0].split('-').reverse().join('/')}</p>
                             </DivNameAndPubDate>
                         </DivPersonDetails>
                     </DivBackContentInfos>
                     <DivComment>
-                        <img src={Bola}/>
+                        <button className="comment-btn">
+                          <GoComment className="comment-icon" />
+                        </button>
                     </DivComment>
                 </DivProductCardBackContent>
             </DivProductCardBack>
         </DivProductCardFace>
-        
+
     );
 };
