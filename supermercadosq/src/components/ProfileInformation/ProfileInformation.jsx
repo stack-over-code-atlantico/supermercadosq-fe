@@ -1,14 +1,42 @@
 import React, { useState } from "react";
 import { ProfileInformationContainer, ContainerAvatar } from "./styles";
 import { BsFillPersonFill } from "react-icons/bs";
+import { useEffect } from "react";
 
-const ProfileInformationForm = () => {
-  const [nomeCompleto, setNomeCompleto] = useState("");
+const ProfileInformationForm = ({data}) => {
+  const [nome, setNome] = useState('');
   const [nomeSocial, setNomeSocial] = useState("");
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
   const [cpfCnpj, setCpfCnpj] = useState("");
   const [retricaoAlimentar, setRestricaoAlimentar] = useState("");
+  const [cep, setCep] = useState('')
+  const [logradouro, setLogradouro] = useState('')
+  const [numeroEndereco, setNumeroEndereco] = useState('')
+  const [bairro, setBairro] = useState('')
+  const [cidade, setCidade] = useState('')
+  const [estado, setEstado] = useState('')
+  if(data.endereco)
+  console.log(data.endereco[0])
+
+  useEffect(()=>{
+    setNome(data.nome)
+    setNomeSocial(data.nome_social)
+    setEmail(data.email)
+    setTelefone(data.telefone)
+    setCpfCnpj(data.cpf_cnpj)
+    setRestricaoAlimentar(data.restricao_alimenticia)
+    if(data.endereco){
+      const endereco = data.endereco[0]
+      setCep(endereco.cep)
+      setLogradouro(endereco.logradouro)
+      setNumeroEndereco(endereco.numero)
+      setBairro(endereco.bairro)
+      setCidade(endereco.cidade)
+      setEstado(endereco.estado)
+
+    }
+  },[data])
 
   return (
     <>
@@ -31,8 +59,8 @@ const ProfileInformationForm = () => {
               Nome Completo:
               <input
                 type="text"
-                value={nomeCompleto}
-                onChange={(e) => setNomeCompleto(e.target.value)}
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
               />
             </label>
             <label>
@@ -96,36 +124,36 @@ const ProfileInformationForm = () => {
           <div className="align">
             <label>
               CEP:
-              <input type="number" className="less-width" min="0" />
+              <input type="number" className="less-width" value={cep}  min="0" />
             </label>
 
             <label>
               Logradouro:
-              <input type="text" className="less-width" min="0" />
+              <input type="text" className="less-width" value={logradouro} min="0" />
             </label>
           </div>
 
           <div id="adressNumber">
             <label>
               Número:
-              <input type="text" className="less-width" min="0" />
+              <input type="text" className="less-width" value={numeroEndereco} min="0" />
             </label>
 
             <label>
               Bairro:
-              <input type="text" className="less-width" min="0" />
+              <input type="text" className="less-width" value={bairro} min="0" />
             </label>
           </div>
 
           <div id="cityState">
             <label>
               Cidade:
-              <input type="text" className="less-width" />
+              <input type="text" className="less-width" value={cidade} />
             </label>
 
             <label>
               Estado:
-              <input type="text" className="less-width" />
+              <input type="text" className="less-width" value={estado}/>
             </label>
           </div>
           <div>

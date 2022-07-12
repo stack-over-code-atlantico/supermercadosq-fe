@@ -36,3 +36,9 @@ export const useCreateUser = async (data) => {
       return error
     });
 };
+
+export const getUserById = async (id_usuario) => {
+  const user = await api.get(`/users/${id_usuario}`);
+  return user;
+};
+

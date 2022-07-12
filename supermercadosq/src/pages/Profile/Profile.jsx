@@ -5,7 +5,7 @@ import SideBar from '../../components/SideBar/SideBar';
 import ProfileInformationForm from '../../components/ProfileInformation/ProfileInformation';
 import PasswordSecurityForm from '../../components/PasswordSecurity/PasswordSecurity';
 import PostCommentsForm from '../../components/PostComments/PostComments';
-import { dataUser } from '../../services/useUser';
+import { dataUser, getUserById } from '../../services/useUser';
 import { userLevel } from '../../services/useAuth';
 
 
@@ -15,12 +15,20 @@ export default function Profile() {
   const [isPosts, setIsPosts] = useState(false);
   const [data, setData] = useState({});
 
+  function getUserData(id_usuario){
+    getUserById(id_usuario).then(resp=>{
+      setData(resp.data)
+    })
+  }
+
   useEffect(() => {
     const {id_usuario} = userLevel();
-    // console.log(id_usuario); 
-    const teste = dataUser(id_usuario);
-    setData(teste);
+    getUserData(id_usuario)
   },[])
+  
+  useEffect(()=>{
+    console.log(data)
+  },[data])
 
   const handleProfileScreen = () => {
     setIsProfile(true);
@@ -50,7 +58,7 @@ export default function Profile() {
         />
         {
           isProfile
-            ? (<ProfileInformationForm />)
+            ? (<ProfileInformationForm data={data} />)
             : (<></>)
         }
         {
