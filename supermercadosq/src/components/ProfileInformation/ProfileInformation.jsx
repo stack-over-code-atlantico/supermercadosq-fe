@@ -29,9 +29,24 @@ const ProfileInformationForm = ({ data }) => {
       telefone,
       retricaoAlimentar,
       cep,
-      numeroEndereco
+      logradouro,
+      numeroEndereco,
+      bairro,
+      cidade,
+      estado
     );
   }
+
+  const handleCep = () => {
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setLogradouro(data.logradouro);
+        setBairro(data.bairro);
+        setCidade(data.localidade);
+        setEstado(data.uf);
+      });
+  };
 
   useEffect(() => {
     setNome(data.nome);
@@ -50,6 +65,10 @@ const ProfileInformationForm = ({ data }) => {
       setEstado(endereco.estado);
     }
   }, [data]);
+
+  useEffect(() => {
+    handleCep();
+  }, [cep]);
 
   return (
     <>
@@ -153,7 +172,6 @@ const ProfileInformationForm = ({ data }) => {
                 className="less-width"
                 value={logradouro}
                 disabled={true}
-                onChange={(e) => setLogradouro(e.target.value)}
                 min="0"
               />
             </label>
@@ -178,7 +196,6 @@ const ProfileInformationForm = ({ data }) => {
                 className="less-width"
                 disabled={true}
                 value={bairro}
-                onChange={(e) => setBairro(e.target.value)}
                 min="0"
               />
             </label>
@@ -192,7 +209,6 @@ const ProfileInformationForm = ({ data }) => {
                 className="less-width"
                 disabled={true}
                 value={cidade}
-                onChange={(e) => setCidade(e.target.value)}
               />
             </label>
 
@@ -203,7 +219,6 @@ const ProfileInformationForm = ({ data }) => {
                 className="less-width"
                 disabled={true}
                 value={estado}
-                onChange={(e) => setEstado(e.target.value)}
               />
             </label>
           </div>

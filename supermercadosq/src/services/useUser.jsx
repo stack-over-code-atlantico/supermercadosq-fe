@@ -53,7 +53,11 @@ export const useEditUser = async (
   telefone,
   retricaoAlimentar,
   cep,
-  numeroEndereco
+  logradouro,
+  numeroEndereco,
+  bairro,
+  cidade,
+  estado
 ) => {
   const bodyParams = {
     nome,
@@ -62,7 +66,11 @@ export const useEditUser = async (
     telefone,
     restricao_alimenticia: retricaoAlimentar,
     cep,
-    numero:numeroEndereco
+    logradouro,
+    numero:numeroEndereco,
+    bairro,
+    cidade,
+    estado
   };
   console.log(bodyParams);
   const updateUser = await api
