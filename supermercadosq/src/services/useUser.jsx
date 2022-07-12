@@ -1,10 +1,18 @@
-import { api } from '../utils/api';
+import { parseCookies } from "nookies";
+import { api } from "../utils/api";
 
+const { token: tokenJWT } = parseCookies();
+const config = { headers: { authorization: `Bearer ${tokenJWT}` } };
 
 export const dataUser = async (id_usuario) => {
   const user = await api.get(`/users/${id_usuario}`);
   return user;
-}
+};
+
+export const getUserById = async (id_usuario) => {
+  const user = await api.get(`/users/${id_usuario}`);
+  return user;
+};
 
 export const useCreateUser = async (data) => {
   const bodyParams = {
@@ -28,17 +36,44 @@ export const useCreateUser = async (data) => {
     .post("/users", bodyParams)
     .then((response) => {
       alert("Usuário Cadastrado");
-      return response
+      return response;
     })
     .catch((error) => {
       alert("Usuário não cadastrado");
       console.log(error.message);
-      return error
+      return error;
     });
 };
 
-export const getUserById = async (id_usuario) => {
-  const user = await api.get(`/users/${id_usuario}`);
-  return user;
+export const useEditUser = async (
+  cpf_cnpj,
+  nome,
+  nomeSocial,
+  email,
+  telefone,
+  retricaoAlimentar,
+  cep,
+  numeroEndereco
+) => {
+  const bodyParams = {
+    nome,
+    nome_social: nomeSocial,
+    email,
+    telefone,
+    restricao_alimenticia: retricaoAlimentar,
+    cep,
+    numero:numeroEndereco
+  };
+  console.log(bodyParams);
+  const updateUser = await api
+    .put(`/users/${cpf_cnpj}`, bodyParams, config)
+    .then((resp) => {
+      console.log(resp);
+      return resp;
+    })
+    .catch((err) => {
+      console.log(err);
+      return err;
+    });
+  return updateUser;
 };
-
