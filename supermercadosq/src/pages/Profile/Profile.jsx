@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Routes from '../../Routes/AppRoutes';
 import NavBar from '../../components/NavBarSecond/NavBarSecond';
 import SideBar from '../../components/SideBar/SideBar';
 import ProfileInformationForm from '../../components/ProfileInformation/ProfileInformation';
 import PasswordSecurityForm from '../../components/PasswordSecurity/PasswordSecurity';
 import PostCommentsForm from '../../components/PostComments/PostComments';
+import { dataUser } from '../../services/useUser';
+import { userLevel } from '../../services/useAuth';
+
 
 export default function Profile() {
-  const [isProfile, setIsProfile] = useState(false);
+  const [isProfile, setIsProfile] = useState(true);
   const [isPassword, setIsPassword] = useState(false);
   const [isPosts, setIsPosts] = useState(false);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const {id_usuario} = userLevel();
+    // console.log(id_usuario); 
+    const teste = dataUser(id_usuario);
+    setData(teste);
+  },[])
 
   const handleProfileScreen = () => {
     setIsProfile(true);
@@ -30,7 +41,7 @@ export default function Profile() {
   };
 
    return (
-      <div style={{ width: '100%', display: 'grid', gridTemplateColumns: '20% 80%' }}>
+      <div style={{ width: '100%', display: 'grid', gridTemplateColumns: '20% 70%' }}>
         <NavBar />
         <SideBar
           handleProfile={handleProfileScreen}

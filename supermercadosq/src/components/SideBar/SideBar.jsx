@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SideBarContainer, SideItem, SideLink  } from './styles'
 import { BiChevronRight } from 'react-icons/bi';
-// import { NavLink } from 'react-router-dom';
  
 
 export default function SideBar({handleProfile, handlePassword, handlePosts}) {
