@@ -18,6 +18,7 @@ export const ImageUpload = styled.figure`
   display: flex;
   align-items: center;
   justify-content: center;
+  
   font-size: 5rem;
   background-color: white;
   border: 2px solid var(--color-blue-light);
