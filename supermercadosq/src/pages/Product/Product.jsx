@@ -7,6 +7,8 @@ import { CardsContainer } from '../../components/CardsContainer';
 import { FilterButton } from '../../components/FilterButton';
 import { AddProductCard } from "../../components/AddProductCard";
 import { ProductCard } from "../../components/ProductCard";
+import ReactPaginate from 'react-paginate';
+
 import { getAllProducts } from '../../services/useProducts';
 import { userLevel } from '../../services/useAuth';
 
@@ -21,24 +23,42 @@ import eggIcon from '../../assets/icons/egg.png';
 import wheatIcon from '../../assets/icons/wheat.png';
 import sojaIcon from '../../assets/icons/soja.png';
 import questionIcon from '../../assets/icons/question.svg';
+import ProductPagination from '../../components/ProductPagination';
 
-export function Product() {
+export function Product({itemsPerPage}) {
   const [posts, setPosts] = useState([]);
   const [level, setLevel] = useState(null);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    const AllProducts = async (page) => {
+    (async function() {
       const resp = await getAllProducts(page);
       setPosts(resp.data)
-    };
+    })();
+  }, [page]);
 
+  useEffect(() => {
     (async function() {
       setLevel(userLevel());
+      const resp = await getAllProducts();
+      setTotalPages(Math.ceil((resp.data.length - 8) / 9))
     })();
-
-    AllProducts(0);
   }, []);
-  console.log(level);
+
+  const handlePage = (e) => {
+    setPage(e.target.value);
+  }
+
+  const handlePrevPage = () => {
+    setPage(page > 0 ? parseInt(page) - 1 : 0);
+  }
+
+  const handleNextPage = () => {
+    setPage(page < totalPages ? parseInt(page) + 1 : totalPages);
+  }
+
+  console.log(page, totalPages)
 
   const handleColor = (allergy) => {
     const alergias = allergy ? allergy.split(',') : '';
@@ -75,7 +95,7 @@ export function Product() {
       {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
       <FilterButton />
       <CardsContainer>
-        <AddProductCard />
+        {page === 0 ? <AddProductCard /> : <></>}
         {posts?.map((product) => {
           return (
             <ProductCard
@@ -90,6 +110,11 @@ export function Product() {
           )
         })}
       </CardsContainer>
+      <ProductPagination
+        changePage={handlePage}
+        prevPage={handlePrevPage}
+        nextPage={handleNextPage}
+      />
       <Footer />
     </>
   )

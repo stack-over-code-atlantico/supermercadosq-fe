@@ -29,7 +29,7 @@ export const DivProductCardFront = styled.div`
 
     border-radius: 10px;
     border: none;
-    box-shadow: 0px 5px 10px gray;
+    box-shadow: 2px 5px 10px #ccc;
 
     background-color: var(--color-white);
 
@@ -65,18 +65,10 @@ export const DivProductCardBack = styled.div`
 
     border-radius: 10px;
     border: none;
-    box-shadow: 0px 5px 10px gray;
+    box-shadow: 0px 5px 10px #ccc;
 
     background-color: #fff;
 
-    img {
-        width: 28px;
-        height: 28px;
-
-        border-radius: 50%;
-
-        margin: 10px 0px 10px 0px;
-    }
 
 `;
 
@@ -164,7 +156,7 @@ export const DivProductCardBackContent = styled.div`
         border-radius: 50%;
 
         margin-bottom: 100%;
-        box-shadow: 0px 2px 10px gray;
+        box-shadow: 0px 2px 10px #ccc;
 
         position: absolute;
     }

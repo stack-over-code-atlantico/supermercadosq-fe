@@ -2,7 +2,11 @@ import { api } from '../utils/api';
 import Cookies from 'js-cookie';
 
 export const getAllProducts = async (page) => {
-  const products = await api.get(`/products/page/${page}`);
+  if (typeof page === 'number' || page >= 0) {
+    const products = await api.get(`/products/page/${page}`);
+    return products;
+  }
+  const products = await api.get(`/products/`);
   return products;
 };
 

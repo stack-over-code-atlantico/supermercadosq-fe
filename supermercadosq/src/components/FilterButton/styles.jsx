@@ -6,14 +6,14 @@ export const DivFilter = styled.div`
     align-items: center;
 
     position: absolute;
-    
+    z-index: 2;
     margin: 1rem 1rem 1rem 0rem;
 
     a {
         text-decoration: none;
         color: #fff;
     }
-    
+
     label {
         text-decoration: none;
         color: #fff;
@@ -56,7 +56,7 @@ export const DivFilter = styled.div`
         padding: 0;
         margin: 0 auto;
     }
-    
+
     .listaFiltros .itemFiltrar .subLista {
         display: flex;
         flex-direction: column;
