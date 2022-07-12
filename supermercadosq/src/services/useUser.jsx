@@ -76,10 +76,11 @@ export const useEditUser = async (
   const updateUser = await api
     .put(`/users/${cpf_cnpj}`, bodyParams, config)
     .then((resp) => {
-      console.log(resp);
+      alert('Usuário atualizado com sucesso')
       return resp;
     })
     .catch((err) => {
+      alert('Ocorreu um erro')
       console.log(err);
       return err;
     });
