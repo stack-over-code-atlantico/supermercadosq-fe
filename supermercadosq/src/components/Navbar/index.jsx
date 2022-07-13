@@ -14,6 +14,7 @@ import {
   NavLogo,
   NavLogout,
   NavIcon,
+
 } from './styles';
 import { FaBars, FaTimes } from "react-icons/fa";
 import lockLogo from '../../assets/icons/lock.svg';
@@ -47,23 +48,18 @@ export function Navbar() {
         <Nav>
           <NavbarContainer>
             <NavLogo to='/' onClick={closeMobileMenu}>
-              <h1>Supermercado SQ</h1>
+              <h1><span>Supermercado SQ</span></h1>
             </NavLogo>
             <MobileIcon onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
-            <NavItem>
-                <NavLink to='/product' activestyle={{ color: '#3EBCD3' }} onClick={closeMobileMenu}>
-                  Produto
-                </NavLink>
-              </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink to='/about' activestyle={{ color: '#3EBCD3' }}
                   onClick={closeMobileMenu}>
-                  Sobre
+                  <span>Sobre</span>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               {
                 isLogged
                   ? (<></>)
@@ -71,12 +67,12 @@ export function Navbar() {
                     <>
                       <NavItem>
                         <NavLink to='/login' activestyle={{ color: '#3EBCD3' }} onClick={closeMobileMenu}>
-                          Login
+                          <span>Login</span>
                         </NavLink>
                       </NavItem>
                       <NavItem>
                         <NavLink to='/register' activestyle={{ color: '#3EBCD3' }} onClick={closeMobileMenu}>
-                          Registro
+                          <span>Registro</span>
                         </NavLink>
                       </NavItem>
                     </>

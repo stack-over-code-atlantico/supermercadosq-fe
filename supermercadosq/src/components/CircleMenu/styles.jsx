@@ -6,16 +6,18 @@ export const CircleDiv = styled.div`
   position: absolute;
   z-index: 1;
   top: 50%;
-  left: 70%;
+  left: 63.5%;
   margin-left: -25px;
   margin-top: -25px;
   display: flex;
   justify-content: center;
   align-items: center;
 
+
   input#toggle:checked ~ #show-menu .btn .menuBtn {
     transform: translateY(-30px);
     opacity: 0;
+
   }
 
   input#toggle:checked ~ #show-menu .btn .closeBtn {
@@ -121,8 +123,9 @@ export const ImageButton = styled.img`
   position: relative;
   left: 30px;
   top: 30px;
-  width: 150px;
-  transform: scale(3.6);
+  /* background-color: red; */
+  border-radius: 50%;
+  transform: scale(3.0);
 
   @media (max-width: 900px) {
     display: none;

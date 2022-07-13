@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
 
+
 export const Nav = styled.nav`
   background: transparent; /* transparent */
   height: 7vh; /* 6rem */
   display: flex;
-  padding: 0.5rem calc((100vw - 1000px)/2);
+
+  padding: 0.5rem;
+  justify-content: space-between;
   z-index: 10;
 `;
 
 export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 50%;
+  margin-left: 28%;
   height: 100%;
 `;
 
@@ -23,7 +28,6 @@ export const NavLogo = styled(Link)`
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
-
   @media screen and (max-width: 850px){
     margin-right: 1vw;
   }
@@ -35,8 +39,36 @@ export const NavLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
+  width: auto;
   height: 100%;
-  cursor: pointer;
+
+
+  span {
+    display: block;
+    width: 100%;
+    position: relative;
+    transition: 200ms ease all;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  span:before {
+    content: "";
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    top: 32px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: 500ms ease all;
+  }
+
+  span:hover:before {
+    width: 100%;
+  }
 
   @media screen and (max-width: 768px) {
     text-align: center;
@@ -91,11 +123,9 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  height: 80px;
+  height: auto;
   border-bottom: 2px solid transparent;
-  &:hover {
-    border-bottom: 2px solid #4b59f7;
-  }
+
   @media screen and (max-width: 768px) {
     width: 100%;
     &:hover {
