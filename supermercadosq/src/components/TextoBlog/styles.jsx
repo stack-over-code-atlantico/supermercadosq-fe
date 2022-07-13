@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Div = styled.div`
     margin: 3% 20% 0% 9%;
     position: relative;
-    left: 46px;
+    left: 0%;
+    width: 75%;
 `
 
 export const Title = styled.h1`

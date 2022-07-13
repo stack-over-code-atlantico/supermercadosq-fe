@@ -6,10 +6,7 @@ export function NavbarProducts(){
         <DivNavbarProducts>
             <NavbarList>
                 <ProductListItem>
-                    <a href='#'>Home</a>
-                </ProductListItem>
-                <ProductListItem>
-                    <a href='#'>Perfil</a>
+                    <a href='/'>Home</a>
                 </ProductListItem>
                 <ProductListItem>
                     <a href='#'>Postagens</a>

@@ -7,7 +7,7 @@ export const DivFilter = styled.div`
 
     position: absolute;
     z-index: 2;
-    margin: 1rem 1rem 1rem 0rem;
+    margin: 1rem 1rem 1rem 5rem;
 
     a {
         text-decoration: none;
@@ -36,6 +36,7 @@ export const DivFilter = styled.div`
     input[type=checkbox] {
       height: 22px;
       width: 22px;
+      cursor: pointer;
     }
 
     input:checked {
@@ -70,14 +71,16 @@ export const DivFilter = styled.div`
 
         top: -40px;
         right: -175px;
+        box-shadow: -2px 5px 10px #ccc;
     }
 
     .listaFiltros .itemFiltrar a {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0;
+        padding: 0 1.25rem;
         margin: 0 auto;
+        cursor: text;
     }
 
     .listaFiltros .itemFiltrar .subLista {
@@ -111,6 +114,11 @@ export const DivFilter = styled.div`
         gap: 10px;
         height: 50px;
         padding: 0;
+        cursor: pointer;
+
+        label {
+            cursor: pointer;
+        }
     }
 `;
 

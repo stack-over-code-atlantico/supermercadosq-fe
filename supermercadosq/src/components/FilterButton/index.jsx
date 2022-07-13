@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { DivFilter, FilterIcon } from './styles';
-import Bola from '../../assets/images/bola.jpg'
 
 export function FilterButton({
   alergias,

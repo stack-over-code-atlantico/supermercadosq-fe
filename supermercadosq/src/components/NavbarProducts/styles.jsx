@@ -4,17 +4,20 @@ export const DivNavbarProducts = styled.div`
     background-color: var(--color-blue-light);
     padding: 20px 250px;
     margin-bottom: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 export const NavbarList = styled.ul`
-    display: flex;
-    justify-content: space-evenly;
     list-style: none;
-    gap: 50px;
+    gap: 10rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 0px 54px;
 `;
 export const ProductListItem = styled.li`
-
+    padding: 0px;
     position: relative;
 
     a{

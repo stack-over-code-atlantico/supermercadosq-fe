@@ -12,7 +12,7 @@ export const DivAddProductCard = styled.div`
 
     background-color: var(--color-gray-light);
 
-    box-shadow: 0px 5px 10px gray;
+    box-shadow: 2px 5px 10px #ccc;
     border-radius: 10px;
     border:none;
 `;
