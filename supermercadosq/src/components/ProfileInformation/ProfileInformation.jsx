@@ -6,7 +6,7 @@ import { useEditUser } from "../../services/useUser";
 import Select from "react-select";
 
 const ProfileInformationForm = ({ data }) => {
-  const [restricaoAlimentar, setRestricaoAlimentar] = useState("");
+  // const [restricaoAlimentar, setRestricaoAlimentar] = useState("");
   const [dataUser, setDataUser] = useState({
     cpfCnpj: "",
     nome: "",
@@ -39,6 +39,14 @@ const ProfileInformationForm = ({ data }) => {
       dataUser.estado
     );
   }
+  const handleGetAlergic = (alergicOptions) => {
+    setDataUser((prev) => ({
+      ...prev,
+      restricaoAlimentar: alergicOptions.map((alergia) => alergia.value).join(","),
+    }));
+    console.log(dataUser.restricaoAlimentar);
+  };
+
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
     { value: "crustaceos", label: "Crustáceos" },
@@ -50,13 +58,6 @@ const ProfileInformationForm = ({ data }) => {
     { value: "soja", label: "Soja" },
     { value: "outros", label: "Outros" },
   ];
-  const handleGetAlergic = (alergicOptions) => {
-    setRestricaoAlimentar((prev) => ({
-      ...prev,
-      alergia: alergicOptions.map((alergia) => alergia.value).join(","),
-    }));
-    console.log(restricaoAlimentar);
-  };
 
   const customStyles = {
     menu: (provided) => ({
@@ -241,11 +242,10 @@ const ProfileInformationForm = ({ data }) => {
               isSearchable={false}
               maxMenuWidth={100}
               placeholder="Listar alergias"
-              value={dataUser.restricaoAlimentar}
+              // value={dataUser.restricaoAlimentar}
               onChange={handleGetAlergic}
             />
           </label>
-
           <h3 className="subtitle">Endereço</h3>
           <hr />
 
