@@ -1,82 +1,80 @@
-import { useEffect, useState, useContext } from 'react'
-import { SignupContext } from '../../Provider/Signup.provider'
-import { Form, Actions, LabelError } from '../../styles/CommunsStyles'
-import { LabelCheck, RequiredPassword, Image } from './styles'
-import ImageCheck from '../../assets/icons/icon-check.png'
-import ImageClose from '../../assets/icons/icon-close.png'
-import InputPassword from '../InputPassword/InputPassword'
+import { useEffect, useState, useContext } from "react";
+import { SignupContext } from "../../Provider/Signup.provider";
+import { Form, Actions } from "../../styles/CommunsStyles";
+import InputPassword from "../InputPassword/InputPassword";
+import RequirePassword from "../RequirePassword";
 
 const EmailCheck = ({ nextStep }) => {
   const { emailSignup, setEmailSignup, passwordSignup, setPasswordSignup } =
-    useContext(SignupContext)
+    useContext(SignupContext);
 
-  const [hasErrorEmail, setHasErrorEmail] = useState(true)
-  const [hasErrorPassword, setHasErrorPassword] = useState(true)
-  const [hasError, setHasError] = useState(true)
+  const [hasErrorEmail, setHasErrorEmail] = useState(true);
+  const [hasErrorPassword, setHasErrorPassword] = useState(true);
+  const [hasError, setHasError] = useState(true);
 
   const requiredCases = {
     case: false,
     number: false,
-    length: false
-  }
-  const [validateInput, setValidateInput] = useState(requiredCases)
+    length: false,
+  };
+  const [validateInput, setValidateInput] = useState(requiredCases);
 
   //validadeErrorPassowrd
   useEffect(() => {
     if (validateInput.case && validateInput.length && validateInput.number) {
-      setHasErrorPassword(false)
+      setHasErrorPassword(false);
     } else {
-      setHasErrorPassword(true)
+      setHasErrorPassword(true);
     }
-  }, [validateInput])
+  }, [validateInput]);
 
   //disabled button
   useEffect(() => {
     if (!hasErrorEmail && !hasErrorPassword) {
-      setHasError(false)
+      setHasError(false);
     } else {
-      setHasError(true)
+      setHasError(true);
     }
-  }, [hasErrorEmail, hasErrorPassword])
+  }, [hasErrorEmail, hasErrorPassword]);
 
   useEffect(() => {
-    handleCheckPassword(passwordSignup)
-  }, [passwordSignup])
+    handleCheckPassword(passwordSignup);
+  }, [passwordSignup]);
 
   useEffect(() => {
-    handleCheckEmail(emailSignup)
-  }, [emailSignup])
+    handleCheckEmail(emailSignup);
+  }, [emailSignup]);
 
-  const handleCheckEmail = value => {
-    setEmailSignup(value)
-    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
+  const handleCheckEmail = (value) => {
+    setEmailSignup(value);
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
     if (regEx.test(emailSignup)) {
-      setHasErrorEmail(false)
+      setHasErrorEmail(false);
     } else {
-      setHasErrorEmail(true)
+      setHasErrorEmail(true);
     }
-  }
+  };
 
-  const handleCheckPassword = password => {
-    const regexUppercase = /^(?=.*[A-Z]).+$/
-    const regexLowercase = /^(?=.*[a-z]).+$/
-    const regexNumber = /^(?=.*[0-9]).+$/
-    const regexCaracter = /\W|_/
-    const length = password.length >= 8
+  const handleCheckPassword = (password) => {
+    const regexUppercase = /^(?=.*[A-Z]).+$/;
+    const regexLowercase = /^(?=.*[a-z]).+$/;
+    const regexNumber = /^(?=.*[0-9]).+$/;
+    const regexCaracter = /\W|_/;
+    const length = password.length >= 8;
     setValidateInput({
       case:
         regexUppercase.test(passwordSignup) &&
         regexLowercase.test(passwordSignup),
-      number: regexNumber.test(passwordSignup) &&
-        regexCaracter.test(passwordSignup),
-      length
-    })
+      number:
+        regexNumber.test(passwordSignup) && regexCaracter.test(passwordSignup),
+      length,
+    });
     if (validateInput.case && validateInput.length && validateInput.number) {
-      setHasErrorPassword(false)
+      setHasErrorPassword(false);
     } else {
-      setHasErrorPassword(true)
+      setHasErrorPassword(true);
     }
-  }
+  };
   return (
     <Form>
       <h1>Crie sua conta</h1>
@@ -89,41 +87,27 @@ const EmailCheck = ({ nextStep }) => {
           <input
             type="email"
             value={emailSignup}
-            onChange={e => setEmailSignup(e.target.value)}
+            onChange={(e) => setEmailSignup(e.target.value)}
             name="email"
             id="email"
-            onKeyPress={(e) => { if (e.key === 'Enter') {
-              e.preventDefault()
-              return document.getElementById('password').focus()
-            } }}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                return document.getElementById("password").focus();
+              }
+            }}
           />
         </label>
 
         <label>
           <span>Senha</span>
-          <InputPassword
-            setValue={setPasswordSignup}
-            value={passwordSignup}
-          />
+          <InputPassword setValue={setPasswordSignup} value={passwordSignup} />
         </label>
-
-        <RequiredPassword>
-          <p>Sua senha deve conter:</p>
-          <div>
-            <LabelCheck>
-              <Image src={validateInput.length ? ImageCheck : ImageClose} />
-              <span>8 caracteres</span>
-            </LabelCheck>
-            <LabelCheck>
-              <Image src={validateInput.case ? ImageCheck : ImageClose} />
-              <span> Maiúscula e minúscula</span>
-            </LabelCheck>
-            <LabelCheck>
-              <Image src={validateInput.number ? ImageCheck : ImageClose} />
-              <span>Caracter especial e Números</span>
-            </LabelCheck>
-          </div>
-        </RequiredPassword>
+        <RequirePassword
+          lengthPassword={validateInput.length}
+          casePassword={validateInput.case}
+          numberPassword={validateInput.number}
+        />
         <Actions>
           <span>
             Já possui uma conta? <br />
@@ -135,7 +119,7 @@ const EmailCheck = ({ nextStep }) => {
         </Actions>
       </form>
     </Form>
-  )
-}
+  );
+};
 
-export default EmailCheck
+export default EmailCheck;
