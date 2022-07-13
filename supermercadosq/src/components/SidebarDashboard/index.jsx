@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { logout, userLevel  } from '../../services/useAuth';
 import {
   Sidebar,
   SidebarName,
   SidebarEmail,
-  SidebarIcon,
   SidebarButton,
   SpanButton,
   ButtonIcon,
   CloseButton,
-  CloseIcon,
+  Filters,
 } from './style';
-import admIcon from '../../assets/icons/adm-icon.png';
-import backIcon from '../../assets/icons/back-icon.png';
 import { FaComments } from "react-icons/fa";
-import { BsFillFilePostFill } from "react-icons/bs";
+import { BsFillFilePostFill, BsArrowLeftCircle } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
-import { useCallback } from 'react';
+import { RiAdminLine } from "react-icons/ri";
 
-const SidebarDashboard = () => {
+
+const SidebarDashboard = ({
+  handlePost,
+  handleComment,
+  hasPost,
+  hasComment
+}) => {
 
   const [open, setOpen] = useState(true);
   const [user, setUser] = useState({});
@@ -37,29 +40,36 @@ const SidebarDashboard = () => {
             !open
               ? (
                 <CloseButton className={"open-btn"} onClick={handleOpen}>
-                  <CloseIcon
-                    width="7px"
-                    src={backIcon}
-                    style={{ transform: 'rotate(180deg)' }}
+                  <BsArrowLeftCircle
+                    style={{
+                      color: 'white',
+                      fontSize: '20px',
+                      transform: 'rotate(180deg)',
+                      transition: '500ms all ease'
+                    }}
                   />
                 </CloseButton>
               )
               : (
                 <CloseButton onClick={handleOpen}>
-                  <CloseIcon
-                    width="7px"
-                    src={backIcon}
+                  <BsArrowLeftCircle
+                    style={{
+                      color: 'white',
+                      fontSize: '20px',
+                      transition: '500ms all ease'
+                    }}
                   />
                 </CloseButton>
               )
           }
         <SidebarName>
           {user.nome}
-          <SidebarIcon src={admIcon} />
+          <RiAdminLine style={{ fontSize: '30px'}} />
         </SidebarName>
         <SidebarEmail> {user.email} </SidebarEmail>
 
-        <SidebarButton>
+        <Filters>Filtros</Filters>
+        <SidebarButton onClick={handlePost} active={hasPost}>
           <SpanButton left="-45px">
             <ButtonIcon>
               <BsFillFilePostFill />
@@ -69,7 +79,7 @@ const SidebarDashboard = () => {
           </SpanButton>
         </SidebarButton>
 
-        <SidebarButton>
+        <SidebarButton onClick={handleComment} active={hasComment}>
           <SpanButton left="-37px">
             <ButtonIcon>
              <FaComments />
@@ -78,7 +88,7 @@ const SidebarDashboard = () => {
           </SpanButton>
         </SidebarButton>
 
-        <SidebarButton onClick={handleLogout}>
+        <SidebarButton onClick={handleLogout} className="logout">
           <SpanButton left="-68px">
             <ButtonIcon>
               <BiLogOut />

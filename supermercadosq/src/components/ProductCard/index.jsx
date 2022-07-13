@@ -41,7 +41,6 @@ export function ProductCard ({
                 </DivRestrictionAndName>
             </DivProductCardFront>
             <DivProductCardBack className="back">
-                {/* <img src={Bola}/> */}
                 <DivProductCardBackContent color={color}>
                     <h2>{nome}</h2>
                     <div className="divLittleBall"></div>

@@ -6,7 +6,7 @@ export const Sidebar = styled.aside`
   margin-left: ${props => props.opened ? '0px' : '-250px'};
   background-color: #280851;
   box-shadow: 4px 0 10px #d2d2d2;
-  border-radius: 0 15px 15px 0;
+  border-radius: 0 8px 8px 0;
   transition: 500ms all;
 
   .open-btn {
@@ -14,10 +14,22 @@ export const Sidebar = styled.aside`
     transition: 500ms all;
     position: absolute;
   }
+
+  .logout {
+    top: 350px;
+  }
 `;
 
-export const CloseIcon = styled.img`
-  transition: 500ms all;
+export const Filters = styled.h3`
+  color: white;
+  position: relative;
+  top: 220px;
+  margin: 0 28px;
+  font-weight: 200;
+  font-size: 12px;
+  width: 180px;
+  text-align: center;
+  border-bottom: 1px dashed white;
 `;
 
 export const CloseButton = styled.button`
@@ -54,13 +66,6 @@ export const SidebarEmail = styled.h3`
   font-weight: 400;
 `;
 
-export const SidebarIcon = styled.img`
-  width: 60px;
-  position: relative;
-  left: 10px;
-  top: 8px;
-`;
-
 export const SpanButton = styled.span`
   position: relative;
   z-index: 2;
@@ -85,7 +90,7 @@ export const SidebarButton = styled.button`
   display: block;
   width: 85%;
   height: 60px;
-  top: 180px;
+  top: 250px;
   line-height: 40px;
   font-size: 18px;
   background: transparent;
@@ -98,10 +103,10 @@ export const SidebarButton = styled.button`
     content: "";
     top: 0;
     left: 0;
-    width: 0;
+    width: ${props => props.active ? '100%' : 0};
     height: 100%;
     border-radius: 0 50px 50px 0;
-    background: #B996E8;
+    background: ${props => props.active ? '#24589c' : '#B996E8'};
     transition: all .35s;
   }
 
@@ -112,11 +117,12 @@ export const SidebarButton = styled.button`
   &:hover {
     ${SpanButton} {
       left: 12px;
-      color: #000;
+      color: ${props => props.active ? '#fff' : '#000'};
       font-weight: 800;
     }
     ${ButtonIcon} {
       opacity: 1;
+      color: ${props => props.active ? '#fff' : '#280851'}
     }
 
   }

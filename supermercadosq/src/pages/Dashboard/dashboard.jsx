@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom';
 import { CardsDashboard } from '../../components/CardsDashboard';
 import { CardSection } from '../../components/CardsDashboard/styles';
@@ -9,16 +8,41 @@ import SidebarDashboard from '../../components/SidebarDashboard';
 import { TableDashboard } from '../../components/TableDashboard';
 import { TableDiv } from '../../components/TableDashboard/style';
 import { getAllComments } from '../../services/useComments';
-import { getAllProducts } from '../../services/useProducts';
+import { getAllProducts }  from '../../services/useProducts';
 import { BackButton, DivDashboard } from './style';
+import { updateComplaint } from '../../services/useReport';
 
 function Dashboard() {
   const [posts, setPosts] = useState(null);
   const [comments, setComments] = useState(null);
-  const [qtComplaintPosts, setQtComplaintPosts] = useState(0);
-  const [qtComplaintComment, setQtComplaintComment] = useState(0);
-  const [allComplaint, setAllComplaint] = useState([]);
+  const [reports, setReports] = useState([]);
+  const [isPost, setIsPost] = useState(true);
+  const [isComment, setIsComment] = useState(true);
+  const [updatedTable, setUpdatedTable] = useState(false);
+  const [quantity, setQuantity] = useState({
+    posts: 0,
+    comments: 0,
+  });
 
+  const handlePostFilter = () => {
+    setIsPost(!isPost);
+    setIsComment(true);
+  };
+
+  const handleCommentFilter = () => {
+    setIsComment(!isComment);
+    setIsPost(true);
+  };
+
+  const handleUpdate = useCallback(async (item) => {
+    const updated = await updateComplaint(item)
+      .then(() => setUpdatedTable(!updatedTable))
+      .catch((err) => {
+        alert('Houve um erro com a requisição.');
+        console.log(err.message);
+      });
+      return updated;
+  });
 
   const renderInfoCharts = (
     data,
@@ -44,47 +68,75 @@ function Dashboard() {
     return <></>;
   };
 
-  const getAllComplaints = useCallback((data) => data ? data.filter((value) => value.status === 'ANALISE') : data, [posts, comments]);
-
   useEffect(() => {
-    getAllProducts().then((response) => {
-      setPosts(response.data);
-      setQtComplaintPosts(getAllComplaints(response.data).length);
-      setAllComplaint((prev) => [getAllComplaints(response.data)]);
-    });
-    getAllComments().then((response) => {
-      setComments(response.data);
-      setQtComplaintComment(getAllComplaints(response.data).length);
-      setAllComplaint((prev) => [...prev, getAllComplaints(response.data)]);
-    });
-  }, []);
+    (async () => {
+      const allComments = await getAllComments();
+      const allPosts = await getAllProducts();
+      setPosts(allPosts.data);
+      setComments(allComments.data);
+      setReports([
+        allPosts.data.filter((item) => item.status === 'ANALISE'),
+        allComments.data.filter((item) => item.status === 'ANALISE')
+      ]);
+      setQuantity((prev) => ({ ...prev, comments: allComments.data.filter((item) => item.status === 'ANALISE').length}))
+      setQuantity((prev) => ({ ...prev, posts: allPosts.data.filter((item) => item.status === 'ANALISE').length}))
+    })()
+  }, [updatedTable]);
 
   return (
     <DivDashboard>
-      <SidebarDashboard />
+      <SidebarDashboard
+        handlePost={handlePostFilter}
+        handleComment={handleCommentFilter}
+        hasPost={isPost}
+        hasComment={isComment}
+      />
       <CardSection>
-        <CardsDashboard width='200px' title='Total de Posts' >
-          {renderInfoCharts(posts, posts ? posts.length : 0, 'Postagens', '#8E5BD0', '#692ABA', 200)}
-        </CardsDashboard>
-
-        <CardsDashboard width='200px' title='Total de Coments' >
-          {renderInfoCharts(comments, comments ? comments.length : 0, 'Comentários', '#692ABA', '#3C166D', 200)}
-        </CardsDashboard>
-
+        {
+          isPost
+            ? (
+                <CardsDashboard width='200px' title='Total de Postagens ativas'>
+                    {renderInfoCharts(posts, posts ? posts.length : 0, 'Postagens', '#8E5BD0', '#692ABA', 200)}
+                </CardsDashboard>
+              )
+            : (<></>)
+        }
+        {
+          isComment
+            ? (
+                <CardsDashboard width='200px' title='Total de Comentários ativos'>
+                  {renderInfoCharts(comments, comments ? comments.length : 0, 'Comentários', '#692ABA', '#3C166D', 200)}
+                </CardsDashboard>
+            ) : (<></>)
+        }
         <CardsDashboard width='25%' title='Denúncias' minWidth="420px">
-          <ChartDashboard value={[qtComplaintComment || 0, qtComplaintPosts || 0]} />
+          <ChartDashboard value={[comments ? comments.length : 0, posts ? posts.length : 0]} />
         </CardsDashboard>
 
-        <CardsDashboard width='25%' title='Denúncias por tipo' minWidth="420px">
-          <div style={{ display: 'flex', flexFlow: 'row' }}>
-            {renderInfoCharts(true, qtComplaintPosts ? qtComplaintPosts : 0, 'Postagens', '#8E5BD0', '#692ABA', 160)}
-            {renderInfoCharts(true, qtComplaintComment ? qtComplaintComment : 0, 'Comentários', '#692ABA', '#3C166D', 160)}
-          </div>
-        </CardsDashboard>
+        {
+          isPost || isComment
+            ? (
+            <CardsDashboard width='25%' title='Denúncias por tipo' minWidth="420px">
+              <div style={{ display: 'flex', flexFlow: 'row' }}>
+                {
+                  isPost
+                    ? (renderInfoCharts(posts, quantity.posts ? quantity.posts : 0, 'Postagens', '#8E5BD0', '#692ABA', 160))
+                    : (<></>)
+                }
+                {
+                  isComment
+                    ? (renderInfoCharts(comments, quantity.comments ? quantity.comments : 0, 'Comentários', '#692ABA', '#3C166D', 160))
+                    : (<></>)
+                }
+              </div>
+            </CardsDashboard>
+            )
+            : (<></>)
+        }
 
         <TableDiv>
           <CardsDashboard  minWidth='420px' height='300px' title=''>
-            <TableDashboard data={allComplaint ? allComplaint.flat() : null} />
+            <TableDashboard data={reports ? reports.flat() : null} update={handleUpdate}/>
           </CardsDashboard>
         <Link to="/">
           <BackButton className={'fill'}> {"<"} </BackButton>

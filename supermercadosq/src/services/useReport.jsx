@@ -30,3 +30,13 @@ export const updateComplaint = async (data) => {
   return comments;
 };
 
+export const getReportedComment = async () => {
+  const report = await api.get('/comments/disapproved');
+  return report;
+};
+
+export const getReportedPosts = async () => {
+  const report = await api.get('/products/disapproved');
+  return report;
+};
+
