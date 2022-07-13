@@ -3,22 +3,25 @@ import styled from "styled-components";
 export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: row;
+  position: absolute;
+  z-index: 99;
   width: 100%;
   height: 100vh;
   text-align: center;
   align-items: center;
   justify-content: center;
   color: var(--color-gray);
-  background-color: #000000a6;
+  background-color: rgba(0,0,0,0.5);
   h2 {
     color: var(--color-blue-light);
   }
+
 `;
 export const ImageUpload = styled.figure`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   font-size: 5rem;
   background-color: white;
   border: 2px solid var(--color-blue-light);
@@ -27,6 +30,7 @@ export const ImageUpload = styled.figure`
   width: 500px;
   height: 550px;
   border-radius: 20px 0 0 20px;
+
   svg {
     cursor: pointer;
   }
@@ -53,7 +57,7 @@ export const RegisterForm = styled.form`
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  gap: 25px;
+  gap: 20px;
 
   label {
     gap: 5px;
@@ -63,6 +67,7 @@ export const RegisterForm = styled.form`
   }
   input {
     height: 40px;
+    border-radius: 8px;
     border: 1.5px solid var(--color-blue-light);
     padding: 0px 5px;
   }
@@ -74,6 +79,7 @@ export const RegisterForm = styled.form`
   }
   textarea {
     padding: 10px;
+    border-radius: 8px;
     resize: none;
     height: 180px;
     border: 1.5px solid var(--color-blue-light);
@@ -95,16 +101,51 @@ export const RegisterForm = styled.form`
   }
 `;
 
+export const CloseButton = styled.span`
+  width: 25px;
+  height: 22px;
+  color: #fff;
+  background-color: #3EBCD3;
+  text-align: center;
+  vertical-align: middle;
+  padding-bottom: 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 300ms all ease;
+
+  &:hover {
+    background-color: #2d9db1;
+    width: 35px;
+
+  }
+`;
+
+export const TitleDiv = styled.div`
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+`;
+
 export const Buttons = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   button {
-    padding: 15px;
-    width: 40%;
+    border-radius: 8px;
+    width: 20%;
+    height: 40px;
+    text-align: center;
     color: var(--color-white);
-    background-color: var(--color-blue-light);
-    border: none;
+    background-color: #3EBCD3;
+    border: 2px solid #3EBCD3;
     font-weight: 700;
+    transition: 400ms all ease;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: transparent;
+    color: #3EBCD3;
+    border: 2px solid #3EBCD3;
   }
 `;
 

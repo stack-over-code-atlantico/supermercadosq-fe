@@ -30,11 +30,11 @@ export const PaginationBtnNumeric = styled.button`
   border-radius: 8px;
   transition: 300ms ease-in-out;
 
-  :target {
+  :active {
     background-color: red;
   }
 
   &:hover {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 `;

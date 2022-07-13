@@ -8,7 +8,7 @@ const ProductPagination = ({ changePage, prevPage, nextPage }) => {
   useEffect(() => {
     (async function() {
       const response = await getAllProducts();
-      setPage( new Array(Math.ceil((response.data.length - 8) / 9)).fill(true))
+      setPage( new Array(Math.ceil((response.data.length - 8) / 9) + 1).fill(true))
     })();
   }, []);
 

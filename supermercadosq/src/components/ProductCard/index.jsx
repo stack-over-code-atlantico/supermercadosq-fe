@@ -16,8 +16,6 @@ import {
 import { FaUserCircle } from "react-icons/fa";
 import { GoComment } from "react-icons/go";
 
-
-
 export function ProductCard ({
   nome,
   alergia = '',
@@ -27,10 +25,12 @@ export function ProductCard ({
   usuario,
   dataPostagem,
   color,
-  icon
+  icon,
+  setOpenModal,
+  onClick
 }){
     return(
-        <DivProductCardFace>
+        <DivProductCardFace onClick={onClick}>
             <DivProductCardFront className="front">
                 <img src={imagem} className="restrictionImg"/>
                 <DivRestrictionAndName>
@@ -61,7 +61,7 @@ export function ProductCard ({
                     </DivBackContentInfos>
                     <DivComment>
                         <button className="comment-btn">
-                          <GoComment className="comment-icon" />
+                          <GoComment onClick={setOpenModal} className="comment-icon" />
                         </button>
                     </DivComment>
                 </DivProductCardBackContent>

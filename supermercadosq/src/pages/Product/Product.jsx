@@ -7,7 +7,6 @@ import { CardsContainer } from '../../components/CardsContainer';
 import { FilterButton } from '../../components/FilterButton';
 import { AddProductCard } from "../../components/AddProductCard";
 import { ProductCard } from "../../components/ProductCard";
-import ReactPaginate from 'react-paginate';
 
 import { getAllProducts, postProductPerAllergy } from '../../services/useProducts';
 import { userLevel } from '../../services/useAuth';
@@ -24,9 +23,14 @@ import wheatIcon from '../../assets/icons/wheat.png';
 import sojaIcon from '../../assets/icons/soja.png';
 import questionIcon from '../../assets/icons/question.svg';
 import ProductPagination from '../../components/ProductPagination';
+import ProductRegister from '../../components/ProductRegister';
+import ProductDetails from '../../components/ProductDetails/ProductDetails';
 
-export function Product({itemsPerPage}) {
+export function Product() {
+  const [openModal, setOpenModal] = useState(false);
+  const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [id, setId] = useState(null);
   const [level, setLevel] = useState(null);
   const [page, setPage] = useState(0);
   const [allergy, setAllergy] = useState([]);
@@ -55,7 +59,7 @@ export function Product({itemsPerPage}) {
   }, []);
 
   const handlePage = (e) => {
-    setPage(e.target.value);
+    setPage(e.target.value - 1);
   }
 
   const handlePrevPage = () => {
@@ -65,6 +69,18 @@ export function Product({itemsPerPage}) {
   const handleNextPage = () => {
     setPage(page < totalPages ? parseInt(page) + 1 : totalPages);
   }
+
+  const handleRegisterProduct = () => {
+    setOpenModal(!openModal);
+  }
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleDetailsProduct = (event) => {
+    setOpenDetailsModal(true);
+  };
 
   const handleColor = (allergy) => {
     const alergias = allergy ? allergy.split(',') : '';
@@ -98,6 +114,8 @@ export function Product({itemsPerPage}) {
 
   return (
     <>
+      <ProductRegister openModal={openModal} setOpenModal={closeModal} />
+      <ProductDetails open={openDetailsModal} id={id} />
       {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
       <FilterButton
         alergias={allergy}
@@ -112,20 +130,22 @@ export function Product({itemsPerPage}) {
         soja={sojaIcon}
       />
       <CardsContainer>
-        {page === 0 ? <AddProductCard /> : <></>}
-        {posts?.map((product) => {
-          return (
+        {page === 0 ? <AddProductCard onClick={handleRegisterProduct}/> : <></>}
+        {posts?.map((product) => (
             <ProductCard
-              nome={product.nome || 'Nome não informado'}
-              imagem={product.imagem ? product.imagem : cardDefault}
+            setOpenModal={(e) => handleDetailsProduct(e)}
+            onClick={(e) => setId(product.id_produto)}
+            key={product.id_produto}
+            nome={product.nome || 'Nome não informado'}
+            imagem={product.imagem ? product.imagem : cardDefault}
               color={handleColor(product.alergia)}
               descricao={product.descricao || "Sem descrição"}
               usuario={product.usuario_produto_id_usuarioTousuario.nome}
               dataPostagem={product.data_postagem}
               icon={handleIcon(product.alergia)}
             />
-          )
-        })}
+            )
+          )}
       </CardsContainer>
       <ProductPagination
         changePage={handlePage}
