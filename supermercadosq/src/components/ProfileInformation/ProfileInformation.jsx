@@ -6,36 +6,37 @@ import { useEditUser } from "../../services/useUser";
 import Select from "react-select";
 
 const ProfileInformationForm = ({ data }) => {
-  const [nome, setNome] = useState("");
-  const [nomeSocial, setNomeSocial] = useState("");
-  const [email, setEmail] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [cpfCnpj, setCpfCnpj] = useState("");
   const [restricaoAlimentar, setRestricaoAlimentar] = useState("");
-  const [cep, setCep] = useState("");
-  const [logradouro, setLogradouro] = useState("");
-  const [numeroEndereco, setNumeroEndereco] = useState("");
-  const [bairro, setBairro] = useState("");
-  const [cidade, setCidade] = useState("");
-  const [estado, setEstado] = useState("");
-  // if (data.endereco) console.log(data.endereco[0]);
-
+  const [dataUser, setDataUser] = useState({
+    cpfCnpj: "",
+    nome: "",
+    nomeSocial: "",
+    email: "",
+    telefone: "",
+    restricaoAlimentar: "",
+    cep: "",
+    logradouro: "",
+    numeroEndereco: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+  });
 
   function handleEditUser(event) {
     event.preventDefault();
     useEditUser(
-      cpfCnpj,
-      nome,
-      nomeSocial,
-      email,
-      telefone,
-      restricaoAlimentar,
-      cep,
-      logradouro,
-      numeroEndereco,
-      bairro,
-      cidade,
-      estado
+      dataUser.cpfCnpj,
+      dataUser.nome,
+      dataUser.nomeSocial,
+      dataUser.email,
+      dataUser.telefone,
+      dataUser.restricaoAlimentar,
+      dataUser.cep,
+      dataUser.logradouro,
+      dataUser.numeroEndereco,
+      dataUser.bairro,
+      dataUser.cidade,
+      dataUser.estado
     );
   }
   const alergicOptions = [
@@ -47,18 +48,15 @@ const ProfileInformationForm = ({ data }) => {
     { value: "ovo", label: "Ovo" },
     { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
-    { value: "outros", label: "Outros" }
-    ]
-  ;
-
+    { value: "outros", label: "Outros" },
+  ];
   const handleGetAlergic = (alergicOptions) => {
     setRestricaoAlimentar((prev) => ({
       ...prev,
       alergia: alergicOptions.map((alergia) => alergia.value).join(","),
     }));
-    console.log(setRestricaoAlimentar)
+    console.log(restricaoAlimentar);
   };
-
 
   const customStyles = {
     menu: (provided) => ({
@@ -112,37 +110,44 @@ const ProfileInformationForm = ({ data }) => {
   );
 
   const handleCep = () => {
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    fetch(`https://viacep.com.br/ws/${dataUser.cep}/json/`)
       .then((res) => res.json())
       .then((data) => {
-        setLogradouro(data.logradouro);
-        setBairro(data.bairro);
-        setCidade(data.localidade);
-        setEstado(data.uf);
+        setDataUser((prev) => ({ ...prev, logradouro: data.logradouro }))
+        setDataUser((prev) => ({ ...prev, bairro: data.bairro }))
+        setDataUser((prev) => ({ ...prev, cidade: data.localidade }))
+        setDataUser((prev) => ({ ...prev, estado: data.uf }))
       });
   };
 
   useEffect(() => {
-    setNome(data.nome);
-    setNomeSocial(data.nome_social);
-    setEmail(data.email);
-    setTelefone(data.telefone);
-    setCpfCnpj(data.cpf_cnpj);
-    setRestricaoAlimentar(data.restricao_alimenticia);
+    setDataUser((prev) => ({
+      ...prev,
+      cpfCnpj: data.cpf_cnpj,
+      nome: data.nome,
+      nomeSocial: data.nome_social,
+      email: data.email,
+      telefone: data.telefone,
+      restricaoAlimentar: data.restricao_alimenticia,
+    }));
+    console.log(data);
     if (data.endereco) {
       const endereco = data.endereco[0];
-      setCep(endereco.cep);
-      setLogradouro(endereco.logradouro);
-      setNumeroEndereco(endereco.numero);
-      setBairro(endereco.bairro);
-      setCidade(endereco.cidade);
-      setEstado(endereco.estado);
+      setDataUser((prev) => ({
+        ...prev,
+        cep: endereco.cep,
+        logradouro: endereco.logradouro,
+        numeroEndereco: endereco.numero,
+        bairro: endereco.bairro,
+        cidade: endereco.cidade,
+        estado: endereco.estado,
+      }));
     }
   }, [data]);
 
   useEffect(() => {
     handleCep();
-  }, [cep]);
+  }, [dataUser.cep]);
 
   return (
     <>
@@ -165,16 +170,20 @@ const ProfileInformationForm = ({ data }) => {
               Nome Completo:
               <input
                 type="text"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
+                value={dataUser.nome}
+                onChange={(e) =>
+                  setDataUser((prev) => ({ ...prev, nome: e.target.value }))
+                }
               />
             </label>
             <label>
               Nome social:
               <input
                 type="text"
-                value={nomeSocial}
-                onChange={(e) => setNomeSocial(e.target.value)}
+                value={dataUser.nomeSocial}
+                onChange={(e) =>
+                  setDataUser((prev) => ({ ...prev, nomeSocial: e.target.value }))
+                }
               />
             </label>
           </div>
@@ -184,8 +193,10 @@ const ProfileInformationForm = ({ data }) => {
             <input
               type="email"
               className="width"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={dataUser.email}
+              onChange={(e) =>
+                setDataUser((prev) => ({ ...prev, email: e.target.value }))
+              }
               placeholder="digite seu email"
             />
           </label>
@@ -196,8 +207,10 @@ const ProfileInformationForm = ({ data }) => {
               <input
                 type="tel"
                 className="less-width"
-                value={telefone}
-                onChange={(e) => setTelefone(e.target.value)}
+                value={dataUser.telefone}
+                onChange={(e) =>
+                  setDataUser((prev) => ({ ...prev, telefone: e.target.value }))
+                }
                 placeholder="digite seu telefone"
               />
             </label>
@@ -207,8 +220,7 @@ const ProfileInformationForm = ({ data }) => {
               <input
                 type="number"
                 className="less-width"
-                value={cpfCnpj}
-                onChange={(e) => setCpfCnpj(e.target.value)}
+                value={dataUser.cpfCnpj}
                 disabled
               />
             </label>
@@ -229,7 +241,7 @@ const ProfileInformationForm = ({ data }) => {
               isSearchable={false}
               maxMenuWidth={100}
               placeholder="Listar alergias"
-              // value={retricaoAlimentar}
+              value={dataUser.restricaoAlimentar}
               onChange={handleGetAlergic}
             />
           </label>
@@ -243,8 +255,10 @@ const ProfileInformationForm = ({ data }) => {
               <input
                 type="number"
                 className="less-width"
-                value={cep}
-                onChange={(e) => setCep(e.target.value)}
+                value={dataUser.cep}
+                onChange={(e) =>
+                  setDataUser((prev) => ({ ...prev, cep: e.target.value }))
+                }
                 min="0"
               />
             </label>
@@ -254,7 +268,7 @@ const ProfileInformationForm = ({ data }) => {
               <input
                 type="text"
                 className="less-width"
-                value={logradouro}
+                value={dataUser.logradouro}
                 disabled={true}
                 min="0"
               />
@@ -267,8 +281,10 @@ const ProfileInformationForm = ({ data }) => {
               <input
                 type="text"
                 className="less-width"
-                value={numeroEndereco}
-                onChange={(e) => setNumeroEndereco(e.target.value)}
+                value={dataUser.numeroEndereco}
+                onChange={(e) =>
+                  setDataUser((prev) => ({ ...prev, numeroEndereco: e.target.value }))
+                }
                 min="0"
               />
             </label>
@@ -279,7 +295,7 @@ const ProfileInformationForm = ({ data }) => {
                 type="text"
                 className="less-width"
                 disabled={true}
-                value={bairro}
+                value={dataUser.bairro}
                 min="0"
               />
             </label>
@@ -292,7 +308,7 @@ const ProfileInformationForm = ({ data }) => {
                 type="text"
                 className="less-width"
                 disabled={true}
-                value={cidade}
+                value={dataUser.cidade}
               />
             </label>
 
@@ -302,7 +318,7 @@ const ProfileInformationForm = ({ data }) => {
                 type="text"
                 className="less-width"
                 disabled={true}
-                value={estado}
+                value={dataUser.estado}
               />
             </label>
           </div>
