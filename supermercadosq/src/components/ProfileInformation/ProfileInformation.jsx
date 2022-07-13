@@ -11,14 +11,15 @@ const ProfileInformationForm = ({ data }) => {
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
   const [cpfCnpj, setCpfCnpj] = useState("");
-  const [retricaoAlimentar, setRestricaoAlimentar] = useState("");
+  const [restricaoAlimentar, setRestricaoAlimentar] = useState("");
   const [cep, setCep] = useState("");
   const [logradouro, setLogradouro] = useState("");
   const [numeroEndereco, setNumeroEndereco] = useState("");
   const [bairro, setBairro] = useState("");
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
-  if (data.endereco) console.log(data.endereco[0]);
+  // if (data.endereco) console.log(data.endereco[0]);
+
 
   function handleEditUser(event) {
     event.preventDefault();
@@ -28,7 +29,7 @@ const ProfileInformationForm = ({ data }) => {
       nomeSocial,
       email,
       telefone,
-      retricaoAlimentar,
+      restricaoAlimentar,
       cep,
       logradouro,
       numeroEndereco,
@@ -37,14 +38,6 @@ const ProfileInformationForm = ({ data }) => {
       estado
     );
   }
-
-  const handleGetAlergic = (alergicOptions) => {
-    setRestricaoAlimentar((prev) => ({
-      ...prev,
-      alergia: alergicOptions.map((restricaoAlimentar) => alergia.value).join(","),
-    }));
-  };
-
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
     { value: "crustaceos", label: "Crustáceos" },
@@ -54,8 +47,18 @@ const ProfileInformationForm = ({ data }) => {
     { value: "ovo", label: "Ovo" },
     { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
-    { value: "outros", label: "Outros" },
-  ];
+    { value: "outros", label: "Outros" }
+    ]
+  ;
+
+  const handleGetAlergic = (alergicOptions) => {
+    setRestricaoAlimentar((prev) => ({
+      ...prev,
+      alergia: alergicOptions.map((alergia) => alergia.value).join(","),
+    }));
+    console.log(setRestricaoAlimentar)
+  };
+
 
   const customStyles = {
     menu: (provided) => ({
@@ -227,7 +230,7 @@ const ProfileInformationForm = ({ data }) => {
               maxMenuWidth={100}
               placeholder="Listar alergias"
               // value={retricaoAlimentar}
-              onChange={alergicOptions.map((restricaoAlimentar) => restricaoAlimentar.value).join(",")}
+              onChange={handleGetAlergic}
             />
           </label>
 
