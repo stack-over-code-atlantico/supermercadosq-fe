@@ -21,7 +21,7 @@ export const PaginationBtnNumeric = styled.button`
   background-color: #3EBCD3;
   border: 1px solid #f0f0f0;
 
-  :active {
+  :target {
     background-color: red;
   }
 `;

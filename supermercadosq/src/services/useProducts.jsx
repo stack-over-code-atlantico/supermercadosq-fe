@@ -10,6 +10,13 @@ export const getAllProducts = async (page) => {
   return products;
 };
 
+export const postProductPerAllergy = async (allergies, page) => {
+  const products = await api.post(`/products/allergy/${page}`, {
+    alergia: allergies
+  });
+  return products;
+};
+
 export const createOneProduct = async (data) => {
   const products = await api.post('/products', data, {
     headers: {

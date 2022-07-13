@@ -9,7 +9,7 @@ import { AddProductCard } from "../../components/AddProductCard";
 import { ProductCard } from "../../components/ProductCard";
 import ReactPaginate from 'react-paginate';
 
-import { getAllProducts } from '../../services/useProducts';
+import { getAllProducts, postProductPerAllergy } from '../../services/useProducts';
 import { userLevel } from '../../services/useAuth';
 
 import cardDefault from '../../assets/images/Card-default.png';
@@ -29,14 +29,22 @@ export function Product({itemsPerPage}) {
   const [posts, setPosts] = useState([]);
   const [level, setLevel] = useState(null);
   const [page, setPage] = useState(0);
+  const [allergy, setAllergy] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    (async function() {
-      const resp = await getAllProducts(page);
-      setPosts(resp.data)
-    })();
-  }, [page]);
+    if (allergy.length === 0) {
+      (async function() {
+        const resp = await getAllProducts(page);
+        setPosts(resp.data)
+      })();
+    } else {
+      (async function() {
+        await postProductPerAllergy(allergy.join(','), page)
+          .then((resp) => setPosts(resp.data));
+      })()
+    }
+  }, [page, allergy]);
 
   useEffect(() => {
     (async function() {
@@ -58,8 +66,6 @@ export function Product({itemsPerPage}) {
     setPage(page < totalPages ? parseInt(page) + 1 : totalPages);
   }
 
-  console.log(page, totalPages)
-
   const handleColor = (allergy) => {
     const alergias = allergy ? allergy.split(',') : '';
     if (alergias[0] === 'ovo') return '#DAC50A';
@@ -67,7 +73,7 @@ export function Product({itemsPerPage}) {
     if (alergias[0] === 'amendoim') return '#C87C53';
     if (alergias[0] === 'mostarda') return '#F59E1D';
     if (alergias[0] === 'soja') return '#108a57';
-    if (alergias[0] === 'fish') return '#9CDBE7';
+    if (alergias[0] === 'peixe') return '#9CDBE7';
     if (alergias[0] === 'crustaceos') return '#F66A69';
     if (alergias[0] === 'lactose') return '#3EBCD3';
     return '#3EBCD3';
@@ -83,7 +89,7 @@ export function Product({itemsPerPage}) {
       if (alergias[0] === 'amendoim') return peanutIcon;
       if (alergias[0] === 'mostarda') return mustardIcon;
       if (alergias[0] === 'soja') return sojaIcon;
-      if (alergias[0] === 'fish') return fishIcon;
+      if (alergias[0] === 'peixe') return fishIcon;
       if (alergias[0] === 'crustaceos') return seafoodIcon;
       if (alergias[0] === 'lactose') return milkIcon;
     }
@@ -93,7 +99,18 @@ export function Product({itemsPerPage}) {
   return (
     <>
       {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
-      <FilterButton />
+      <FilterButton
+        alergias={allergy}
+        setAlergias={setAllergy}
+        fish={fishIcon}
+        egg={eggIcon}
+        milk={milkIcon}
+        mustard={mustardIcon}
+        seafood={seafoodIcon}
+        peanut={peanutIcon}
+        wheat={wheatIcon}
+        soja={sojaIcon}
+      />
       <CardsContainer>
         {page === 0 ? <AddProductCard /> : <></>}
         {posts?.map((product) => {

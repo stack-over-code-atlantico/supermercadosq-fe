@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getAllProducts } from '../../services/useProducts';
 import { PaginationBtn, PaginationBtnNumeric, PaginationDiv } from "./styles";
 

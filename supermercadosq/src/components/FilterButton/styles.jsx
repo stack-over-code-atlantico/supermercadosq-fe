@@ -31,7 +31,31 @@ export const DivFilter = styled.div`
         width: 22px;
         height: 22px;
         border: none;
-        border-radius: 50%;
+    }
+
+    input[type=checkbox] {
+      height: 22px;
+      width: 22px;
+    }
+
+    input:checked {
+      background-color: #2A91A3;
+      border-radius: 3px;
+      appearance: none;
+      transition: 300ms all ease;
+    }
+
+    input:checked:after {
+      content: "";
+      display: block;
+      position: relative;
+      left: 1px;
+      width: 5px;
+      height: 10px;
+      border: 3px solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+      margin: 2px 6px;
     }
 
     .listaFiltros {
@@ -46,7 +70,6 @@ export const DivFilter = styled.div`
 
         top: -40px;
         right: -175px;
-
     }
 
     .listaFiltros .itemFiltrar a {
@@ -86,7 +109,24 @@ export const DivFilter = styled.div`
         align-items: center;
         justify-content: center;
         gap: 10px;
-
+        height: 50px;
         padding: 0;
     }
 `;
+
+export const FilterIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #2a91a3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 26px;
+    height: 26px;
+    filter: invert(100%);
+  }
+`;
+
