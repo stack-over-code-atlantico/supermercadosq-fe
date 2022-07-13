@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import RequirePassword from "../RequirePassword";
 import { PasswordSecurityContainer } from "./styles";
 
 const PasswordSecurityForm = () => {
@@ -13,13 +15,15 @@ const PasswordSecurityForm = () => {
     length: false,
   };
   const [validateInput, setValidateInput] = useState(requiredCases);
-
-  const handleCheckPassword = (event) => {
+  const handleCheckPassword=(event)=>{
     event.preventDefault();
     if (novaSenha !== repeteNovaSenha) {
       alert("Senhas diferentes");
       return;
     }
+    handleCheckPasswordCases()
+  }
+  const handleCheckPasswordCases = () => {
     const regexUppercase = /^(?=.*[A-Z]).+$/;
     const regexLowercase = /^(?=.*[a-z]).+$/;
     const regexNumber = /^(?=.*[0-9]).+$/;
@@ -32,15 +36,25 @@ const PasswordSecurityForm = () => {
     });
     if (validateInput.case && validateInput.length && validateInput.number) {
       setHasErrorPassword(false);
-      alert("ok");
       return;
     } else {
-      alert("n ok");
       setHasErrorPassword(true);
       return;
     }
   };
-  console.log(hasErrorPassword + "oi");
+
+  useEffect(()=>{
+    handleCheckPasswordCases()
+  },[novaSenha])
+
+  useEffect(() => {
+    if (validateInput.case && validateInput.length && validateInput.number) {
+      setHasErrorPassword(false);
+    } else {
+      setHasErrorPassword(true);
+    }
+  }, [validateInput]);
+ 
 
   return (
     <>
@@ -76,9 +90,14 @@ const PasswordSecurityForm = () => {
             />
           </label>
           <div style={{ display: "flex", marginLeft: "355px" }}>
-            <input id="button" type="submit" value="Salvar" />
+            <input id="button" type="submit" value="Salvar" disabled={hasErrorPassword}/>
           </div>
         </form>
+        <RequirePassword
+          lengthPassword={validateInput.length}
+          casePassword={validateInput.case}
+          numberPassword={validateInput.number}
+        />
       </PasswordSecurityContainer>
     </>
   );
