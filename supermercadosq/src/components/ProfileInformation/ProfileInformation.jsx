@@ -3,6 +3,7 @@ import { ProfileInformationContainer, ContainerAvatar } from "./styles";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useEffect } from "react";
 import { useEditUser } from "../../services/useUser";
+import Select from "react-select";
 
 const ProfileInformationForm = ({ data }) => {
   const [nome, setNome] = useState("");
@@ -36,6 +37,76 @@ const ProfileInformationForm = ({ data }) => {
       estado
     );
   }
+
+  const handleGetAlergic = (alergicOptions) => {
+    setRestricaoAlimentar((prev) => ({
+      ...prev,
+      alergia: alergicOptions.map((restricaoAlimentar) => alergia.value).join(","),
+    }));
+  };
+
+  const alergicOptions = [
+    { value: "amendoim", label: "Amendoim" },
+    { value: "crustaceos", label: "Crustáceos" },
+    { value: "gluten", label: "Glúten" },
+    { value: "lactose", label: "Lactose" },
+    { value: "mostarda", label: "Mostarda" },
+    { value: "ovo", label: "Ovo" },
+    { value: "peixe", label: "Peixe" },
+    { value: "soja", label: "Soja" },
+    { value: "outros", label: "Outros" },
+  ];
+
+  const customStyles = {
+    menu: (provided) => ({
+      ...provided,
+      padding: 10,
+    }),
+    control: (provided) => ({
+      ...provided,
+      width: 280,
+      height: 40,
+      border: "1.5px solid var(--color-blue-light)",
+      borderRadius: 0,
+      cursor: "pointer",
+    }),
+    indicatorsContainer: (provided) => ({
+      ...provided,
+      height: 35,
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      fontWeight: 200,
+      fontSize: "13px",
+      paddingTop: 6,
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      maxWidth: "90%",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      display: "initial",
+      fontWeight: 400,
+      fontSize: "13px",
+    }),
+  };
+
+  const multiValueContainer = ({ selectProps, data }) => {
+    const label = data.label;
+    const allSelected = selectProps.value;
+    const index = allSelected.findIndex((selected) => selected.label === label);
+    const isLastSelected = index === allSelected.length - 1;
+    const labelSuffix = isLastSelected ? ` (${allSelected.length})` : ", ";
+    const val = `${label}${labelSuffix}`;
+    return val;
+  };
+
+  const formatGroupLabel = (data) => (
+    <div>
+      <span>{data.label}</span>
+      <span>{data.options.length}</span>
+    </div>
+  );
 
   const handleCep = () => {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
@@ -142,11 +213,21 @@ const ProfileInformationForm = ({ data }) => {
 
           <label>
             Restrição Alimentar
-            <input
-              type="select"
-              className="width"
-              value={retricaoAlimentar}
-              onChange={(e) => setRestricaoAlimentar(e.target.value)}
+            <Select
+              options={alergicOptions}
+              isMulti
+              components={{
+                MultiValueContainer: multiValueContainer,
+              }}
+              formatGroupLabel={formatGroupLabel}
+              closeMenuOnSelect={false}
+              hideSelectedOptions={false}
+              styles={customStyles}
+              isSearchable={false}
+              maxMenuWidth={100}
+              placeholder="Listar alergias"
+              // value={retricaoAlimentar}
+              onChange={alergicOptions.map((restricaoAlimentar) => restricaoAlimentar.value).join(",")}
             />
           </label>
 
