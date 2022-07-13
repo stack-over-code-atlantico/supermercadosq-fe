@@ -86,3 +86,23 @@ export const useEditUser = async (
     });
   return updateUser;
 };
+
+export const editUserPassword = async (
+  senhaAntiga, novaSenha, id_usuario
+) => {
+  const bodyParams = {
+    senhaAntiga,novaSenha
+  };
+  const updateUserPassword = await api
+    .put(`/users/${id_usuario}/changePassword`, bodyParams, config)
+    .then((resp) => {
+      alert('Senha alterada com sucesso')
+      return resp;
+    })
+    .catch((err) => {
+      alert('Ocorreu um erro')
+      console.log(err);
+      return err;
+    });
+  return updateUserPassword;
+};

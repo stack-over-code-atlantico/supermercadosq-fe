@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { editUserPassword } from "../../services/useUser";
 import RequirePassword from "../RequirePassword";
 import { PasswordSecurityContainer } from "./styles";
+import {  userLevel  } from '../../services/useAuth';
 
 const PasswordSecurityForm = () => {
   const [senhaAntiga, setSenhaAntiga] = useState("");
@@ -21,7 +23,8 @@ const PasswordSecurityForm = () => {
       alert("Senhas diferentes");
       return;
     }
-    handleCheckPasswordCases()
+    const {id_usuario} = userLevel()
+    editUserPassword(senhaAntiga, novaSenha, id_usuario)
   }
   const handleCheckPasswordCases = () => {
     const regexUppercase = /^(?=.*[A-Z]).+$/;
