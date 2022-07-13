@@ -25,10 +25,10 @@ export default function Profile() {
     const {id_usuario} = userLevel();
     getUserData(id_usuario)
   },[])
-  
-  useEffect(()=>{
-    console.log(data)
-  },[data])
+
+  // useEffect(()=>{
+  //   console.log(data)
+  // },[data])
 
   const handleProfileScreen = () => {
     setIsProfile(true);

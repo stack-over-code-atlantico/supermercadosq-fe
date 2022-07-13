@@ -20,7 +20,6 @@ const ProductRegister = () => {
     descricao: "",
     ingredientes: "",
   });
-
   const handleSelectFile = (event) => {
     setFile(event.target.files[0]);
     setSrcUrl(URL.createObjectURL(event.target.files[0]));
