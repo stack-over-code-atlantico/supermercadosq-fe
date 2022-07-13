@@ -241,7 +241,7 @@ const ProfileInformationForm = ({ data }) => {
               styles={customStyles}
               isSearchable={false}
               maxMenuWidth={100}
-              placeholder="Listar alergias"
+              placeholder={dataUser.restricaoAlimentar === null ? "Listar Alergia" : dataUser.restricaoAlimentar}
               // value={dataUser.restricaoAlimentar}
               onChange={handleGetAlergic}
             />
