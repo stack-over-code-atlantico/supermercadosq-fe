@@ -26,18 +26,17 @@ export const DetailsImage = styled.figure`
     border-radius: 20px 0 0 20px;
   }
   .BackProduct {
-    box-shadow: inset 0 0 4px var(--color-gray);
     cursor: pointer;
 
     &:hover {
-      box-shadow: inset 0 0 2px var(--color-gray);
       transition: all 0.3ms ease-in;
+      background-color: rgba(0,0,0,0.7);
     }
     cursor: pointer;
     position: absolute;
     left: 10px;
     top: 10px;
-    background-color: white;
+    background-color: rgba(0,0,0,0.6);
     font-size: 2rem;
     width: 40px;
     height: 40px;

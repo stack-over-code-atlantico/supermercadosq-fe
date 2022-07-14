@@ -29,6 +29,8 @@ import ProductDetails from '../../components/ProductDetails/ProductDetails';
 export function Product() {
   const [openModal, setOpenModal] = useState(false);
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
+  const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [id, setId] = useState();
   const [level, setLevel] = useState(null);
@@ -78,9 +80,20 @@ export function Product() {
     setOpenModal(false);
   };
 
-  const handleDetailsProduct = (id) => {
-    setOpenDetailsModal(true);
-    setId(id)
+  const handleProductDetails = async (id, url) => {
+    setLoading(true);
+    setImage(url)
+    setTimeout(async() => {
+      setOpenDetailsModal(true);
+      setId(id);
+
+      setLoading(false);
+    }, 1000);
+
+  };
+
+  const closeProductDetails = () => {
+    setOpenDetailsModal(false);
   };
 
   const handleColor = (allergy) => {
@@ -116,7 +129,13 @@ export function Product() {
   return (
     <>
       <ProductRegister openModal={openModal} setOpenModal={closeModal} />
-      <ProductDetails open={openDetailsModal} id={id} />
+      <ProductDetails
+        loading={loading}
+        setClose={closeProductDetails}
+        open={openDetailsModal}
+        id={id}
+        image={image}
+      />
       {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
       <FilterButton
         alergias={allergy}
@@ -134,7 +153,7 @@ export function Product() {
         {page === 0 ? <AddProductCard onClick={handleRegisterProduct}/> : <></>}
         {posts?.map((product) => (
             <ProductCard
-            setOpenModal={(e) => handleDetailsProduct(product.id_produto)}
+            setOpenModal={(e) => handleProductDetails(product.id_produto, product.imagem)}
             onClick={(e) => setId(product.id_produto)}
             key={product.id_produto}
             nome={product.nome || 'Nome não informado'}
