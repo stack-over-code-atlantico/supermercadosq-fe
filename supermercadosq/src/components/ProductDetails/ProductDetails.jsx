@@ -34,12 +34,10 @@ import LabelMessage from "../../components/LabelMessage";
 const ProductDetails = ({ open, id }) => {
   const [dataProduct, setDataProduct] = useState();
   const [dataComment, setDataComment] = useState();
-  const [idReq, setIdReq] = useState(id);
-
+  const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState("");
   const [alergia, setAlergia] = useState("");
   const [configAlergia, setConfigAlergia] = useState([]);
-
   const handleColor = (alergiaAtual) => {
     if (alergiaAtual == "") return { color: "#9CDD6E", icon: home };
     if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: eggIcon };
@@ -55,24 +53,19 @@ const ProductDetails = ({ open, id }) => {
     return { color: "#9CDD6E", icon: home };
   };
 
-  console.log(idReq);
+  useEffect(() => {
+    getProduct(id);
+    getComments(id);
+    setIsOpen(open)
+  }, [id]);
 
   useEffect(() => {
-    (async function () {
-      setIdReq(id);
-      getProduct(id);
-      getComments(id);
-    })();
-  }, []);
-
-  // useEffect(() => {
-  //   getComments(id);
-  // }, [dataComment]);
+    getComments(id);
+  }, [dataComment]);
 
   useEffect(() => {
     setConfigAlergia([]);
     for (let values of alergia) {
-      console.log(values);
       setConfigAlergia((prev) => [...prev, handleColor(values)]);
     }
   }, [alergia]);
@@ -84,7 +77,6 @@ const ProductDetails = ({ open, id }) => {
         return resp;
       })
       .then((res) => {
-        // console.log(res.data.alergia)
         if (res.data.alergia) setAlergia(res.data.alergia.split(","));
       });
   }
@@ -155,104 +147,101 @@ const ProductDetails = ({ open, id }) => {
 
   return (
     <>
-      {
-        open
-          ? (
-            <DetailsContainer>
-              <DetailsImage>
-                <div className="BackProduct">
-                  <IoReturnDownBackOutline />
-                </div>
-                <img src={sushiImage} alt="mesa com sushi" />
-              </DetailsImage>
-              <DetailsComments>
-                <UserComment
-                  id_item={dataProduct?.id_produto}
-                  userOwner={dataProduct?.usuario_produto_id_usuarioTousuario.nome}
-                  userIdOwner={dataProduct?.id_usuario}
-                  dataPublicacao={dataProduct?.data_postagem}
-                  typeItem="produto"
-                  onDeleteItem={handleDeleteItem}
-                  onReportItem={handleReportItem}
-                  onEditItem={handleEditItem}
-                />
-                <PostComment>
-                  <PostContainer
-                    color={configAlergia.length < 1 ? "" : configAlergia[0].color}
-                  >
-                    <span>{dataProduct?.nome}</span>
-                    <h3>{dataProduct?.descricao}</h3>
-                    <NutritionalContainer
-                      color={configAlergia.length < 1 ? "" : configAlergia[0].color}
-                    >
-                      <NutritionalTable>
-                        <p>{dataProduct?.ingredientes}</p>
-                      </NutritionalTable>
-                      <IconType>
-                        {configAlergia.map((item) => {
-                          return (
-                            <div
-                              className="IconType"
-                              style={{ backgroundColor: item.color }}
-                            >
-                              <img src={item.icon} alt="peixe" />
-                            </div>
-                          );
-                        })}
-                      </IconType>
-                    </NutritionalContainer>
-                  </PostContainer>
-                  <LabelMessage
-                    color={configAlergia.length < 1 ? "" : configAlergia[0].color}
-                    executeFunction={handleCreateComment}
-                    mensagem
-                    id_item={id}
-                    typeHandleCreate={true}
-                  />
-                  <ListComments
-                    color={configAlergia.length < 1 ? "" : configAlergia[0].color}
-                  >
-                    {dataComment?.map((comment) => {
+      {isOpen ? (
+        <DetailsContainer>
+          <DetailsImage>
+            <div className="BackProduct">
+              <IoReturnDownBackOutline onClick={()=>setIsOpen(false)}/>
+            </div>
+            <img src={sushiImage} alt="mesa com sushi" />
+          </DetailsImage>
+          <DetailsComments>
+            <UserComment
+              id_item={dataProduct?.id_produto}
+              userOwner={dataProduct?.usuario_produto_id_usuarioTousuario.nome}
+              userIdOwner={dataProduct?.id_usuario}
+              dataPublicacao={dataProduct?.data_postagem}
+              typeItem="produto"
+              onDeleteItem={handleDeleteItem}
+              onReportItem={handleReportItem}
+              onEditItem={handleEditItem}
+            />
+            <PostComment>
+              <PostContainer
+                color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+              >
+                <span>{dataProduct?.nome}</span>
+                <h3>{dataProduct?.descricao}</h3>
+                <NutritionalContainer
+                  color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+                >
+                  <NutritionalTable>
+                    <p>{dataProduct?.ingredientes}</p>
+                  </NutritionalTable>
+                  <IconType>
+                    {configAlergia.map((item) => {
                       return (
-                        <Comment key={comment.id_comentario}>
-                          <UserComment
-                            id_item={comment?.id_comentario}
-                            userOwner={
-                              comment?.usuario_comentario_id_usuarioTousuario.nome
-                            }
-                            userIdOwner={comment?.id_usuario}
-                            dataPublicacao={comment?.data_comentario}
-                            typeItem="comentario"
-                            onDeleteItem={handleDeleteItem}
-                            onReportItem={handleReportItem}
-                            onEditItem={() => {
-                              handleEditItem;
-                              setIsEdit(comment?.id_comentario);
-                            }}
-                          />
-                          {isEdit === comment?.id_comentario ? (
-                            <p>
-                              <LabelMessage
-                                executeFunction={handleEditItem}
-                                mensagem
-                                id_item={comment.id_comentario}
-                                typeHandleCreate={false}
-                              />
-                            </p>
-                          ) : (
-                            <p>{comment.mensagem}</p>
-                          )}
-                        </Comment>
+                        <div
+                          className="IconType"
+                          style={{ backgroundColor: item.color }}
+                        >
+                          <img src={item.icon} alt="peixe" />
+                        </div>
                       );
                     })}
-                  </ListComments>
-                </PostComment>
-              </DetailsComments>
-            </DetailsContainer>
-          ) : (
-            <></>
-          )
-      }
+                  </IconType>
+                </NutritionalContainer>
+              </PostContainer>
+              <LabelMessage
+                color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+                executeFunction={handleCreateComment}
+                mensagem
+                id_item={id}
+                typeHandleCreate={true}
+              />
+              <ListComments
+                color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+              >
+                {dataComment?.map((comment) => {
+                  return (
+                    <Comment key={comment.id_comentario}>
+                      <UserComment
+                        id_item={comment?.id_comentario}
+                        userOwner={
+                          comment?.usuario_comentario_id_usuarioTousuario.nome
+                        }
+                        userIdOwner={comment?.id_usuario}
+                        dataPublicacao={comment?.data_comentario}
+                        typeItem="comentario"
+                        onDeleteItem={handleDeleteItem}
+                        onReportItem={handleReportItem}
+                        onEditItem={() => {
+                          handleEditItem;
+                          setIsEdit(comment?.id_comentario);
+                        }}
+                      />
+                      {isEdit === comment?.id_comentario ? (
+                        <p>
+                          <LabelMessage
+                            executeFunction={handleEditItem}
+                            mensagem
+                            id_item={comment.id_comentario}
+                            typeHandleCreate={false}
+                          />
+                        </p>
+                      ) : (
+                        <p>{comment.mensagem}</p>
+                      )}
+                    </Comment>
+                  );
+                })}
+              </ListComments>
+            </PostComment>
+          </DetailsComments>
+        </DetailsContainer>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

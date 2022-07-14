@@ -10,7 +10,7 @@ export const DetailsContainer = styled.div`
   background-color: white;
   color: var(--color-gray);
   background-color: #000000a6;
-  position: absolute;
+  position: fixed;
   z-index: 99;
 `;
 
