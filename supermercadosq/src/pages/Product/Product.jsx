@@ -30,7 +30,7 @@ export function Product() {
   const [openModal, setOpenModal] = useState(false);
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [id, setId] = useState(null);
+  const [id, setId] = useState();
   const [level, setLevel] = useState(null);
   const [page, setPage] = useState(0);
   const [allergy, setAllergy] = useState([]);
@@ -78,8 +78,9 @@ export function Product() {
     setOpenModal(false);
   };
 
-  const handleDetailsProduct = (event) => {
+  const handleDetailsProduct = (id) => {
     setOpenDetailsModal(true);
+    setId(id)
   };
 
   const handleColor = (allergy) => {
@@ -133,7 +134,7 @@ export function Product() {
         {page === 0 ? <AddProductCard onClick={handleRegisterProduct}/> : <></>}
         {posts?.map((product) => (
             <ProductCard
-            setOpenModal={(e) => handleDetailsProduct(e)}
+            setOpenModal={(e) => handleDetailsProduct(product.id_produto)}
             onClick={(e) => setId(product.id_produto)}
             key={product.id_produto}
             nome={product.nome || 'Nome não informado'}
