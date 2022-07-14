@@ -56,12 +56,8 @@ const ProductDetails = ({ open, id }) => {
   useEffect(() => {
     getProduct(id);
     getComments(id);
-    setIsOpen(open)
+    setIsOpen(open);
   }, [id]);
-
-  useEffect(() => {
-    getComments(id);
-  }, [dataComment]);
 
   useEffect(() => {
     setConfigAlergia([]);
@@ -102,13 +98,22 @@ const ProductDetails = ({ open, id }) => {
     return createNewComment;
   }
 
-  async function handleEditItem(mensagem, id_item) {
+  function handleEditItem(mensagem, id_item) {
+    console.log(id);
     const createEditItem = useEditItem({
       mensagem,
       id_item,
+    }).then((resp) => {
+      getCommentsByProduct(id)
+        .then((resp) => {
+          return resp.data;
+        })
+        .then((resp) => {
+          setDataComment(resp);
+          console.log(resp);
+          setIsEdit("");
+        });
     });
-    setDataComment(dataComment);
-    setIsEdit("");
     return createEditItem;
   }
 
@@ -151,7 +156,7 @@ const ProductDetails = ({ open, id }) => {
         <DetailsContainer>
           <DetailsImage>
             <div className="BackProduct">
-              <IoReturnDownBackOutline onClick={()=>setIsOpen(false)}/>
+              <IoReturnDownBackOutline onClick={() => setIsOpen(false)} />
             </div>
             <img src={sushiImage} alt="mesa com sushi" />
           </DetailsImage>
