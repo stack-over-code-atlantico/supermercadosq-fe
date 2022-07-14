@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { updateComplaint } from '../../services/useReport';
+
 import {
   StyledTable,
   TBody,
@@ -23,19 +23,10 @@ import {
 } from "react-icons/bs";
 import { FaComments } from "react-icons/fa";
 
-export function TableDashboard({ data }) {
+export function TableDashboard({ data, update }) {
   const [, setUpdatedStatus] = useState(null);
 
-  const handleUpdate = useCallback((item) => {
-    updateComplaint(item)
-      .then(() => console.log(''))
-      .catch((err) => {
-        alert('Houve um erro com a requisição.');
-        console.log(err.message);
-      });
-   });
-
-  const handleApprove = (item) => {
+  const handleApprove = async (item) => {
     setUpdatedStatus({...item, status: 'APROVADO'});
     item.status = 'APROVADO';
   };
@@ -85,7 +76,7 @@ export function TableDashboard({ data }) {
                     </Action>
                     <Action onClick={() => handleDisapprove(item)} style={{transform: 'rotatey(180deg)'}}>
                       {
-                        item.status === 'REPROVADO'  ? <BsHandThumbsDownFill  /> : <BsHandThumbsDown/>
+                        item.status === 'REPROVADO' ? <BsHandThumbsDownFill  /> : <BsHandThumbsDown/>
                       }
                     </Action>
                   </TD>
@@ -93,7 +84,7 @@ export function TableDashboard({ data }) {
                     <Action>
                       {
                         item.status === 'REPROVADO' || item.status === 'APROVADO'
-                          ? (<BsCursorFill onClick={() => handleUpdate(item)} style={{transform: 'rotate(45deg)'}} />)
+                          ? (<BsCursorFill onClick={() => update(item)} style={{transform: 'rotate(45deg)'}} />)
                           : (<BsCursorFill disabled style={{transform: 'rotate(45deg)'}} />)
                       }
                     </Action>

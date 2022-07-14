@@ -1,8 +1,8 @@
-import { LoadingScreen, LoadingShadow, LoadingWrapper, SpanText } from './styles';
+import { LoadingScreen, LoadingShadow, LoadingWrapper, Div } from './styles';
 
 export function Loading() {
   return (
-    <>
+    <Div>
      <LoadingWrapper>
       <LoadingScreen size='100px' background='#3ebcd3' />
         <LoadingScreen size='100px' background='#DAC50A'  />
@@ -10,9 +10,8 @@ export function Loading() {
         <LoadingShadow />
         <LoadingShadow />
         <LoadingShadow />
-        <SpanText>Carregando...</SpanText>
      </LoadingWrapper>
-    </>
+    </Div>
   );
 }
 

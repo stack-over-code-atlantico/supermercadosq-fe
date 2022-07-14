@@ -5,9 +5,10 @@ import { Paragraph }  from './styles'
 import { Button } from './styles'
 import { Div } from './styles'
 import { MenuContext } from '../../Provider/Menu.provider';
+import TypeAnimation from 'react-type-animation';
+import { Link } from 'react-router-dom';
 
 export function TextoBlog(){
-
   const { allergyMenu } = useContext(MenuContext);
 
   const handleColor = () => {
@@ -23,23 +24,33 @@ export function TextoBlog(){
   };
 
   const handleSubtitle = () => {
-    if (allergyMenu.home) return <SubTitle color={handleColor}>Comunidade</SubTitle>;
-    if (allergyMenu.egg) return <SubTitle color={handleColor}>Ovo</SubTitle>;
-    if (allergyMenu.wheat) return <SubTitle color={handleColor}>Glúten</SubTitle>;
-    if (allergyMenu.peanut) return <SubTitle color={handleColor}>Amendoim</SubTitle>;
-    if (allergyMenu.mustard) return <SubTitle color={handleColor}>Mostarda</SubTitle>;
-    if (allergyMenu.fish) return <SubTitle color={handleColor}>Peixe</SubTitle>;
-    if (allergyMenu.seafood) return <SubTitle color={handleColor}>Frutos do mar</SubTitle>;
-    if (allergyMenu.milk) return <SubTitle color={handleColor}>Leite</SubTitle>;
-    return <SubTitle color={handleColor}>Comunidade</SubTitle>;
+    if (allergyMenu.egg) return 'Ovo'
+    if (allergyMenu.wheat) return 'Glúten';
+    if (allergyMenu.peanut) return 'Amendoim';
+    if (allergyMenu.mustard) return 'Mostarda';
+    if (allergyMenu.fish) return 'Peixe';
+    if (allergyMenu.seafood) return 'Frutos do mar';
+    if (allergyMenu.milk) return 'Leite';
+    return 'Comunidade';
   };
 
   return(
       <Div>
-        <Title color={handleColor}>SQ Blog</Title>
-        {handleSubtitle()}
+        <Title color={handleColor}>
+          SQ Blog
+        </Title>
+        <SubTitle color={handleColor}>
+          <TypeAnimation
+            sequence={[handleSubtitle(), 2000]}
+          />
+        </SubTitle>
         <Paragraph>Entre em nosso blog, venha conferir e contribuir na nossa comunidade, está rolando várias discussões sobre tabela nutricional e alergias!</Paragraph>
-        <Button color={handleColor}>Blog</Button>
+          <Link to="/product">
+            <Button color={handleColor}> Blog </Button>
+          </Link>
+          <Link to="/about">
+            <Button color={handleColor} style={{marginLeft: '22px'}}> Sobre </Button>
+          </Link>
       </Div>
   );
 };
