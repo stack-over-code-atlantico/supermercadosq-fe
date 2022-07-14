@@ -44,7 +44,7 @@ const ProfileInformationForm = ({ data }) => {
       ...prev,
       restricaoAlimentar: alergicOptions.map((alergia) => alergia.value).join(","),
     }));
-    console.log(dataUser.restricaoAlimentar);
+    // console.log(dataUser.restricaoAlimentar);
   };
 
   const alergicOptions = [
@@ -131,7 +131,7 @@ const ProfileInformationForm = ({ data }) => {
       telefone: data.telefone,
       restricaoAlimentar: data.restricao_alimenticia,
     }));
-    console.log(data);
+    // console.log(data);
     if (data.endereco) {
       const endereco = data.endereco[0];
       setDataUser((prev) => ({

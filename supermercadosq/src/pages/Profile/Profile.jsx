@@ -68,7 +68,7 @@ export default function Profile() {
         }
         {
           isPosts
-            ? (<PostCommentsForm />)
+            ? (<PostCommentsForm data={data}/>)
             : (<></>)
         }
       </div>
