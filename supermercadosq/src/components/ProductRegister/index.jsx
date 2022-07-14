@@ -28,7 +28,7 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
   };
 
   const handleRegisterProd = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append("nome", data.nome);
     formData.append("alergia", data.alergia);
@@ -38,7 +38,7 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
 
     const submit = await createOneProduct(formData)
       .then((res) => {
-        alert("Produto Cadastrado com Sucesso")
+        alert("Produto Cadastrado com Sucesso");
         window.location.reload();
       })
       .catch((err) => alert("Ocorreu um Erro"));
