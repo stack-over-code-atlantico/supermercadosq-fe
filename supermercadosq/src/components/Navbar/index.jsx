@@ -48,7 +48,7 @@ export function Navbar() {
           <NavbarContainer>
             <NavLogo to='/' onClick={closeMobileMenu}>
               <h1>Supermercado SQ</h1>
-            </NavLogo>
+            </NavLogo> 
             <MobileIcon onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
@@ -56,14 +56,14 @@ export function Navbar() {
             <NavItem>
                 <NavLink to='/product' activestyle={{ color: '#3EBCD3' }} onClick={closeMobileMenu}>
                   Produto
-                </NavLink>
+                </NavLink> 
               </NavItem>
               <NavItem>
                 <NavLink to='/about' activestyle={{ color: '#3EBCD3' }}
                   onClick={closeMobileMenu}>
                   Sobre
-                </NavLink>
-              </NavItem>
+                </NavLink> 
+              </NavItem>      
               {
                 isLogged
                   ? (<></>)
@@ -79,7 +79,7 @@ export function Navbar() {
                           Registro
                         </NavLink>
                       </NavItem>
-                    </>
+                    </>   
                   )
               }
             </NavMenu>
