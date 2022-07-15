@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-    margin: 3% 20% 0% 9%;
     position: relative;
     left: 0%;
-    width: 75%;
+    width: 100%;
 `
 
 export const Title = styled.h1`
@@ -21,7 +20,14 @@ export const SubTitle = styled.h2`
 `
 
 export const Paragraph = styled.p`
-    padding: 2% 65% 30px 0;
+    padding-right: 70%;
+    padding-left: 3px;
+    margin: 20px 0;
+    width: 100%;
+
+    @media (max-width: 1366px) {
+      padding-right: 50%;
+    }
 
 `
 export const Button = styled.button`

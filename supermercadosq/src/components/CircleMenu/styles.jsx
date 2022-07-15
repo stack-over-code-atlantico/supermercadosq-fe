@@ -123,13 +123,9 @@ export const ImageButton = styled.img`
   position: relative;
   left: 30px;
   top: 30px;
-  /* background-color: red; */
   border-radius: 50%;
-  transform: scale(3.0);
+  transform: scale(3.5);
 
-  @media (max-width: 900px) {
-    display: none;
-  }
 `;
 
 export const MainButton = styled.div`
@@ -140,8 +136,17 @@ export const MainButton = styled.div`
   height: 150px;
   background-color: #FFF;
 
-  @media (max-width: 900px) {
-    display: none;
+  @media (max-width: 1366px) {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background-color: #eee;
+    top: -65px;
+    left: 0;
+
+    &:hover {
+      background-color: #9CDD6E;
+    }
   }
 `;
 
@@ -153,7 +158,7 @@ export const MenuButton = styled.a`
   align-items: center;
   transition: all 0.3s ease;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1366px) {
     display: none;
   }
 `;
@@ -162,7 +167,16 @@ export const CloseButton = styled.a`
   transition: all 0.3s ease;
   transform: translateY(50px);
   opacity: 0;
-  margin-top: 10
+  margin-top: 10;
+  position: relative;
+
+  @media (max-width: 1366px) {
+    img {
+      position: absolute;
+      top: -7px;
+      left: -45px;
+    }
+  }
 `;
 
 export const CircleButton = styled.button`
@@ -185,10 +199,10 @@ export const CircleButton = styled.button`
           -ms-flex-align: center;
           align-items: center;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1366px) {
     position: static;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
   -webkit-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
@@ -216,13 +230,13 @@ export const IconsMenu = styled.img`
   width: 50px;
   height: 50px;
 
-  @media (max-width: 900px) {
-      transform: scale(0.6);
+  @media (max-width: 1366px) {
+      transform: scale(0.8);
     }
 `;
 
 export const LabelMenu = styled.label`
-  @media (max-width: 900px) {
+  @media (max-width: 1366px) {
       position: absolute;
       top: -140px;
       right: -180px;

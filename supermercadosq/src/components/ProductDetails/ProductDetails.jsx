@@ -155,6 +155,8 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
     return reportItemAxios;
   }
 
+  console.log(dataProduct?.id_usuario)
+
   return (
     <>
       { open ? (

@@ -13,10 +13,11 @@ export const Nav = styled.nav`
 
 export const NavbarContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: 90%;
-  margin: 0 auto;
+  /* background-color: pink; */
+  width: 53%;
+  margin: 0 0 0 5%;
   height: 6vh;
 `;
 
@@ -25,11 +26,10 @@ export const NavLogo = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
   height: 100%;
   position: relative;
   left: 0rem;
-  
+
   h1{
     word-wrap: nowrap;
   }
@@ -43,7 +43,7 @@ export const NavLogo = styled(Link)`
     position: relative;
     left: -0.5rem;
   }
-  
+
 `;
 
 export const NavLink = styled(Link)`
@@ -98,7 +98,7 @@ export const MobileIcon = styled.div`
   display: none;
   color: var(--color-black);
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1366px) {
     display: block;
     position: absolute;
     top: -20px;
@@ -116,7 +116,7 @@ export const NavMenu = styled.ul`
   list-style: none;
   margin-right: 8vw;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 1366px){
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -133,11 +133,9 @@ export const NavMenu = styled.ul`
 export const NavItem = styled.li`
   height: auto;
   border-bottom: 2px solid transparent;
-  
+
   position: relative;
-  left: 19.5rem;
-  top: 0.15rem;
-  
+
   @media screen and (max-width: 1340px) {
     height: auto;
     border-bottom: 2px solid transparent;
@@ -166,16 +164,14 @@ export const NavInf = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  left: 3rem;
-
-  @media screen and (max-width: 768px){
+  top: -2px;
+  left: 20px;
+  @media screen and (max-width: 1366px){
     display: none;
   }
 `;
 
 export const NavLabel = styled.div`
-  padding: 10px 5px 10px 22px;
-  position: relative;
 `;
 
 export const NavLogout = styled.button`
@@ -183,7 +179,6 @@ export const NavLogout = styled.button`
   border: none;
   font-size: 1rem;
   position: relative;
-  right: -45%;
 `;
 
 export const NavIcon = styled.img`

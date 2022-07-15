@@ -1,7 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { LabelComment } from "./style";
+import { userLevel } from "../../services/useAuth";
 
 const LabelMessage = ({
   executeFunction,
@@ -23,26 +23,33 @@ const LabelMessage = ({
   }
 
   return (
-    <LabelComment color={color}>
-      <input
-        type="text"
-        placeholder="Adicionar Comentário"
-        value={messageComment}
-        onChange={(e) => setMessageComment(e.target.value)}
-        onKeyPress={(e) => {
-          if (messageComment.length > 3 && e.key === "Enter") {
-            return typeHandleCreate
-              ? handleCreateComment()
-              : handleEditComment();
-          }
-        }}
-      />
-      <button
-        onClick={typeHandleCreate ? handleCreateComment : handleEditComment}
-      >
-        <AiOutlineSend />
-      </button>
-    </LabelComment>
+    <>
+      {userLevel()
+        ? (
+          <LabelComment color={color}>
+            <input
+              type="text"
+              placeholder="Adicionar Comentário"
+              value={messageComment}
+              onChange={(e) => setMessageComment(e.target.value)}
+              onKeyPress={(e) => {
+                if (messageComment.length > 3 && e.key === "Enter") {
+                  return typeHandleCreate
+                    ? handleCreateComment()
+                    : handleEditComment();
+                }
+              }}
+            />
+            <button
+              onClick={typeHandleCreate ? handleCreateComment : handleEditComment}
+            >
+              <AiOutlineSend />
+            </button>
+          </LabelComment>
+        )
+        : (<></>)
+      }
+    </>
   );
 };
 export default LabelMessage;
