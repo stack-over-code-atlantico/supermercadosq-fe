@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { SignupContext } from '../../Provider/Signup.provider'
-import { Actions, Form } from '../../styles/CommunsStyles'
-import { CheckType, ProfileAvatar } from './styles'
-import { cnpj, cpf } from 'cpf-cnpj-validator'
+import React, { useContext, useEffect, useState } from "react";
+import { SignupContext } from "../../Provider/Signup.provider";
+import { Actions, Form } from "../../styles/CommunsStyles";
+import { CheckType, ProfileAvatar, InfoForm } from "./styles";
+import { cnpj, cpf } from "cpf-cnpj-validator";
 import { BsFillPersonFill } from "react-icons/bs";
 
 const InfosCheck = ({ nextStep, prevStep }) => {
@@ -14,164 +14,171 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     cellNumberSignup,
     setCellNumberSignup,
     typeUserSignup,
-    setTypeUserSignup
-  } = useContext(SignupContext)
+    setTypeUserSignup,
+  } = useContext(SignupContext);
 
-  const [hasError, setHasError] = useState(true)
-  const [hasErrorDoc, setHasErrorDoc] = useState(true)
-  const [hasErrorName, setHasErrorName] = useState(true)
-  const [hasErrorCellphone, setHasErrorCellphone] = useState(true)
+  const [hasError, setHasError] = useState(true);
+  const [hasErrorDoc, setHasErrorDoc] = useState(true);
+  const [hasErrorName, setHasErrorName] = useState(true);
+  const [hasErrorCellphone, setHasErrorCellphone] = useState(true);
 
   const handleCheckName = () => {
-    setNameSignup(nameSignup.replace(/( )+/g, ' '))
-    const regEx = /[a-zA-Z]{4,150}/g
-    regEx.test(nameSignup) ? setHasErrorName(false) : setHasErrorName(true)
-  }
+    setNameSignup(nameSignup.replace(/( )+/g, " "));
+    const regEx = /[a-zA-Z]{4,150}/g;
+    regEx.test(nameSignup) ? setHasErrorName(false) : setHasErrorName(true);
+  };
 
   const validCpf = () => {
-    const checkCpf = cpf.isValid(docSignup)
-    checkCpf ? setHasErrorDoc(false) : setHasErrorDoc(true)
-  }
+    const checkCpf = cpf.isValid(docSignup);
+    checkCpf ? setHasErrorDoc(false) : setHasErrorDoc(true);
+  };
   const validCnpj = () => {
-    const checkCnpj = cnpj.isValid(docSignup)
-    checkCnpj ? setHasErrorDoc(false) : setHasErrorDoc(true)
-  }
+    const checkCnpj = cnpj.isValid(docSignup);
+    checkCnpj ? setHasErrorDoc(false) : setHasErrorDoc(true);
+  };
 
   useEffect(() => {
-    handleCheckName()
-  }, [nameSignup])
+    handleCheckName();
+  }, [nameSignup]);
 
   useEffect(() => {
-    hasErrorDoc ? setHasErrorDoc(true) : setHasErrorDoc(false)
-  }, [hasErrorDoc])
+    hasErrorDoc ? setHasErrorDoc(true) : setHasErrorDoc(false);
+  }, [hasErrorDoc]);
 
   useEffect(() => {
-    if (typeUserSignup === 'cliente') {
-      validCpf()
+    if (typeUserSignup === "cliente") {
+      validCpf();
     }
-    if (typeUserSignup === 'fornecedor') {
-      validCnpj()
+    if (typeUserSignup === "fornecedor") {
+      validCnpj();
     }
     if (!typeUserSignup) {
-      return
+      return;
     }
-  }, [docSignup, typeUserSignup])
+  }, [docSignup, typeUserSignup]);
 
   useEffect(() => {
-    handleCheckNumber()
-  }, [cellNumberSignup])
+    handleCheckNumber();
+  }, [cellNumberSignup]);
 
   const handleCheckNumber = () => {
     cellNumberSignup.length == 11
       ? setHasErrorCellphone(false)
-      : setHasErrorCellphone(true)
-  }
+      : setHasErrorCellphone(true);
+  };
 
   useEffect(() => {
     hasErrorDoc || hasErrorName || hasErrorCellphone
       ? setHasError(true)
-      : setHasError(false)
-  }, [hasErrorDoc, hasErrorName, hasErrorCellphone])
+      : setHasError(false);
+  }, [hasErrorDoc, hasErrorName, hasErrorCellphone]);
 
   return (
     <Form>
       <h1>Estamos quase lá</h1>
       <p>Só mais alguns dados</p>
       <form>
-        <ProfileAvatar>
-            <label for="file">
-              <BsFillPersonFill className="icon" size="3rem" />
-              <input type="file" id="file" style={{ display: "none" }} />
+        <InfoForm>
+          <div className="leftSignUp">
+            <label>
+              <span>Nome</span>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nome Completo"
+                value={nameSignup}
+                onChange={(e) => setNameSignup(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    return document.getElementById("userDocument").focus();
+                  }
+                }}
+              />
             </label>
-          </ProfileAvatar>
-        <label>
-          <span>Nome</span>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Nome Completo"
-            value={nameSignup}
-            onChange={e => setNameSignup(e.target.value)}
-            onKeyPress={e => {
-              if (e.key === 'Enter') {
-                e.preventDefault()
-                return document.getElementById('userDocument').focus()
-              }
-            }}
-          />
-        </label>
-        <label>
-          <span>CPF/CNPJ</span>
-          <input
-            type="number"
-            name="userDocument"
-            id="userDocument"
-            placeholder="Número do Documento"
-            value={docSignup}
-            onChange={e => setDocSignup(e.target.value)}
-            onKeyPress={e => {
-              if (e.key === 'Enter') {
-                e.preventDefault()
-                return document.getElementById('cellphone').focus()
-              }
-            }}
-          />
-        </label>
-        <label>
-          <span>Telefone/celular</span>
-          <input
-            type="number"
-            name="cellphone"
-            id="cellphone"
-            placeholder="(  ) 9####-####"
-            value={cellNumberSignup}
-            onChange={e => setCellNumberSignup(e.target.value)}
-            onKeyPress={e => {
-              if (e.key === 'Enter') {
-                e.preventDefault()
-                return document.getElementById('cellphone').focus()
-              }
-            }}
-          />
-        </label>
-        <CheckType>
-          <span id="TypeUser">Sou: </span>
-          <label className="checkBox">
-            <input
-              type="radio"
-              name="tipoUsuario"
-              id="cliente"
-              value="cliente"
-              readOnly={true}
-              checked={typeUserSignup === 'cliente'}
-              onClick={e => setTypeUserSignup(e.target.value)}
-            />
-            <span>Cliente</span>
-          </label>
-          <label className="checkBox">
-            <input
-              type="radio"
-              name="tipoUsuario"
-              id="fornecedor"
-              value="fornecedor"
-              readOnly={true}
-              checked={typeUserSignup === 'fornecedor'}
-              onClick={e => setTypeUserSignup(e.target.value)}
-            />
-            <span>Fornecedor</span>
-          </label>
-        </CheckType>
+            <label>
+              <span>CPF/CNPJ</span>
+              <input
+                type="number"
+                name="userDocument"
+                id="userDocument"
+                placeholder="Número do Documento"
+                value={docSignup}
+                onChange={(e) => setDocSignup(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    return document.getElementById("cellphone").focus();
+                  }
+                }}
+              />
+            </label>
+            <label>
+              <span>Telefone/celular</span>
+              <input
+                type="number"
+                name="cellphone"
+                id="cellphone"
+                placeholder="(  ) 9####-####"
+                value={cellNumberSignup}
+                onChange={(e) => setCellNumberSignup(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    return document.getElementById("cellphone").focus();
+                  }
+                }}
+              />
+            </label>
+          </div>
+          <div className="rightSignUp">
+            <ProfileAvatar>
+              <label for="file">
+                <span>Imagem</span>
+                <BsFillPersonFill className="icon" />
+                <input type="file" id="file" style={{ display: "none" }} />
+              </label>
+            </ProfileAvatar>
+            <CheckType>
+              <span id="TypeUser">Sou: </span>
+              <label className="checkBox">
+                <input
+                  type="radio"
+                  name="tipoUsuario"
+                  id="cliente"
+                  value="cliente"
+                  readOnly={true}
+                  checked={typeUserSignup === "cliente"}
+                  onClick={(e) => setTypeUserSignup(e.target.value)}
+                />
+                <span>Cliente</span>
+              </label>
+              <label className="checkBox">
+                <input
+                  type="radio"
+                  name="tipoUsuario"
+                  id="fornecedor"
+                  value="fornecedor"
+                  readOnly={true}
+                  checked={typeUserSignup === "fornecedor"}
+                  onClick={(e) => setTypeUserSignup(e.target.value)}
+                />
+                <span>Fornecedor</span>
+              </label>
+            </CheckType>
+          </div>
 
-        <Actions>
-          <button onClick={prevStep}>Voltar</button>
-          <button disabled={hasError} onClick={nextStep}>
-            Continuar
-          </button>
-        </Actions>
+          <Actions>
+            <button onClick={prevStep}>Voltar</button>
+            <button disabled={hasError} onClick={nextStep}>
+              Continuar
+            </button>
+          </Actions>
+        </InfoForm>
       </form>
     </Form>
-  )
-}
+  );
+};
 
-export default InfosCheck
+export default InfosCheck;

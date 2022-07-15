@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Form = styled.div`
-  padding: 3% 10%;
+  padding: 3% 5%;
   position: relative;
 
   p {
     font-size: 12px;
     color: var(--color-gray);
-    padding-bottom: 16px;
+    padding-bottom: 25px;
   }
 
   h1 {
@@ -61,9 +61,9 @@ export const Form = styled.div`
 `
 
 export const Actions = styled.div`
-  width: 80%;
+  width: 92%;
   position: absolute;
-  top: 89%;
+  top: 87%;
   left: auto;
   display: flex;
   flex-direction: row;
