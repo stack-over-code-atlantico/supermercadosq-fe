@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 
 export const Form = styled.div`
-  padding: 7% 12.5%;
+  padding: 3% 10%;
   position: relative;
 
   p {
     font-size: 12px;
     color: var(--color-gray);
     padding-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
   }
 
   form {

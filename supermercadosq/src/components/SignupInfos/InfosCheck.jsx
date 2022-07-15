@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SignupContext } from '../../Provider/Signup.provider'
 import { Actions, Form } from '../../styles/CommunsStyles'
-import { CheckType } from './styles'
+import { CheckType, ProfileAvatar } from './styles'
 import { cnpj, cpf } from 'cpf-cnpj-validator'
+import { BsFillPersonFill } from "react-icons/bs";
 
 const InfosCheck = ({ nextStep, prevStep }) => {
   const {
@@ -77,6 +78,12 @@ const InfosCheck = ({ nextStep, prevStep }) => {
       <h1>Estamos quase lá</h1>
       <p>Só mais alguns dados</p>
       <form>
+        <ProfileAvatar>
+            <label for="file">
+              <BsFillPersonFill className="icon" size="3rem" />
+              <input type="file" id="file" style={{ display: "none" }} />
+            </label>
+          </ProfileAvatar>
         <label>
           <span>Nome</span>
           <input

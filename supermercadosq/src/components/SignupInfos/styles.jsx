@@ -17,3 +17,25 @@ export const CheckType = styled.div`
     }
   }
 `
+
+export const ProfileAvatar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon {
+        background: var(--color-blue-light);
+        color: var(--color-white);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: filter 0.3s;
+        &:hover {
+          filter: brightness(0.7);
+        }
+      }
+`;
