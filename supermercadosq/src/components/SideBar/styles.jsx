@@ -30,12 +30,14 @@ export const SideItem = styled.div`
 `
 
 export const SideLink = styled.button`
+  display: flex;
   text-decoration: none;
   align-items: center;
   border: none;
   background-color: transparent;
   color: rgba(144, 144, 144, 1);
   font-size: 16px;
+  justify-content: center;
 
   &:hover {
     font-size: 1rem;
