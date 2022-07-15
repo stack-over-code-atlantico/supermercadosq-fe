@@ -7,9 +7,22 @@ export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 280px;
-  height: 100vh;
+  height: auto;
   margin-top: 7vh;
   border-right: 1px solid #959695;
+
+  @media (max-width: 1300px) {
+    padding-left: 0.5rem 0 0 0.7rem;
+    margin-right: 0.5rem;
+  }
+
+  @media (max-width: 800px) {
+    padding-left: 0.2rem 0 0 0.2rem;
+    font-size: 0.8rem;
+    margin-right: 0;
+
+  }
+
 `;
 
 export const SideItem = styled.div`

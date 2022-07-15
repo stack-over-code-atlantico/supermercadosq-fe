@@ -57,7 +57,7 @@ const PasswordSecurityForm = () => {
       setHasErrorPassword(true);
     }
   }, [validateInput]);
- 
+
 
   return (
     <>
@@ -92,7 +92,7 @@ const PasswordSecurityForm = () => {
               onChange={(e) => setRepeteNovaSenha(e.target.value)}
             />
           </label>
-          <div style={{ display: "flex", marginLeft: "355px" }}>
+          <div>
             <input id="button" type="submit" value="Salvar" disabled={hasErrorPassword}/>
           </div>
         </form>

@@ -24,6 +24,11 @@ export const PasswordSecurityContainer = styled.div`
   form {
     width: 100%;
 
+    div {
+      display: flex;
+      margin-left: 355px;
+    }
+
     label {
       display: flex;
       flex-direction: column;
@@ -52,5 +57,51 @@ export const PasswordSecurityContainer = styled.div`
       }
   }
 
+  @media (max-width: 1300px) {
+    padding-left: 15vw;
+
+    hr{
+      width: 300px;
+    }
+
+    form{
+
+      div {
+        margin-left: 205px;
+      }
+
+      label{
+          input {
+          border: 1px solid var(--color-blue-light);
+          height: 30px;
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    padding-left: 24vw;
+    font-size: 0.8rem;
+
+    hr{
+      width: 250px;
+    }
+
+    form{
+
+      div {
+        margin-left: 165px;
+      }
+
+      label{
+        input {
+          border: 1px solid var(--color-blue-light);
+          height: 30px;
+          width: 250px;
+        }
+      }
+    }
+  }
 
 `

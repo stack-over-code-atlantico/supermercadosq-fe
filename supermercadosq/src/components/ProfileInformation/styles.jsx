@@ -51,11 +51,6 @@ export const ProfileInformationContainer = styled.div`
         width: 48%;
       }
     }
-    /* .align {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    } */
 
     #adressNumber {
       display: grid;
@@ -121,5 +116,14 @@ export const ProfileInformationContainer = styled.div`
         cursor: pointer;
       }
     }
+  }
+
+  @media (max-width: 1300px) {
+    padding-left: 10vw;
+  }
+
+  @media (max-width: 800px) {
+    padding-left: 30vw;
+    font-size: 0.8rem;
   }
 `;

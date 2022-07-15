@@ -18,6 +18,18 @@ export const PostCommentsContainer = styled.div`
     width: auto;
     color: #E9E6E6;
   }
+
+
+  @media (max-width: 1300px) {
+    padding-left: 14vw;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 800px) {
+    padding-left: 24vw;
+    font-size: 0.6rem;
+  }
+
 `
 
 export const Container = styled.main`
@@ -27,6 +39,10 @@ export const Container = styled.main`
   height: 45%;
   li {
     list-style: none;
+  }
+
+  @media (max-width: 800px) {
+    height: 30%;
   }
 `;
 
@@ -57,6 +73,11 @@ export const Card = styled.div`
       height: 100px;
     }
   }
+
+  @media (max-width: 800px) {
+    width: 250px;
+    height: 150px;
+  }
 `;
 
 export const TopCard = styled.div`
@@ -67,14 +88,26 @@ export const Title = styled.h2`
   font-size: 1rem;
   font-weight: 400;
   text-align: justify;
+
+  @media (max-width: 800px) {
+    font-size: 0.7rem;
+  }
 `;
 
 export const SubTitle = styled.h3`
   font-size: 0.7rem;
   font-weight: 400;
+
+  @media (max-width: 800px) {
+    font-size: 0.5rem;
+  }
 `;
 
 export const MediaCard = styled.div`
   padding: 5px 10px 5px 10px;
   font-size: 0.9rem;
+
+  @media (max-width: 800px) {
+    font-size: 0.7rem;
+  }
 `;
