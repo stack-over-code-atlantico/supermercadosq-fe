@@ -11,16 +11,17 @@ export const useDeleteItem = async (data) => {
     .put(`/products/${data.id_item}/delete`, bodyParams, config)
     .then((resp) => {
       console.log("deletado produto");
+      window.location.reload();
     })
     .catch((err) => {
       alert('Ocorreu um Erro')
       console.log(err)
-      
+
     });
 
   return produto;
   }
-  
+
   const comments = await api
     .put(`/comments/${data.id_item}/delete`, bodyParams, config)
     .then((resp) => {

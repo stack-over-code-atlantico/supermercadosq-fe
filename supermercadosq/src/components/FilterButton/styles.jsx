@@ -6,14 +6,14 @@ export const DivFilter = styled.div`
     align-items: center;
 
     position: absolute;
-    
-    margin: 1rem 1rem 1rem 0rem;
+    z-index: 2;
+    margin: 1rem 1rem 1rem 5rem;
 
     a {
         text-decoration: none;
         color: #fff;
     }
-    
+
     label {
         text-decoration: none;
         color: #fff;
@@ -31,7 +31,32 @@ export const DivFilter = styled.div`
         width: 22px;
         height: 22px;
         border: none;
-        border-radius: 50%;
+    }
+
+    input[type=checkbox] {
+      height: 22px;
+      width: 22px;
+      cursor: pointer;
+    }
+
+    input:checked {
+      background-color: #2A91A3;
+      border-radius: 3px;
+      appearance: none;
+      transition: 300ms all ease;
+    }
+
+    input:checked:after {
+      content: "";
+      display: block;
+      position: relative;
+      left: 1px;
+      width: 5px;
+      height: 10px;
+      border: 3px solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+      margin: 2px 6px;
     }
 
     .listaFiltros {
@@ -46,17 +71,18 @@ export const DivFilter = styled.div`
 
         top: -40px;
         right: -175px;
-
+        box-shadow: -2px 5px 10px #ccc;
     }
 
     .listaFiltros .itemFiltrar a {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0;
+        padding: 0 1.25rem;
         margin: 0 auto;
+        cursor: text;
     }
-    
+
     .listaFiltros .itemFiltrar .subLista {
         display: flex;
         flex-direction: column;
@@ -86,7 +112,29 @@ export const DivFilter = styled.div`
         align-items: center;
         justify-content: center;
         gap: 10px;
-
+        height: 50px;
         padding: 0;
+        cursor: pointer;
+
+        label {
+            cursor: pointer;
+        }
     }
 `;
+
+export const FilterIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #2a91a3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 26px;
+    height: 26px;
+    filter: invert(100%);
+  }
+`;
+

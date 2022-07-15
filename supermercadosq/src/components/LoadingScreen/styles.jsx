@@ -31,13 +31,14 @@ const shadowAnimation = keyframes`
   }
 `;
 
-const textAnimation = keyframes`
-  0% {
-    background-position-x: -1000%;
-  }
-  100% {
-    background-position-x: 1000%;
-  }
+
+export const Div = styled.div`
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  z-index: 20;
 `;
 
 export const LoadingWrapper = styled.div`
@@ -99,22 +100,5 @@ export const LoadingShadow = styled.div`
     right: 0;
     animation-delay: .3s;
   }
-`;
-
-export const SpanText = styled.span`
-  position: absolute;
-  top: 100px;
-  font-size: 30px;
-  letter-spacing: 12px;
-  color: #000;
-  left: -50px;
-  font-weight: 700;
-  animation: ${textAnimation} 5s infinite ease;
-  background: linear-gradient(90deg, #fff , #000, #fff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-repeat: no-repeat;
-  background-size: 90%;
 `;
 

@@ -1,13 +1,11 @@
 import React from "react";
 import { DivCards } from "./styles";
-import { AddProductCard } from "../../components/AddProductCard";
-import { ProductCard } from "../../components/ProductCard";
 
-export function CardsContainer (){
+
+export function CardsContainer ({children}){
     return(
         <DivCards>
-            <AddProductCard/>
-            <ProductCard/>
+          {children}
         </DivCards>
     );
 };

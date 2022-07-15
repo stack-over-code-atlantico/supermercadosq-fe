@@ -4,16 +4,10 @@ export const DivButtonAddProductCard = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 30px;
-    height: 30px;
-
-    background-color: var(--color-white);
-
-    border-radius: 100%;
+    width: 0;
     border:none;
     transition: 500ms all ease;
-
+    font-size: 12px;
     h1{
       color: #3EBCD3;
       transition: 500ms all ease;
@@ -40,9 +34,9 @@ export const DivAddProductCard = styled.div`
 
     h3 {
       color: var(--color-gray-light);
-      transition: 500ms all ease;
+
       position: relative;
-      top: 30px;
+      top: 50px;
     }
 
     &:hover {
@@ -51,15 +45,18 @@ export const DivAddProductCard = styled.div`
       h3 {
         color: #ffffff;
         text-shadow: 2px 2px 2px #2496aa;
+        position: relative;
+        transition: 300ms all ease-in-out;
+        top: 70px;
       }
 
       ${DivButtonAddProductCard} {
-        width: 60px;
-        height: 60px;
+        width: 0px;
+        height: 0px;
 
         h1 {
           color: #2496aa;
-          font-size: 40px;
+          font-size: 28px;
         }
       }
     }

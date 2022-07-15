@@ -2,19 +2,22 @@ import styled from "styled-components";
 
 export const DivNavbarProducts = styled.div`
     background-color: var(--color-blue-light);
-    padding: 20px;
+    padding: 20px 250px;
     margin-bottom: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 export const NavbarList = styled.ul`
-    display: flex;
-    justify-content: space-evenly;
     list-style: none;
+    gap: 10rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 50px;
-    padding: 0px 54px;
 `;
 export const ProductListItem = styled.li`
-
+    padding: 0px;
     position: relative;
 
     a{
@@ -34,10 +37,10 @@ export const ProductListItem = styled.li`
         left: 0;
         position: absolute;
         bottom: -0.5rem;
-    
+
         transition: width 0.2s;
     }
-    
+
     a:hover::after {
         width: 100%;
     }

@@ -25,16 +25,25 @@ export function Home(){
     <MenuContext.Provider value={{allergyMenu, setAllergyMenu}}>
       <Navbar />
       <div style={{
-        display: 'flex',
+        width: '53%',
+        margin: '0 0 0 26%',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '90vh'}}
-      >
-        <div>
-          <Circle />
-          <TextoBlog />
+        height: '90vh',
+        // backgroundColor: 'red',
+      }}>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '90vh'}}
+        >
+          <div>
+            <Circle />
+            <TextoBlog />
+          </div>
+          <CircleMenu />
         </div>
-        <CircleMenu />
       </div>
     </MenuContext.Provider>
   );

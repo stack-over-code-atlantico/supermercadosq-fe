@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import Select from "react-select";
-import { BsPlusCircle } from "react-icons/bs";
-import PostIcon from "../../assets/icons/post-icon.png";
+import { BsCardImage } from "react-icons/bs";
 import {
   Buttons,
+  CloseButton,
   ImageUpload,
   RegisterContainer,
   RegisterForm,
+  TitleDiv,
 } from "./styles";
 import { useState } from "react";
 import { createOneProduct } from "../../services/useProducts";
 
-const ProductRegister = () => {
+const ProductRegister = ({ openModal, setOpenModal }) => {
   const [file, setFile] = useState(null);
-  const [srcUrl, setSrcUrl] = useState(PostIcon);
+  const [urlSrc, setUrlSrc] = useState(null);
   const [data, setData] = useState({
     nome: "",
     alergia: "",
@@ -22,7 +23,7 @@ const ProductRegister = () => {
   });
   const handleSelectFile = (event) => {
     setFile(event.target.files[0]);
-    setSrcUrl(URL.createObjectURL(event.target.files[0]));
+    setUrlSrc(URL.createObjectURL(event.target.files[0]));
   };
 
   const handleRegisterProd = async (e) => {
@@ -35,7 +36,10 @@ const ProductRegister = () => {
     formData.append("file", file);
 
     const submit = await createOneProduct(formData)
-      .then((res) => alert("Produto Cadastrado com Sucesso"))
+      .then((res) => {
+        alert("Produto Cadastrado com Sucesso");
+        window.location.reload();
+      })
       .catch((err) => alert("Ocorreu um Erro"));
     return submit;
   };
@@ -68,8 +72,8 @@ const ProductRegister = () => {
       width: 280,
       height: 40,
       border: "1.5px solid var(--color-blue-light)",
-      borderRadius: 0,
       cursor: "pointer",
+      borderRadius: 8
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
@@ -110,80 +114,92 @@ const ProductRegister = () => {
   );
 
   return (
-    <RegisterContainer>
-      <ImageUpload>
-        <label>
-          <img width="50%" src={srcUrl}></img>
-          <input type="file" onChange={handleSelectFile} accept="image/*" />
-        </label>
-      </ImageUpload>
-      <RegisterForm onSubmit={handleRegisterProd}>
-        <h2>Crie sua postagem sobre algum produto</h2>
-        <div className="ProductInitial">
-          <label>
-            <span>Nome</span>
-            <input
-              type="text"
-              placeholder="Nome"
-              onChange={(e) =>
-                setData((prev) => ({ ...prev, nome: e.target.value }))
-              }
-            />
-          </label>
-          <label>
-            <span>Tipos de alergia</span>
-            <Select
-              options={alergicOptions}
-              isMulti
-              components={{
-                MultiValueContainer: multiValueContainer,
-              }}
-              formatGroupLabel={formatGroupLabel}
-              closeMenuOnSelect={false}
-              hideSelectedOptions={false}
-              styles={customStyles}
-              isSearchable={false}
-              maxMenuWidth={100}
-              placeholder="Listar alergias"
-              onChange={handleGetAlergic}
-            />
-          </label>
-        </div>
-        <div className="ProductMiddle">
-          <label>
-            <span>Descrição</span>
-            <input
-              type="text"
-              placeholder="Descrição"
-              onChange={(e) =>
-                setData((prev) => ({ ...prev, descricao: e.target.value }))
-              }
-            />
-          </label>
-        </div>
-        <div className="ProductFinal">
-          <label>
-            <span>Ingredientes</span>
-            <textarea
-              onChange={(e) =>
-                setData((prev) => ({ ...prev, ingredientes: e.target.value }))
-              }
-            />
-          </label>
-        </div>
-        <Buttons>
-          <button type="button">Voltar</button>
-          <button
-            type="submit"
-            disabled={
-              data.nome && data.descricao && data.ingredientes ? false : true
-            }
-          >
-            Finalizar
-          </button>
-        </Buttons>
-      </RegisterForm>
-    </RegisterContainer>
+    <>
+      {
+        openModal
+          ? (
+            <>
+            <RegisterContainer>
+              <ImageUpload>
+                <label>
+                  {urlSrc ? <img style={{ width: '70%'}}  src={urlSrc} /> : <BsCardImage style={{ width: '500px', fontSize: '200%'}} />}
+                  <input type="file" onChange={handleSelectFile} accept="image/*" />
+                </label>
+              </ImageUpload>
+              <RegisterForm onSubmit={handleRegisterProd}>
+                <TitleDiv className="titleDiv">
+                  <h2>Crie sua postagem sobre algum produto</h2>
+                  <CloseButton onClick={setOpenModal}>X</CloseButton>
+                </TitleDiv>
+                <div className="ProductInitial">
+                  <label>
+                    <span>Nome</span>
+                    <input
+                      type="text"
+                      placeholder="Nome"
+                      onChange={(e) =>
+                        setData((prev) => ({ ...prev, nome: e.target.value }))
+                      }
+                    />
+                  </label>
+                  <label>
+                    <span>Tipos de alergia</span>
+                    <Select
+                      options={alergicOptions}
+                      isMulti
+                      components={{
+                        MultiValueContainer: multiValueContainer,
+                      }}
+                      formatGroupLabel={formatGroupLabel}
+                      closeMenuOnSelect={false}
+                      hideSelectedOptions={false}
+                      styles={customStyles}
+                      isSearchable={false}
+                      maxMenuWidth={100}
+                      placeholder="Listar alergias"
+                      onChange={handleGetAlergic}
+                    />
+                  </label>
+                </div>
+                <div className="ProductMiddle">
+                  <label>
+                    <span>Descrição</span>
+                    <input
+                      type="text"
+                      placeholder="Descrição"
+                      onChange={(e) =>
+                        setData((prev) => ({ ...prev, descricao: e.target.value }))
+                      }
+                    />
+                  </label>
+                </div>
+                <div className="ProductFinal">
+                  <label>
+                    <span>Ingredientes</span>
+                    <textarea
+                      onChange={(e) =>
+                        setData((prev) => ({ ...prev, ingredientes: e.target.value }))
+                      }
+                    />
+                  </label>
+                </div>
+                <Buttons>
+                  <button
+                    type="submit"
+                    disabled={
+                      data.nome && data.descricao && data.ingredientes ? false : true
+                    }
+                  >
+                    Finalizar
+                  </button>
+                </Buttons>
+              </RegisterForm>
+            </RegisterContainer>
+            </>
+          )
+          : (<></>)
+      }
+    </>
   );
 };
 

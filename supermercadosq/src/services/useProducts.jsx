@@ -16,8 +16,19 @@ export const getLastProductsById = async (data) => {
     return lastProducts
 };
 
-export const getAllProducts = async () => {
-  const products = await api.get("/products");
+export const getAllProducts = async (page) => {
+  if (typeof page === 'number' || page >= 0) {
+    const products = await api.get(`/products/page/${page}`);
+    return products;
+  }
+  const products = await api.get(`/products/`);
+  return products;
+};
+
+export const postProductPerAllergy = async (allergies, page) => {
+  const products = await api.post(`/products/allergy/${page}`, {
+    alergia: allergies
+  });
   return products;
 };
 

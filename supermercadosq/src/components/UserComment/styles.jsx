@@ -19,7 +19,16 @@ export const UserAvatar = styled.figure`
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: crimson;
+  background-color: #797878;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ImageAvatar = styled.img`
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 `;
 
 export const UserName = styled.div`
