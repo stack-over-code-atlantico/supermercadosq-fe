@@ -30,12 +30,12 @@ const UserComment = ({
 
   // console.log(users);
   const validIcon = () => {
-    if (userLevel().id_usuario == userIdOwner) {
+    if (userLevel()?.id_usuario == userIdOwner) {
       setDisplayIconDenounce("none");
       setDisplayIconEdit("inline");
       setDisplayIconDelete("inline");
       return;
-    } else if (userLevel().nivel === "ADMINISTRADOR") {
+    } else if (userLevel()?.nivel === "ADMINISTRADOR") {
       setDisplayIconEdit("none");
       setDisplayIconDenounce("none");
       setDisplayIconDelete("inline");
@@ -71,11 +71,17 @@ const UserComment = ({
       </UserDetails>
       <UserIcons>
         <a>
-          <FiAlertTriangle
-            onClick={handleNewReport}
-            id="denounce"
-            display={displayIconDenounce}
-          />
+          {
+            userLevel()
+              ? (
+                <FiAlertTriangle
+                  onClick={handleNewReport}
+                  id="denounce"
+                  display={displayIconDenounce}
+                />
+              )
+              : (<></>)
+          }
         </a>
         <a>
           <FiEdit2

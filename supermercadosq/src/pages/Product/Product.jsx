@@ -7,6 +7,7 @@ import { CardsContainer } from '../../components/CardsContainer';
 import { FilterButton } from '../../components/FilterButton';
 import { AddProductCard } from "../../components/AddProductCard";
 import { ProductCard } from "../../components/ProductCard";
+import { AddProductCardRegister } from '../../components/AddProductCardRegister';
 
 import { getAllProducts, postProductPerAllergy } from '../../services/useProducts';
 import { userLevel } from '../../services/useAuth';
@@ -59,6 +60,8 @@ export function Product() {
       setTotalPages(Math.ceil((resp.data.length - 8) / 9))
     })();
   }, []);
+
+  console.log(typeof userLevel() === 'undefined')
 
   const handlePage = (e) => {
     setPage(e.target.value - 1);
@@ -150,14 +153,14 @@ export function Product() {
         soja={sojaIcon}
       />
       <CardsContainer>
-        {page === 0 ? <AddProductCard onClick={handleRegisterProduct}/> : <></>}
+        {page === 0 && userLevel() ? <AddProductCard onClick={handleRegisterProduct}/> : <AddProductCardRegister />}
         {posts?.map((product) => (
             <ProductCard
-            setOpenModal={(e) => handleProductDetails(product.id_produto, product.imagem)}
-            onClick={(e) => setId(product.id_produto)}
-            key={product.id_produto}
-            nome={product.nome || 'Nome não informado'}
-            imagem={product.imagem ? product.imagem : cardDefault}
+              setOpenModal={(e) => handleProductDetails(product.id_produto, product.imagem)}
+              onClick={(e) => setId(product.id_produto)}
+              key={product.id_produto}
+              nome={product.nome || 'Nome não informado'}
+              imagem={product.imagem ? product.imagem : cardDefault}
               color={handleColor(product.alergia)}
               descricao={product.descricao || "Sem descrição"}
               usuario={product.usuario_produto_id_usuarioTousuario.nome}

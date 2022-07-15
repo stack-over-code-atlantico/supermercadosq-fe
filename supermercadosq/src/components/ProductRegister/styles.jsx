@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: fixed;
   z-index: 99;
   width: 100%;
   height: 100vh;

@@ -54,12 +54,7 @@ export function Navbar() {
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
-              {/* <NavItem>
-                <NavLink to='/about' activestyle={{ color: '#3EBCD3' }}
-                  onClick={closeMobileMenu}>
-                  <span>Sobre</span>
-                </NavLink>
-              </NavItem> */}
+
               {
                 isLogged
                   ? (<></>)
@@ -72,13 +67,12 @@ export function Navbar() {
                       </NavItem>
                       <NavItem>
                         <NavLink to='/register' activestyle={{ color: '#3EBCD3' }} onClick={closeMobileMenu}>
-                          <span>Registro</span>
+                          <span>Registrar</span>
                         </NavLink>
                       </NavItem>
                     </>
                   )
               }
-            </NavMenu>
             {
               isLogged
                 ? (
@@ -96,6 +90,7 @@ export function Navbar() {
                   </NavInf>
                 )
             }
+           </NavMenu>
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>
