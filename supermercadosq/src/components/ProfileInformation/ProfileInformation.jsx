@@ -4,13 +4,16 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { useEffect } from "react";
 import { useEditUser } from "../../services/useUser";
 import Select from "react-select";
+import { userLevel } from "../../services/useAuth";
 
 const ProfileInformationForm = ({ data }) => {
-  // const [restricaoAlimentar, setRestricaoAlimentar] = useState("");
+  const [urlImg, setUrlImg] = useState(null);
+  const [fileImg, setFileImg] = useState(null);
   const [dataUser, setDataUser] = useState({
     cpfCnpj: "",
     nome: "",
     nomeSocial: "",
+    avatar: "",
     email: "",
     telefone: "",
     restricaoAlimentar: "",
@@ -22,29 +25,40 @@ const ProfileInformationForm = ({ data }) => {
     estado: "",
   });
 
-  function handleEditUser(event) {
+  const handleEditUser = async (event) => {
     event.preventDefault();
-    useEditUser(
-      dataUser.cpfCnpj,
-      dataUser.nome,
-      dataUser.nomeSocial,
-      dataUser.email,
-      dataUser.telefone,
-      dataUser.restricaoAlimentar,
-      dataUser.cep,
-      dataUser.logradouro,
-      dataUser.numeroEndereco,
-      dataUser.bairro,
-      dataUser.cidade,
-      dataUser.estado
-    );
-  }
+    const formData = new FormData();
+    // formData.append("cpf_cnpj", dataUser.cpfCnpj);
+    formData.append("nome", dataUser.nome);
+    formData.append("nome_social", dataUser.nomeSocial);
+    formData.append("file", fileImg);
+    formData.append("email", dataUser.email);
+    formData.append("telefone", dataUser.telefone);
+    formData.append("restricao_alimentincia", dataUser.restricaoAlimentar);
+    formData.append("cep", dataUser.cep);
+    formData.append("logradouro", dataUser.logradouro);
+    formData.append("numero", dataUser.numeroEndereco);
+    formData.append("bairro", dataUser.bairro);
+    formData.append("cidade", dataUser.cidade);
+    formData.append("estado", dataUser.estado);
+
+    const editedUser = await useEditUser(userLevel().cpf_cnpj, formData);
+
+    return editedUser;
+  };
+
+  const getImgFile = (event) => {
+    setFileImg(event.target.files[0]);
+    setUrlImg(URL.createObjectURL(event.target.files[0]));
+  };
+
   const handleGetAlergic = (alergicOptions) => {
     setDataUser((prev) => ({
       ...prev,
-      restricaoAlimentar: alergicOptions.map((alergia) => alergia.value).join(","),
+      restricaoAlimentar: alergicOptions
+        .map((alergia) => alergia.value)
+        .join(","),
     }));
-    // console.log(dataUser.restricaoAlimentar);
   };
 
   const alergicOptions = [
@@ -114,10 +128,10 @@ const ProfileInformationForm = ({ data }) => {
     fetch(`https://viacep.com.br/ws/${dataUser.cep}/json/`)
       .then((res) => res.json())
       .then((data) => {
-        setDataUser((prev) => ({ ...prev, logradouro: data.logradouro }))
-        setDataUser((prev) => ({ ...prev, bairro: data.bairro }))
-        setDataUser((prev) => ({ ...prev, cidade: data.localidade }))
-        setDataUser((prev) => ({ ...prev, estado: data.uf }))
+        setDataUser((prev) => ({ ...prev, logradouro: data.logradouro }));
+        setDataUser((prev) => ({ ...prev, bairro: data.bairro }));
+        setDataUser((prev) => ({ ...prev, cidade: data.localidade }));
+        setDataUser((prev) => ({ ...prev, estado: data.uf }));
       });
   };
 
@@ -127,11 +141,12 @@ const ProfileInformationForm = ({ data }) => {
       cpfCnpj: data.cpf_cnpj,
       nome: data.nome,
       nomeSocial: data.nome_social,
+      avatar: data.avatar,
       email: data.email,
       telefone: data.telefone,
       restricaoAlimentar: data.restricao_alimenticia,
     }));
-    // console.log(data);
+    // console.log(data.avatar);
     if (data.endereco) {
       const endereco = data.endereco[0];
       setDataUser((prev) => ({
@@ -149,7 +164,6 @@ const ProfileInformationForm = ({ data }) => {
   useEffect(() => {
     handleCep();
   }, [dataUser.cep]);
-
   return (
     <>
       <ProfileInformationContainer>
@@ -158,8 +172,27 @@ const ProfileInformationForm = ({ data }) => {
         <form onSubmit={handleEditUser}>
           <ContainerAvatar>
             <label for="file">
-              <BsFillPersonFill className="icon" size="5rem" />
-              <input type="file" id="file" style={{ display: "none" }} />
+              {dataUser.avatar || urlImg !== null ? (
+                <img
+                  src={urlImg ? urlImg : dataUser.avatar}
+                  style={{
+                    cursor: "pointer",
+                    width: "6rem",
+                    height: "6rem",
+                    borderRadius: "50%",
+                    cursor: "pointer",
+                  }}
+                />
+              ) : (
+                <BsFillPersonFill className="icon" size="6rem" />
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                id="file"
+                style={{ display: "none" }}
+                onChange={(e) => getImgFile(e)}
+              />
             </label>
           </ContainerAvatar>
 
@@ -183,7 +216,10 @@ const ProfileInformationForm = ({ data }) => {
                 type="text"
                 value={dataUser.nomeSocial}
                 onChange={(e) =>
-                  setDataUser((prev) => ({ ...prev, nomeSocial: e.target.value }))
+                  setDataUser((prev) => ({
+                    ...prev,
+                    nomeSocial: e.target.value,
+                  }))
                 }
               />
             </label>
@@ -241,7 +277,11 @@ const ProfileInformationForm = ({ data }) => {
               styles={customStyles}
               isSearchable={false}
               maxMenuWidth={100}
-              placeholder={dataUser.restricaoAlimentar === null ? "Listar Alergia" : dataUser.restricaoAlimentar}
+              placeholder={
+                dataUser.restricaoAlimentar === null
+                  ? "Listar Alergia"
+                  : dataUser.restricaoAlimentar
+              }
               // value={dataUser.restricaoAlimentar}
               onChange={handleGetAlergic}
             />
@@ -283,7 +323,10 @@ const ProfileInformationForm = ({ data }) => {
                 className="less-width"
                 value={dataUser.numeroEndereco}
                 onChange={(e) =>
-                  setDataUser((prev) => ({ ...prev, numeroEndereco: e.target.value }))
+                  setDataUser((prev) => ({
+                    ...prev,
+                    numeroEndereco: e.target.value,
+                  }))
                 }
                 min="0"
               />
