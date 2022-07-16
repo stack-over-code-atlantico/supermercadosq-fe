@@ -6,12 +6,32 @@ export const DivButtonAddProductCard = styled.button`
     align-items: center;
     width: 0;
     border:none;
+
     transition: 500ms all ease;
     font-size: 12px;
     h1{
       color: #3EBCD3;
       transition: 500ms all ease;
     }
+`;
+
+export const Button = styled.button`
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 250px;
+  z-index: -1;
+  transition: 500ms all ease;
+  border: 2px solid #50bfd3;
+  border-radius: 50%;
+  background-color: #50bfd3;
+  color: white;
+
+  &:hover {
+    background-color: #dee6e7;
+    color: #50bfd3;
+    font-size: 24px;
+  }
 `;
 
 export const DivAddProductCard = styled.div`
@@ -21,9 +41,9 @@ export const DivAddProductCard = styled.div`
     flex-flow: column;
     cursor: pointer;
     width: 240px;
-    height: 380px;
-
-    margin-top: 35px;
+    height: 320px;
+    position: relative;
+    margin-top: -30px;
 
     background-color: var(--color-gray-light);
 
@@ -34,13 +54,18 @@ export const DivAddProductCard = styled.div`
 
     h3 {
       color: var(--color-gray-light);
-
+      text-align: center;
       position: relative;
       top: 50px;
     }
 
     &:hover {
       background-color: #9beeee;
+
+      ${Button} {
+        top: 325px;
+        z-index: 0;
+      }
 
       h3 {
         color: #ffffff;

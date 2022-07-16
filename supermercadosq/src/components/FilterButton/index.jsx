@@ -58,15 +58,15 @@ export function FilterButton({
             <li className='itemLista'>
               <input
                 type="checkbox"
-                id="trigo"
-                value="trigo"
+                id="gluten"
+                value="gluten"
                 onChange={handleChange}
               />
               <FilterIcon>
 
               <img src={wheat} />
               </FilterIcon>
-              <label htmlFor="trigo">Trigo</label>
+              <label htmlFor="gluten">Glúten</label>
             </li>
             <li className='itemLista'>
               <input

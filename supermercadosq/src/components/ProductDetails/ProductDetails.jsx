@@ -1,5 +1,4 @@
 import React from "react";
-import sushiImage from "../../assets/images/sushiPhoto.png";
 import home from "../../assets/icons/home.png";
 import seafoodIcon from "../../assets/icons/seafood.png";
 import milkIcon from "../../assets/icons/milk.png";
@@ -7,9 +6,10 @@ import fishIcon from "../../assets/icons/fish.png";
 import mustardIcon from "../../assets/icons/mustard.png";
 import peanutIcon from "../../assets/icons/peanut.png";
 import eggIcon from "../../assets/icons/egg.png";
-import {Loading} from '../../components/LoadingScreen/index';
+import sojaIcon from "../../assets/icons/soja.png";
 import wheatIcon from "../../assets/icons/wheat.png";
 import UserComment from "../../components/UserComment/UserComment";
+import {Loading} from '../../components/LoadingScreen/index';
 import { MdOutlineArrowBack } from "react-icons/md";
 import { getOneProduct } from "../../services/useProductOne";
 import { useEffect, useState } from "react";
@@ -45,7 +45,8 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
   const handleColor = (alergiaAtual) => {
     if (alergiaAtual == "") return { color: "#9CDD6E", icon: home };
     if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: eggIcon };
-    if (alergiaAtual == "soja") return { color: "#D3B273", icon: wheatIcon };
+    if (alergiaAtual == "soja") return { color: "#108a57", icon: sojaIcon };
+    if (alergiaAtual == "gluten") return { color: "#D3B273", icon: wheatIcon };
     if (alergiaAtual == "amendoim")
       return { color: "#C87C53", icon: peanutIcon };
     if (alergiaAtual == "mostarda")
@@ -155,8 +156,6 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
     return reportItemAxios;
   }
 
-  console.log(dataProduct?.id_usuario)
-
   return (
     <>
       { open ? (
@@ -202,7 +201,7 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
                           className="IconType"
                           style={{ backgroundColor: item.color }}
                         >
-                          <img src={item.icon} alt="peixe" />
+                          <img src={item.icon} alt="icone de alergia" />
                         </div>
                       );
                     })}

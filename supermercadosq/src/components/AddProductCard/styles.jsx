@@ -27,9 +27,9 @@ export const DivAddProductCard = styled.div`
     flex-flow: column;
     cursor: pointer;
     width: 240px;
-    height: 380px;
-
-    margin-top: 35px;
+    height: 320px;
+    position: relative;
+    margin-top: -30px;
 
     background-color: var(--color-gray-light);
 

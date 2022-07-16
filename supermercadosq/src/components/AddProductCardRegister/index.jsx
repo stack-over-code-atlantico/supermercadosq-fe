@@ -1,7 +1,7 @@
 import React from  'react';
-import { DivAddProductCard, DivButtonAddProductCard } from './styles';
+import { Button, DivAddProductCard, DivButtonAddProductCard } from './styles';
 import { useNavigate } from "react-router-dom";
-
+import {BsArrowDown} from 'react-icons/bs'
 export function AddProductCardRegister(){
     let navigate = useNavigate();
 
@@ -9,11 +9,18 @@ export function AddProductCardRegister(){
       navigate('/register', { replace: true });
     };
     return(
-            <DivAddProductCard onClick={handleNavigate}>
+            <DivAddProductCard>
                 <DivButtonAddProductCard >
                     <h1>Ainda não faz parte dessa comunidade?</h1>
                 </DivButtonAddProductCard>
-                <h3>Crie sua conta agora!</h3>
+                <h3>Crie sua conta agora!
+                  <br />
+                  <BsArrowDown style={{
+                    marginTop: '30px',
+                    fontSize: '40px',
+                  }} />
+                </h3>
+                <Button onClick={handleNavigate}>+</Button>
             </DivAddProductCard>
     );
 };
