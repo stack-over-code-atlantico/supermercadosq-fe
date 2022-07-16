@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Form = styled.div`
   padding: 3% 5%;
@@ -58,7 +58,7 @@ export const Form = styled.div`
       }
     }
   }
-`
+`;
 
 export const Actions = styled.div`
   width: 92%;
@@ -86,8 +86,12 @@ export const Actions = styled.div`
     font-weight: 700;
     width: 40%;
     height: 39px;
+    transition: filter 0.4s ease-out;
+    &:hover {
+      filter: brightness(0.8);
+    }
   }
-`
+`;
 
 export const BackHome = styled.div`
   width: 100%;
@@ -108,9 +112,9 @@ export const BackHome = styled.div`
     font-weight: 700;
     color: var(--color-blue-light);
   }
-`
+`;
 export const LabelError = styled.label`
   margin-top: 5px;
   font-size: 14px;
   color: red;
-`
+`;
