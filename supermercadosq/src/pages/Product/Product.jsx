@@ -26,6 +26,7 @@ import questionIcon from '../../assets/icons/question.svg';
 import ProductPagination from '../../components/ProductPagination';
 import ProductRegister from '../../components/ProductRegister';
 import ProductDetails from '../../components/ProductDetails/ProductDetails';
+import { ListProducts, ListProductsCards } from './styles';
 
 export function Product() {
   const [openModal, setOpenModal] = useState(false);
@@ -38,6 +39,7 @@ export function Product() {
   const [page, setPage] = useState(0);
   const [allergy, setAllergy] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalAllergy, setTotalAllergy] = useState([]);
 
   useEffect(() => {
     if (allergy.length === 0) {
@@ -60,8 +62,6 @@ export function Product() {
       setTotalPages(Math.ceil((resp.data.length - 8) / 9))
     })();
   }, []);
-
-  console.log(typeof userLevel() === 'undefined')
 
   const handlePage = (e) => {
     setPage(e.target.value - 1);
@@ -101,36 +101,44 @@ export function Product() {
 
   const handleColor = (allergy) => {
     const alergias = allergy ? allergy.split(',') : '';
-    if (alergias[0] === 'ovo') return '#DAC50A';
-    if (alergias[0] === 'trigo') return '#D3B273';
-    if (alergias[0] === 'amendoim') return '#C87C53';
-    if (alergias[0] === 'mostarda') return '#F59E1D';
-    if (alergias[0] === 'soja') return '#108a57';
-    if (alergias[0] === 'peixe') return '#9CDBE7';
-    if (alergias[0] === 'crustaceos') return '#F66A69';
-    if (alergias[0] === 'lactose') return '#3EBCD3';
-    return '#3EBCD3';
+    const total = [];
+    if (Array.isArray(alergias) && alergias.length > 0) {
+      for (let values of alergias) {
+        if (values === 'ovo') total.push('#DAC50A')
+        if (values === 'gluten')total.push('#D3B273')
+        if (values === 'amendoim')total.push('#C87C53')
+        if (values === 'mostarda') total.push('#F59E1D')
+        if (values === 'soja') total.push('#108a57')
+        if (values === 'peixe') total.push('#9CDBE7')
+        if (values === 'crustaceos') total.push('#F66A69')
+        if (values === 'lactose') total.push('#3EBCD3')
+      }
+      return total;
+    }
+    return '#BABABA' ;
   };
 
   const handleIcon = (allergy) => {
     const alergias = allergy ? allergy.split(',') : '';
-    if (alergias?.length > 1) {
-      return ellipsis;
-    } else {
-      if (alergias[0] === 'ovo') return eggIcon;
-      if (alergias[0] === 'trigo') return wheatIcon;
-      if (alergias[0] === 'amendoim') return peanutIcon;
-      if (alergias[0] === 'mostarda') return mustardIcon;
-      if (alergias[0] === 'soja') return sojaIcon;
-      if (alergias[0] === 'peixe') return fishIcon;
-      if (alergias[0] === 'crustaceos') return seafoodIcon;
-      if (alergias[0] === 'lactose') return milkIcon;
-    }
-    return questionIcon;
+    const total = [];
+      if (Array.isArray(alergias) && alergias.length > 0) {
+        for (let values of alergias) {
+          if (values === 'ovo') total.push(eggIcon)
+          if (values === 'gluten')total.push(wheatIcon)
+          if (values === 'amendoim')total.push(peanutIcon)
+          if (values === 'mostarda') total.push(mustardIcon)
+          if (values === 'soja') total.push(sojaIcon)
+          if (values === 'peixe') total.push(fishIcon)
+          if (values === 'crustaceos') total.push(seafoodIcon)
+          if (values === 'lactose') total.push(milkIcon)
+        }
+        return total;
+      }
+      return questionIcon;
   };
 
   return (
-    <>
+    <ListProducts>
       <ProductRegister openModal={openModal} setOpenModal={closeModal} />
       <ProductDetails
         loading={loading}
@@ -140,43 +148,45 @@ export function Product() {
         image={image}
       />
       {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
-      <FilterButton
-        alergias={allergy}
-        setAlergias={setAllergy}
-        fish={fishIcon}
-        egg={eggIcon}
-        milk={milkIcon}
-        mustard={mustardIcon}
-        seafood={seafoodIcon}
-        peanut={peanutIcon}
-        wheat={wheatIcon}
-        soja={sojaIcon}
-      />
-      <CardsContainer>
-        {page === 0 && userLevel() ? <AddProductCard onClick={handleRegisterProduct}/> : <AddProductCardRegister />}
-        {posts?.map((product) => (
-            <ProductCard
-              setOpenModal={(e) => handleProductDetails(product.id_produto, product.imagem)}
-              onClick={(e) => setId(product.id_produto)}
-              key={product.id_produto}
-              nome={product.nome || 'Nome não informado'}
-              imagem={product.imagem ? product.imagem : cardDefault}
-              color={handleColor(product.alergia)}
-              descricao={product.descricao || "Sem descrição"}
-              usuario={product.usuario_produto_id_usuarioTousuario.nome}
-              dataPostagem={product.data_postagem}
-              icon={handleIcon(product.alergia)}
-            />
-            )
-          )}
-      </CardsContainer>
+      <ListProductsCards>
+        <FilterButton
+          alergias={allergy}
+          setAlergias={setAllergy}
+          fish={fishIcon}
+          egg={eggIcon}
+          milk={milkIcon}
+          mustard={mustardIcon}
+          seafood={seafoodIcon}
+          peanut={peanutIcon}
+          wheat={wheatIcon}
+          soja={sojaIcon}
+        />
+        <CardsContainer>
+          {page === 0 && userLevel() ? <AddProductCard onClick={handleRegisterProduct}/> : (page > 0 ? <></> :  <AddProductCardRegister />)}
+          {posts?.map((product) => (
+              <ProductCard
+                setOpenModal={(e) => handleProductDetails(product.id_produto, product.imagem)}
+                onClick={(e) => setId(product.id_produto)}
+                key={product.id_produto}
+                nome={product.nome || 'Nome não informado'}
+                imagem={product.imagem ? product.imagem : cardDefault}
+                color={handleColor(product.alergia)}
+                descricao={product.descricao || "Sem descrição"}
+                usuario={product.usuario_produto_id_usuarioTousuario.nome}
+                dataPostagem={product.data_postagem}
+                icon={handleIcon(product.alergia)}
+              />
+              )
+            )}
+        </CardsContainer>
+      </ListProductsCards>
       <ProductPagination
         changePage={handlePage}
         prevPage={handlePrevPage}
         nextPage={handleNextPage}
       />
       <Footer />
-    </>
+    </ListProducts>
   )
 }
 

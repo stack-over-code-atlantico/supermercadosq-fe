@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const DivCards = styled.div`
-    width: 100%;
     display: grid;
-    grid-template-columns: 20% 20% 20%;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
-    grid-gap: 1rem;
+    column-gap: 5rem;
+    row-gap: 3rem;
 `;
