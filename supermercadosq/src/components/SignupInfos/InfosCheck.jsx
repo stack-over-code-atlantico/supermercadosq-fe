@@ -15,12 +15,20 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     setCellNumberSignup,
     typeUserSignup,
     setTypeUserSignup,
+    fileSignup,
+    setFileSignup
   } = useContext(SignupContext);
 
   const [hasError, setHasError] = useState(true);
   const [hasErrorDoc, setHasErrorDoc] = useState(true);
   const [hasErrorName, setHasErrorName] = useState(true);
   const [hasErrorCellphone, setHasErrorCellphone] = useState(true);
+  const [urlSrc, setUrlSrc] = useState(null);
+
+  const handleSelectFile = (event) => {
+    setFileSignup(event.target.files[0]);
+    setUrlSrc(URL.createObjectURL(event.target.files[0]));
+  };
 
   const handleCheckName = () => {
     setNameSignup(nameSignup.replace(/( )+/g, " "));
@@ -137,7 +145,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               <label for="file">
                 <span>Imagem</span>
                 <BsFillPersonFill className="icon" />
-                <input type="file" id="file" style={{ display: "none" }} />
+                <input type="file" onChange={handleSelectFile} id="file" style={{ display: "none" }} />
               </label>
             </ProfileAvatar>
             <CheckType>
