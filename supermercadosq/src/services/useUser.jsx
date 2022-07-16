@@ -15,6 +15,9 @@ export const getUserById = async (id_usuario) => {
 };
 
 export const useCreateUser = async (data) => {
+  for(let values of data.values()){
+    console.log(values)
+  }
   const users = await api.post("/users", data, {
     headers: {
       "content-type": "multipart/form-data",
