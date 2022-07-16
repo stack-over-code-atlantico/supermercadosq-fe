@@ -3,6 +3,7 @@ import { Navbar } from '../../components/Navbar'
 import { AboutComponent } from '../../components/About';
 import { Circle } from '../../components/Circle';
 import { MenuContext } from '../../Provider/Menu.provider';
+import { Footer } from '../../components/Footer';
 
 
 function About(){
@@ -12,6 +13,7 @@ function About(){
       <Navbar />
       {/* <Circle /> */}
       <AboutComponent />
+      <Footer />
     </MenuContext.Provider>
   )
 }
