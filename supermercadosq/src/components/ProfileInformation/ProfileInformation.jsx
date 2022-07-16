@@ -4,7 +4,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { useEffect } from "react";
 import { useEditUser } from "../../services/useUser";
 import Select from "react-select";
-import { userLevel } from "../../services/useAuth"
+import { userLevel } from "../../services/useAuth";
 
 const ProfileInformationForm = ({ data }) => {
   const [urlImg, setUrlImg] = useState(null);
@@ -42,37 +42,15 @@ const ProfileInformationForm = ({ data }) => {
     formData.append("cidade", dataUser.cidade);
     formData.append("estado", dataUser.estado);
 
-    const editedUser = await useEditUser(userLevel().cpf_cnpj,formData);
+    const editedUser = await useEditUser(userLevel().cpf_cnpj, formData);
 
     return editedUser;
-
-    // for(let values of formData.values()) {
-    //   console.log(values)
-    // }
   };
 
   const getImgFile = (event) => {
     setFileImg(event.target.files[0]);
     setUrlImg(URL.createObjectURL(event.target.files[0]));
   };
-
-  // function handleEditUser(event) {
-  //   event.preventDefault();
-  //   useEditUser(
-  //     dataUser.cpfCnpj,
-  //     dataUser.nome,
-  //     dataUser.nomeSocial,
-  //     dataUser.email,
-  //     dataUser.telefone,
-  //     dataUser.restricaoAlimentar,
-  //     dataUser.cep,
-  //     dataUser.logradouro,
-  //     dataUser.numeroEndereco,
-  //     dataUser.bairro,
-  //     dataUser.cidade,
-  //     dataUser.estado
-  //   );
-  // }
 
   const handleGetAlergic = (alergicOptions) => {
     setDataUser((prev) => ({
@@ -81,7 +59,6 @@ const ProfileInformationForm = ({ data }) => {
         .map((alergia) => alergia.value)
         .join(","),
     }));
-    // console.log(dataUser.restricaoAlimentar);
   };
 
   const alergicOptions = [
@@ -195,14 +172,19 @@ const ProfileInformationForm = ({ data }) => {
         <form onSubmit={handleEditUser}>
           <ContainerAvatar>
             <label for="file">
-              {dataUser.avatar ? (
+              {dataUser.avatar || urlImg !== null ? (
                 <img
                   src={urlImg ? urlImg : dataUser.avatar}
-                  size="5rem"
-                  style={{ cursor: "pointer", width: 100, height: 100 }}
+                  style={{
+                    cursor: "pointer",
+                    width: "6rem",
+                    height: "6rem",
+                    borderRadius: "50%",
+                    cursor: "pointer",
+                  }}
                 />
               ) : (
-                <BsFillPersonFill className="icon" size="5rem" />
+                <BsFillPersonFill className="icon" size="6rem" />
               )}
               <input
                 type="file"
