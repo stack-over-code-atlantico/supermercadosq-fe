@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 import Chart from "react-apexcharts";
 
-const ChartDashboard = ({value}) => {
-
+const ChartDashboard = ({ value }) => {
   const data = {
     series: [value[0], value[1]],
-    labels: ['Comentários', 'Postagens'],
-    colors: [ '#692ABA', '#8E5BD0'],
+    labels: ["Comentários", "Postagens"],
+    colors: ["#692ABA", "#8E5BD0"],
     chart: {
-      fontFamily: 'Poppins, sans-serif',
+      fontFamily: "Poppins, sans-serif",
     },
     dataLabels: {
       style: {
-        fontSize: '8px', colors: ['#fff'],
+        fontSize: "8px",
+        colors: ["#fff"],
       },
-      dropShadow: { enabled: false}
+      dropShadow: { enabled: false },
     },
     stroke: {
       width: 3,
@@ -23,21 +23,21 @@ const ChartDashboard = ({value}) => {
       show: true,
       showForNullSeries: true,
       showForZeroSeries: true,
-      position: 'right',
+      position: "right",
       labels: {
-        colors: '#000'
+        colors: "#000",
       },
       markers: {
         width: 40,
         height: 7,
-      }
+      },
     },
     tooltip: {
       fillSeriesColor: true,
       followCursor: true,
       style: {
-        color: '#000',
-      }
+        color: "#000",
+      },
     },
     plotOptions: {
       pie: {
@@ -46,17 +46,20 @@ const ChartDashboard = ({value}) => {
             show: true,
             total: {
               show: true,
-              label: 'Total',
-              color: '#000',
+              label: "Total",
+              color: "#000",
               formatter: () => {
                 let totalValue = 0;
-                return `${data.series.reduce((prev, current) => prev + current, totalValue)}`
-              }
-            }
-          }
-        }
-      }
-    }
+                return `${data.series.reduce(
+                  (prev, current) => prev + current,
+                  totalValue
+                )}`;
+              },
+            },
+          },
+        },
+      },
+    },
   };
 
   return (

@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Sidebar = styled.aside`
   height: 100vh;
   width: 300px;
-  margin-left: ${props => props.opened ? '0px' : '-250px'};
+  margin-left: ${(props) => (props.opened ? "0px" : "-250px")};
   background-color: #280851;
   box-shadow: 4px 0 10px #d2d2d2;
   border-radius: 0 8px 8px 0;
@@ -44,7 +44,7 @@ export const CloseButton = styled.button`
   transition: 500ms all;
 
   &:hover {
-    background: #1F073F;
+    background: #1f073f;
   }
 `;
 
@@ -69,7 +69,7 @@ export const SidebarEmail = styled.h3`
 export const SpanButton = styled.span`
   position: relative;
   z-index: 2;
-  left: ${props => props.left ? props.left : '-30px'};
+  left: ${(props) => (props.left ? props.left : "-30px")};
   color: #fff;
   font-size: 14px;
   transition: all 300ms;
@@ -96,37 +96,33 @@ export const SidebarButton = styled.button`
   background: transparent;
   border: transparent;
   position: relative;
-  transition: all .35s;
+  transition: all 0.35s;
 
-  &:after{
+  &:after {
     position: absolute;
     content: "";
     top: 0;
     left: 0;
-    width: ${props => props.active ? '100%' : 0};
+    width: ${(props) => (props.active ? "100%" : 0)};
     height: 100%;
     border-radius: 0 50px 50px 0;
-    background: ${props => props.active ? '#24589c' : '#B996E8'};
-    transition: all .35s;
+    background: ${(props) => (props.active ? "#24589c" : "#B996E8")};
+    transition: all 0.35s;
   }
 
-  &:hover:after{
+  &:hover:after {
     width: 100%;
   }
 
   &:hover {
     ${SpanButton} {
       left: 12px;
-      color: ${props => props.active ? '#fff' : '#000'};
+      color: ${(props) => (props.active ? "#fff" : "#000")};
       font-weight: 800;
     }
     ${ButtonIcon} {
       opacity: 1;
-      color: ${props => props.active ? '#fff' : '#280851'}
+      color: ${(props) => (props.active ? "#fff" : "#280851")};
     }
-
   }
 `;
-
-
-

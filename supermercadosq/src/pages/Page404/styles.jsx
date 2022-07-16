@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Style404 = styled.div`
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100vh;
   width: 100%;
   background-color: #43434313;
@@ -37,7 +37,7 @@ export const Style404 = styled.div`
     background: var(--color-red);
     clip-path: circle(3.5% at 35% 25%);
   }
-`
+`;
 export const CircleSmallBrown = styled.div`
   position: absolute;
   height: 10rem;
@@ -47,7 +47,7 @@ export const CircleSmallBrown = styled.div`
   border-radius: 50%;
   background: var(--color-brown);
   clip-path: circle(100%);
-`
+`;
 export const CircleSmallYellow = styled.div`
   position: absolute;
   height: 8rem;
@@ -57,7 +57,7 @@ export const CircleSmallYellow = styled.div`
   border-radius: 50%;
   background: var(--color-yellow-light);
   clip-path: circle(100%);
-`
+`;
 export const CircleSmallBlue = styled.div`
   position: absolute;
   height: 3rem;
@@ -67,7 +67,7 @@ export const CircleSmallBlue = styled.div`
   border-radius: 50%;
   background: var(--color-blue-light);
   clip-path: circle(100%);
-`
+`;
 
 export const HomeGreen404 = styled.div`
   position: absolute;
@@ -82,19 +82,18 @@ export const HomeGreen404 = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media(max-width: 520px){
+  @media (max-width: 520px) {
     height: 8rem;
     width: 8rem;
-}
+  }
   a {
     text-decoration: none;
     color: white;
     &:hover {
       color: #101010;
     }
-
   }
-`
+`;
 export const ErrorBlue404 = styled.div`
   position: absolute;
   height: 8rem;
@@ -113,15 +112,14 @@ export const ErrorBlue404 = styled.div`
     font-weight: 400;
     color: white;
   }
-  @media(max-width: 500px){
+  @media (max-width: 500px) {
     height: 6rem;
     width: 6rem;
     h2 {
       font-size: 2rem;
     }
   }
-
-`
+`;
 
 export const CircleSmallMustard = styled.div`
   position: absolute;
@@ -132,7 +130,7 @@ export const CircleSmallMustard = styled.div`
   border-radius: 50%;
   background: var(--color-mustard);
   clip-path: circle(100%);
-`
+`;
 
 export const CardText = styled.div`
   position: absolute;
@@ -143,14 +141,14 @@ export const CardText = styled.div`
   align-items: center;
   justify-content: center;
   text-align: right;
-  color:var(--color-blue-ciel);
+  color: var(--color-blue-ciel);
   line-height: 80px;
 
-  @media(max-width: 670px){
+  @media (max-width: 670px) {
     flex-direction: row;
     right: 0;
     margin: auto;
-  };
+  }
 
   #error404 {
     text-align: left;
@@ -159,22 +157,20 @@ export const CardText = styled.div`
     -webkit-text-stroke-color: var(--color-blue-ciel);
     color: white;
   }
-  span{
+  span {
     font-weight: 700;
     font-size: 2rem;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
   }
 
-
-  @media(max-width: 500px){
+  @media (max-width: 500px) {
     #error404 {
       font-size: 8rem;
     }
-      span {
+    span {
       font-size: 1.6rem;
       -webkit-text-stroke-width: 0.5px;
     }
-  };
-
-`
+  } ;
+`;

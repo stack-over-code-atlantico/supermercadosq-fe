@@ -11,11 +11,10 @@ export const RegisterContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: var(--color-gray);
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   h2 {
     color: var(--color-blue-light);
   }
-
 `;
 export const ImageUpload = styled.figure`
   display: flex;
@@ -91,10 +90,10 @@ export const RegisterForm = styled.form`
   @media (max-width: 998px) {
     height: 500px;
     width: 400px;
-    .ProductInitial{
+    .ProductInitial {
       flex-direction: column;
     }
-    textarea{
+    textarea {
       height: 100px;
     }
     gap: 5px;
@@ -105,7 +104,7 @@ export const CloseButton = styled.span`
   width: 25px;
   height: 22px;
   color: #fff;
-  background-color: #3EBCD3;
+  background-color: #3ebcd3;
   text-align: center;
   vertical-align: middle;
   padding-bottom: 2px;
@@ -116,15 +115,14 @@ export const CloseButton = styled.span`
   &:hover {
     background-color: #2d9db1;
     width: 35px;
-
   }
 `;
 
 export const TitleDiv = styled.div`
-    width: 100%;
-    height: 20px;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Buttons = styled.div`
@@ -136,16 +134,16 @@ export const Buttons = styled.div`
     height: 40px;
     text-align: center;
     color: var(--color-white);
-    background-color: #3EBCD3;
-    border: 2px solid #3EBCD3;
+    background-color: #3ebcd3;
+    border: 2px solid #3ebcd3;
     font-weight: 700;
     transition: 400ms all ease;
   }
 
   button:hover:not(:disabled) {
     background-color: transparent;
-    color: #3EBCD3;
-    border: 2px solid #3EBCD3;
+    color: #3ebcd3;
+    border: 2px solid #3ebcd3;
   }
 `;
 

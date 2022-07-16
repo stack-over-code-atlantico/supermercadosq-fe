@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { editUserPassword } from "../../services/useUser";
 import RequirePassword from "../RequirePassword";
 import { PasswordSecurityContainer } from "./styles";
-import {  userLevel  } from '../../services/useAuth';
+import { userLevel } from "../../services/useAuth";
 
 const PasswordSecurityForm = () => {
   const [senhaAntiga, setSenhaAntiga] = useState("");
@@ -17,15 +17,15 @@ const PasswordSecurityForm = () => {
     length: false,
   };
   const [validateInput, setValidateInput] = useState(requiredCases);
-  const handleCheckPassword=(event)=>{
+  const handleCheckPassword = (event) => {
     event.preventDefault();
     if (novaSenha !== repeteNovaSenha) {
       alert("Senhas diferentes");
       return;
     }
-    const {id_usuario} = userLevel()
-    editUserPassword(senhaAntiga, novaSenha, id_usuario)
-  }
+    const { id_usuario } = userLevel();
+    editUserPassword(senhaAntiga, novaSenha, id_usuario);
+  };
   const handleCheckPasswordCases = () => {
     const regexUppercase = /^(?=.*[A-Z]).+$/;
     const regexLowercase = /^(?=.*[a-z]).+$/;
@@ -46,9 +46,9 @@ const PasswordSecurityForm = () => {
     }
   };
 
-  useEffect(()=>{
-    handleCheckPasswordCases()
-  },[novaSenha])
+  useEffect(() => {
+    handleCheckPasswordCases();
+  }, [novaSenha]);
 
   useEffect(() => {
     if (validateInput.case && validateInput.length && validateInput.number) {
@@ -57,7 +57,6 @@ const PasswordSecurityForm = () => {
       setHasErrorPassword(true);
     }
   }, [validateInput]);
-
 
   return (
     <>
@@ -93,7 +92,12 @@ const PasswordSecurityForm = () => {
             />
           </label>
           <div>
-            <input id="button" type="submit" value="Salvar" disabled={hasErrorPassword}/>
+            <input
+              id="button"
+              type="submit"
+              value="Salvar"
+              disabled={hasErrorPassword}
+            />
           </div>
         </form>
         <RequirePassword

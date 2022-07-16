@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import BgLogin from '../../assets/Backgrounds/BgLogin.png'
+import styled from "styled-components";
+import BgLogin from "../../assets/Backgrounds/BgLogin.png";
 
 export const StyleLogin = styled.div`
   background-image: url(${BgLogin});
@@ -11,7 +11,7 @@ export const StyleLogin = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const LoginContainer = styled.div`
   display: grid;
@@ -35,7 +35,7 @@ export const LoginContainer = styled.div`
       }
     }
   }
-`
+`;
 
 export const LoginLogo = styled.figure`
   position: relative;
@@ -67,4 +67,4 @@ export const LoginLogo = styled.figure`
       color: var(--color-blue-light);
     }
   }
-`
+`;

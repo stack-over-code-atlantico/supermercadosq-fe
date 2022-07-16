@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ContainerAvatar = styled.div`
-
   justify-content: center;
   align-items: center;
   margin-right: 45%;
@@ -101,7 +100,7 @@ export const ProfileInformationContainer = styled.div`
       display: flex;
       width: 100%;
 
-      :last-child{
+      :last-child {
         justify-content: end;
       }
 

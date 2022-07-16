@@ -1,5 +1,12 @@
-import React, { useState, useEffect }  from "react";
-import { UserAvatar, User, UserDetails, UserName, UserIcons, ImageAvatar } from "./styles";
+import React, { useState, useEffect } from "react";
+import {
+  UserAvatar,
+  User,
+  UserDetails,
+  UserName,
+  UserIcons,
+  ImageAvatar,
+} from "./styles";
 import { FiAlertTriangle, FiEdit2, FiTrash } from "react-icons/fi";
 import { userLevel } from "../../services/useAuth";
 
@@ -13,7 +20,7 @@ const UserComment = ({
   onReportItem,
   onEditItem,
   messageComment,
-  userAvatar
+  userAvatar,
 }) => {
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
@@ -22,7 +29,6 @@ const UserComment = ({
   const [displayIconDenounce, setDisplayIconDenounce] = useState("inline");
   const [displayIconDelete, setDisplayIconDelete] = useState("inline");
   const [displayIconEdit, setDisplayIconEdit] = useState("inline");
-
 
   useEffect(() => {
     validIcon();
@@ -70,24 +76,18 @@ const UserComment = ({
       </UserDetails>
       <UserIcons>
         <a>
-          {
-            userLevel()
-              ? (
-                <FiAlertTriangle
-                  onClick={handleNewReport}
-                  id="denounce"
-                  display={displayIconDenounce}
-                />
-              )
-              : (<></>)
-          }
+          {userLevel() ? (
+            <FiAlertTriangle
+              onClick={handleNewReport}
+              id="denounce"
+              display={displayIconDenounce}
+            />
+          ) : (
+            <></>
+          )}
         </a>
         <a>
-          <FiEdit2
-            onClick={handleEdit}
-            id="edit"
-            display={displayIconEdit}
-          />
+          <FiEdit2 onClick={handleEdit} id="edit" display={displayIconEdit} />
         </a>
         <a>
           <FiTrash

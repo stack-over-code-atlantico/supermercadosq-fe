@@ -73,7 +73,7 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
       height: 40,
       border: "1.5px solid var(--color-blue-light)",
       cursor: "pointer",
-      borderRadius: 8
+      borderRadius: 8,
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
@@ -115,90 +115,104 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
 
   return (
     <>
-      {
-        openModal
-          ? (
-            <>
-            <RegisterContainer>
-              <ImageUpload>
+      {openModal ? (
+        <>
+          <RegisterContainer>
+            <ImageUpload>
+              <label>
+                {urlSrc ? (
+                  <img style={{ width: "70%" }} src={urlSrc} />
+                ) : (
+                  <BsCardImage style={{ width: "500px", fontSize: "200%" }} />
+                )}
+                <input
+                  type="file"
+                  onChange={handleSelectFile}
+                  accept="image/*"
+                />
+              </label>
+            </ImageUpload>
+            <RegisterForm onSubmit={handleRegisterProd}>
+              <TitleDiv className="titleDiv">
+                <h2>Crie sua postagem sobre algum produto</h2>
+                <CloseButton onClick={setOpenModal}>X</CloseButton>
+              </TitleDiv>
+              <div className="ProductInitial">
                 <label>
-                  {urlSrc ? <img style={{ width: '70%'}}  src={urlSrc} /> : <BsCardImage style={{ width: '500px', fontSize: '200%'}} />}
-                  <input type="file" onChange={handleSelectFile} accept="image/*" />
-                </label>
-              </ImageUpload>
-              <RegisterForm onSubmit={handleRegisterProd}>
-                <TitleDiv className="titleDiv">
-                  <h2>Crie sua postagem sobre algum produto</h2>
-                  <CloseButton onClick={setOpenModal}>X</CloseButton>
-                </TitleDiv>
-                <div className="ProductInitial">
-                  <label>
-                    <span>Nome</span>
-                    <input
-                      type="text"
-                      placeholder="Nome"
-                      onChange={(e) =>
-                        setData((prev) => ({ ...prev, nome: e.target.value }))
-                      }
-                    />
-                  </label>
-                  <label>
-                    <span>Tipos de alergia</span>
-                    <Select
-                      options={alergicOptions}
-                      isMulti
-                      components={{
-                        MultiValueContainer: multiValueContainer,
-                      }}
-                      formatGroupLabel={formatGroupLabel}
-                      closeMenuOnSelect={false}
-                      hideSelectedOptions={false}
-                      styles={customStyles}
-                      isSearchable={false}
-                      maxMenuWidth={100}
-                      placeholder="Listar alergias"
-                      onChange={handleGetAlergic}
-                    />
-                  </label>
-                </div>
-                <div className="ProductMiddle">
-                  <label>
-                    <span>Descrição</span>
-                    <input
-                      type="text"
-                      placeholder="Descrição"
-                      onChange={(e) =>
-                        setData((prev) => ({ ...prev, descricao: e.target.value }))
-                      }
-                    />
-                  </label>
-                </div>
-                <div className="ProductFinal">
-                  <label>
-                    <span>Ingredientes</span>
-                    <textarea
-                      onChange={(e) =>
-                        setData((prev) => ({ ...prev, ingredientes: e.target.value }))
-                      }
-                    />
-                  </label>
-                </div>
-                <Buttons>
-                  <button
-                    type="submit"
-                    disabled={
-                      data.nome && data.descricao && data.ingredientes ? false : true
+                  <span>Nome</span>
+                  <input
+                    type="text"
+                    placeholder="Nome"
+                    onChange={(e) =>
+                      setData((prev) => ({ ...prev, nome: e.target.value }))
                     }
-                  >
-                    Finalizar
-                  </button>
-                </Buttons>
-              </RegisterForm>
-            </RegisterContainer>
-            </>
-          )
-          : (<></>)
-      }
+                  />
+                </label>
+                <label>
+                  <span>Tipos de alergia</span>
+                  <Select
+                    options={alergicOptions}
+                    isMulti
+                    components={{
+                      MultiValueContainer: multiValueContainer,
+                    }}
+                    formatGroupLabel={formatGroupLabel}
+                    closeMenuOnSelect={false}
+                    hideSelectedOptions={false}
+                    styles={customStyles}
+                    isSearchable={false}
+                    maxMenuWidth={100}
+                    placeholder="Listar alergias"
+                    onChange={handleGetAlergic}
+                  />
+                </label>
+              </div>
+              <div className="ProductMiddle">
+                <label>
+                  <span>Descrição</span>
+                  <input
+                    type="text"
+                    placeholder="Descrição"
+                    onChange={(e) =>
+                      setData((prev) => ({
+                        ...prev,
+                        descricao: e.target.value,
+                      }))
+                    }
+                  />
+                </label>
+              </div>
+              <div className="ProductFinal">
+                <label>
+                  <span>Ingredientes</span>
+                  <textarea
+                    onChange={(e) =>
+                      setData((prev) => ({
+                        ...prev,
+                        ingredientes: e.target.value,
+                      }))
+                    }
+                  />
+                </label>
+              </div>
+              <Buttons>
+                <button
+                  type="submit"
+                  disabled={
+                    data.nome && data.descricao && data.ingredientes
+                      ? false
+                      : true
+                  }
+                >
+                  Finalizar
+                </button>
+              </Buttons>
+            </RegisterForm>
+          </RegisterContainer>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

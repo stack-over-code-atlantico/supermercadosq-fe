@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const SideBarContainer = styled.div`
-  padding:  1rem 0 0 1.4rem;
+  padding: 1rem 0 0 1.4rem;
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
@@ -20,14 +20,12 @@ export const SideBarContainer = styled.div`
     padding-left: 0.2rem 0 0 0.2rem;
     font-size: 0.8rem;
     margin-right: 0;
-
   }
-
 `;
 
 export const SideItem = styled.div`
   margin-top: 10px;
-`
+`;
 
 export const SideLink = styled.button`
   display: flex;
@@ -49,8 +47,7 @@ export const SideLink = styled.button`
     color: rgba(144, 144, 144, 1);
   }
 
-
-  .sidelink-margin{
-    margin: '1rem 0';
+  .sidelink-margin {
+    margin: "1rem 0";
   }
 `;

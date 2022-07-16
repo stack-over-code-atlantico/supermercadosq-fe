@@ -213,7 +213,6 @@ export const Comment = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: 10% 90%;
-  //grid-template-rows: 10% 90%;
   grid-template-areas:
     "base base"
     "x body";

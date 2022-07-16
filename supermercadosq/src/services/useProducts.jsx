@@ -7,16 +7,14 @@ const { token: tokenJWT } = parseCookies();
 const config = { headers: { authorization: `Bearer ${tokenJWT}` } };
 
 export const getLastProductsById = async (data) => {
-
   const lastProducts = await api
     .get(`/products/Historic/${data}`, config)
-    .catch((err) => {
-    });
-    return lastProducts
+    .catch((err) => {});
+  return lastProducts;
 };
 
 export const getAllProducts = async (page) => {
-  if (typeof page === 'number' || page >= 0) {
+  if (typeof page === "number" || page >= 0) {
     const products = await api.get(`/products/page/${page}`);
     return products;
   }
@@ -26,7 +24,7 @@ export const getAllProducts = async (page) => {
 
 export const postProductPerAllergy = async (allergies, page) => {
   const products = await api.post(`/products/allergy/${page}`, {
-    alergia: allergies
+    alergia: allergies,
   });
   return products;
 };
@@ -41,7 +39,7 @@ export const createOneProduct = async (data) => {
   return products;
 };
 
-export const editOneProduct = async (data,id_produto) => {
+export const editOneProduct = async (data, id_produto) => {
   const products = await api.put(`/products/${id_produto}`, data, {
     headers: {
       "content-type": "multipart/form-data",

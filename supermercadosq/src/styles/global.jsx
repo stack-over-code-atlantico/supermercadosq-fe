@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
   :root {
@@ -30,7 +30,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
-  //Tamanho de font 16px (para desktop) por padrão
   html{
     scroll-behavior: smooth;
     @media(max-width: 1080px){
@@ -83,4 +82,4 @@ export const GlobalStyle = createGlobalStyle`
     scrollbar-width: auto;
     scrollbar-color: #692aba #d1d1d1;
   }
-`
+`;

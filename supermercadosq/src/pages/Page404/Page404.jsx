@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Style404,
   HomeGreen404,
@@ -7,8 +7,8 @@ import {
   ErrorBlue404,
   CircleSmallMustard,
   CircleSmallBlue,
-  CardText
-} from './styles.jsx'
+  CardText,
+} from "./styles.jsx";
 
 const Page404 = () => {
   return (
@@ -33,7 +33,7 @@ const Page404 = () => {
         <span>PAGE NOT FOUND</span>
       </CardText>
     </Style404>
-  )
-}
+  );
+};
 
-export default Page404
+export default Page404;

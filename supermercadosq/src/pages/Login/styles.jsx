@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import BgLogin from '../../assets/Backgrounds/BgLogin.png'
+import styled from "styled-components";
+import BgLogin from "../../assets/Backgrounds/BgLogin.png";
 
 export const StyleLogin = styled.div`
   background-image: url(${BgLogin});
@@ -11,7 +11,7 @@ export const StyleLogin = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const LoginContainer = styled.div`
   display: grid;
@@ -20,7 +20,7 @@ export const LoginContainer = styled.div`
   height: 450px;
   background-color: white;
   border-radius: 5px;
-`
+`;
 
 export const LoginForm = styled.div`
   padding: 7% 12.5%;
@@ -52,24 +52,6 @@ export const LoginForm = styled.div`
       font-weight: 600;
     }
 
-    /* #keepConnected {
-      flex-direction: row;
-      display: flex;
-      align-items: center;
-    }
-    #keepConnected {
-      gap: 10px;
-      color: var(--color-gray);
-      font-size: 12px;
-      span {
-        font-weight: 400;
-      }
-      input {
-        height: 13px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-      }
-    } */
     .actions {
       padding-top: 44px;
       span {
@@ -107,7 +89,7 @@ export const LoginForm = styled.div`
       color: var(--color-blue-light);
     }
   }
-`
+`;
 
 export const LoginLogo = styled.figure`
   display: flex;
@@ -117,8 +99,7 @@ export const LoginLogo = styled.figure`
   img {
     height: 45%;
   }
-`
-
+`;
 
 export const Actions = styled.div`
   flex-direction: row;
@@ -144,4 +125,4 @@ export const Actions = styled.div`
     width: 152px;
     height: 39px;
   }
-`
+`;
