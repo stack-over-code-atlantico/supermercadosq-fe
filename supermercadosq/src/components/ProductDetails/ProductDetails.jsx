@@ -9,7 +9,7 @@ import eggIcon from "../../assets/icons/egg.png";
 import sojaIcon from "../../assets/icons/soja.png";
 import wheatIcon from "../../assets/icons/wheat.png";
 import UserComment from "../../components/UserComment/UserComment";
-import {Loading} from '../../components/LoadingScreen/index';
+import { Loading } from "../../components/LoadingScreen/index";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { getOneProduct } from "../../services/useProductOne";
 import { useEffect, useState } from "react";
@@ -31,6 +31,7 @@ import { useNewReport } from "../../services/useNewReport";
 import { useCreateComment } from "../../services/useCreateComment";
 import { useEditItem } from "../../services/useEditItem";
 import LabelMessage from "../../components/LabelMessage";
+import ProductEdit from "../ProductEdit";
 
 const ProductDetails = ({ open, id, setClose, loading, image }) => {
   const [dataProduct, setDataProduct] = useState();
@@ -39,6 +40,7 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
   const [urlImage, setUrlImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isEdit, setIsEdit] = useState("");
+  const [isEditProduct, setIsEditProduct] = useState(false);
   const [alergia, setAlergia] = useState("");
   const [configAlergia, setConfigAlergia] = useState([]);
 
@@ -136,7 +138,6 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
       });
       setDataComment(deleteItem);
     }
-;
     return deleteItemAxios;
   }
   async function handleReportItem(id_item, typeItem) {
@@ -155,16 +156,34 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
     }
     return reportItemAxios;
   }
-
+  function handleVisibledUpdateProduct() {
+    setIsEditProduct(false);
+  }
   return (
     <>
-      { open ? (
+      {open ? (
         <DetailsContainer>
+          <ProductEdit
+            oldData={dataProduct}
+            visibledUpdateProduct={isEditProduct}
+            handleVisibledUpdateProduct={handleVisibledUpdateProduct}
+          />
+
           <DetailsImage>
             <div className="BackProduct">
-              <MdOutlineArrowBack style={{color: '#fff'}} onClick={setClose} />
+              <MdOutlineArrowBack
+                style={{ color: "#fff" }}
+                onClick={setClose}
+              />
             </div>
-            <img src={urlImage ? urlImage : 'https://stackovercode.s3.amazonaws.com/default/Card.png'} alt="mesa com sushi" />
+            <img
+              src={
+                urlImage
+                  ? urlImage
+                  : "https://stackovercode.s3.amazonaws.com/default/Card.png"
+              }
+              alt="mesa com sushi"
+            />
           </DetailsImage>
           <DetailsComments>
             <UserComment
@@ -174,13 +193,16 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
               userAvatar={
                 dataProduct?.usuario_produto_id_usuarioTousuario.avatar
                   ? dataProduct?.usuario_produto_id_usuarioTousuario.avatar
-                  : 'https://stackovercode.s3.amazonaws.com/default/bi_person.png'
+                  : "https://stackovercode.s3.amazonaws.com/default/bi_person.png"
               }
               dataPublicacao={dataProduct?.data_postagem}
               typeItem="produto"
               onDeleteItem={handleDeleteItem}
               onReportItem={handleReportItem}
-              onEditItem={handleEditItem}
+              onEditItem={() => {
+                handleEditItem;
+                setIsEditProduct(true);
+              }}
             />
             <PostComment>
               <PostContainer
@@ -228,8 +250,9 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
                         }
                         userAvatar={
                           comment?.usuario_comentario_id_usuarioTousuario.avatar
-                            ? comment?.usuario_comentario_id_usuarioTousuario.avatar
-                            : 'https://stackovercode.s3.amazonaws.com/default/bi_person.png'
+                            ? comment?.usuario_comentario_id_usuarioTousuario
+                                .avatar
+                            : "https://stackovercode.s3.amazonaws.com/default/bi_person.png"
                         }
                         userIdOwner={comment?.id_usuario}
                         dataPublicacao={comment?.data_comentario}
@@ -261,9 +284,7 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
           </DetailsComments>
         </DetailsContainer>
       ) : (
-        <>
-          { isLoading ? (<Loading />) : (<></>)}
-        </>
+        <>{isLoading ? <Loading /> : <></>}</>
       )}
     </>
   );

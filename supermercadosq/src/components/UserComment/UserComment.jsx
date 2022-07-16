@@ -28,7 +28,6 @@ const UserComment = ({
     validIcon();
   }, [userIdOwner]);
 
-  // console.log(users);
   const validIcon = () => {
     if (userLevel()?.id_usuario == userIdOwner) {
       setDisplayIconDenounce("none");
