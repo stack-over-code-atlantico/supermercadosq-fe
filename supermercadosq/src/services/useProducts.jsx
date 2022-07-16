@@ -11,7 +11,6 @@ export const getLastProductsById = async (data) => {
   const lastProducts = await api
     .get(`/products/Historic/${data}`, config)
     .catch((err) => {
-      console.log(err.message);
     });
     return lastProducts
 };
@@ -34,6 +33,16 @@ export const postProductPerAllergy = async (allergies, page) => {
 
 export const createOneProduct = async (data) => {
   const products = await api.post("/products", data, {
+    headers: {
+      "content-type": "multipart/form-data",
+      Authorization: `Bearer ${Cookies.get("token")}`,
+    },
+  });
+  return products;
+};
+
+export const editOneProduct = async (data,id_produto) => {
+  const products = await api.put(`/products/${id_produto}`, data, {
     headers: {
       "content-type": "multipart/form-data",
       Authorization: `Bearer ${Cookies.get("token")}`,

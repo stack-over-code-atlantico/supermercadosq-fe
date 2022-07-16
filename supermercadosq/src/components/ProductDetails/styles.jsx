@@ -11,7 +11,7 @@ export const DetailsContainer = styled.div`
   color: var(--color-gray);
   background-color: #000000a6;
   position: fixed;
-  z-index: 99;
+  z-index: 10;
 `;
 
 export const DetailsImage = styled.figure`

@@ -146,7 +146,7 @@ const ProfileInformationForm = ({ data }) => {
       telefone: data.telefone,
       restricaoAlimentar: data.restricao_alimenticia,
     }));
-    // console.log(data.avatar);
+
     if (data.endereco) {
       const endereco = data.endereco[0];
       setDataUser((prev) => ({
