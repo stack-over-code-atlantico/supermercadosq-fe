@@ -6,6 +6,8 @@ export const AboutSection = styled.section`
   height: 60vh;
   margin-top: 5%;
   flex-flow: column wrap;
+  flex-direction: column;
+  padding: 0rem 16rem;
 
   @media (max-width: 1300px){
     height: 100vh;
@@ -20,12 +22,16 @@ export const AboutText = styled.h2`
 `;
 
 export const AboutParagraph = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #000;
   margin-top: 20px;
-  text-align: justify;
-  width: 90%;
-  margin-left: 5%;
+  text-align: center;
+  width: 100%;
+
+  span {
+    color: #64c2d4;
+    font-weight: bold;
+  }
 `;
 
 export const LoadingScreen = styled.div`
@@ -38,6 +44,7 @@ export const LoadingScreen = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
   &::before{
     content:  '${props => props.text ? props.text : '' }';
     text-align: center;
@@ -49,9 +56,10 @@ export const LoadingScreen = styled.div`
 export const LoadingContainer = styled.div `
   display: flex;
   align-items: center;
-  margin: 10vh 5vw 2vh 5vw;
+  margin: 10vh 5vw 3vh 5vw;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1rem;
 
   @media (max-width: 1300px){
     margin: 10vh 5vw 2vh 5vw;
@@ -63,7 +71,6 @@ export const LoadingContainer = styled.div `
 
 `
 
-
 export const ContainerBody = styled.div`
   height: 600px;
   display: grid;
@@ -71,6 +78,10 @@ export const ContainerBody = styled.div`
   grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
   align-items: center;
   justify-items: center;
+
+  .position {
+    margin-top: 6rem;
+  }
 
   & input.position:nth-of-type(1){
     grid-column: 2 / 3;
@@ -131,8 +142,9 @@ export const CardBody = styled.div`
   transform-style: preserve-3d;
   perspective: 600px;
   pointer-events: none;
+  margin-top: 4rem;
 
-  .item{
+  .item {
     position: absolute;
     width: 300px;
     height: 400px;
@@ -143,6 +155,18 @@ export const CardBody = styled.div`
     transform: rotateY(calc(-10deg * var(--r)))
       translateX(calc(-300px * var(--r)));
     z-index: calc((var(--position) - var(--abs)));
+
+    border-radius: 6px;
+    padding: 0rem 2rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    p {
+      font-size: 0.95rem;
+    }
   }
 
     .item:nth-of-type(1){
@@ -172,7 +196,13 @@ export const CardBody = styled.div`
 export const AboutContainer = styled.div`
   display: grid;
   grid-template-columns: 35% 50%;
-  gap: 10%;
+  gap: 6rem;
+
+  img {
+    position: relative;
+    top: -10%;
+    border-radius: 6px;
+  }
 
   @media (max-width: 800px) {
     display: flex;
@@ -180,7 +210,17 @@ export const AboutContainer = styled.div`
   }
 `
 export const AboutDiv = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  p {
+    margin-top: -1rem;
+    padding: 0rem 2.5rem;
+    text-align: center;
+  }
 `
 
 export const Img = styled.img`
@@ -192,19 +232,28 @@ export const Img = styled.img`
   }
 `;
 
-
 export const Button = styled.button`
   background-color: #3EBCD3;
-  padding: 2vh 18vw;
-  margin: 8vh 0 8vh 2vw;
+  padding: 1rem 1rem;
+  margin: 3rem auto;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
 
   color: #FFF;
   font-size: 2.5rem;
+  transition: all 200ms ease-in-out;
 
   cursor: pointer;
 
+  a {
+    text-decoration: none;
+    color: #FFF;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 10px #3EBCD3;
+  }
 
   @media (max-width: 1500px) {
     padding: 2vh 16.5vw;
