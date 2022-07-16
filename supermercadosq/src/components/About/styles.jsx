@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AboutSection = styled.section`
   display: flex;
   flex-direction: column;
-  flex-flow: column wrap;
+  flex-flow: wrap;
   justify-content: center;
   align-items: center;
 
@@ -12,8 +12,8 @@ export const AboutSection = styled.section`
   margin-top: 5%;
   padding: 0rem 10rem;
 
-  @media (max-width: 1300px){
-    height: 100vh;
+  @media (max-width: 1366px) {
+    height: 100%;
   }
 
   @media (max-width: 600px) {
