@@ -2,17 +2,25 @@ import styled from "styled-components";
 
 export const AboutSection = styled.section`
   display: flex;
+  flex-direction: column;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
   width: 100%;
   height: 60vh;
   margin-top: 5%;
-  flex-flow: column wrap;
-  flex-direction: column;
-  padding: 0rem 16rem;
+  padding: 0rem 10rem;
 
   @media (max-width: 1300px){
     height: 100vh;
   }
 
+  @media (max-width: 600px) {
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 export const AboutText = styled.h2`
@@ -35,25 +43,35 @@ export const AboutParagraph = styled.p`
 `;
 
 export const LoadingScreen = styled.div`
-  height: ${props => props.size ? props.size : '100px' };
-  width: ${props => props.size ? props.size : '100px' };
-  background: ${props => props.background ? props.background : '#9cdd6e' };
+  height: ${props => props.size ? props.size : '100px'};
+  width: ${props => props.size ? props.size : '100px'};
+  background: ${props => props.background ? props.background : '#9cdd6e'};
   border-radius: 50%;
-  left: ${props => props.left ? props.left : '100px' };
-  top: ${props => props.top ? props.top : '100px' };
+  left: ${props => props.left ? props.left : '100px'};
+  top: ${props => props.top ? props.top : '100px'};
   display: flex;
   justify-content: center;
   align-items: center;
   
   &::before{
-    content:  '${props => props.text ? props.text : '' }';
+    content:  '${props => props.text ? props.text : ''}';
     text-align: center;
     color: #fff;
     font-size: 2rem;
   }
+
+  @media (max-width: 800px) {
+    width: 70px;
+    height: 70px;
+    padding: 2rem;
+    
+    &::before{
+      font-size: 1rem;
+    }
+  }
 `;
 
-export const LoadingContainer = styled.div `
+export const LoadingContainer = styled.div`
   display: flex;
   align-items: center;
   margin: 10vh 5vw 3vh 5vw;
@@ -67,6 +85,15 @@ export const LoadingContainer = styled.div `
 
   @media (max-width: 800px) {
     margin: 15% 2% 0 2%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
 `

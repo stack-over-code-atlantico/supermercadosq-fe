@@ -16,7 +16,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
     typeUserSignup,
     setTypeUserSignup,
     fileSignup,
-    setFileSignup
+    setFileSignup,
   } = useContext(SignupContext);
 
   const [hasError, setHasError] = useState(true);
@@ -80,7 +80,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
       ? setHasError(true)
       : setHasError(false);
   }, [hasErrorDoc, hasErrorName, hasErrorCellphone]);
-
+  console.log(urlSrc);
   return (
     <Form>
       <h1>Estamos quase lá</h1>
@@ -144,8 +144,25 @@ const InfosCheck = ({ nextStep, prevStep }) => {
             <ProfileAvatar>
               <label for="file">
                 <span>Imagem</span>
-                <BsFillPersonFill className="icon" />
-                <input type="file" onChange={handleSelectFile} id="file" style={{ display: "none" }} />
+                {urlSrc !== null ? (
+                  <img
+                    src={urlSrc}
+                    style={{
+                      width: 100,
+                      height: 120,
+                      borderRadius: 5,
+                      cursor: "pointer",
+                    }}
+                  />
+                ) : (
+                  <BsFillPersonFill className="icon" />
+                )}
+                <input
+                  type="file"
+                  onChange={handleSelectFile}
+                  id="file"
+                  style={{ display: "none" }}
+                />
               </label>
             </ProfileAvatar>
             <CheckType>

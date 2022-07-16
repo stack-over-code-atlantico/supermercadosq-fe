@@ -7,7 +7,9 @@ export const CheckType = styled.div`
   margin: 5px 0 0 15px;
   align-items: flex-start;
 
-  .checkBox, #cliente, #fornecedor {
+  .checkBox,
+  #cliente,
+  #fornecedor {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,9 +40,9 @@ export const ProfileAvatar = styled.div`
     cursor: pointer;
     width: 100px;
     height: 120px;
-    transition: filter 0.3s;
+    transition: filter 0.4s ease-out;
     &:hover {
-      filter: brightness(0.7);
+      filter: brightness(0.8);
     }
   }
 `;

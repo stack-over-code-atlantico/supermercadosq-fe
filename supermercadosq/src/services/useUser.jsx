@@ -1,5 +1,6 @@
 import { parseCookies } from "nookies";
 import { api } from "../utils/api";
+import Cookies from "js-cookie"
 
 const { token: tokenJWT } = parseCookies();
 const config = { headers: { authorization: `Bearer ${tokenJWT}` } };
@@ -15,8 +16,8 @@ export const getUserById = async (id_usuario) => {
 };
 
 export const useCreateUser = async (data) => {
-  for(let values of data.values()){
-    console.log(values)
+  for (let values of data.values()) {
+    console.log(values);
   }
   const users = await api.post("/users", data, {
     headers: {
@@ -57,62 +58,39 @@ export const useCreateUser = async (data) => {
 //     });
 // };
 
-export const useEditUser = async (
-  cpf_cnpj,
-  nome,
-  nomeSocial,
-  email,
-  telefone,
-  retricaoAlimentar,
-  cep,
-  logradouro,
-  numeroEndereco,
-  bairro,
-  cidade,
-  estado
-) => {
-  const bodyParams = {
-    nome,
-    nome_social: nomeSocial,
-    email,
-    telefone,
-    restricao_alimenticia: retricaoAlimentar,
-    cep,
-    logradouro,
-    numero:numeroEndereco,
-    bairro,
-    cidade,
-    estado
-  };
-  console.log(bodyParams);
+export const useEditUser = async ( cpf_cnpj, data) => {
   const updateUser = await api
-    .put(`/users/${cpf_cnpj}`, bodyParams, config)
+    .put(`/users/${cpf_cnpj}`, data, {
+      headers: {
+        "content-type": "multipart/form-data",
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+    })
     .then((resp) => {
-      alert('Usuário atualizado com sucesso')
+      alert("Usuário atualizado com sucesso");
       return resp;
     })
     .catch((err) => {
-      alert('Ocorreu um erro')
+      alert("Ocorreu um erro");
       console.log(err);
       return err;
     });
   return updateUser;
 };
 
-export const editUserPassword = async (
-  senhaAntiga, novaSenha, id_usuario
-) => {
+export const editUserPassword = async (senhaAntiga, novaSenha, id_usuario) => {
   const bodyParams = {
-    senhaAntiga,novaSenha
+    senhaAntiga,
+    novaSenha,
   };
   const updateUserPassword = await api
     .put(`/users/${id_usuario}/changePassword`, bodyParams, config)
     .then((resp) => {
-      alert('Senha alterada com sucesso')
+      alert("Senha alterada com sucesso");
       return resp;
     })
     .catch((err) => {
-      alert('Ocorreu um erro')
+      alert("Ocorreu um erro");
       console.log(err);
       return err;
     });
