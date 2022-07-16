@@ -54,7 +54,6 @@ export function Navbar() {
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
-
               {
                 isLogged
                   ? (<></>)
@@ -70,7 +69,7 @@ export function Navbar() {
                           <span>Registrar</span>
                         </NavLink>
                       </NavItem>
-                    </>
+                    </>   
                   )
               }
             {

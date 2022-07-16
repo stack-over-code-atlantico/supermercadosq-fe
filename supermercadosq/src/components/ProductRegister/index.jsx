@@ -21,7 +21,6 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
     descricao: "",
     ingredientes: "",
   });
-
   const handleSelectFile = (event) => {
     setFile(event.target.files[0]);
     setUrlSrc(URL.createObjectURL(event.target.files[0]));

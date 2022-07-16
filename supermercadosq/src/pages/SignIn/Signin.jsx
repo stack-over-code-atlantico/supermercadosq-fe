@@ -7,7 +7,7 @@ import InfosCheck from "../../components/SignupInfos/InfosCheck";
 import { IoIosArrowBack } from "react-icons/io";
 import { BackHome } from "../../styles/CommunsStyles.jsx";
 import { SignupContext } from "../../Provider/Signup.provider.jsx";
-import { useCreateUser } from "../../services/useCreateUser.jsx";
+import { useCreateUser } from "../../services/useUser";
 
 const SignIn = () => {
   //states to hange components

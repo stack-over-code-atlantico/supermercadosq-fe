@@ -6,9 +6,9 @@ import Product from '../pages/Product/Product';
 import About from '../pages/About/about';
 import Page404 from '../pages/Page404/Page404';
 import Dashboard from '../pages/Dashboard/dashboard';
+import Profile from '../pages/Profile/Profile';
 import { userLevel } from '../services/useAuth';
 import Cookies from 'js-cookie';
-
 
 const AppRoutes = () => {
   let level = 'CLIENTE';
@@ -24,6 +24,7 @@ const AppRoutes = () => {
         <Route path="/product" element={<Product/>}/>
         <Route path="/dashboard" element={ level.nivel === 'ADMINISTRADOR' ? <Dashboard/> : <Page404 /> }/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/profile" element={<Profile/>}/>
         <Route path="/*" element={<Page404/>} />
     </Routes>
   )
