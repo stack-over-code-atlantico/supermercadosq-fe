@@ -52,7 +52,7 @@ export const LoginForm = styled.div`
       font-weight: 600;
     }
 
-    #keepConnected {
+    /* #keepConnected {
       flex-direction: row;
       display: flex;
       align-items: center;
@@ -69,7 +69,7 @@ export const LoginForm = styled.div`
         margin-top: 0px;
         margin-bottom: 0px;
       }
-    }
+    } */
     .actions {
       padding-top: 44px;
       span {

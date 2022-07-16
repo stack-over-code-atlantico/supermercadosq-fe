@@ -94,11 +94,6 @@ const Login = () => {
                     <InputPassword setValue={setPassword} value={password} />
 
                   </label>
-
-                  <label id="keepConnected">
-                    <input type="checkbox" name="keepConnected" id="keepConnected" />
-                    <span>Manter conectado</span>
-                  </label>
                   <LabelError>{error}</LabelError>
                   <Actions>
                     <span>
