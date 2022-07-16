@@ -43,11 +43,11 @@ export default function Navbar() {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/postagens' activestyle={{ borderBottom: '2px solid var(--color-white)' }} onClick={closeMobileMenu}>
-                  Postagens
+                <NavLink to='/product' activestyle={{ borderBottom: '2px solid var(--color-white)' }} onClick={closeMobileMenu}>
+                  Produtos
                 </NavLink>
               </NavItem>
-              
+
               <NavItem >
                 <NavLogout onClick={handleLogout} >
                   Sair
@@ -57,7 +57,7 @@ export default function Navbar() {
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>
-    </> 
+    </>
   );
 }
 
