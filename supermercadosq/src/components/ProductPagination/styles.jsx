@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PaginationDiv = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ export const PaginationDiv = styled.div`
 export const PaginationBtn = styled.button`
   width: 70px;
   height: 30px;
-  background-color: #3EBCD3;
+  background-color: #3ebcd3;
   border: 1px solid #f0f0f0;
   border-radius: 8px;
   transition: 250ms ease-in-out;
@@ -25,7 +25,7 @@ export const PaginationBtn = styled.button`
 export const PaginationBtnNumeric = styled.button`
   width: 30px;
   height: 30px;
-  background-color: #3EBCD3;
+  background-color: #3ebcd3;
   border: 1px solid #f0f0f0;
   border-radius: 8px;
   transition: 300ms ease-in-out;

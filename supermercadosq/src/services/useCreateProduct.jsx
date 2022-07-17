@@ -19,8 +19,5 @@ export const createProduct = async (data) => {
     })
     .catch((err) => {
       alert("Produto não cadastrado");
-      console.log(err.message);
     });
 };
-
-

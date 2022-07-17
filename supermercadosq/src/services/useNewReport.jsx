@@ -5,17 +5,14 @@ const { token: tokenJWT } = parseCookies();
 const config = { headers: { authorization: `Bearer ${tokenJWT}` } };
 
 export const useNewReport = async (data) => {
-  const bodyParams={}
-  
+  const bodyParams = {};
+
   if (data.typeItem === "produto") {
     const products = await api
-      .put(`/products/${data.id_item}/denuncia`,bodyParams, config)
-      .then((resp) => {
-        console.log("denunciado produto");
-      })
+      .put(`/products/${data.id_item}/denuncia`, bodyParams, config)
+      .then((resp) => {})
       .catch((err) => {
-        alert('Ocorreu um Erro')
-        console.log(err)
+        alert("Ocorreu um erro ao denunciar!");
       });
 
     return products;
@@ -23,12 +20,9 @@ export const useNewReport = async (data) => {
 
   const comments = await api
     .put(`/comments/${data.id_item}/report`, bodyParams, config)
-    .then((resp) => {
-      console.log("denunciado comentario");
-    })
+    .then((resp) => {})
     .catch((err) => {
-      alert('Ocorreu um Erro')
-      console.log(err)
+      alert("Ocorreu um erro ao denunciar!");
     });
 
   return comments;

@@ -1,35 +1,41 @@
-import React from 'react';
+import React from "react";
 import Chart from "react-apexcharts";
 
-const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSize}) => {
-
+const InfoDashboard = ({
+  size,
+  title,
+  primaryColor,
+  secondaryColor,
+  value,
+  fontSize,
+}) => {
   const data = {
     series: [100],
     colors: [primaryColor],
     chart: {
-      fontFamily: 'Poppins, sans-serif',
+      fontFamily: "Poppins, sans-serif",
     },
     legend: {
-      show: false
+      show: false,
     },
     tooltip: {
       enabled: false,
       fillSeriesColor: false,
       followCursor: false,
       style: {
-        color: '#000',
-      }
+        color: "#000",
+      },
     },
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     stroke: {
-      width: 0
+      width: 0,
     },
     plotOptions: {
       pie: {
         donut: {
-          size: '80%',
+          size: "80%",
           labels: {
             show: true,
             total: {
@@ -38,18 +44,18 @@ const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSi
               fontWeight: 600,
               label: title,
               color: secondaryColor,
-              formatter: () => `${value}`
+              formatter: () => `${value}`,
             },
             value: {
               show: true,
-              fontSize: '18px',
+              fontSize: "18px",
               fontWeight: 600,
               color: secondaryColor,
-            }
-          }
-        }
-      }
-    }
+            },
+          },
+        },
+      },
+    },
   };
 
   return (
@@ -59,7 +65,7 @@ const InfoDashboard = ({size, title, primaryColor, secondaryColor, value, fontSi
         series={data.series}
         type="donut"
         width={size}
-        style={{ margin: -20}}
+        style={{ margin: -20 }}
       />
     </>
   );

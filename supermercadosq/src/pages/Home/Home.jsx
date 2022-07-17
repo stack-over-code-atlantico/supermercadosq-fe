@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Navbar } from '../../components/Navbar';
-import { Circle } from '../../components/Circle/index'
-import { TextoBlog } from '../../components/TextoBlog/index'
-import CircleMenu from '../../components/CircleMenu/index';
-import { MenuContext } from '../../Provider/Menu.provider';
-import { userLevel } from '../../services/useAuth';
+import React, { useState } from "react";
+import { Navbar } from "../../components/Navbar";
+import { Circle } from "../../components/Circle/index";
+import { TextoBlog } from "../../components/TextoBlog/index";
+import CircleMenu from "../../components/CircleMenu/index";
+import { MenuContext } from "../../Provider/Menu.provider";
+import { userLevel } from "../../services/useAuth";
 
-export function Home(){
-
+export function Home() {
   const [allergyMenu, setAllergyMenu] = useState({
     home: false,
     egg: false,
@@ -22,21 +21,24 @@ export function Home(){
   userLevel();
 
   return (
-    <MenuContext.Provider value={{allergyMenu, setAllergyMenu}}>
+    <MenuContext.Provider value={{ allergyMenu, setAllergyMenu }}>
       <Navbar />
-      <div style={{
-        width: '53%',
-        margin: '0 0 0 26%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh',
-        // backgroundColor: 'red',
-      }}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '90vh'}}
+      <div
+        style={{
+          width: "53%",
+          margin: "0 0 0 26%",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "90vh",
+          }}
         >
           <div>
             <Circle />

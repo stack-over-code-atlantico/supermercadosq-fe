@@ -14,6 +14,5 @@ export const useCreateComment = async (data) => {
     .post("/comments", bodyParams, config)
     .catch((err) => {
       alert("Comentário não cadastrado");
-      console.log(err.message);
     });
 };

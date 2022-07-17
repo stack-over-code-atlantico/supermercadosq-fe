@@ -1,6 +1,6 @@
 import { parseCookies } from "nookies";
 import { api } from "../utils/api";
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 
 const { token: tokenJWT } = parseCookies();
 const config = { headers: { authorization: `Bearer ${tokenJWT}` } };
@@ -17,7 +17,6 @@ export const getUserById = async (id_usuario) => {
 
 export const useCreateUser = async (data) => {
   for (let values of data.values()) {
-    console.log(values);
   }
   const users = await api.post("/users", data, {
     headers: {
@@ -27,38 +26,7 @@ export const useCreateUser = async (data) => {
   return users;
 };
 
-// export const useCreateUser = async (data) => {
-//   const bodyParams = {
-//     nome: data.nome,
-//     cpf_cnpj: data.cpf_cnpj,
-//     email: data.email,
-//     senha: data.senha,
-//     nivel: data.nivel,
-//     nome_social: data.nome_social,
-//     telefone: data.telefone,
-//     restricao_alimenticia: data.restricao_alimenticia,
-//     cep: data.cep,
-//     logradouro: data.logradouro,
-//     numero: data.numero,
-//     bairro: data.bairro,
-//     cidade: data.cidade,
-//     estado: data.estado,
-//   };
-
-//   const signUpPost = await api
-//     .post("/users", bodyParams)
-//     .then((response) => {
-//       alert("Usuário Cadastrado");
-//       return response;
-//     })
-//     .catch((error) => {
-//       alert("Usuário não cadastrado");
-//       console.log(error.message);
-//       return error;
-//     });
-// };
-
-export const useEditUser = async ( cpf_cnpj, data) => {
+export const useEditUser = async (cpf_cnpj, data) => {
   const updateUser = await api
     .put(`/users/${cpf_cnpj}`, data, {
       headers: {
@@ -71,8 +39,7 @@ export const useEditUser = async ( cpf_cnpj, data) => {
       return resp;
     })
     .catch((err) => {
-      alert("Ocorreu um erro");
-      console.log(err);
+      alert("Ocorreu um erro ao atualizar usuário");
       return err;
     });
   return updateUser;
@@ -90,8 +57,8 @@ export const editUserPassword = async (senhaAntiga, novaSenha, id_usuario) => {
       return resp;
     })
     .catch((err) => {
-      alert("Ocorreu um erro");
-      console.log(err);
+      alert("Ocorreu um erro ao alterar senha");
+
       return err;
     });
   return updateUserPassword;

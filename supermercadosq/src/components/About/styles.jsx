@@ -12,7 +12,7 @@ export const AboutSection = styled.section`
   margin-top: 5%;
   padding: 0rem 10rem;
 
-  @media (max-width: 1300px){
+  @media (max-width: 1300px) {
     height: 100vh;
   }
 
@@ -43,18 +43,18 @@ export const AboutParagraph = styled.p`
 `;
 
 export const LoadingScreen = styled.div`
-  height: ${props => props.size ? props.size : '100px'};
-  width: ${props => props.size ? props.size : '100px'};
-  background: ${props => props.background ? props.background : '#9cdd6e'};
+  height: ${(props) => (props.size ? props.size : "100px")};
+  width: ${(props) => (props.size ? props.size : "100px")};
+  background: ${(props) => (props.background ? props.background : "#9cdd6e")};
   border-radius: 50%;
-  left: ${props => props.left ? props.left : '100px'};
-  top: ${props => props.top ? props.top : '100px'};
+  left: ${(props) => (props.left ? props.left : "100px")};
+  top: ${(props) => (props.top ? props.top : "100px")};
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  &::before{
-    content:  '${props => props.text ? props.text : ''}';
+
+  &::before {
+    content: "${(props) => (props.text ? props.text : "")}";
     text-align: center;
     color: #fff;
     font-size: 2rem;
@@ -64,8 +64,8 @@ export const LoadingScreen = styled.div`
     width: 70px;
     height: 70px;
     padding: 2rem;
-    
-    &::before{
+
+    &::before {
       font-size: 1rem;
     }
   }
@@ -79,7 +79,7 @@ export const LoadingContainer = styled.div`
   justify-content: space-between;
   gap: 1rem;
 
-  @media (max-width: 1300px){
+  @media (max-width: 1300px) {
     margin: 10vh 5vw 2vh 5vw;
   }
 
@@ -95,8 +95,7 @@ export const LoadingContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
   }
-
-`
+`;
 
 export const ContainerBody = styled.div`
   height: 600px;
@@ -110,51 +109,50 @@ export const ContainerBody = styled.div`
     margin-top: 6rem;
   }
 
-  & input.position:nth-of-type(1){
+  & input.position:nth-of-type(1) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
   }
 
-  & input.position:nth-of-type(1):checked ~ div#carousel{
+  & input.position:nth-of-type(1):checked ~ div#carousel {
     --position: 1;
   }
 
-  & input.position:nth-of-type(2){
+  & input.position:nth-of-type(2) {
     grid-column: 3 / 4;
     grid-row: 2 / 3;
   }
 
-  & input.position:nth-of-type(2):checked ~ div#carousel{
+  & input.position:nth-of-type(2):checked ~ div#carousel {
     --position: 2;
   }
 
-  & input.position:nth-of-type(3){
+  & input.position:nth-of-type(3) {
     grid-column: 4 /5;
     grid-row: 2 / 3;
   }
 
-  & input.position:nth-of-type(3):checked ~ div#carousel{
+  & input.position:nth-of-type(3):checked ~ div#carousel {
     --position: 3;
   }
 
-  & input.position:nth-of-type(4){
+  & input.position:nth-of-type(4) {
     grid-column: 5 / 6;
     grid-row: 2 / 3;
   }
 
-  & input.position:nth-of-type(4):checked ~ div#carousel{
+  & input.position:nth-of-type(4):checked ~ div#carousel {
     --position: 4;
   }
 
-  & input.position:nth-of-type(5){
+  & input.position:nth-of-type(5) {
     grid-column: 6 / 7;
     grid-row: 2 / 3;
   }
 
-  & input.position:nth-of-type(5):checked ~ div#carousel{
+  & input.position:nth-of-type(5):checked ~ div#carousel {
     --position: 5;
   }
-
 `;
 
 export const CardBody = styled.div`
@@ -185,7 +183,7 @@ export const CardBody = styled.div`
 
     border-radius: 6px;
     padding: 0rem 2rem;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -196,29 +194,27 @@ export const CardBody = styled.div`
     }
   }
 
-    .item:nth-of-type(1){
-      --offset: 1;
-      background-color: #F59E1D;
-    }
-    .item:nth-of-type(2){
-      --offset: 2;
-      background-color: #76BC44;
-    }
-    .item:nth-of-type(3){
-      --offset: 3;
-      background-color: #3EBCD3;
-    }
-    .item:nth-of-type(4){
-      --offset: 4;
-      background-color: #f66a69;
-    }
-    .item:nth-of-type(5){
-      --offset: 5;
-      background-color: #9cdbe7;
-    }
-
+  .item:nth-of-type(1) {
+    --offset: 1;
+    background-color: #f59e1d;
+  }
+  .item:nth-of-type(2) {
+    --offset: 2;
+    background-color: #76bc44;
+  }
+  .item:nth-of-type(3) {
+    --offset: 3;
+    background-color: #3ebcd3;
+  }
+  .item:nth-of-type(4) {
+    --offset: 4;
+    background-color: #f66a69;
+  }
+  .item:nth-of-type(5) {
+    --offset: 5;
+    background-color: #9cdbe7;
+  }
 `;
-
 
 export const AboutContainer = styled.div`
   display: grid;
@@ -235,7 +231,7 @@ export const AboutContainer = styled.div`
     display: flex;
     flex-direction: column;
   }
-`
+`;
 export const AboutDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -248,7 +244,7 @@ export const AboutDiv = styled.div`
     padding: 0rem 2.5rem;
     text-align: center;
   }
-`
+`;
 
 export const Img = styled.img`
   width: 90%;
@@ -260,13 +256,13 @@ export const Img = styled.img`
 `;
 
 export const Button = styled.button`
-  background-color: #3EBCD3;
+  background-color: #3ebcd3;
   padding: 1rem 1rem;
   margin: 3rem auto;
   border: none;
   border-radius: 6px;
 
-  color: #FFF;
+  color: #fff;
   font-size: 2.5rem;
   transition: all 200ms ease-in-out;
 
@@ -274,12 +270,12 @@ export const Button = styled.button`
 
   a {
     text-decoration: none;
-    color: #FFF;
+    color: #fff;
   }
 
   &:hover {
     opacity: 0.9;
-    box-shadow: 0 0 10px #3EBCD3;
+    box-shadow: 0 0 10px #3ebcd3;
   }
 
   @media (max-width: 1500px) {
@@ -293,14 +289,12 @@ export const Button = styled.button`
     padding: 4vh 17vw;
   }
 
-  @media (max-width: 1060px){
+  @media (max-width: 1060px) {
     padding: 4vh 15vw;
   }
 
-  @media (max-width: 800px){
+  @media (max-width: 800px) {
     padding: 4vh 36vw;
     margin-left: 4vw;
   }
-
-
-`
+`;

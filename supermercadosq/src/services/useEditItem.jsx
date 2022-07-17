@@ -12,25 +12,20 @@ export const useEditItem = async (data) => {
   if (data.typeItem === "produto") {
     const produto = await api
       .put(`/comments/${data.id_item}`, bodyParams, config)
-      .then((resp) => {
-        //console.log("produto editado");
-      })
+      .then((resp) => {})
       .catch((err) => {
         alert("Ocorreu um Erro");
-        console.log(err);
       });
 
     return produto;
   }
-  console.log(bodyParams)
+
   const comments = await api
-    .put(`/comments/${data.id_item}`, {mensagem: data.mensagem}, config)
-    .then((resp) => {
-      //console.log("comentario editado");
-    })
+    .put(`/comments/${data.id_item}`, { mensagem: data.mensagem }, config)
+    .then((resp) => {})
     .catch((err) => {
       alert("Ocorreu um Erro");
-      console.log(err);
+
       return new Error("Falha ao Editar");
     });
 

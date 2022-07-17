@@ -8,7 +8,7 @@ const LabelMessage = ({
   mensagem,
   id_item,
   typeHandleCreate,
-  color
+  color,
 }) => {
   const [messageComment, setMessageComment] = useState("");
 
@@ -24,31 +24,30 @@ const LabelMessage = ({
 
   return (
     <>
-      {userLevel()
-        ? (
-          <LabelComment color={color}>
-            <input
-              type="text"
-              placeholder="Adicionar Comentário"
-              value={messageComment}
-              onChange={(e) => setMessageComment(e.target.value)}
-              onKeyPress={(e) => {
-                if (messageComment.length > 3 && e.key === "Enter") {
-                  return typeHandleCreate
-                    ? handleCreateComment()
-                    : handleEditComment();
-                }
-              }}
-            />
-            <button
-              onClick={typeHandleCreate ? handleCreateComment : handleEditComment}
-            >
-              <AiOutlineSend />
-            </button>
-          </LabelComment>
-        )
-        : (<></>)
-      }
+      {userLevel() ? (
+        <LabelComment color={color}>
+          <input
+            type="text"
+            placeholder="Adicionar Comentário"
+            value={messageComment}
+            onChange={(e) => setMessageComment(e.target.value)}
+            onKeyPress={(e) => {
+              if (messageComment.length > 3 && e.key === "Enter") {
+                return typeHandleCreate
+                  ? handleCreateComment()
+                  : handleEditComment();
+              }
+            }}
+          />
+          <button
+            onClick={typeHandleCreate ? handleCreateComment : handleEditComment}
+          >
+            <AiOutlineSend />
+          </button>
+        </LabelComment>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

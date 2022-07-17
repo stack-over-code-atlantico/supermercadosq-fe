@@ -80,7 +80,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
       ? setHasError(true)
       : setHasError(false);
   }, [hasErrorDoc, hasErrorName, hasErrorCellphone]);
-  console.log(urlSrc);
+
   return (
     <Form>
       <h1>Estamos quase lá</h1>

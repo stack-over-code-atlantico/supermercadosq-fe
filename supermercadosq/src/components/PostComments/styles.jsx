@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PostCommentsContainer = styled.div`
   margin: 10vh 10vh;
@@ -14,11 +14,10 @@ export const PostCommentsContainer = styled.div`
     font-weight: 400;
   }
 
-  hr{
+  hr {
     width: auto;
-    color: #E9E6E6;
+    color: #e9e6e6;
   }
-
 
   @media (max-width: 1300px) {
     padding-left: 14vw;
@@ -29,8 +28,7 @@ export const PostCommentsContainer = styled.div`
     padding-left: 24vw;
     font-size: 0.6rem;
   }
-
-`
+`;
 
 export const Container = styled.main`
   display: flex;
@@ -65,7 +63,7 @@ export const Card = styled.div`
     width: 10px;
   }
   ::-webkit-scrollbar-thumb {
-   background-color: var(--color-blue-light);
+    background-color: var(--color-blue-light);
   }
 
   &:hover {

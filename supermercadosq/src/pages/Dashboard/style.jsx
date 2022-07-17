@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const DivDashboard = styled.div`
   display: flex;
@@ -34,7 +34,6 @@ export const BackButton = styled.button`
     position: absolute;
     left: 40px;
     z-index: 1;
-
   }
 
   &:hover {

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Div = styled.div`
   width: 100%;
@@ -6,7 +6,6 @@ export const Div = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
 `;
-
 
 export const TableDiv = styled.div`
   height: 100vh;
@@ -46,16 +45,17 @@ export const TH = styled.th`
   z-index: 2;
 
   &:nth-child(3) {
-      max-width: 50%;
+    max-width: 50%;
   }
 
-  &:nth-child(4), &:nth-child(5){
+  &:nth-child(4),
+  &:nth-child(5) {
     width: 100px;
   }
 `;
 
 export const TD = styled.td`
-    padding: 5px;
+  padding: 5px;
 `;
 
 export const Action = styled.button`
@@ -65,10 +65,12 @@ export const Action = styled.button`
   background: transparent;
   border: transparent;
   border-radius: 50%;
-  color: #692ABA;
-  transform: rotate(${props => props.rotatex ? (props.rotatex) + 'deg' : '0'});
+  color: #692aba;
+  transform: rotate(
+    ${(props) => (props.rotatex ? props.rotatex + "deg" : "0")}
+  );
 
-  &:hover{
+  &:hover {
     > * {
       transform: scale(1.4);
       transition: 300ms ease all;

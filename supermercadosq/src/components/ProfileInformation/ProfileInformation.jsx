@@ -28,7 +28,6 @@ const ProfileInformationForm = ({ data }) => {
   const handleEditUser = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    // formData.append("cpf_cnpj", dataUser.cpfCnpj);
     formData.append("nome", dataUser.nome);
     formData.append("nome_social", dataUser.nomeSocial);
     formData.append("file", fileImg);
@@ -282,7 +281,6 @@ const ProfileInformationForm = ({ data }) => {
                   ? "Listar Alergia"
                   : dataUser.restricaoAlimentar
               }
-              // value={dataUser.restricaoAlimentar}
               onChange={handleGetAlergic}
             />
           </label>

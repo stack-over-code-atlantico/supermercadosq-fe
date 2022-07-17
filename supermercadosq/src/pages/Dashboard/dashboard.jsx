@@ -39,7 +39,6 @@ function Dashboard() {
       .then(() => setUpdatedTable(!updatedTable))
       .catch((err) => {
         alert('Houve um erro com a requisição.');
-        console.log(err.message);
       });
       return updated;
   });
