@@ -1,16 +1,15 @@
-import React from 'react'
-import { DivFooter } from './styles'
-import { CopyrightText } from './styles'
-import { MenuFooter } from './styles'
-import { SocialMediaIcon } from './styles'
-import { PoweredText } from './styles'
-
-import Github from '../../assets/icons/github.svg'
-import Facebook from '../../assets/icons/facebook.svg'
-import Instagram from '../../assets/icons/instagram.svg'
-import Twitter from '../../assets/icons/twitter.svg'
-import LinkedIn from '../../assets/icons/linkedin.svg'
-import Youtube from '../../assets/icons/youtube.svg'
+import React from 'react';
+import { DivFooter } from './styles';
+import { CopyrightText } from './styles';
+import { MenuFooter } from './styles';
+import { SocialMediaIcon } from './styles';
+import { PoweredText } from './styles';
+import Github from "../../assets/icons/github.svg";
+import Facebook from "../../assets/icons/facebook.svg";
+import Instagram from "../../assets/icons/instagram.svg";
+import Twitter from "../../assets/icons/twitter.svg";
+import LinkedIn from "../../assets/icons/linkedin.svg";
+import Youtube from "../../assets/icons/youtube.svg";
 
 export function Footer() {
     return (

@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { NavLink as Link } from 'react-router-dom';
+import styled from "styled-components";
+import { NavLink as Link } from "react-router-dom";
 
 export const Nav = styled.nav`
-  background: var(--color-blue-light); 
-  height: 7vh; /* 6rem */
+  background: var(--color-blue-light);
+  height: 7vh;
   display: flex;
   justify-content: center;
-  padding: 0.5rem calc((100vw - 600px)/2);
+  padding: 0.5rem calc((100vw - 600px) / 2);
   z-index: 10;
   position: fixed;
 `;
@@ -24,11 +24,11 @@ export const NavMenu = styled.ul`
   list-style: none;
   margin-right: 8vw;
 
-  @media screen and (max-width: 850px){
+  @media screen and (max-width: 850px) {
     margin-right: 5vw;
   }
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -56,7 +56,6 @@ export const NavItem = styled.li`
     border-bottom: 2px solid var(--color-white);
   }
 
-
   @media screen and (max-width: 768px) {
     width: 100%;
     &:hover {
@@ -74,7 +73,6 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
- 
   @media screen and (max-width: 768px) {
     text-align: center;
     padding: 2rem;
@@ -95,5 +93,3 @@ export const NavLogout = styled.button`
   position: relative;
   height: 100%;
 `;
-
-

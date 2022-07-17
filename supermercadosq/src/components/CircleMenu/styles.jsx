@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const CircleDiv = styled.div`
-
   margin: 0 auto;
   position: absolute;
   z-index: 1;
@@ -13,11 +12,9 @@ export const CircleDiv = styled.div`
   justify-content: center;
   align-items: center;
 
-
   input#toggle:checked ~ #show-menu .btn .menuBtn {
     transform: translateY(-30px);
     opacity: 0;
-
   }
 
   input#toggle:checked ~ #show-menu .btn .closeBtn {
@@ -26,28 +23,28 @@ export const CircleDiv = styled.div`
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(2) {
-    top:-200px;
-    opacity:1;
+    top: -200px;
+    opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #9CDD6E;
+    background-color: #9cdd6e;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(3) {
-    top:-140px;
-    left:140px;
-    opacity:1;
+    top: -140px;
+    left: 140px;
+    opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #DAC50A;
+    background-color: #dac50a;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(4) {
-    left:200px;
-    opacity:1;
+    left: 200px;
+    opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #D3B273;
+    background-color: #d3b273;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(5) {
@@ -56,7 +53,7 @@ export const CircleDiv = styled.div`
     opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #C87C53;
+    background-color: #c87c53;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(6) {
@@ -64,7 +61,7 @@ export const CircleDiv = styled.div`
     opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #F59E1D;
+    background-color: #f59e1d;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(7) {
@@ -73,15 +70,15 @@ export const CircleDiv = styled.div`
     opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #8CEAFC;
+    background-color: #8ceafc;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(8) {
-    left:-200px;
-    opacity:1;
+    left: -200px;
+    opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #F66A69;
+    background-color: #f66a69;
   }
 
   input#toggle:checked ~ #show-menu .btn:nth-child(9) {
@@ -90,7 +87,7 @@ export const CircleDiv = styled.div`
     opacity: 1;
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    background-color: #3EBCD3;
+    background-color: #3ebcd3;
   }
 
   img {
@@ -103,7 +100,6 @@ export const CircleDiv = styled.div`
     box-shadow: 0 7px 5px #999;
     position: absolute;
     transition: 500ms ease;
-
 
     &:hover {
       bottom: -155px;
@@ -125,7 +121,6 @@ export const ImageButton = styled.img`
   top: 30px;
   border-radius: 50%;
   transform: scale(3.5);
-
 `;
 
 export const MainButton = styled.div`
@@ -134,7 +129,7 @@ export const MainButton = styled.div`
   top: -30px;
   width: 150px;
   height: 150px;
-  background-color: #FFF;
+  background-color: #fff;
 
   @media (max-width: 1366px) {
     width: 60px;
@@ -145,7 +140,7 @@ export const MainButton = styled.div`
     left: 0;
 
     &:hover {
-      background-color: #9CDD6E;
+      background-color: #9cdd6e;
     }
   }
 `;
@@ -187,17 +182,17 @@ export const CircleButton = styled.button`
   position: absolute;
   overflow: hidden;
   cursor: pointer;
-  background: #ECEFF1;
+  background: #eceff1;
   font-size: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-          justify-content: center;
-          -webkit-box-align: center;
-          -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 
   @media (max-width: 1366px) {
     position: static;
@@ -205,25 +200,60 @@ export const CircleButton = styled.button`
     height: 60px;
   }
 
-  -webkit-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
-  transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   opacity: 0;
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   z-index: -2;
-  -webkit-transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
-  transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+  -webkit-transition: all 0.6s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+  transition: all 0.6s cubic-bezier(0.87, -0.41, 0.19, 1.44);
 
-  &:nth-child(2) {top:0px;-webkit-transition-delay: 0s;transition-delay: 0s}
-  &:nth-child(3) {top:0px;left:0px;-webkit-transition-delay: 0.1s;transition-delay: 0.1s}
-  &:nth-child(4) {left:0px;-webkit-transition-delay: 0.2s;;transition-delay: 0.2s}
-  &:nth-child(5) {top:0px;left:0px;-webkit-transition-delay: 0.3s;transition-delay: 0.3s}
-  &:nth-child(6) {top:0px;-webkit-transition-delay: 0.4s;transition-delay: 0.4s}
-  &:nth-child(7) {top:0px;left:0px;-webkit-transition-delay: 0.5s;transition-delay: 0.5s}
-  &:nth-child(8) {left:0px;-webkit-transition-delay: 0.6s;transition-delay: 0.6s}
-  &:nth-child(9) {top:0px;left:0px;-webkit-transition-delay: 0.7s;transition-delay: 0.7s}
-
+  &:nth-child(2) {
+    top: 0px;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+  }
+  &:nth-child(3) {
+    top: 0px;
+    left: 0px;
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+  }
+  &:nth-child(4) {
+    left: 0px;
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+  }
+  &:nth-child(5) {
+    top: 0px;
+    left: 0px;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+  }
+  &:nth-child(6) {
+    top: 0px;
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+  }
+  &:nth-child(7) {
+    top: 0px;
+    left: 0px;
+    -webkit-transition-delay: 0.5s;
+    transition-delay: 0.5s;
+  }
+  &:nth-child(8) {
+    left: 0px;
+    -webkit-transition-delay: 0.6s;
+    transition-delay: 0.6s;
+  }
+  &:nth-child(9) {
+    top: 0px;
+    left: 0px;
+    -webkit-transition-delay: 0.7s;
+    transition-delay: 0.7s;
+  }
 `;
 
 export const IconsMenu = styled.img`
@@ -231,21 +261,20 @@ export const IconsMenu = styled.img`
   height: 50px;
 
   @media (max-width: 1366px) {
-      transform: scale(0.8);
-    }
+    transform: scale(0.8);
+  }
 `;
 
 export const LabelMenu = styled.label`
   @media (max-width: 1366px) {
-      position: absolute;
-      top: -140px;
-      right: -180px;
-    }
+    position: absolute;
+    top: -140px;
+    right: -180px;
+  }
 `;
 
 export const CircleLink = styled.a``;
 
-export const ToggleMenu = styled.input.attrs({ type: 'checkbox' })`
+export const ToggleMenu = styled.input.attrs({ type: "checkbox" })`
   display: none;
 `;
-

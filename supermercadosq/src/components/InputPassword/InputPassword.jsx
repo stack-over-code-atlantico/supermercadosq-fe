@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import { Image, FieldPassword } from './styles'
-import Imagevisible from '../../assets/icons/visible.png'
-import ImagenotVisible from '../../assets/icons/notVisible.png'
+import React, { useState } from "react";
+import { Image, FieldPassword } from "./styles";
+import Imagevisible from "../../assets/icons/visible.png";
+import ImagenotVisible from "../../assets/icons/notVisible.png";
 
 const InputPassword = ({ setValue, value }) => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleVisible = () => {
-    setIsVisible(!isVisible)
-  }
+    setIsVisible(!isVisible);
+  };
   return (
     <FieldPassword>
       <input
-        type={isVisible ? 'text' : 'password'}
+        type={isVisible ? "text" : "password"}
         name="password"
         id="password"
         value={value}
-        onChange={e => setValue(e.target.value)}
-        onKeyPress={e => {
-          if (e.key === 'Enter') {
-            e.preventDefault()
-            return document.getElementById('password').focus()
+        onChange={(e) => setValue(e.target.value)}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            return document.getElementById("password").focus();
           }
         }}
       />
@@ -30,7 +30,7 @@ const InputPassword = ({ setValue, value }) => {
         onClick={handleVisible}
       />
     </FieldPassword>
-  )
-}
+  );
+};
 
-export default InputPassword
+export default InputPassword;

@@ -1,36 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { NavbarProducts } from '../../components/NavbarProducts';
-import { Footer } from '../../components/Footer';
-import { NavbarAdm } from '../../components/NavbarProductsAdm';
-import { CardsContainer } from '../../components/CardsContainer';
-import { FilterButton } from '../../components/FilterButton';
+import { NavbarProducts } from "../../components/NavbarProducts";
+import { Footer } from "../../components/Footer";
+import { NavbarAdm } from "../../components/NavbarProductsAdm";
+import { CardsContainer } from "../../components/CardsContainer";
+import { FilterButton } from "../../components/FilterButton";
 import { AddProductCard } from "../../components/AddProductCard";
 import { ProductCard } from "../../components/ProductCard";
-import { AddProductCardRegister } from '../../components/AddProductCardRegister';
+import { AddProductCardRegister } from "../../components/AddProductCardRegister";
 
-import { getAllProducts, postProductPerAllergy } from '../../services/useProducts';
-import { userLevel } from '../../services/useAuth';
+import {
+  getAllProducts,
+  postProductPerAllergy,
+} from "../../services/useProducts";
+import { userLevel } from "../../services/useAuth";
 
-import cardDefault from '../../assets/images/Card-default.png';
-import ellipsis from '../../assets/icons/ellipsis.png';
-import seafoodIcon from '../../assets/icons/seafood.png';
-import milkIcon from '../../assets/icons/milk.png';
-import fishIcon from '../../assets/icons/fish.png';
-import mustardIcon from '../../assets/icons/mustard.png';
-import peanutIcon from '../../assets/icons/peanut.png';
-import eggIcon from '../../assets/icons/egg.png';
-import wheatIcon from '../../assets/icons/wheat.png';
-import sojaIcon from '../../assets/icons/soja.png';
-import questionIcon from '../../assets/icons/question.svg';
-import ProductPagination from '../../components/ProductPagination';
-import ProductRegister from '../../components/ProductRegister';
-import ProductDetails from '../../components/ProductDetails/ProductDetails';
+import cardDefault from "../../assets/images/Card-default.png";
+import ellipsis from "../../assets/icons/ellipsis.png";
+import seafoodIcon from "../../assets/icons/seafood.png";
+import milkIcon from "../../assets/icons/milk.png";
+import fishIcon from "../../assets/icons/fish.png";
+import mustardIcon from "../../assets/icons/mustard.png";
+import peanutIcon from "../../assets/icons/peanut.png";
+import eggIcon from "../../assets/icons/egg.png";
+import wheatIcon from "../../assets/icons/wheat.png";
+import sojaIcon from "../../assets/icons/soja.png";
+import questionIcon from "../../assets/icons/question.svg";
+import ProductPagination from "../../components/ProductPagination";
+import ProductRegister from "../../components/ProductRegister";
+import ProductDetails from "../../components/ProductDetails/ProductDetails";
+import { ListProducts, ListProductsCards } from "./styles";
 
 export function Product() {
   const [openModal, setOpenModal] = useState(false);
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [id, setId] = useState();
@@ -38,46 +42,46 @@ export function Product() {
   const [page, setPage] = useState(0);
   const [allergy, setAllergy] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalAllergy, setTotalAllergy] = useState([]);
 
   useEffect(() => {
     if (allergy.length === 0) {
-      (async function() {
+      (async function () {
         const resp = await getAllProducts(page);
-        setPosts(resp.data)
+        setPosts(resp.data);
       })();
     } else {
-      (async function() {
-        await postProductPerAllergy(allergy.join(','), page)
-          .then((resp) => setPosts(resp.data));
-      })()
+      (async function () {
+        await postProductPerAllergy(allergy.join(","), page).then((resp) =>
+          setPosts(resp.data)
+        );
+      })();
     }
   }, [page, allergy]);
 
   useEffect(() => {
-    (async function() {
+    (async function () {
       setLevel(userLevel());
       const resp = await getAllProducts();
-      setTotalPages(Math.ceil((resp.data.length - 8) / 9))
+      setTotalPages(Math.ceil((resp.data.length - 8) / 9));
     })();
   }, []);
 
-  console.log(typeof userLevel() === 'undefined')
-
   const handlePage = (e) => {
     setPage(e.target.value - 1);
-  }
+  };
 
   const handlePrevPage = () => {
     setPage(page > 0 ? parseInt(page) - 1 : 0);
-  }
+  };
 
   const handleNextPage = () => {
     setPage(page < totalPages ? parseInt(page) + 1 : totalPages);
-  }
+  };
 
   const handleRegisterProduct = () => {
     setOpenModal(!openModal);
-  }
+  };
 
   const closeModal = () => {
     setOpenModal(false);
@@ -85,14 +89,13 @@ export function Product() {
 
   const handleProductDetails = async (id, url) => {
     setLoading(true);
-    setImage(url)
-    setTimeout(async() => {
+    setImage(url);
+    setTimeout(async () => {
       setOpenDetailsModal(true);
       setId(id);
 
       setLoading(false);
     }, 1000);
-
   };
 
   const closeProductDetails = () => {
@@ -100,37 +103,45 @@ export function Product() {
   };
 
   const handleColor = (allergy) => {
-    const alergias = allergy ? allergy.split(',') : '';
-    if (alergias[0] === 'ovo') return '#DAC50A';
-    if (alergias[0] === 'trigo') return '#D3B273';
-    if (alergias[0] === 'amendoim') return '#C87C53';
-    if (alergias[0] === 'mostarda') return '#F59E1D';
-    if (alergias[0] === 'soja') return '#108a57';
-    if (alergias[0] === 'peixe') return '#9CDBE7';
-    if (alergias[0] === 'crustaceos') return '#F66A69';
-    if (alergias[0] === 'lactose') return '#3EBCD3';
-    return '#3EBCD3';
+    const alergias = allergy ? allergy.split(",") : "";
+    const total = [];
+    if (Array.isArray(alergias) && alergias.length > 0) {
+      for (let values of alergias) {
+        if (values === "ovo") total.push("#DAC50A");
+        if (values === "gluten") total.push("#D3B273");
+        if (values === "amendoim") total.push("#C87C53");
+        if (values === "mostarda") total.push("#F59E1D");
+        if (values === "soja") total.push("#108a57");
+        if (values === "peixe") total.push("#9CDBE7");
+        if (values === "crustaceos") total.push("#F66A69");
+        if (values === "lactose") total.push("#3EBCD3");
+      }
+      return total;
+    }
+    return "#BABABA";
   };
 
   const handleIcon = (allergy) => {
-    const alergias = allergy ? allergy.split(',') : '';
-    if (alergias?.length > 1) {
-      return ellipsis;
-    } else {
-      if (alergias[0] === 'ovo') return eggIcon;
-      if (alergias[0] === 'trigo') return wheatIcon;
-      if (alergias[0] === 'amendoim') return peanutIcon;
-      if (alergias[0] === 'mostarda') return mustardIcon;
-      if (alergias[0] === 'soja') return sojaIcon;
-      if (alergias[0] === 'peixe') return fishIcon;
-      if (alergias[0] === 'crustaceos') return seafoodIcon;
-      if (alergias[0] === 'lactose') return milkIcon;
+    const alergias = allergy ? allergy.split(",") : "";
+    const total = [];
+    if (Array.isArray(alergias) && alergias.length > 0) {
+      for (let values of alergias) {
+        if (values === "ovo") total.push(eggIcon);
+        if (values === "gluten") total.push(wheatIcon);
+        if (values === "amendoim") total.push(peanutIcon);
+        if (values === "mostarda") total.push(mustardIcon);
+        if (values === "soja") total.push(sojaIcon);
+        if (values === "peixe") total.push(fishIcon);
+        if (values === "crustaceos") total.push(seafoodIcon);
+        if (values === "lactose") total.push(milkIcon);
+      }
+      return total;
     }
     return questionIcon;
   };
 
   return (
-    <>
+    <ListProducts>
       <ProductRegister openModal={openModal} setOpenModal={closeModal} />
       <ProductDetails
         loading={loading}
@@ -140,26 +151,35 @@ export function Product() {
         image={image}
       />
       {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
-      <FilterButton
-        alergias={allergy}
-        setAlergias={setAllergy}
-        fish={fishIcon}
-        egg={eggIcon}
-        milk={milkIcon}
-        mustard={mustardIcon}
-        seafood={seafoodIcon}
-        peanut={peanutIcon}
-        wheat={wheatIcon}
-        soja={sojaIcon}
-      />
-      <CardsContainer>
-        {page === 0 && userLevel() ? <AddProductCard onClick={handleRegisterProduct}/> : <AddProductCardRegister />}
-        {posts?.map((product) => (
+      <ListProductsCards>
+        <FilterButton
+          alergias={allergy}
+          setAlergias={setAllergy}
+          fish={fishIcon}
+          egg={eggIcon}
+          milk={milkIcon}
+          mustard={mustardIcon}
+          seafood={seafoodIcon}
+          peanut={peanutIcon}
+          wheat={wheatIcon}
+          soja={sojaIcon}
+        />
+        <CardsContainer>
+          {page === 0 && userLevel() ? (
+            <AddProductCard onClick={handleRegisterProduct} />
+          ) : page > 0 ? (
+            <></>
+          ) : (
+            <AddProductCardRegister />
+          )}
+          {posts?.map((product) => (
             <ProductCard
-              setOpenModal={(e) => handleProductDetails(product.id_produto, product.imagem)}
+              setOpenModal={(e) =>
+                handleProductDetails(product.id_produto, product.imagem)
+              }
               onClick={(e) => setId(product.id_produto)}
               key={product.id_produto}
-              nome={product.nome || 'Nome não informado'}
+              nome={product.nome || "Nome não informado"}
               imagem={product.imagem ? product.imagem : cardDefault}
               color={handleColor(product.alergia)}
               descricao={product.descricao || "Sem descrição"}
@@ -167,17 +187,17 @@ export function Product() {
               dataPostagem={product.data_postagem}
               icon={handleIcon(product.alergia)}
             />
-            )
-          )}
-      </CardsContainer>
+          ))}
+        </CardsContainer>
+      </ListProductsCards>
       <ProductPagination
         changePage={handlePage}
         prevPage={handlePrevPage}
         nextPage={handleNextPage}
       />
       <Footer />
-    </>
-  )
+    </ListProducts>
+  );
 }
 
 export default Product;

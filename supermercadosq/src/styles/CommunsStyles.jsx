@@ -1,13 +1,17 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Form = styled.div`
-  padding: 7% 12.5%;
+  padding: 3% 5%;
   position: relative;
 
   p {
     font-size: 12px;
     color: var(--color-gray);
-    padding-bottom: 16px;
+    padding-bottom: 25px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
   }
 
   form {
@@ -54,12 +58,12 @@ export const Form = styled.div`
       }
     }
   }
-`
+`;
 
 export const Actions = styled.div`
-  width: 80%;
+  width: 92%;
   position: absolute;
-  top: 89%;
+  top: 87%;
   left: auto;
   display: flex;
   flex-direction: row;
@@ -82,8 +86,12 @@ export const Actions = styled.div`
     font-weight: 700;
     width: 40%;
     height: 39px;
+    transition: filter 0.4s ease-out;
+    &:hover {
+      filter: brightness(0.8);
+    }
   }
-`
+`;
 
 export const BackHome = styled.div`
   width: 100%;
@@ -104,9 +112,9 @@ export const BackHome = styled.div`
     font-weight: 700;
     color: var(--color-blue-light);
   }
-`
+`;
 export const LabelError = styled.label`
   margin-top: 5px;
   font-size: 14px;
   color: red;
-`
+`;

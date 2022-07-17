@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { useState, useEffect } from "react";
-import Cookie from 'js-cookie';
-import { isAfter } from 'date-fns';
+import Cookie from "js-cookie";
+import { isAfter } from "date-fns";
 import {
   Nav,
   NavLink,
@@ -9,11 +9,11 @@ import {
   NavMenu,
   NavbarContainer,
   NavLogout,
-} from '../../components/NavBarSecond/styles.jsx';
+} from "../../components/NavBarSecond/styles.jsx";
 import { FaBars, FaTimes } from "react-icons/fa";
-import lockLogo from '../../assets/icons/lock.svg';
+import lockLogo from "../../assets/icons/lock.svg";
 import { IconContext } from "react-icons/lib";
-import { logout } from '../../services/useAuth';
+import { logout } from "../../services/useAuth";
 
 export default function Navbar() {
   const [click, setClick] = useState(false);
@@ -24,7 +24,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     logout();
-  }
+  };
 
   return (
     <>
@@ -33,31 +33,40 @@ export default function Navbar() {
           <NavbarContainer>
             <NavMenu onClick={handleClick} click={click}>
               <NavItem>
-                <NavLink to='/' activestyle={{ borderBottom: '2px solid var(--color-white)' }} onClick={closeMobileMenu}>
+                <NavLink
+                  to="/"
+                  activestyle={{ borderBottom: "2px solid var(--color-white)" }}
+                  onClick={closeMobileMenu}
+                >
                   Home
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/profile' onClick={closeMobileMenu} className="border-bottom">
+                <NavLink
+                  to="/profile"
+                  onClick={closeMobileMenu}
+                  className="border-bottom"
+                >
                   Perfil
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/postagens' activestyle={{ borderBottom: '2px solid var(--color-white)' }} onClick={closeMobileMenu}>
-                  Postagens
+                <NavLink
+                  to="/product"
+                  activestyle={{ borderBottom: "2px solid var(--color-white)" }}
+                  onClick={closeMobileMenu}
+                >
+                  Produtos
                 </NavLink>
               </NavItem>
-              
-              <NavItem >
-                <NavLogout onClick={handleLogout} >
-                  Sair
-                </NavLogout>
+
+              <NavItem>
+                <NavLogout onClick={handleLogout}>Sair</NavLogout>
               </NavItem>
             </NavMenu>
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>
-    </> 
+    </>
   );
 }
-

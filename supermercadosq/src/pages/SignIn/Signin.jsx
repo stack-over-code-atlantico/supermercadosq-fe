@@ -10,11 +10,10 @@ import { SignupContext } from "../../Provider/Signup.provider.jsx";
 import { useCreateUser } from "../../services/useUser";
 
 const SignIn = () => {
-  //states to hange components
   const [info, setInfo] = useState(false);
   const [address, setAddress] = useState(false);
   const [email, setEmail] = useState(true);
-
+  const [fileSignup, setFileSignup] = useState(null);
   const [emailSignup, setEmailSignup] = useState("");
   const [passwordSignup, setPasswordSignup] = useState("");
   const [nameSignup, setNameSignup] = useState("");
@@ -45,28 +44,32 @@ const SignIn = () => {
     setEmail(false);
     setAddress(false);
   };
-  const handleFinish = (e) => {
+  const handleFinish = async (e) => {
     e.preventDefault();
-    const createNewUser = useCreateUser({
-      nome: nameSignup,
-      cpf_cnpj: docSignup,
-      email: emailSignup,
-      senha: passwordSignup,
-      nivel: typeUserSignup,
-      nome_social: null,
-      telefone: cellNumberSignup,
-      restricao_alimenticia: null,
-      cep: cepSignup,
-      logradouro: streetSignup,
-      numero: addressNumberSignup,
-      bairro: neighborhoodSignup,
-      cidade: citySignup,
-      estado: stateAddressSignup
-    });
+    const formData = new FormData();
+    formData.append("nome", nameSignup);
+    formData.append("cpf_cnpj", docSignup);
+    formData.append("email", emailSignup);
+    formData.append("senha", passwordSignup);
+    formData.append("nivel", typeUserSignup);
+    formData.append("file", fileSignup);
+    formData.append("telefone", cellNumberSignup);
+    formData.append("cep", cepSignup);
+    formData.append("logradouro", streetSignup);
+    formData.append("numero", addressNumberSignup);
+    formData.append("bairro", neighborhoodSignup);
+    formData.append("cidade", citySignup);
+    formData.append("estado", stateAddressSignup);
+
+    const createNewUser = await useCreateUser(formData)
+      .then((res) => {
+        alert("Usuario Cadastrado com Sucesso");
+        window.location.reload();
+      })
+      .catch((err) => alert("Ocorreu um Erro ao Cadastrar Usuário"));
     return createNewUser;
   };
 
-  //change components
   const handleScreens = () => {
     if (address)
       return <AdressCheck nextStep={handleFinish} prevStep={handleInfos} />;
@@ -100,6 +103,8 @@ const SignIn = () => {
         setNameSignup,
         docSignup,
         setDocSignup,
+        fileSignup,
+        setFileSignup,
         cellNumberSignup,
         setCellNumberSignup,
         typeUserSignup,

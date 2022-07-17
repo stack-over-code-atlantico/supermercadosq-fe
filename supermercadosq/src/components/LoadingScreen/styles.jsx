@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const circleAnimation = keyframes`
   0% {
@@ -31,7 +31,6 @@ const shadowAnimation = keyframes`
   }
 `;
 
-
 export const Div = styled.div`
   height: 100vh;
   width: 100%;
@@ -42,11 +41,11 @@ export const Div = styled.div`
 `;
 
 export const LoadingWrapper = styled.div`
-  width:200px;
-  height:60px;
+  width: 200px;
+  height: 60px;
   position: absolute;
-  left:50%;
-  top:50%;
+  left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
 `;
 
@@ -58,23 +57,23 @@ export const LoadingSection = styled.section`
 `;
 
 export const LoadingScreen = styled.div`
-  height:40px;
-  width:40px;
-  background: ${props => props.background ? props.background : '#9cdd6e' };
+  height: 40px;
+  width: 40px;
+  background: ${(props) => (props.background ? props.background : "#9cdd6e")};
   border-radius: 50%;
   position: absolute;
   transform-origin: 50%;
-  animation: ${circleAnimation} .5s alternate infinite ease;
+  animation: ${circleAnimation} 0.5s alternate infinite ease;
 
   &:nth-child(2) {
     left: 40%;
-    animation-delay: .2s;
+    animation-delay: 0.2s;
   }
 
   &:nth-child(3) {
-    left:auto;
+    left: auto;
     right: 0;
-    animation-delay: .3s;
+    animation-delay: 0.3s;
   }
 `;
 
@@ -88,17 +87,16 @@ export const LoadingShadow = styled.div`
   transform-origin: 50%;
   z-index: -1;
   filter: blur(1px);
-  animation: ${shadowAnimation} .5s alternate infinite ease;
+  animation: ${shadowAnimation} 0.5s alternate infinite ease;
 
   &:nth-child(4) {
     left: 40%;
-    animation-delay: .2s;
+    animation-delay: 0.2s;
   }
 
   &:nth-child(5) {
-    left:auto;
+    left: auto;
     right: 0;
-    animation-delay: .3s;
+    animation-delay: 0.3s;
   }
 `;
-

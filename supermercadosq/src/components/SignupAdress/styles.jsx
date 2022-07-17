@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const LoginContainer = styled.div`
   display: grid;
@@ -7,7 +7,7 @@ export const LoginContainer = styled.div`
   height: 450px;
   background-color: white;
   border-radius: 5px;
-`
+`;
 
 export const Form = styled.div`
   padding: 7% 12.5%;
@@ -42,7 +42,7 @@ export const Form = styled.div`
       font-weight: 600;
     }
   }
-`
+`;
 export const Actions = styled.div`
   padding-top: 44px;
   display: flex;
@@ -66,7 +66,7 @@ export const Actions = styled.div`
     width: 40%;
     height: 39px;
   }
-`
+`;
 export const StreetInput = styled.div`
   display: grid;
   grid-template-columns: 0.8fr 0.2fr;
@@ -74,7 +74,7 @@ export const StreetInput = styled.div`
   input {
     width: 100%;
   }
-`
+`;
 export const CityInput = styled.div`
   display: grid;
   grid-template-columns: 0.5fr 0.3fr 0.2fr;
@@ -82,4 +82,4 @@ export const CityInput = styled.div`
   input {
     width: 100%;
   }
-`
+`;

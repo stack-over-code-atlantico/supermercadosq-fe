@@ -13,7 +13,7 @@ export const getLastCommentsById = async (data) => {
   const lastComments = await api
     .get(`/comments/Historic/${data}`, config)
     .catch((err) => {
-      console.log(err.message);
+      alert("Não foi possível gerar histórico");
     });
-    return lastComments
+  return lastComments;
 };

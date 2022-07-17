@@ -19,7 +19,6 @@ const EmailCheck = ({ nextStep }) => {
   };
   const [validateInput, setValidateInput] = useState(requiredCases);
 
-  //validadeErrorPassowrd
   useEffect(() => {
     if (validateInput.case && validateInput.length && validateInput.number) {
       setHasErrorPassword(false);
@@ -28,7 +27,6 @@ const EmailCheck = ({ nextStep }) => {
     }
   }, [validateInput]);
 
-  //disabled button
   useEffect(() => {
     if (!hasErrorEmail && !hasErrorPassword) {
       setHasError(false);

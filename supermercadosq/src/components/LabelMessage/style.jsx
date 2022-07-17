@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const LabelComment = styled.span`
   display: flex;
@@ -17,13 +17,13 @@ export const LabelComment = styled.span`
     align-items: center;
     width: 30px;
     height: 30px;
-    background-color: ${props=>props.color};
+    background-color: ${(props) => props.color};
     color: white;
     border: none;
     &:hover {
-      color: ${props=>props.color};
+      color: ${(props) => props.color};
       background-color: white;
-      border: 1px solid ${props=>props.color};
+      border: 1px solid ${(props) => props.color};
     }
   }
 `;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PasswordSecurityContainer = styled.div`
   margin: 10vh 10vh;
@@ -16,9 +16,9 @@ export const PasswordSecurityContainer = styled.div`
     color: var(--color-blue-light);
   }
 
-  hr{
+  hr {
     width: 450px;
-    background: #E9E6E6;
+    background: #e9e6e6;
   }
 
   form {
@@ -41,37 +41,35 @@ export const PasswordSecurityContainer = styled.div`
       }
     }
 
-
     #button {
-        margin-top: 4vh;
-        padding: 1rem 1.5rem;
-        background-color: var(--color-blue-light);
-        color: var(--color-white);
-        border: none;
-        border-radius: 5px;
-        font-size: 95%;
+      margin-top: 4vh;
+      padding: 1rem 1.5rem;
+      background-color: var(--color-blue-light);
+      color: var(--color-white);
+      border: none;
+      border-radius: 5px;
+      font-size: 95%;
 
-        &:hover {
-          cursor: pointer;
-        }
+      &:hover {
+        cursor: pointer;
       }
+    }
   }
 
   @media (max-width: 1300px) {
     padding-left: 15vw;
 
-    hr{
+    hr {
       width: 300px;
     }
 
-    form{
-
+    form {
       div {
         margin-left: 205px;
       }
 
-      label{
-          input {
+      label {
+        input {
           border: 1px solid var(--color-blue-light);
           height: 30px;
           width: 300px;
@@ -84,17 +82,16 @@ export const PasswordSecurityContainer = styled.div`
     padding-left: 24vw;
     font-size: 0.8rem;
 
-    hr{
+    hr {
       width: 250px;
     }
 
-    form{
-
+    form {
       div {
         margin-left: 165px;
       }
 
-      label{
+      label {
         input {
           border: 1px solid var(--color-blue-light);
           height: 30px;
@@ -103,5 +100,4 @@ export const PasswordSecurityContainer = styled.div`
       }
     }
   }
-
-`
+`;

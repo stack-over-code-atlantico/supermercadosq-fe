@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
   :root {
@@ -30,7 +30,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
-  //Tamanho de font 16px (para desktop) por padrão
   html{
     scroll-behavior: smooth;
     @media(max-width: 1080px){
@@ -70,17 +69,21 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-track {
-    background: #d1d1d1;
+    background: var(--color-white);
     border-radius: 13px;
+
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #692aba;
+
+    background-color: var(--color-gray);
     border-radius: 13px;
-    border: 3px solid #d1d1d1;
+    border: 3px solid var(--color-white);
   }
+
   * {
     scrollbar-width: auto;
-    scrollbar-color: #692aba #d1d1d1;
+    scrollbar-color: var(--color-gray-light) var(--color-white);
   }
-`
+
+`;

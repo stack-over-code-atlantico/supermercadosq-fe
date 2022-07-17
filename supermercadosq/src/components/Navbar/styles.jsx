@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import { NavLink as Link } from 'react-router-dom';
-
+import styled from "styled-components";
+import { NavLink as Link } from "react-router-dom";
 
 export const Nav = styled.nav`
   background: transparent;
-  height: 7vh; /* 6rem */
+  height: 7vh;
   display: flex;
   justify-content: space-evenly;
   padding: 0.5rem;
@@ -15,7 +14,6 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: pink; */
   width: 53%;
   margin: 0 0 0 5%;
   height: 6vh;
@@ -30,7 +28,7 @@ export const NavLogo = styled(Link)`
   position: relative;
   left: 0rem;
 
-  h1{
+  h1 {
     word-wrap: nowrap;
   }
 
@@ -39,11 +37,10 @@ export const NavLogo = styled(Link)`
     left: -3rem;
   }
 
-  @media screen and (max-width: 900px){
+  @media screen and (max-width: 900px) {
     position: relative;
     left: -0.5rem;
   }
-
 `;
 
 export const NavLink = styled(Link)`
@@ -116,7 +113,7 @@ export const NavMenu = styled.ul`
   list-style: none;
   margin-right: 8vw;
 
-  @media screen and (max-width: 1366px){
+  @media screen and (max-width: 1366px) {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -166,13 +163,12 @@ export const NavInf = styled.div`
   position: relative;
   top: -2px;
   left: 20px;
-  @media screen and (max-width: 1366px){
+  @media screen and (max-width: 1366px) {
     display: none;
   }
 `;
 
-export const NavLabel = styled.div`
-`;
+export const NavLabel = styled.div``;
 
 export const NavLogout = styled.button`
   background-color: transparent;
