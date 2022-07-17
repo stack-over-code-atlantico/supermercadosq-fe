@@ -69,17 +69,21 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-track {
-    background: #d1d1d1;
+    background: var(--color-white);
     border-radius: 13px;
+
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #692aba;
+
+    background-color: var(--color-gray);
     border-radius: 13px;
-    border: 3px solid #d1d1d1;
+    border: 3px solid var(--color-white);
   }
+
   * {
     scrollbar-width: auto;
-    scrollbar-color: #692aba #d1d1d1;
+    scrollbar-color: var(--color-gray-light) var(--color-white);
   }
+
 `;
