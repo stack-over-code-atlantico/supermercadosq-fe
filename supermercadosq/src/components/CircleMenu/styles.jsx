@@ -131,11 +131,11 @@ export const MainButton = styled.div`
   height: 150px;
   background-color: #fff;
 
-  @media (max-width: 1366px) {
+  @media (max-width: 800px) {
     width: 60px;
     height: 60px;
     position: relative;
-    background-color: #eee;
+    background-color: #fff;
     top: -65px;
     left: 0;
 
@@ -153,7 +153,7 @@ export const MenuButton = styled.a`
   align-items: center;
   transition: all 0.3s ease;
 
-  @media (max-width: 1366px) {
+  @media (max-width: 800px) {
     display: none;
   }
 `;
@@ -165,7 +165,7 @@ export const CloseButton = styled.a`
   margin-top: 10;
   position: relative;
 
-  @media (max-width: 1366px) {
+  @media (max-width: 800px) {
     img {
       position: absolute;
       top: -7px;
@@ -194,7 +194,7 @@ export const CircleButton = styled.button`
   -ms-flex-align: center;
   align-items: center;
 
-  @media (max-width: 1366px) {
+  @media (max-width: 800px) {
     position: static;
     width: 60px;
     height: 60px;
@@ -260,20 +260,27 @@ export const IconsMenu = styled.img`
   width: 50px;
   height: 50px;
 
-  @media (max-width: 1366px) {
-    transform: scale(0.8);
-  }
+  @media (max-width: 800px) {
+      transform: scale(0.8);
+    }
 `;
 
 export const LabelMenu = styled.label`
-  @media (max-width: 1366px) {
+  @media (max-width: 800px) {
     position: absolute;
     top: -140px;
     right: -180px;
   }
+  
+  @media (max-width: 1366px) {
+    position: absolute;
+    transform: scale(0.8);
+    right: -100px;
+  }
 `;
 
-export const CircleLink = styled.a``;
+export const CircleLink = styled.a`
+`;
 
 export const ToggleMenu = styled.input.attrs({ type: "checkbox" })`
   display: none;

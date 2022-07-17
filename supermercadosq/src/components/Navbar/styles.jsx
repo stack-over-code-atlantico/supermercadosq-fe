@@ -95,7 +95,7 @@ export const MobileIcon = styled.div`
   display: none;
   color: var(--color-black);
 
-  @media screen and (max-width: 1366px) {
+  @media screen and (max-width: 800px) {
     display: block;
     position: absolute;
     top: -20px;
@@ -113,7 +113,7 @@ export const NavMenu = styled.ul`
   list-style: none;
   margin-right: 8vw;
 
-  @media screen and (max-width: 1366px) {
+  @media screen and (max-width: 800px){
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -130,10 +130,10 @@ export const NavMenu = styled.ul`
 export const NavItem = styled.li`
   height: auto;
   border-bottom: 2px solid transparent;
-
   position: relative;
+  left: 5rem;
 
-  @media screen and (max-width: 1340px) {
+  @media screen and (max-width: 800px) {
     height: auto;
     border-bottom: 2px solid transparent;
     position: relative;
@@ -160,15 +160,23 @@ export const NavItem = styled.li`
 export const NavInf = styled.div`
   display: flex;
   align-items: center;
+  justify-content: baseline;
   position: relative;
   top: -2px;
-  left: 20px;
-  @media screen and (max-width: 1366px) {
+  left: 8rem;
+  
+  @media screen and (max-width: 800px){
     display: none;
   }
 `;
 
-export const NavLabel = styled.div``;
+export const NavLabel = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  position: relative;
+  top: 4px;
+`;
 
 export const NavLogout = styled.button`
   background-color: transparent;
@@ -180,6 +188,6 @@ export const NavLogout = styled.button`
 export const NavIcon = styled.img`
   width: 20px;
   position: relative;
-  top: 5px;
+  top: 0px;
   left: 5px;
 `;
