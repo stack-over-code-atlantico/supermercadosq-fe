@@ -121,7 +121,7 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
             <ImageUpload>
               <label>
                 {urlSrc ? (
-                  <img style={{ width: "70%" }} src={urlSrc} />
+                  <img style={{ width: "45%" }} src={urlSrc} />
                 ) : (
                   <BsCardImage style={{ width: "500px", fontSize: "200%" }} />
                 )}
