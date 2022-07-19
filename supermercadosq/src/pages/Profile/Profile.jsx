@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Routes from "../../Routes/AppRoutes";
-import NavBar from "../../components/NavBarSecond/NavBarSecond";
 import SideBar from "../../components/SideBar/SideBar";
 import ProfileInformationForm from "../../components/ProfileInformation/ProfileInformation";
 import PasswordSecurityForm from "../../components/PasswordSecurity/PasswordSecurity";
 import PostCommentsForm from "../../components/PostComments/PostComments";
-import { dataUser, getUserById } from "../../services/useUser";
-import { userLevel } from "../../services/useAuth";
+import { getUserById } from "../../services/useUser";
+import useAuth from "../../services/useAuth";
+import { NavbarProducts } from "../../components/NavbarProducts";
+import { NavbarAdm } from "../../components/NavbarProductsAdm";
+import Dialog from "../../components/Dialog";
 
 export default function Profile() {
+  const {userLevel, open, setOpen, logout} = useAuth();
   const [isProfile, setIsProfile] = useState(true);
   const [isPassword, setIsPassword] = useState(false);
   const [isPosts, setIsPosts] = useState(false);
@@ -18,6 +20,18 @@ export default function Profile() {
     getUserById(id_usuario).then((resp) => {
       setData(resp.data);
     });
+  }
+
+  const handleLogoutModal = () => {
+    setOpen(true);
+  }
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  const handleLogoutClose = () => {
+    setOpen(false);
   }
 
   useEffect(() => {
@@ -44,10 +58,16 @@ export default function Profile() {
   };
 
   return (
+    <>
+    {open ? (<Dialog color="#3EBCD3" close={handleLogoutClose} logout={handleLogout} />) : (<></>)}
+    {
+      userLevel() && (userLevel().nivel !== 'ADMINISTRADOR' || userLevel().nivel !== 'administrador')
+        ? (<NavbarProducts logoff={handleLogoutModal} />)
+        : (<NavbarAdm logoff={handleLogoutModal} />)
+    }
     <div
       style={{ width: "100%", display: "grid", gridTemplateColumns: "20% 70%" }}
     >
-      <NavBar />
       <SideBar
         handleProfile={handleProfileScreen}
         handlePassword={handlePasswordScreen}
@@ -57,5 +77,6 @@ export default function Profile() {
       {isPassword ? <PasswordSecurityForm /> : <></>}
       {isPosts ? <PostCommentsForm data={data} /> : <></>}
     </div>
+    </>
   );
 }

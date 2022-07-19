@@ -1,11 +1,11 @@
 import React from "react";
 import { DivNavbarProducts, NavbarList, ProductListItem } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { userLevel } from "../../services/useAuth";
 import { NavbarAdm } from "../NavbarProductsAdm";
-import { logout } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
 
-export function NavbarProducts() {
+export function NavbarProducts({logoff}) {
+  const {userLevel} = useAuth();
   let navigate = useNavigate();
 
   const handleNavigateHome = () => {
@@ -18,16 +18,13 @@ export function NavbarProducts() {
     navigate("/product", { replace: true });
   };
 
-  const logOff = () => {
-    logout();
-    handleNavigateHome();
-  };
-
   return (
     <>
       {userLevel() &&
       (userLevel().nivel === "CLIENTE" ||
-        userLevel().nivel === "FORNECEDOR") ? (
+      userLevel().nivel === "cliente" ||
+      userLevel().nivel === "fornecedor" ||
+      userLevel().nivel === "FORNECEDOR") ? (
         <DivNavbarProducts>
           <NavbarList>
             <ProductListItem>
@@ -46,14 +43,15 @@ export function NavbarProducts() {
               </a>
             </ProductListItem>
             <ProductListItem>
-              <a href="" onClick={logOff}>
+              <a onClick={logoff}>
                 Sair
               </a>
             </ProductListItem>
           </NavbarList>
         </DivNavbarProducts>
-      ) : (
-        <DivNavbarProducts>
+      ) : ( userLevel() && (userLevel().nivel === "ADMINISTRADOR" || userLevel().nivel === "administrador")
+        ? (<NavbarAdm logoff={logoff}/>)
+        : (<DivNavbarProducts>
           <NavbarList>
             <ProductListItem>
               <a href="" onClick={handleNavigateHome}>
@@ -66,12 +64,8 @@ export function NavbarProducts() {
               </a>
             </ProductListItem>
           </NavbarList>
-        </DivNavbarProducts>
-      )}
-      {userLevel() && userLevel().nivel === "ADMINISTRADOR" ? (
-        <NavbarAdm />
-      ) : (
-        <></>
+        </DivNavbarProducts>)
+
       )}
     </>
   );

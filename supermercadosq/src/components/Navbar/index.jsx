@@ -19,18 +19,28 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import lockLogo from "../../assets/icons/lock.svg";
 import logoutIcon from "../../assets/icons/logout-icon.png";
 import { IconContext } from "react-icons/lib";
-import { logout } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
+import Dialog from "../../components/Dialog";
 
 export function Navbar() {
+  const {logout, open, setOpen} = useAuth();
   const [click, setClick] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
+  const handleLogoutModal = () => {
+    setOpen(true);
+  }
+
   const handleLogout = () => {
     logout();
   };
+
+  const handleLogoutClose = () => {
+    setOpen(false);
+  }
 
   useEffect(() => {
     if (Cookie.get("token") && Cookie.get("expires")) {
@@ -44,6 +54,7 @@ export function Navbar() {
   return (
     <>
       <IconContext.Provider value={{ color: "var(--color-black)" }}>
+        {open ? (<Dialog logout={handleLogout} close={handleLogoutClose} />) : (<></>)}
         <Nav>
           <NavbarContainer>
             <NavLogo to="/" onClick={closeMobileMenu}>
@@ -80,7 +91,7 @@ export function Navbar() {
                 </>
               )}
               {isLogged ? (
-                <NavLogout onClick={handleLogout}>
+                <NavLogout onClick={handleLogoutModal}>
                   Sair
                   <NavIcon src={logoutIcon} />
                 </NavLogout>

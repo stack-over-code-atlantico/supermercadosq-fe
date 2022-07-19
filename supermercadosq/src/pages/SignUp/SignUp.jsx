@@ -9,7 +9,7 @@ import { BackHome } from "../../styles/CommunsStyles.jsx";
 import { SignupContext } from "../../Provider/Signup.provider.jsx";
 import { useCreateUser } from "../../services/useUser";
 
-const SignIn = () => {
+const SignUp = () => {
   const [info, setInfo] = useState(false);
   const [address, setAddress] = useState(false);
   const [email, setEmail] = useState(true);
@@ -142,4 +142,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

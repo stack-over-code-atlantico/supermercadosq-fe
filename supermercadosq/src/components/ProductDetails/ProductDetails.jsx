@@ -11,7 +11,7 @@ import wheatIcon from "../../assets/icons/wheat.png";
 import UserComment from "../../components/UserComment/UserComment";
 import { Loading } from "../../components/LoadingScreen/index";
 import { MdOutlineArrowBack } from "react-icons/md";
-import { getOneProduct } from "../../services/useProductOne";
+import { getOneProduct } from "../../services/useProducts";
 import { useEffect, useState } from "react";
 import {
   Comment,
@@ -25,10 +25,10 @@ import {
   PostComment,
   PostContainer,
 } from "./styles";
-import { getCommentsByProduct } from "../../services/useCommentByProduct";
+import { getCommentsByProduct } from "../../services/useComments";
 import { useDeleteItem } from "../../services/useDeleteItem";
 import { useNewReport } from "../../services/useNewReport";
-import { useCreateComment } from "../../services/useCreateComment";
+import { useCreateComment } from "../../services/useComments";
 import { useEditItem } from "../../services/useEditItem";
 import LabelMessage from "../../components/LabelMessage";
 import ProductEdit from "../ProductEdit";

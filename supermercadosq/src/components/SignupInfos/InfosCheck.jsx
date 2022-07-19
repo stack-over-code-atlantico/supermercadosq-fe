@@ -89,7 +89,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
         <InfoForm>
           <div className="leftSignUp">
             <label>
-              <span>Nome</span>
+              <span>Nome*</span>
               <input
                 type="text"
                 name="name"
@@ -106,7 +106,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               />
             </label>
             <label>
-              <span>CPF/CNPJ</span>
+              <span>CPF/CNPJ*</span>
               <input
                 type="number"
                 name="userDocument"
@@ -121,9 +121,12 @@ const InfosCheck = ({ nextStep, prevStep }) => {
                   }
                 }}
               />
+              {hasErrorDoc && docSignup !== '' ? (<span style={{color: '#E94F47', margin: '-10px 0 10px 0'}}>
+              {typeUserSignup === "fornecedor" ? ('CNPJ inválido') : ('CPF inválido')}
+              </span>) : (<></>)}
             </label>
             <label>
-              <span>Telefone/celular</span>
+              <span>Telefone/celular*</span>
               <input
                 type="number"
                 name="cellphone"
@@ -138,6 +141,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
                   }
                 }}
               />
+              {hasErrorCellphone && cellNumberSignup !== '' ? (<span style={{color: '#E94F47', margin: '-10px 0 10px 0'}}>Número de telefone inválido</span>) : (<></>)}
             </label>
           </div>
           <div className="rightSignUp">
@@ -166,7 +170,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               </label>
             </ProfileAvatar>
             <CheckType>
-              <span id="TypeUser">Sou: </span>
+              <span id="TypeUser">Sou*: </span>
               <label className="checkBox">
                 <input
                   type="radio"

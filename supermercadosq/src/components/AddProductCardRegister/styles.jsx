@@ -6,7 +6,7 @@ export const DivButtonAddProductCard = styled.button`
   align-items: center;
   width: 0;
   border: none;
-
+  position: relative;
   transition: 500ms all ease;
   font-size: 12px;
   h1 {
@@ -41,9 +41,9 @@ export const DivAddProductCard = styled.div`
   flex-flow: column;
   cursor: pointer;
   width: 240px;
-  height: 320px;
+  height: 325px;
   position: relative;
-  margin-top: 30px;
+  top: -5px;
 
   background-color: var(--color-gray-light);
 

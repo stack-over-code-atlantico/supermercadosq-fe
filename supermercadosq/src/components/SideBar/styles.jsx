@@ -8,7 +8,7 @@ export const SideBarContainer = styled.div`
   flex-direction: column;
   width: 280px;
   height: auto;
-  margin-top: 7vh;
+  margin-top: -4vh;
   border-right: 1px solid #959695;
 
   @media (max-width: 1300px) {

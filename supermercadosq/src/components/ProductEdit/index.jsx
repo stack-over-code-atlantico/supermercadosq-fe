@@ -41,11 +41,13 @@ const ProductEdit = ({
     setUrlSrc(URL.createObjectURL(event.target.files[0]));
   };
 
+  console.log(data.alergia.slice(0,0).length)
+
   const handleEditProd = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("nome", data.nome);
-    formData.append("alergia", data.alergia);
+    formData.append("alergia", data.alergia ? (data.alergia) : (data.alergia.slice(0,0)));
     formData.append("descricao", data.descricao);
     formData.append("ingredientes", data.ingredientes);
     formData.append("file", file);
@@ -75,6 +77,7 @@ const ProductEdit = ({
     { value: "ovo", label: "Ovo" },
     { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
+    { value: '', label: "Sem alergias"}
   ];
 
   const customStyles = {
@@ -128,6 +131,10 @@ const ProductEdit = ({
     </div>
   );
 
+
+  console.log(alergicOptions)
+
+
   return (
     <>
       {visibledUpdateProduct ? (
@@ -144,7 +151,7 @@ const ProductEdit = ({
           </ImageUpload>
           <RegisterForm onSubmit={handleEditProd}>
             <TitleDiv className="titleDiv">
-              <h2>Crie sua postagem sobre algum produto</h2>
+              <h2>Edite sua postagem</h2>
               <CloseButton onClick={handleVisibledUpdateProduct}>X</CloseButton>
             </TitleDiv>
             <div className="ProductInitial">

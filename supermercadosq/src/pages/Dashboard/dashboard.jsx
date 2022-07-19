@@ -109,7 +109,7 @@ function Dashboard() {
             ) : (<></>)
         }
         <CardsDashboard width='25%' title='Denúncias' minWidth="420px">
-          <ChartDashboard value={[comments ? comments.length : 0, posts ? posts.length : 0]} />
+          <ChartDashboard value={[quantity.comments ? quantity.comments : 0, quantity.posts ? quantity.posts : 0]} />
         </CardsDashboard>
 
         {
@@ -137,7 +137,7 @@ function Dashboard() {
           <CardsDashboard  minWidth='420px' height='300px' title=''>
             <TableDashboard data={reports ? reports.flat() : null} update={handleUpdate}/>
           </CardsDashboard>
-        <Link to="/">
+        <Link to="/product">
           <BackButton className={'fill'}> {"<"} </BackButton>
         </Link>
         </TableDiv>

@@ -8,7 +8,7 @@ import {
   ImageAvatar,
 } from "./styles";
 import { FiAlertTriangle, FiEdit2, FiTrash } from "react-icons/fi";
-import { userLevel } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
 
 const UserComment = ({
   id_item,
@@ -25,7 +25,7 @@ const UserComment = ({
   if (dataPublicacao) {
     dataPublicacao = dataPublicacao.slice(0, 10).split("-").reverse().join("/");
   }
-
+  const {userLevel} = useAuth();
   const [displayIconDenounce, setDisplayIconDenounce] = useState("inline");
   const [displayIconDelete, setDisplayIconDelete] = useState("inline");
   const [displayIconEdit, setDisplayIconEdit] = useState("inline");

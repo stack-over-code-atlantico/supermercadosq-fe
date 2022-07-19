@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 
 export const Nav = styled.nav`
-  background: transparent;
-  height: 7vh;
+  height: 10vh;
+  width: 100%;
   display: flex;
+  position: absolute;
   justify-content: space-evenly;
   padding: 0.5rem;
   z-index: 10;
@@ -16,7 +17,6 @@ export const NavbarContainer = styled.div`
   align-items: center;
   width: 53%;
   margin: 0 0 0 5%;
-  height: 6vh;
 `;
 
 export const NavLogo = styled(Link)`
@@ -162,9 +162,9 @@ export const NavInf = styled.div`
   align-items: center;
   justify-content: baseline;
   position: relative;
-  top: -2px;
+  top: -5px;
   left: 8rem;
-  
+
   @media screen and (max-width: 800px){
     display: none;
   }

@@ -4,9 +4,10 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { useEffect } from "react";
 import { useEditUser } from "../../services/useUser";
 import Select from "react-select";
-import { userLevel } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
 
 const ProfileInformationForm = ({ data }) => {
+  const {userLevel} = useAuth();
   const [urlImg, setUrlImg] = useState(null);
   const [fileImg, setFileImg] = useState(null);
   const [dataUser, setDataUser] = useState({

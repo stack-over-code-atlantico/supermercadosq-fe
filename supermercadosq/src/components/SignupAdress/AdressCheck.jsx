@@ -108,6 +108,7 @@ const AdressCheck = ({ nextStep, prevStep }) => {
               }
             }}
           />
+          {hasErrorCep && cepSignup !== '' ? (<span style={{color: '#E94F47', margin: '-10px 0 10px 0'}}>Cep inválido</span>) : (<></>)}
         </label>
         <StreetInput>
           <label>

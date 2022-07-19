@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Select from "react-select";
+import makeAnimated from 'react-select/animated';
 import { BsCardImage } from "react-icons/bs";
 import {
   Buttons,
@@ -60,6 +61,7 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
     { value: "ovo", label: "Ovo" },
     { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
+    { value: null, label: "Sem alergias"}
   ];
 
   const customStyles = {
@@ -121,7 +123,7 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
             <ImageUpload>
               <label>
                 {urlSrc ? (
-                  <img style={{ width: "45%" }} src={urlSrc} />
+                  <img style={{ width: "45%"  }} src={urlSrc} />
                 ) : (
                   <BsCardImage style={{ width: "500px", fontSize: "200%" }} />
                 )}

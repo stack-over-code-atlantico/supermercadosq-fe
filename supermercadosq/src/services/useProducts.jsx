@@ -39,6 +39,24 @@ export const createOneProduct = async (data) => {
   return products;
 };
 
+export const createProduct = async (data) => {
+  const bodyParams = {
+    nome: data.nome,
+    alergia: data.alergia,
+    descricao: data.descricao,
+    ingredientes: data.ingredientes,
+    imagem: null,
+  };
+  const productPost = await api
+    .post("/products", bodyParams, config)
+    .then((response) => {
+      alert("Produto cadastrado");
+    })
+    .catch((err) => {
+      alert("Produto não cadastrado");
+    });
+};
+
 export const editOneProduct = async (data, id_produto) => {
   const products = await api.put(`/products/${id_produto}`, data, {
     headers: {
@@ -55,3 +73,9 @@ export const searchProduct = async (name, page) => {
   });
   return products;
 };
+
+export const getOneProduct = async (id_produto) => {
+  const products = await api.get(`/products/${id_produto}`);
+  return products;
+};
+
