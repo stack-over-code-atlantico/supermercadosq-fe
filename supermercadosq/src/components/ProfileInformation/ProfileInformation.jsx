@@ -33,7 +33,7 @@ const ProfileInformationForm = ({ data }) => {
     formData.append("file", fileImg);
     formData.append("email", dataUser.email);
     formData.append("telefone", dataUser.telefone);
-    formData.append("restricao_alimentincia", dataUser.restricaoAlimentar);
+    formData.append("restricao_alimenticia", dataUser.restricaoAlimentar);
     formData.append("cep", dataUser.cep);
     formData.append("logradouro", dataUser.logradouro);
     formData.append("numero", dataUser.numeroEndereco);
@@ -42,7 +42,6 @@ const ProfileInformationForm = ({ data }) => {
     formData.append("estado", dataUser.estado);
 
     const editedUser = await useEditUser(userLevel().cpf_cnpj, formData);
-
     return editedUser;
   };
 
@@ -79,7 +78,7 @@ const ProfileInformationForm = ({ data }) => {
     }),
     control: (provided) => ({
       ...provided,
-      width: 280,
+      width: "100%",
       height: 40,
       border: "1.5px solid var(--color-blue-light)",
       borderRadius: 0,
@@ -93,11 +92,11 @@ const ProfileInformationForm = ({ data }) => {
       ...provided,
       fontWeight: 200,
       fontSize: "13px",
-      paddingTop: 6,
+      paddingBottom: 6,
     }),
     valueContainer: (provided) => ({
       ...provided,
-      maxWidth: "90%",
+      maxWidth: "100%",
       whiteSpace: "nowrap",
       overflow: "hidden",
       display: "initial",
@@ -159,7 +158,7 @@ const ProfileInformationForm = ({ data }) => {
       }));
     }
   }, [data]);
-
+  console.log(dataUser);
   useEffect(() => {
     handleCep();
   }, [dataUser.cep]);
@@ -274,11 +273,10 @@ const ProfileInformationForm = ({ data }) => {
               hideSelectedOptions={false}
               styles={customStyles}
               isSearchable={false}
-              maxMenuWidth={100}
               placeholder={
-                dataUser.restricaoAlimentar === null
-                  ? "Listar Alergia"
-                  : dataUser.restricaoAlimentar
+                dataUser.restricaoAlimentar
+                  ? dataUser.restricaoAlimentar
+                  : "Listar Alergia"
               }
               onChange={handleGetAlergic}
             />

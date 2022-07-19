@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ContainerAvatar = styled.div`
   justify-content: center;
   align-items: center;
-  margin-right: 45%;
 
   label {
     display: flex;
@@ -85,7 +84,8 @@ export const ProfileInformationContainer = styled.div`
 
       input {
         border: 1px solid var(--color-blue-light);
-        height: 30px;
+        height: 40px;
+        padding-left: 8px;
 
         .width {
           width: 450px;
@@ -98,7 +98,6 @@ export const ProfileInformationContainer = styled.div`
     }
     div {
       display: flex;
-      width: 100%;
 
       :last-child {
         justify-content: end;

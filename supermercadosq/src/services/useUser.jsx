@@ -27,6 +27,7 @@ export const useCreateUser = async (data) => {
 };
 
 export const useEditUser = async (cpf_cnpj, data) => {
+
   const updateUser = await api
     .put(`/users/${cpf_cnpj}`, data, {
       headers: {
