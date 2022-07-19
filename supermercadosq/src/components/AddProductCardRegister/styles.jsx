@@ -43,7 +43,7 @@ export const DivAddProductCard = styled.div`
   width: 240px;
   height: 320px;
   position: relative;
-  margin-top: -30px;
+  margin-top: 30px;
 
   background-color: var(--color-gray-light);
 

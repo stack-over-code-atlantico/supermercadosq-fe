@@ -8,9 +8,8 @@ position: relative;
   height: fit-content;
   position: absolute;
   top: -30px;
-
-
 }
+
 .input-search{
   height: 50px;
   width: 50px;
