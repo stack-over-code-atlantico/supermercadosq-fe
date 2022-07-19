@@ -179,7 +179,6 @@ const ProfileInformationForm = ({ data }) => {
                     width: "6rem",
                     height: "6rem",
                     borderRadius: "50%",
-                    cursor: "pointer",
                   }}
                 />
               ) : (

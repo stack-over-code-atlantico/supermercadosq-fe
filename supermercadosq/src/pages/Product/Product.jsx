@@ -8,10 +8,12 @@ import { FilterButton } from "../../components/FilterButton";
 import { AddProductCard } from "../../components/AddProductCard";
 import { ProductCard } from "../../components/ProductCard";
 import { AddProductCardRegister } from "../../components/AddProductCardRegister";
+import { Search } from "../../components/Search";
 
 import {
   getAllProducts,
   postProductPerAllergy,
+  searchProduct,
 } from "../../services/useProducts";
 import { userLevel } from "../../services/useAuth";
 
@@ -42,12 +44,12 @@ export function Product() {
   const [page, setPage] = useState(0);
   const [allergy, setAllergy] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
-  const [totalAllergy, setTotalAllergy] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     if (allergy.length === 0) {
       (async function () {
-        const resp = await getAllProducts(page);
+        const resp = await searchProduct(search, page);
         setPosts(resp.data);
       })();
     } else {
@@ -140,6 +142,24 @@ export function Product() {
     return questionIcon;
   };
 
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+    if (search) {
+      const products = await searchProduct(search, page).then((resp) => setPosts(resp.data));
+      return products;
+    } else {
+      setPage(0);
+      const products = await searchProduct(search, page).then((resp) => setPosts(resp.data));
+      return products;
+    }
+
+  };
+  console.log(page);
+
+  const handleChangeInput = (e) => {
+    setSearch(e.target.value);
+  }
+
   return (
     <ListProducts>
       <ProductRegister openModal={openModal} setOpenModal={closeModal} />
@@ -152,6 +172,11 @@ export function Product() {
       />
       {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
       <ListProductsCards>
+        <Search
+          handleSubmit={handleSubmitForm}
+          handleChange={handleChangeInput}
+          name={search}
+        />
         <FilterButton
           alergias={allergy}
           setAlergias={setAllergy}
