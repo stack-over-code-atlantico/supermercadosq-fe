@@ -137,7 +137,7 @@ export const MainButton = styled.div`
     position: relative;
     background-color: #fff;
     top: -65px;
-    left: 0;
+    left: 0px;
 
     &:hover {
       background-color: #9cdd6e;
@@ -268,14 +268,15 @@ export const IconsMenu = styled.img`
 export const LabelMenu = styled.label`
   @media (max-width: 800px) {
     position: absolute;
-    top: -140px;
-    right: -180px;
+    top: -120px;
+    right: -150px;
   }
-  
+
   @media (max-width: 1366px) {
     position: absolute;
     transform: scale(0.8);
-    right: -100px;
+
+    right: -180px;
   }
 `;
 

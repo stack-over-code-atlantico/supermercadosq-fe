@@ -7,7 +7,7 @@ export const DivFilter = styled.div`
 
   position: absolute;
   z-index: 2;
-  margin: 1rem 1rem 1rem 22rem;
+  margin: 1rem 1rem 1rem 19rem;
 
   a {
     text-decoration: none;

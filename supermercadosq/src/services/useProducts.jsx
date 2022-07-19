@@ -48,3 +48,10 @@ export const editOneProduct = async (data, id_produto) => {
   });
   return products;
 };
+
+export const searchProduct = async (name, page) => {
+  const products = await api.post(`/products/search/${page}`, {
+    nome: name
+  });
+  return products;
+};

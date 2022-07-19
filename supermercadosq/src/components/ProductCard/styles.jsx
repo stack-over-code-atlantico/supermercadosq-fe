@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DivProductCardFace = styled.div`
   width: 240px;
   height: 380px;
-  margin-top: 35px;
+  margin-top: 50px;
   perspective: 800px;
 
   .front {
