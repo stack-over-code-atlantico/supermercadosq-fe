@@ -9,16 +9,16 @@ import { AddProductCard } from "../../components/AddProductCard";
 import { ProductCard } from "../../components/ProductCard";
 import { AddProductCardRegister } from "../../components/AddProductCardRegister";
 import { Search } from "../../components/Search";
+import Dialog from '../../components/Dialog';
 
 import {
   getAllProducts,
   postProductPerAllergy,
   searchProduct,
 } from "../../services/useProducts";
-import { userLevel } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
 
 import cardDefault from "../../assets/images/Card-default.png";
-import ellipsis from "../../assets/icons/ellipsis.png";
 import seafoodIcon from "../../assets/icons/seafood.png";
 import milkIcon from "../../assets/icons/milk.png";
 import fishIcon from "../../assets/icons/fish.png";
@@ -34,6 +34,7 @@ import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import { ListProducts, ListProductsCards } from "./styles";
 
 export function Product() {
+  const {userLevel, open, setOpen, logout} = useAuth();
   const [openModal, setOpenModal] = useState(false);
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [image, setImage] = useState("");
@@ -154,14 +155,26 @@ export function Product() {
     }
 
   };
-  console.log(page);
 
   const handleChangeInput = (e) => {
     setSearch(e.target.value);
   }
 
+  const handleLogoutModal = () => {
+    setOpen(true);
+  }
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  const handleLogoutClose = () => {
+    setOpen(false);
+  }
+
   return (
     <ListProducts>
+      {open ? ( <Dialog color="#3EBCD3" close={handleLogoutClose} logout={handleLogout} />) : (<></>)}
       <ProductRegister openModal={openModal} setOpenModal={closeModal} />
       <ProductDetails
         loading={loading}
@@ -170,7 +183,7 @@ export function Product() {
         id={id}
         image={image}
       />
-      {level?.nivel === "ADMINISTRADOR" ? <NavbarAdm /> : <NavbarProducts />}
+      {level?.nivel === "ADMINISTRADOR" || level?.nivel === "administrador" ? <NavbarAdm logoff={handleLogoutModal} /> : <NavbarProducts logoff={handleLogoutModal}/>}
       <ListProductsCards>
         <Search
           handleSubmit={handleSubmitForm}

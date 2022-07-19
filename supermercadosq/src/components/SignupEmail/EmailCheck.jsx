@@ -73,6 +73,7 @@ const EmailCheck = ({ nextStep }) => {
       setHasErrorPassword(true);
     }
   };
+
   return (
     <Form>
       <h1>Crie sua conta</h1>
@@ -95,6 +96,7 @@ const EmailCheck = ({ nextStep }) => {
               }
             }}
           />
+          {hasErrorEmail && emailSignup !== '' ? (<span style={{color: '#E94F47', margin: '-10px 0 10px 0'}}>Formato de email inválido</span>) : (<></>)}
         </label>
 
         <label>

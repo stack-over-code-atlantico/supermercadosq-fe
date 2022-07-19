@@ -4,9 +4,10 @@ import { Circle } from "../../components/Circle/index";
 import { TextoBlog } from "../../components/TextoBlog/index";
 import CircleMenu from "../../components/CircleMenu/index";
 import { MenuContext } from "../../Provider/Menu.provider";
-import { userLevel } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
 
 export function Home() {
+  const {userLevel} = useAuth();
   const [allergyMenu, setAllergyMenu] = useState({
     home: false,
     egg: false,
@@ -18,10 +19,9 @@ export function Home() {
     milk: false,
   });
 
-  userLevel();
-
   return (
     <MenuContext.Provider value={{ allergyMenu, setAllergyMenu }}>
+
       <Navbar />
       <div
         style={{

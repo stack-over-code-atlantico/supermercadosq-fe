@@ -17,3 +17,21 @@ export const getLastCommentsById = async (data) => {
     });
   return lastComments;
 };
+
+export const getCommentsByProduct = async (id_produto) => {
+  const products = await api.get(`/comments/product/${id_produto}`);
+  return products;
+};
+
+export const useCreateComment = async (data) => {
+  const bodyParams = {
+    mensagem: data.mensagem,
+    id_produto: data.id_produto,
+  };
+
+  const commentPost = await api
+    .post("/comments", bodyParams, config)
+    .catch((err) => {
+      alert("Comentário não cadastrado");
+    });
+};

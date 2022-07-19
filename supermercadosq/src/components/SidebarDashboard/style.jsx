@@ -106,7 +106,7 @@ export const SidebarButton = styled.button`
     width: ${(props) => (props.active ? "100%" : 0)};
     height: 100%;
     border-radius: 0 50px 50px 0;
-    background: ${(props) => (props.active ? "#24589c" : "#B996E8")};
+    background: ${(props) => (props.active ? "#B996E8" : "#B996E8")};
     transition: all 0.35s;
   }
 

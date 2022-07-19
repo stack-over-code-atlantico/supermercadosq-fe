@@ -6,9 +6,8 @@ import {
   ProductListItemAdm,
 } from "../NavbarProductsAdm/styles";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../services/useAuth";
 
-export function NavbarAdm({ productName }) {
+export function NavbarAdm({ logoff }) {
   let navigate = useNavigate();
 
   const handleNavigateHome = () => {
@@ -24,11 +23,6 @@ export function NavbarAdm({ productName }) {
     navigate("/dashboard", { replace: true });
   };
 
-  const logOff = () => {
-    logout();
-    handleNavigateHome();
-  };
-
   return (
     <DivNavbarAdm>
       <NavbarListAdm>
@@ -36,7 +30,6 @@ export function NavbarAdm({ productName }) {
           <a href="" onClick={handleNavigateHome}>
             Home
           </a>
-          {productName}
         </ProductListItemAdm>
         <ProductListItemAdm>
           <a href="" onClick={handleNavigateProfile}>
@@ -55,7 +48,7 @@ export function NavbarAdm({ productName }) {
           </a>
         </ProductListItemAdm>
         <ProductListItemAdm>
-          <a href="" onClick={logOff}>
+          <a onClick={logoff}>
             Sair
           </a>
         </ProductListItemAdm>

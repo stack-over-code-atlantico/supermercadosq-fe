@@ -12,6 +12,7 @@ export const NavbarListAdm = styled.ul`
   align-items: center;
   gap: 50px;
   padding: 0px 54px;
+  cursor: pointer;
 `;
 export const ProductListItemAdm = styled.li`
   position: relative;

@@ -7,16 +7,16 @@ export const DivFilter = styled.div`
 
   position: absolute;
   z-index: 2;
-  margin: 1rem 1rem 1rem 19rem;
+  margin: 1rem 1rem 1rem 19.2rem;
 
   a {
     text-decoration: none;
-    color: #fff;
+    color: #2a91a3;
   }
 
   label {
     text-decoration: none;
-    color: #fff;
+    color: #2a91a3;
   }
 
   label:hover {
@@ -60,7 +60,7 @@ export const DivFilter = styled.div`
   }
 
   .listaFiltros {
-    background-color: var(--color-blue-light);
+    background-color: #9BEEEE;
 
     padding: 0.4rem 2rem;
     border: none;

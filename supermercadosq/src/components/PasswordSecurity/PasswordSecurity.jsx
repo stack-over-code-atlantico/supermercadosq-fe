@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { editUserPassword } from "../../services/useUser";
 import RequirePassword from "../RequirePassword";
 import { PasswordSecurityContainer } from "./styles";
-import { userLevel } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
 
 const PasswordSecurityForm = () => {
+  const {userLevel} = useAuth();
   const [senhaAntiga, setSenhaAntiga] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
   const [repeteNovaSenha, setRepeteNovaSenha] = useState("");

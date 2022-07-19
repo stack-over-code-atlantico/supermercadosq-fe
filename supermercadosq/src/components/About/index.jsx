@@ -166,7 +166,6 @@ export function AboutComponent() {
         </CardBody>
       </ContainerBody>
       <AboutContainer>
-        <Img src={AboutImg} alt="about image" />
         <AboutDiv>
           <AboutParagraph>
             <span>SuperMercadoSQ</span> é um projeto desenvolvido por um grupo

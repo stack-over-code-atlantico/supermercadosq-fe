@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { logout, userLevel  } from '../../services/useAuth';
+import useAuth from '../../services/useAuth';
 import {
   Sidebar,
   SidebarName,
@@ -12,7 +12,6 @@ import {
 } from './style';
 import { FaComments } from "react-icons/fa";
 import { BsFillFilePostFill, BsArrowLeftCircle } from "react-icons/bs";
-import { BiLogOut } from "react-icons/bi";
 import { RiAdminLine } from "react-icons/ri";
 
 
@@ -22,12 +21,11 @@ const SidebarDashboard = ({
   hasPost,
   hasComment
 }) => {
-
+  const { logout, userLevel } = useAuth();
   const [open, setOpen] = useState(true);
   const [user, setUser] = useState({});
 
   const handleOpen = useCallback(() => setOpen(!open));
-  const handleLogout = useCallback(() => logout());
 
   useEffect(() => {
     setUser(userLevel);
@@ -85,15 +83,6 @@ const SidebarDashboard = ({
              <FaComments />
             </ButtonIcon>
             Comentários
-          </SpanButton>
-        </SidebarButton>
-
-        <SidebarButton onClick={handleLogout} className="logout">
-          <SpanButton left="-68px">
-            <ButtonIcon>
-              <BiLogOut />
-            </ButtonIcon>
-            Sair
           </SpanButton>
         </SidebarButton>
       </Sidebar>

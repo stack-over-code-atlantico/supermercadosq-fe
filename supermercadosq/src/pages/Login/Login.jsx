@@ -11,11 +11,12 @@ import LogoSQ from "../../assets/images/LogoSQ.png";
 import { IoIosArrowBack } from "react-icons/io";
 import { BackHome, LabelError } from "../../styles/CommunsStyles.jsx";
 import InputPassword from "../../components/InputPassword/InputPassword.jsx";
-import { login } from "../../services/useAuth.jsx";
+import useAuth from "../../services/useAuth.jsx";
 import { isAfter } from "date-fns";
 import { Loading } from "../../components/LoadingScreen/index.jsx";
 
 const Login = () => {
+  const {login} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

@@ -9,7 +9,7 @@ export const DetailsContainer = styled.div`
   justify-content: center;
   background-color: white;
   color: var(--color-gray);
-  background-color: #000000a6;
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   z-index: 10;
 `;

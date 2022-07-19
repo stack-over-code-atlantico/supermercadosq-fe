@@ -22,6 +22,7 @@ export const ProductListItem = styled.li`
 
   a {
     text-decoration: none;
+    cursor: pointer;
     color: var(--color-white);
   }
 

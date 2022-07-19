@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { LabelComment } from "./style";
-import { userLevel } from "../../services/useAuth";
+import useAuth from "../../services/useAuth";
 
 const LabelMessage = ({
   executeFunction,
@@ -11,7 +11,7 @@ const LabelMessage = ({
   color,
 }) => {
   const [messageComment, setMessageComment] = useState("");
-
+  const {userLevel} = useAuth();
   function handleCreateComment() {
     executeFunction((mensagem = messageComment), id_item);
     setMessageComment("");

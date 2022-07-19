@@ -4,7 +4,7 @@ export const DivButtonAddProductCard = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  position: relative;
   width: 30px;
   height: 30px;
 
@@ -29,7 +29,7 @@ export const DivAddProductCard = styled.div`
   width: 240px;
   height: 320px;
   position: relative;
-  margin-top: -30px;
+  margin-top: -10px;
 
   background-color: var(--color-gray-light);
 
