@@ -27,10 +27,6 @@ export const useCreateUser = async (data) => {
 };
 
 export const useEditUser = async (cpf_cnpj, data) => {
-  for (let value of data) {
-    console.log(value)
-    console.log(typeof(value[1]))
-  }
 
   const updateUser = await api
     .put(`/users/${cpf_cnpj}`, data, {
