@@ -29,7 +29,7 @@ export function TextoBlog() {
     if (allergyMenu.peanut) return "Amendoim";
     if (allergyMenu.mustard) return "Mostarda";
     if (allergyMenu.fish) return "Peixe";
-    if (allergyMenu.seafood) return "Frutos do mar";
+    if (allergyMenu.seafood) return "Mariscos";
     if (allergyMenu.milk) return "Leite";
     return "Comunidade";
   };
