@@ -62,7 +62,7 @@ const ProfileInformationForm = ({ data }) => {
 
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
-    { value: "crustaceos", label: "Crustáceos" },
+    { value: "mariscos", label: "Mariscos" },
     { value: "gluten", label: "Glúten" },
     { value: "lactose", label: "Lactose" },
     { value: "mostarda", label: "Mostarda" },

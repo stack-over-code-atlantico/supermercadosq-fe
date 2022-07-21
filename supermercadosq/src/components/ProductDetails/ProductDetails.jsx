@@ -54,7 +54,7 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
     if (alergiaAtual == "mostarda")
       return { color: "#F59E1D", icon: mustardIcon };
     if (alergiaAtual == "peixe") return { color: "#9CDBE7", icon: fishIcon };
-    if (alergiaAtual == "crustaceos")
+    if (alergiaAtual == "mariscos")
       return { color: "#F66A69", icon: seafoodIcon };
     if (alergiaAtual == "lactose") return { color: "#3EBCD3", icon: milkIcon };
     return { color: "#9CDD6E", icon: home };
@@ -182,7 +182,6 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
                   ? urlImage
                   : "https://stackovercode.s3.amazonaws.com/default/Card.png"
               }
-              alt="mesa com sushi"
             />
           </DetailsImage>
           <DetailsComments>

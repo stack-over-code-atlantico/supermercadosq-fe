@@ -84,14 +84,14 @@ export function FilterButton({
             <li className="itemLista">
               <input
                 type="checkbox"
-                id="crustaceos"
-                value="crustaceos"
+                id="mariscos"
+                value="mariscos"
                 onChange={handleChange}
               />
               <FilterIcon>
                 <img src={seafood} />
               </FilterIcon>
-              <label htmlFor="crustaceos">Crustáceos</label>
+              <label htmlFor="mariscos">Mariscos</label>
             </li>
             <li className="itemLista">
               <input

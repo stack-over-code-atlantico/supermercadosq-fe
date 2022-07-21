@@ -54,13 +54,14 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
 
   const alergicOptions = [
     { value: "amendoim", label: "Amendoim" },
-    { value: "crustaceos", label: "Crustáceos" },
+    { value: "mariscos", label: "Mariscos" },
     { value: "gluten", label: "Glúten" },
     { value: "lactose", label: "Lactose" },
     { value: "mostarda", label: "Mostarda" },
     { value: "ovo", label: "Ovo" },
     { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
+    { value: "outros", label: "Outros" },
     { value: null, label: "Sem alergias"}
   ];
 

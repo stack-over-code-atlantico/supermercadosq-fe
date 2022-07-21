@@ -116,7 +116,7 @@ export function Product() {
         if (values === "mostarda") total.push("#F59E1D");
         if (values === "soja") total.push("#108a57");
         if (values === "peixe") total.push("#9CDBE7");
-        if (values === "crustaceos") total.push("#F66A69");
+        if (values === "mariscos") total.push("#F66A69");
         if (values === "lactose") total.push("#3EBCD3");
       }
       return total;
@@ -135,7 +135,7 @@ export function Product() {
         if (values === "mostarda") total.push(mustardIcon);
         if (values === "soja") total.push(sojaIcon);
         if (values === "peixe") total.push(fishIcon);
-        if (values === "crustaceos") total.push(seafoodIcon);
+        if (values === "mariscos") total.push(seafoodIcon);
         if (values === "lactose") total.push(milkIcon);
       }
       return total;
