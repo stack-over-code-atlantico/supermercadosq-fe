@@ -26,9 +26,11 @@ export const Form = styled.div`
       margin-bottom: 13px;
       margin-top: 5px;
       height: 30px;
+
     }
     input:focus {
       border: 2px solid var(--color-blue-light);
+      padding-left: 10px;
     }
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {

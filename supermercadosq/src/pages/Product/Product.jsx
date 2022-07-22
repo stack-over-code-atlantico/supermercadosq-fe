@@ -219,6 +219,7 @@ export function Product() {
           wheat={cerealIcon}
           soja={sojaIcon}
           gluten={glutenIcon}
+          others={otherIcon}
         />
         <FilterButton
           title="Filtrar com ingredientes"
@@ -234,6 +235,7 @@ export function Product() {
           wheat={cerealIcon}
           soja={sojaIcon}
           gluten={glutenIcon}
+          others={otherIcon}
         />
         <CardsContainer>
           {page === 0 && userLevel() ? (
