@@ -9,11 +9,7 @@ import eggIcon from "../../assets/icons/egg.png";
 import sojaIcon from "../../assets/icons/soja.png";
 import wheatIcon from "../../assets/icons/wheat.png";
 import otherIcon from "../../assets/icons/others.png";
-<<<<<<< HEAD
 import noImage from '../../assets/icons/noimage.png';
-=======
-import noImage from '../../assets/icons/noImage.png';
->>>>>>> 2becfc873d98d37a5f1946a1f1f27ca496f89ad2
 import UserComment from "../../components/UserComment/UserComment";
 import { Loading } from "../../components/LoadingScreen/index";
 import { MdOutlineArrowBack } from "react-icons/md";
