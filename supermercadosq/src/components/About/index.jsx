@@ -169,11 +169,11 @@ export function AboutComponent() {
         <AboutDiv>
           <AboutParagraph>
             <span>SuperMercadoSQ</span> é um projeto desenvolvido por um grupo
-            de estudantes, denomidado <span>StackOverCode</span>, os quais fazem
-            parte do Curso FullStack do Academy Bootcamp proporcionado pelo
+            de estudantes, denominado <span>StackOverCode</span>, os quais fazem
+            parte do Curso FullStack do Academy Bootcamp, proporcionado pelo
             @InstitutoAtlântico, que tem como propósito ajudar as pessoas a
             encontrarem os produtos que precisam, bem como ter conhecimento dos
-            igredientes que podem ser passivos de participarem de restrições
+            ingredientes que podem ser passivos de participarem de restrições
             alimentícias. Clique no botão abaixo para acessar nossa organização
             no Github, onde estão localizados os repositórios do projeto,
             divididos nas categorias: <span>Banco de Dados</span>,{" "}
