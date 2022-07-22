@@ -16,7 +16,8 @@ export function FilterButton({
   gluten,
   soja,
   peanut,
-  wheat
+  wheat,
+  others
 }) {
   const handleChange = async (event) => {
     if (event.target.checked) {
@@ -145,6 +146,18 @@ export function FilterButton({
                 <img src={mustard} />
               </FilterIcon>
               <label htmlFor="mostarda">Mostarda</label>
+            </li>
+            <li className="itemLista">
+              <input
+                type="checkbox"
+                id="outros"
+                value="outros"
+                onChange={handleChange}
+              />
+              <FilterIcon>
+                <img src={others} />
+              </FilterIcon>
+              <label htmlFor="mostarda">Outros...</label>
             </li>
           </ul>
         </li>
