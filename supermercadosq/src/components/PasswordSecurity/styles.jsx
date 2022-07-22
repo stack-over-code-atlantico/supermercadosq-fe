@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PasswordSecurityContainer = styled.div`
-  margin: 10vh 10vh;
+  margin: 0 10vh 10vh 10vh;
   display: flex;
   flex-direction: column;
 

@@ -124,5 +124,9 @@ export const Actions = styled.div`
     font-weight: 700;
     width: 152px;
     height: 39px;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `;

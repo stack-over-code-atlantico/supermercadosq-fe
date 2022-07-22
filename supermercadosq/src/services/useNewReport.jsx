@@ -10,7 +10,9 @@ export const useNewReport = async (data) => {
   if (data.typeItem === "produto") {
     const products = await api
       .put(`/products/${data.id_item}/denuncia`, bodyParams, config)
-      .then((resp) => {})
+      .then((resp) => {
+        alert("Produto denunciado, aguarde análise do ADM!");
+      })
       .catch((err) => {
         alert("Ocorreu um erro ao denunciar!");
       });
@@ -20,7 +22,9 @@ export const useNewReport = async (data) => {
 
   const comments = await api
     .put(`/comments/${data.id_item}/report`, bodyParams, config)
-    .then((resp) => {})
+    .then((resp) => {
+      alert("Comentário denunciado, aguarde análise do ADM!");
+    })
     .catch((err) => {
       alert("Ocorreu um erro ao denunciar!");
     });
