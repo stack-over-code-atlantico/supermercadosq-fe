@@ -30,6 +30,7 @@ import glutenIcon from "../../assets/icons/gluten.png";
 import cerealIcon from '../../assets/icons/wheat.png';
 import sojaIcon from "../../assets/icons/soja.png";
 import otherIcon from "../../assets/icons/others.png";
+import noImage from '../../assets/icons/noImage.png';
 import ProductPagination from "../../components/ProductPagination";
 import ProductRegister from "../../components/ProductRegister";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
@@ -128,10 +129,11 @@ export function Product() {
         if (values === "lactose") total.push("#3EBCD3");
         if (values === "mariscos") total.push("#F66A69");
         if (values === "gluten") total.push("#a39479");
+        if (values === "outros") total.push("#9CDD6E");
       }
       return total;
     }
-    return "#9CDD6E";
+    return "#bdbdbd";
   };
 
   const handleIcon = (allergy) => {
@@ -148,10 +150,11 @@ export function Product() {
         if (values === "lactose") total.push(milkIcon);
         if (values === "mariscos") total.push(seafoodIcon);
         if (values === "gluten") total.push(glutenIcon);
+        if (values === "outros") total.push(otherIcon);
       }
       return total;
     }
-    return otherIcon;
+    return noImage;
   };
 
   const handleSubmitForm = async (e) => {
