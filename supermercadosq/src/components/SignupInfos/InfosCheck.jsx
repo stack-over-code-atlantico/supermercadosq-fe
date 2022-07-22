@@ -106,7 +106,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               />
             </label>
             <label>
-              <span>CPF/CNPJ*</span>
+              <span>CPF/CNPJ* <span className="label-info">(somente números)</span></span>
               <input
                 type="number"
                 name="userDocument"
@@ -126,7 +126,7 @@ const InfosCheck = ({ nextStep, prevStep }) => {
               </span>) : (<></>)}
             </label>
             <label>
-              <span>Telefone/celular*</span>
+              <span>Telefone/celular* <span className="label-info">(somente números)</span></span>
               <input
                 type="number"
                 name="cellphone"

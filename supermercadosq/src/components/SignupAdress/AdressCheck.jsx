@@ -93,7 +93,17 @@ const AdressCheck = ({ nextStep, prevStep }) => {
       <p>Conclua seu cadastro com os dados que faltam</p>
       <form>
         <label>
-          <span>CEP</span>
+          <span>
+            CEP
+            <span style={{
+              marginTop: '3px',
+              marginLeft: '3px',
+              fontSize: '8px',
+              color: '#999'}}
+            >
+              (somente números)
+            </span>
+          </span>
           <input
             type="text"
             onChange={(e) => setCepSignup(e.target.value)}

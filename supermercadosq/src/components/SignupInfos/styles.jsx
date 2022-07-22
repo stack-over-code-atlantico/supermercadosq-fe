@@ -51,6 +51,15 @@ export const InfoForm = styled.div`
   display: grid;
   grid-template-columns: 70% 35%;
 
+  .label-info {
+    display: inline;
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 3px;
+    font-size: 8px;
+    color: #999;
+  }
+
   .leftSignUp label {
     margin-bottom: 20px;
   }
