@@ -30,7 +30,11 @@ import glutenIcon from "../../assets/icons/gluten.png";
 import cerealIcon from '../../assets/icons/wheat.png';
 import sojaIcon from "../../assets/icons/soja.png";
 import otherIcon from "../../assets/icons/others.png";
+<<<<<<< HEAD
 import noImage from '../../assets/icons/noimage.png';
+=======
+import noImage from '../../assets/icons/noImage.png';
+>>>>>>> 2becfc873d98d37a5f1946a1f1f27ca496f89ad2
 import ProductPagination from "../../components/ProductPagination";
 import ProductRegister from "../../components/ProductRegister";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
