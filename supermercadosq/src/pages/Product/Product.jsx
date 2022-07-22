@@ -202,7 +202,7 @@ export function Product() {
           name={search}
         />
         <FilterButton
-          left="350px"
+          left="603px"
           title="Filtrar sem ingredientes"
           hidden={allergy.length > 0}
           alergias={notAllergy}
