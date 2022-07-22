@@ -16,7 +16,7 @@ import { isAfter } from "date-fns";
 import { Loading } from "../../components/LoadingScreen/index.jsx";
 
 const Login = () => {
-  const {login} = useAuth();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -89,7 +89,13 @@ const Login = () => {
                   />
                 </label>
 
-                <label>
+                <label
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      return document.getElementById("enter").click();
+                    }
+                  }}
+                >
                   <span>Senha</span>
                   <InputPassword setValue={setPassword} value={password} />
                 </label>
@@ -99,7 +105,7 @@ const Login = () => {
                     Ainda não possui uma conta?{" "}
                     <a href="/register">Criar Conta</a>
                   </span>
-                  <button>Entrar</button>
+                  <button id="enter">Entrar</button>
                 </Actions>
               </form>
               <BackHome>

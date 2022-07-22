@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PostCommentsContainer = styled.div`
-  margin: 10vh 10vh;
+  margin: 0 10vh 10vh 10vh;
 
   .title {
     color: rgba(114, 114, 114, 1);

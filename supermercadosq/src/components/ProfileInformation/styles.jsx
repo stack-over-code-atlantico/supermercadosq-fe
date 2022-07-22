@@ -12,7 +12,7 @@ export const ContainerAvatar = styled.div`
 `;
 
 export const ProfileInformationContainer = styled.div`
-  margin: 10vh 10vh;
+  margin: 0 10vh 10vh 10vh;
   display: flex;
   flex-direction: column;
 
