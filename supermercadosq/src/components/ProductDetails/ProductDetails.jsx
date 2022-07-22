@@ -1,5 +1,4 @@
 import React from "react";
-import home from "../../assets/icons/home.png";
 import seafoodIcon from "../../assets/icons/seafood.png";
 import milkIcon from "../../assets/icons/milk.png";
 import glutenIcon from "../../assets/icons/gluten.png";
@@ -9,6 +8,8 @@ import peanutIcon from "../../assets/icons/peanut.png";
 import eggIcon from "../../assets/icons/egg.png";
 import sojaIcon from "../../assets/icons/soja.png";
 import wheatIcon from "../../assets/icons/wheat.png";
+import otherIcon from "../../assets/icons/others.png";
+import noImage from '../../assets/icons/noimage.png';
 import UserComment from "../../components/UserComment/UserComment";
 import { Loading } from "../../components/LoadingScreen/index";
 import { MdOutlineArrowBack } from "react-icons/md";
@@ -46,17 +47,17 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
   const [configAlergia, setConfigAlergia] = useState([]);
 
   const handleColor = (alergiaAtual) => {
-    if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: eggIcon };
-    if (alergiaAtual == "soja") return { color: "#108a57", icon: sojaIcon };
-    if (alergiaAtual == "cereais") return { color: "#dac297", icon: wheatIcon };
-    if (alergiaAtual == "amendoim") return { color: "#C87C53", icon: peanutIcon };
-    if (alergiaAtual == "mostarda") return { color: "#F59E1D", icon: mustardIcon };
-    if (alergiaAtual == "peixe") return { color: "#9CDBE7", icon: fishIcon };
-    if (alergiaAtual == "mariscos") return { color: "#F66A69", icon: seafoodIcon };
-    if (alergiaAtual == "gluten") return { color: "#a39479", icon: glutenIcon };
-    if (alergiaAtual == "lactose") return { color: "#3EBCD3", icon: milkIcon };
-    if (!alergiaAtual) return { color: "#9CDD6E", icon: home };
-    return { color: "#9CDD6E", icon: home };
+    if (alergiaAtual === "ovo") return { color: "#DAC50A", icon: eggIcon };
+    if (alergiaAtual === "soja") return { color: "#108a57", icon: sojaIcon };
+    if (alergiaAtual === "cereais") return { color: "#dac297", icon: wheatIcon };
+    if (alergiaAtual === "amendoim") return { color: "#C87C53", icon: peanutIcon };
+    if (alergiaAtual === "mostarda") return { color: "#F59E1D", icon: mustardIcon };
+    if (alergiaAtual === "peixe") return { color: "#9CDBE7", icon: fishIcon };
+    if (alergiaAtual === "mariscos") return { color: "#F66A69", icon: seafoodIcon };
+    if (alergiaAtual === "gluten") return { color: "#a39479", icon: glutenIcon };
+    if (alergiaAtual === "lactose") return { color: "#3EBCD3", icon: milkIcon };
+    if (alergiaAtual === "outros") return { color: "#9CDD6E", icon: otherIcon };
+    return { color: "#bdbdbd", icon: noImage };
   };
 
   const handleName = (colors) => {
@@ -219,12 +220,12 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
             />
             <PostComment>
               <PostContainer
-                color={configAlergia.length < 1 ? "#9CDD6E" : configAlergia[0].color}
+                color={configAlergia.length < 1 ? "#bdbdbd" : configAlergia[0].color}
               >
                 <span>{dataProduct?.nome}</span>
                 <h3>{dataProduct?.descricao}</h3>
                 <NutritionalContainer
-                  color={configAlergia.length < 1 ? "#9CDD6E" : configAlergia[0].color}
+                  color={configAlergia.length < 1 ? "#bdbdbd" : configAlergia[0].color}
                 >
                   <NutritionalTable>
                     <p>{dataProduct?.ingredientes}</p>
