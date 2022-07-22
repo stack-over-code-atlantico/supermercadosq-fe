@@ -116,11 +116,51 @@ export const IconType = styled.div`
   align-items: center;
   justify-content: end;
   padding: 10px 10px 10px 0px;
+  position: relative;
+
   div {
     :first-child {
       border-radius: 50%;
     }
   }
+
+  .icon-tooltip {
+    img {
+      width: 70%;
+    }
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .tooltip {
+      visibility: hidden;
+      width: 70px;
+      font-size: 12px;
+      border: 1px solid black;
+      background-color: #ffffff;
+      color: #000000;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+
+      /* Position the tooltip text - see examples below! */
+      position: absolute;
+      z-index: 1;
+      top: 40px;
+      }
+
+      &:hover{
+        .tooltip {
+          visibility: visible;
+
+      }
+    }
+  }
+
   .IconType {
     margin: 4px;
     display: flex;
@@ -130,9 +170,7 @@ export const IconType = styled.div`
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    img {
-      width: 65%;
-    }
+
   }
 `;
 

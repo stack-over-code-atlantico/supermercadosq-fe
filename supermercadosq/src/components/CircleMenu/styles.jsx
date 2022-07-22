@@ -259,7 +259,7 @@ export const CircleButton = styled.button`
 export const IconsMenu = styled.img`
   width: 50px;
   height: 50px;
-
+  margin-top: 5px;
   @media (max-width: 800px) {
       transform: scale(0.8);
     }

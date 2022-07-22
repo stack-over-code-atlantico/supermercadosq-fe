@@ -37,6 +37,10 @@ export const DivProductCardFront = styled.div`
 
   z-index: 1;
 
+  .restrictionImg {
+    box-shadow: 3px 15px 10px rgba(0, 0, 0, 0.1);
+  }
+
   img {
     display: block;
     border-radius: 10px 10px 0px 0px;
@@ -72,6 +76,7 @@ export const DivProductAllergy = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
 `;
 
 export const DivProductAllergyEffect = styled.div``;
@@ -93,11 +98,13 @@ export const DivIconCircle = styled.div`
     height: 28px;
     width: 28px;
     color: #fff;
+
   }
 `;
 
 export const DivIconBack = styled.div`
   height: 40px;
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
   width: 40px;
   border-radius: 50%;
   position: relative;

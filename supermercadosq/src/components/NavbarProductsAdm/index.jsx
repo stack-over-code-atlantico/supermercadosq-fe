@@ -28,7 +28,7 @@ export function NavbarAdm({ logoff }) {
       <NavbarListAdm>
         <ProductListItemAdm>
           <a href="" onClick={handleNavigateHome}>
-            Home
+            Início
           </a>
         </ProductListItemAdm>
         <ProductListItemAdm>

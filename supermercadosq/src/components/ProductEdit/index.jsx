@@ -41,8 +41,6 @@ const ProductEdit = ({
     setUrlSrc(URL.createObjectURL(event.target.files[0]));
   };
 
-  console.log(data.alergia.slice(0,0).length)
-
   const handleEditProd = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -77,8 +75,8 @@ const ProductEdit = ({
     { value: "ovo", label: "Ovo" },
     { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
+    { value: "cereais", label: "Cereais" },
     { value: "outros", label: "Outros" },
-    { value: '', label: "Sem alergias"}
   ];
 
   const customStyles = {
@@ -131,10 +129,6 @@ const ProductEdit = ({
       <span>{data.options.length}</span>
     </div>
   );
-
-
-  console.log(alergicOptions)
-
 
   return (
     <>
