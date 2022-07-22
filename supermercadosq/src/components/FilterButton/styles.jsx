@@ -4,19 +4,22 @@ export const DivFilter = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
   position: absolute;
   z-index: 2;
+  top: 140px;
+  left: ${props => props.left ? props.left : ''};
   margin: 1rem 1rem 1rem 19.2rem;
+  visibility: ${props => props.hidden ? 'hidden' : ''};
 
   a {
     text-decoration: none;
-    color: #2a91a3;
+    color: #fff;
+    font-size: 14px;
   }
 
   label {
     text-decoration: none;
-    color: #2a91a3;
+    color: #fff;
   }
 
   label:hover {
@@ -60,10 +63,12 @@ export const DivFilter = styled.div`
   }
 
   .listaFiltros {
-    background-color: #9BEEEE;
-
-    padding: 0.4rem 2rem;
-    border: none;
+    background-color: #3EBCD3;
+    display: flex;
+    align-items: center;
+    width: 240px;
+    padding: 0.4rem 1rem;
+    border: 1px solid #ddd;
     border-radius: 8px;
     color: var(--color-white);
     font-weight: 300;
@@ -71,12 +76,12 @@ export const DivFilter = styled.div`
 
     top: -40px;
     right: -175px;
-    box-shadow: -2px 5px 10px #ccc;
   }
 
   .listaFiltros .itemFiltrar a {
     display: flex;
     justify-content: center;
+    height: 50px;
     align-items: center;
     padding: 0 1.25rem;
     margin: 0 auto;

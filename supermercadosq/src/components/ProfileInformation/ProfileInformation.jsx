@@ -159,7 +159,6 @@ const ProfileInformationForm = ({ data }) => {
       }));
     }
   }, [data]);
-  console.log(dataUser);
   useEffect(() => {
     handleCep();
   }, [dataUser.cep]);

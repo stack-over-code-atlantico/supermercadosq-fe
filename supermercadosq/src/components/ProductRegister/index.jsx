@@ -61,8 +61,8 @@ const ProductRegister = ({ openModal, setOpenModal }) => {
     { value: "ovo", label: "Ovo" },
     { value: "peixe", label: "Peixe" },
     { value: "soja", label: "Soja" },
+    { value: "cereais", label: "Cereais" },
     { value: "outros", label: "Outros" },
-    { value: null, label: "Sem alergias"}
   ];
 
   const customStyles = {

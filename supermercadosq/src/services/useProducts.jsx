@@ -29,6 +29,13 @@ export const postProductPerAllergy = async (allergies, page) => {
   return products;
 };
 
+export const postProductNotPerAllergy = async (allergies, page) => {
+  const products = await api.post(`/products/notAllergy/${page}`, {
+    alergia: allergies,
+  });
+  return products;
+};
+
 export const createOneProduct = async (data) => {
   const products = await api.post("/products", data, {
     headers: {

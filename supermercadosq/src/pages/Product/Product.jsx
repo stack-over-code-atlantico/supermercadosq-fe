@@ -14,6 +14,7 @@ import Dialog from '../../components/Dialog';
 import {
   getAllProducts,
   postProductPerAllergy,
+  postProductNotPerAllergy,
   searchProduct,
 } from "../../services/useProducts";
 import useAuth from "../../services/useAuth";
@@ -25,9 +26,10 @@ import fishIcon from "../../assets/icons/fish.png";
 import mustardIcon from "../../assets/icons/mustard.png";
 import peanutIcon from "../../assets/icons/peanut.png";
 import eggIcon from "../../assets/icons/egg.png";
-import wheatIcon from "../../assets/icons/wheat.png";
+import glutenIcon from "../../assets/icons/gluten.png";
+import cerealIcon from '../../assets/icons/wheat.png';
 import sojaIcon from "../../assets/icons/soja.png";
-import questionIcon from "../../assets/icons/question.svg";
+import otherIcon from "../../assets/icons/others.png";
 import ProductPagination from "../../components/ProductPagination";
 import ProductRegister from "../../components/ProductRegister";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
@@ -44,23 +46,30 @@ export function Product() {
   const [level, setLevel] = useState(null);
   const [page, setPage] = useState(0);
   const [allergy, setAllergy] = useState([]);
+  const [notAllergy, setNotAllergy] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    if (allergy.length === 0) {
+    if (allergy.length === 0 && notAllergy.length === 0) {
       (async function () {
         const resp = await searchProduct(search, page);
         setPosts(resp.data);
       })();
-    } else {
+    } else if (allergy.length > 0) {
       (async function () {
         await postProductPerAllergy(allergy.join(","), page).then((resp) =>
           setPosts(resp.data)
         );
       })();
+    } else if (notAllergy.length > 0) {
+      (async function () {
+        await postProductNotPerAllergy(notAllergy.join(","), page).then((resp) =>
+          setPosts(resp.data)
+        );
+      })();
     }
-  }, [page, allergy]);
+  }, [page, allergy, notAllergy]);
 
   useEffect(() => {
     (async function () {
@@ -111,17 +120,18 @@ export function Product() {
     if (Array.isArray(alergias) && alergias.length > 0) {
       for (let values of alergias) {
         if (values === "ovo") total.push("#DAC50A");
-        if (values === "gluten") total.push("#D3B273");
+        if (values === "cereais") total.push("#dac297");
         if (values === "amendoim") total.push("#C87C53");
         if (values === "mostarda") total.push("#F59E1D");
         if (values === "soja") total.push("#108a57");
         if (values === "peixe") total.push("#9CDBE7");
-        if (values === "mariscos") total.push("#F66A69");
         if (values === "lactose") total.push("#3EBCD3");
+        if (values === "mariscos") total.push("#F66A69");
+        if (values === "gluten") total.push("#a39479");
       }
       return total;
     }
-    return "#BABABA";
+    return "#9CDD6E";
   };
 
   const handleIcon = (allergy) => {
@@ -130,17 +140,18 @@ export function Product() {
     if (Array.isArray(alergias) && alergias.length > 0) {
       for (let values of alergias) {
         if (values === "ovo") total.push(eggIcon);
-        if (values === "gluten") total.push(wheatIcon);
+        if (values === "cereais") total.push(cerealIcon);
         if (values === "amendoim") total.push(peanutIcon);
         if (values === "mostarda") total.push(mustardIcon);
         if (values === "soja") total.push(sojaIcon);
         if (values === "peixe") total.push(fishIcon);
-        if (values === "mariscos") total.push(seafoodIcon);
         if (values === "lactose") total.push(milkIcon);
+        if (values === "mariscos") total.push(seafoodIcon);
+        if (values === "gluten") total.push(glutenIcon);
       }
       return total;
     }
-    return questionIcon;
+    return otherIcon;
   };
 
   const handleSubmitForm = async (e) => {
@@ -191,6 +202,24 @@ export function Product() {
           name={search}
         />
         <FilterButton
+          left="350px"
+          title="Filtrar sem ingredientes"
+          hidden={allergy.length > 0}
+          alergias={notAllergy}
+          setAlergias={setNotAllergy}
+          fish={fishIcon}
+          egg={eggIcon}
+          milk={milkIcon}
+          mustard={mustardIcon}
+          seafood={seafoodIcon}
+          peanut={peanutIcon}
+          wheat={cerealIcon}
+          soja={sojaIcon}
+          gluten={glutenIcon}
+        />
+        <FilterButton
+          title="Filtrar com ingredientes"
+          hidden={notAllergy.length > 0}
           alergias={allergy}
           setAlergias={setAllergy}
           fish={fishIcon}
@@ -199,8 +228,9 @@ export function Product() {
           mustard={mustardIcon}
           seafood={seafoodIcon}
           peanut={peanutIcon}
-          wheat={wheatIcon}
+          wheat={cerealIcon}
           soja={sojaIcon}
+          gluten={glutenIcon}
         />
         <CardsContainer>
           {page === 0 && userLevel() ? (

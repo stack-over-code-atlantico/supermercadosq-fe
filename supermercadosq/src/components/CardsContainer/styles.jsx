@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const DivCards = styled.div`
+margin-top: 50px;
+  border-top: 1px solid #ddd;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;

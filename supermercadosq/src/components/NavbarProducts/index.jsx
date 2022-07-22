@@ -29,12 +29,12 @@ export function NavbarProducts({logoff}) {
           <NavbarList>
             <ProductListItem>
               <a href="" onClick={handleNavigateHome}>
-                Home
+                Início
               </a>
             </ProductListItem>
             <ProductListItem>
               <a href="" onClick={handleNavigateProfile}>
-                Profile
+                Perfil
               </a>
             </ProductListItem>
             <ProductListItem>
@@ -55,7 +55,7 @@ export function NavbarProducts({logoff}) {
           <NavbarList>
             <ProductListItem>
               <a href="" onClick={handleNavigateHome}>
-                Home
+                Início
               </a>
             </ProductListItem>
             <ProductListItem>

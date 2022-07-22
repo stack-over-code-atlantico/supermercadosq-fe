@@ -2,6 +2,7 @@ import React from "react";
 import home from "../../assets/icons/home.png";
 import seafoodIcon from "../../assets/icons/seafood.png";
 import milkIcon from "../../assets/icons/milk.png";
+import glutenIcon from "../../assets/icons/gluten.png";
 import fishIcon from "../../assets/icons/fish.png";
 import mustardIcon from "../../assets/icons/mustard.png";
 import peanutIcon from "../../assets/icons/peanut.png";
@@ -45,19 +46,30 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
   const [configAlergia, setConfigAlergia] = useState([]);
 
   const handleColor = (alergiaAtual) => {
-    if (alergiaAtual == "") return { color: "#9CDD6E", icon: home };
     if (alergiaAtual == "ovo") return { color: "#DAC50A", icon: eggIcon };
     if (alergiaAtual == "soja") return { color: "#108a57", icon: sojaIcon };
-    if (alergiaAtual == "gluten") return { color: "#D3B273", icon: wheatIcon };
-    if (alergiaAtual == "amendoim")
-      return { color: "#C87C53", icon: peanutIcon };
-    if (alergiaAtual == "mostarda")
-      return { color: "#F59E1D", icon: mustardIcon };
+    if (alergiaAtual == "cereais") return { color: "#dac297", icon: wheatIcon };
+    if (alergiaAtual == "amendoim") return { color: "#C87C53", icon: peanutIcon };
+    if (alergiaAtual == "mostarda") return { color: "#F59E1D", icon: mustardIcon };
     if (alergiaAtual == "peixe") return { color: "#9CDBE7", icon: fishIcon };
-    if (alergiaAtual == "mariscos")
-      return { color: "#F66A69", icon: seafoodIcon };
+    if (alergiaAtual == "mariscos") return { color: "#F66A69", icon: seafoodIcon };
+    if (alergiaAtual == "gluten") return { color: "#a39479", icon: glutenIcon };
     if (alergiaAtual == "lactose") return { color: "#3EBCD3", icon: milkIcon };
+    if (!alergiaAtual) return { color: "#9CDD6E", icon: home };
     return { color: "#9CDD6E", icon: home };
+  };
+
+  const handleName = (colors) => {
+    if (colors === "#DAC50A") return("Ovo");
+    if (colors === "#dac297") return("Cereais");
+    if (colors === "#C87C53") return("Amendoim");
+    if (colors === "#F59E1D") return("Mostarda");
+    if (colors === "#108a57") return("Soja");
+    if (colors === "#9CDBE7") return("Peixe");
+    if (colors === "#3EBCD3") return("Lactose");
+    if (colors === "#F66A69") return("Mariscos");
+    if (colors === "#a39479") return("Glutén");
+    return "Outros...";
   };
 
   useEffect(() => {
@@ -140,6 +152,7 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
     }
     return deleteItemAxios;
   }
+
   async function handleReportItem(id_item, typeItem) {
     const reportItemAxios = useNewReport({
       id_item,
@@ -159,6 +172,7 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
   function handleVisibledUpdateProduct() {
     setIsEditProduct(false);
   }
+
   return (
     <>
       {open ? (
@@ -205,12 +219,12 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
             />
             <PostComment>
               <PostContainer
-                color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+                color={configAlergia.length < 1 ? "#9CDD6E" : configAlergia[0].color}
               >
                 <span>{dataProduct?.nome}</span>
                 <h3>{dataProduct?.descricao}</h3>
                 <NutritionalContainer
-                  color={configAlergia.length < 1 ? "" : configAlergia[0].color}
+                  color={configAlergia.length < 1 ? "#9CDD6E" : configAlergia[0].color}
                 >
                   <NutritionalTable>
                     <p>{dataProduct?.ingredientes}</p>
@@ -222,7 +236,10 @@ const ProductDetails = ({ open, id, setClose, loading, image }) => {
                           className="IconType"
                           style={{ backgroundColor: item.color }}
                         >
-                          <img src={item.icon} alt="icone de alergia" />
+                          <div className="icon-tooltip">
+                            <span className="tooltip">{handleName(item.color)}</span>
+                            <img src={item.icon} alt="icone de alergia" />
+                          </div>
                         </div>
                       );
                     })}

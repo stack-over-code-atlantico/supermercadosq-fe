@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { DivFilter, FilterIcon } from "./styles";
 
 export function FilterButton({
+  title,
+  left,
+  hidden,
   alergias,
   setAlergias,
   egg,
@@ -9,9 +12,10 @@ export function FilterButton({
   milk,
   mustard,
   fish,
-  wheat,
+  gluten,
   soja,
   peanut,
+  wheat
 }) {
   const handleChange = async (event) => {
     if (event.target.checked) {
@@ -28,10 +32,10 @@ export function FilterButton({
   };
 
   return (
-    <DivFilter>
+    <DivFilter left={left} hidden={hidden}>
       <ul className="listaFiltros">
         <li className="itemFiltrar">
-          <a href="#">Filtrar por alergia</a>
+          <a href="#">{title}</a>
           <ul className="subLista">
             <li className="itemLista">
               <input
@@ -60,14 +64,14 @@ export function FilterButton({
             <li className="itemLista">
               <input
                 type="checkbox"
-                id="gluten"
-                value="gluten"
+                id="cereais"
+                value="cereais"
                 onChange={handleChange}
               />
               <FilterIcon>
                 <img src={wheat} />
               </FilterIcon>
-              <label htmlFor="gluten">Glúten</label>
+              <label htmlFor="cereais">Cereais</label>
             </li>
             <li className="itemLista">
               <input
@@ -116,6 +120,18 @@ export function FilterButton({
                 <img src={milk} />
               </FilterIcon>
               <label htmlFor="lactose">Lactose</label>
+            </li>
+            <li className="itemLista">
+              <input
+                type="checkbox"
+                id="gluten"
+                value="gluten"
+                onChange={handleChange}
+              />
+              <FilterIcon>
+                <img src={gluten} />
+              </FilterIcon>
+              <label htmlFor="lactose">Glúten</label>
             </li>
             <li className="itemLista">
               <input

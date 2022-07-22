@@ -11,9 +11,6 @@ import {
   DivPersonDetails,
   DivNameAndPubDate,
   DivComment,
-  DivIconCircle,
-  DivProductAllergy,
-  DivProductAllergyEffect,
   DivIconBack,
   Span,
 } from "./styles";

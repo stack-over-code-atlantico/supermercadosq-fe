@@ -25,7 +25,7 @@ export function TextoBlog() {
 
   const handleSubtitle = () => {
     if (allergyMenu.egg) return "Ovo";
-    if (allergyMenu.wheat) return "Glúten";
+    if (allergyMenu.wheat) return "Cereais";
     if (allergyMenu.peanut) return "Amendoim";
     if (allergyMenu.mustard) return "Mostarda";
     if (allergyMenu.fish) return "Peixe";
