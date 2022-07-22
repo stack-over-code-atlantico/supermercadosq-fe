@@ -4,10 +4,10 @@ export const DivFilter = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: absolute;
+  position: ${props => props.position ? 'relative' : 'absolute'};
   z-index: 2;
   top: 140px;
-  left: ${props => props.left ? props.left : ''};
+  left: ${props => props.left ? `calc(50% - ${props.left})` : ''};
   margin: 1rem 1rem 1rem 19.2rem;
   visibility: ${props => props.hidden ? 'hidden' : ''};
 

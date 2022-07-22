@@ -4,6 +4,7 @@ import { DivFilter, FilterIcon } from "./styles";
 export function FilterButton({
   title,
   left,
+  position,
   hidden,
   alergias,
   setAlergias,
@@ -32,7 +33,7 @@ export function FilterButton({
   };
 
   return (
-    <DivFilter left={left} hidden={hidden}>
+    <DivFilter left={left} hidden={hidden} position={position}>
       <ul className="listaFiltros">
         <li className="itemFiltrar">
           <a href="#">{title}</a>
